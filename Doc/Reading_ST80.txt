@@ -1,0 +1,131 @@
+A Note on Reading the Smalltalk-80 Programming Language
+
+(Version 1 - stp - 12/91 -- improvised, improvements graciously solicited)
+
+Smalltalk-80 is a message-passing object-oriented programming language where expressions are built to be read as English sentences. The language is based on the concepts of objects (software modules that consist of state [data] and behavior [procedures]), that send messages among each other. All data is organized into objects, and all functionality is described as the behaviors of objects. A Smalltalk- 80 application is a network of objects.
+
+Objects that have similar state and behaviors are grouped into classes (e.g., the class of all whole numbers [integers], or the class of all 2-dimensional Cartesian points). The classes themselves are arranged into a tree-like sub/superclass hierarchy with inheritance of state and behavior from a superclass to its subclasses (e.g., the class of integers might be defined as a subclass of the class of numbers).
+
+Names and identifiers are separated by white space and are often composed of a concatenated noun phrase written with embedded upper-case letters, e.g., anEvent or MusicMagnitude. 
+
+In a Smalltalk-80 expression, the noun (i.e., the receiver object), comes first, followed by the message; e.g., to ask the size of an array, one sends it the message "size," as in [anArray size]. 
+
+If the message has any arguments, they are separated from the message keywords in that the keywords all end in ":", so to index the first element of the array, one writes [anArray at: 1]; to set it to zero, use [anArray at: 1 put: 0]. 
+
+Binary operators are allowed for mathematical (+, *, etc.) and logic (>, ~=, etc) operations.
+
+Expressions can be nested using parentheses (i.e., evaluate what's inside the inner-most parentheses first), and fancy expression constructs and control structures are possible.
+
+Expression examples
+
+	Unary messages
+		anArray size
+		Date today	
+		x negated
+
+	Binary messages
+		3 + 4.2215
+		x > 7
+		(a + b) * (c + d)
+
+	Keyword messages
+		anArray at: 1					"get an item from an array"
+		anArray at: 1 put: 7			"assign into an array"
+		aVisualItem displayOn: aMedium at: aPoint clip: aClipRect mask: aMask
+	(messages called  at:put:  or  displayOn:at:clip:mask:)
+
+Unary expressions can be concatenated, as in
+	Date today weekday size odd printString
+
+which answers the string "true" or "false," as though it were written,
+	((((Date today) weekday) size) odd) printString
+
+Unary messages bind more strongly than binary messages, as in,
+	3 negated * 4 sqrt			"answers -6 "
+read as
+	(3 negated) * (4 sqrt)
+
+Keywords bind the weakest, so that,
+	Transcript show: aNumber printString, ' is not equal to ', otherNumber printString.
+	anArray at: index + 1 put: 'hello ' , ' world'.
+are to be read as,
+	Transcript show: ((aNumber printString), ' is not equal to ', (otherNumber printString)).
+	anArray at: (index + 1) put: ('hello ' , ' world').
+
+A single expression can contain at most one keyword message, i.e., the compiler always tries to build the longest composed keyword message it can find in an expression. For example, to copy an element from one position in an array to another, we would have to parenthesize the 2 keyword messages, as follows,
+	anArray at: 1 put: (anArray at: 2)
+because without the parentheses, the message would be interpreted as at:put:at: (which is probably not implemented).
+
+Cascades
+
+When several messages are to be sent to the same receiver, and the return values are ignored, one can create a message cascade" by separating the messaegs with semi-colons instead of periods, and not repeating the receiver, as in,
+	Transcript show: name printString.
+	Transcript cr.
+which can be written as a cascade or 2 messages sent to Transcript,
+	Transcript show: name printString ; cr.
+
+Double-quotes delineate comments in Smalltalk-80 (e.g., "a comment"); single-quotes are used for immediate string objects (e.g., 'a string'). 
+
+Names for temporary variables are declared between vertical bars (e.g.,  | varName1 varName2 | ). 
+
+Symbols are special strings that are stored in a table so as to be unique; they are written with the hash-mark "#" as in #blue, meaning "the symbol blue."
+
+Immediate Object Formats
+
+	Integer			7				244361990863443121 
+					(arbitrary-precision integers, fractions, meta-numbers)
+	Real			3.1415926		2.8879044346233
+	Character		$a 			$.
+	String			'hi'			'longer string'
+	Symbol			#hi			#SymbolicValue
+
+	List (Collection)	#(a b c)
+	CompactArray	#[00 01 11]
+	Association		( a -> b)
+	Dictionary (Map)	(a -> b), (c -> d)
+
+	Logical constants		true, false, nil
+	
+Smalltalk supports deferred execution in the form of closures or anonymous functions called blocks; they are written in square brackets "[...]" and can have arguments and/or local temporary variables. 
+
+The up-arrow or caret (^) is used to return values (objects) from within blocks. 
+
+A block that takes two arguments and returns their sum would look like:
+	[ "arguments" :x :y | "body" ^(x + y)].
+
+Since Boolean objects and blocks are supported, it's easy to define the standard program logical control flow operations such as if/then/else or do/while. Here are examlpes in Smalltalk
+
+	(x < 0) ifTrue: [x := x negated]
+	(x < 0) ifTrue: [x := x negated]
+			ifFalse: [x := x - 1]
+
+For loop: use integer to: integer do: block-with-1-argument
+	1 to: 10 do: [ :index | Transcript show: index printString; cr]
+
+While loop
+	[x > 0] whileTrue: [Transcript show x printString; cr.  x := x - 1]
+
+Collection iteration
+	#(1 3 5 7 9) do: [ :item | "block " ]
+	aSet select: [ :item | item > 0 ]
+
+The format of a method; the browser uses a standard code template for new methods
+
+	methodName: argument
+		"Comment stating purpose and return value."
+
+		| tempVarName |
+		method body statements.
+		^self 			"some return value"
+
+Smalltalk programs are organized as the behaviors (methods) of classes of objects. To program a graphical application, for example, one might start by adding new methods to the point and 3-D point classes for graphical transformations, and build a family of "smart" visible display objects that know how to present themselves in interesting ways. 
+
+Classes are described as being abstract or concrete depending on whether they are meant as models for refinement within a framework, or for reuse "off the shelf" as in the elements in a tool kit.
+
+Inheritance means that classes of objects are related in hierarchies (i.e., abstract and concrete classes related in trees), where they share their methods and state variables. This means that the class of 3-D points only has to add the z- coordinate and a few new methods when it's defined as being a specialization (subclass) of the 2-D point class.
+
+Polymorphism means that many kinds of objects respond to the same message with their own methods to carry out related behavior. Examples are the "play" message being handled by event lists in terms of being passed on to their component events in real-time, or of displayable objects and windows all having methods for the "display" message.
+
+Inheritance and polymorphism mean that one reads Smalltalk-80 programs by learning the basic protocol (messages/methods) of the abstract classes first; this gives one the feel for the basic behaviors of the systems's objects and applications.
+
+For more info, there are several excellent on-line Smallatlk tutorials (just ask Google), see the reference section of this workbook.

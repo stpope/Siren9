@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				FourierSummation</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>FourierSummation<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Function<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Functions<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>myForm myArray lazy <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Instances of FourierSummation are functions that interpret their points as 3-element arrays (harmonic, amplitude, phase), and sum sine waves into their data array based on the fourier summation of these components.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;myForm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Form> my function plot--default size = 1024@180<BR>
+&nbsp;&nbsp;&nbsp;myArray&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Array of Floats> my value array--default length = 1024<BR>
+&nbsp;&nbsp;&nbsp;lazy <Boolean> do I cache my values (eager) or cmopute them on the fly (lazy)?<P>
+<P>
+Example:<BR>
+&nbsp;&nbsp;&nbsp;| fcn |<BR>
+&nbsp;&nbsp;&nbsp;fcn := FourierSummation from: #((1 1 0) (3 0.3 0) (5 0.2 0) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(7 0.15 0) (9 0.11 0) (11 0.09 0)).<BR>
+&nbsp;&nbsp;&nbsp;Transcript show: (fcn at: 0.14) printString; cr.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver for the given size.<P>
+</I><I><FONT SIZE=+1><P>
+computing<P>
+<P>
+</I></FONT><B>computeCurve</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute the block by sine summation--set the values in the cached array.<P>
+<P>
+</I><B>computeValueAt: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute the answer by sine summation.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>add: a3DPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver's point collection.<P>
+<P>
+</I><B>at: theIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value from my array--assume an index in the range 0 to 1<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>FourierSummation class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default instance of the receiver class.<P>
+<P>
+</I><B>from: anArrayOfZPoints</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a sum-of-sines function with the given points.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>fourierExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make a Sine summation that approaches a square wave<P>
+<P>
+</I><B>fourierViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make a Sine summation that approaches a square wave and open a view on it.</I></FONT>
+</BODY>
+</HTML>

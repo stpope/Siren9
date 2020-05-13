@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				RatioPitch</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>RatioPitch<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.RatioMagnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<P>
+<P>
+<P>
+</FONT><I>Instances of RatioPitch are fractional pitch values normally relative to c=261.623Hz.<BR>
+They can be transformed into other values (e.g., note names or key numbers), but often at a loss of accuracy if they are not well-tempered.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Pitch.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn0: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver as a ratio.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asFracMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a RatioPitch as a fractional MIDINote.<P>
+<P>
+</I><B>asFracSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a ratio, answer a symbolic note name<P>
+<P>
+</I><B>asHertz</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a HertzPitch.<P>
+<P>
+</I><B>asMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a RatioPitch as a MIDINote (rounded).<P>
+<P>
+</I><B>asSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a ratio, answer a symbolic note name<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most numerically meaningful version of the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>RatioPitch class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+coercion<P>
+<P>
+</I></FONT><B>ddMsgName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the selector to be used in coercing double-dispatching messages.</I></FONT>
+</BODY>
+</HTML>

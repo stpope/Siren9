@@ -1,0 +1,336 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIPort</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIPort<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.PortModel<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>inputData readProcess <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Streams <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private MIDICommands.* private MIDIioctls.* <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private GeneralMIDIMap.* private GeneralMIDIDrums.* <P>
+<P>
+<P>
+</FONT><I>An instance of a subclass of MIDIPort is used for the interface betweeen Siren and external MIDI drivers and devices. It implements both note-oriented (e.g., play: pitch at: aDelay dur: aDur amp: anAmp voice: voice), and data-oriented (e.g., put: data at: delay length: size) behaviors for MIDI I/O. There is an extensive test suite and demo in the class examples method and in the Siren outline view.<P>
+<P>
+There is typically only one instance of MIDIPort. The messages new, default, and instance all answer the sole instance. MIDIPorts use dependency to signal input data, objects wishing to receive input should register themselves as dependents of a port. In the default Siren implementation, the scheduler is all in Smalltalk, and only the simplest MIDI driver is assumed.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;readProcess <Process> The loop process to read input data.<BR>
+&nbsp;&nbsp;&nbsp;inputData <OrderedCollection of (Integer -> ByteArray)> The available data.<BR>
+&nbsp;&nbsp;&nbsp;status <Symbol> #open or #closed<BR>
+&nbsp;&nbsp;&nbsp;device <Integer> my IO device's index<P>
+<P>
+Class Variables:<BR>
+&nbsp;&nbsp;&nbsp;Instance <MIDIPort|nil> The sole instance, or nil.<BR>
+&nbsp;&nbsp;&nbsp;Debug <Boolean> Debug mode prints all I/O to the Transcript.<BR>
+&nbsp;&nbsp;&nbsp;UseSingleton <Boolean> whether to use a singleton instance (not necessary)<BR>
+&nbsp;&nbsp;&nbsp;DefaultInputDevice <Integer> the index in the driver of the default input device<BR>
+&nbsp;&nbsp;&nbsp;DefaultOutputDevice see above<P>
+<P>
+MIDI Commands Supported:<BR>
+&nbsp;&nbsp;&nbsp;0x9x pp vv -- note-on (x=channel, pp=pitch, vv=velocity)<BR>
+&nbsp;&nbsp;&nbsp;0x8x pp vv -- note-off (x=channel, pp=pitch, vv=velocity)<BR>
+&nbsp;&nbsp;&nbsp;0xCx cc -- program-change (x=channel, pp=pitch)<BR>
+&nbsp;&nbsp;&nbsp;0xEx ll hh -- program-change (x=channel, ll=low 7 bits, hh=high 7 bits)<BR>
+&nbsp;&nbsp;&nbsp;0xBx cc dd -- control change (x=channel, cc=controller, dd=data)<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>input</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's Q of input data.<P>
+<P>
+</I><B>isActive</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is active.<P>
+<P>
+</I><B>reader</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's read process<P>
+<P>
+</I><B>resetInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the receiver's Q of input data.<P>
+</I><I><FONT SIZE=+1><P>
+control commands<P>
+<P>
+</I></FONT><B>allNotesOff</B><I><BR>
+&nbsp;&nbsp;&nbsp;Turn all MIDI notes off using the channel message 123.<P>
+<P>
+</I><B>allNotesOffVerbose</B><I><BR>
+&nbsp;&nbsp;&nbsp;Turn all MIDI notes off (the verbose way).<P>
+<P>
+</I><B>controlChange: chan controller: controller to: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send out a control-change command now.<P>
+<P>
+</I><B>pitchBend: chan to: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send out a pitch-bend command at the given time.<P>
+<P>
+</I><B>programChange: chan to: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send out a program-change command at the given time.<P>
+<P>
+</I><B>sysex: command</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send out a MIDI system exclusive data packet at the given time.<P>
+</I><I><FONT SIZE=+1><P>
+open/close<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close MIDI.<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openInput: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openOutput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openOutput: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>reset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the port.<P>
+</I><I><FONT SIZE=+1><P>
+ioctl<P>
+<P>
+</I></FONT><B>eventsAvailable</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the number of events in the input Q.<P>
+<P>
+</I><B>hasBuffer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the MIDI driver has a time-stamped output buffer.<P>
+<P>
+</I><B>hasClock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the MIDI driver has its own clock.<P>
+<P>
+</I><B>hasControllerCache</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the MIDI driver supports a controller data buffer.<P>
+<P>
+</I><B>hasDurs</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the MIDI driver supports a 1-call note-on/off command.<P>
+<P>
+</I><B>readLoop</B><I><BR>
+&nbsp;&nbsp;&nbsp;polling or waiting loop<P>
+<P>
+</I><B>startControllerCaching</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start caching MIDI controller in the driver.<P>
+<P>
+</I><B>startMIDIEcho</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start echoing MIDI input from the driver.<P>
+<P>
+</I><B>startMIDIInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start the polling loop (or semaphore waiter) MIDI input.<P>
+<P>
+</I><B>stopControllerCaching</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop caching MIDI controller in the driver.<P>
+<P>
+</I><B>stopMIDIEcho</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop echoing MIDI input from the driver.<P>
+<P>
+</I><B>stopMIDIInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop signalling the read semaphore on MIDI input.<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Setup the receiver's instance variables.<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release--break and dependencies on the error value.<P>
+</I><I><FONT SIZE=+1><P>
+read/write<P>
+<P>
+</I></FONT><B>get: packet</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read the data from the receiver into the argument (a MIDIPacket). Answer the number of data bytes read.<P>
+<P>
+</I><B>nextEventInto: anEventAssociation</B><I><BR>
+&nbsp;&nbsp;&nbsp;Record via the receiver into the argument.<P>
+<P>
+</I><B>nextMessage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the first (length -> bytes) association from the input data collection.<P>
+<P>
+</I><B>play: aPitch dur: aDur amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a note (on/off message pair) with the given parameters on the receiver.<P>
+<P>
+</I><B>play: streamID pitch: aPitch dur: aDur amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a note (on/off message pair) with the given parameters on the receiver.<P>
+<P>
+</I><B>playOff: streamID pitch: aPitch amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a note-on command with the given parameters on the receiver.<P>
+<P>
+</I><B>playOn: streamID pitch: aPitch amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a note-on command with the given parameters on the receiver.<P>
+<P>
+</I><B>put: data length: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send the argument data to the receiver now.<P>
+<P>
+</I><B>readController: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read the given controller value.<P>
+<P>
+</I><B>readControllersFrom: lo to: hi into: array</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a range of controllers<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIPort class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+message tests<P>
+<P>
+</I></FONT><B>functionExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate control commands by playing a note and making a crescendo with the volume pedal.<P>
+<P>
+</I><B>testBend</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate pitch-bend by playing two notes and bending them.<P>
+<P>
+</I><B>testControlContinuous</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate control commands by playing a note and making a crescendo with the volume pedal.<P>
+<P>
+</I><B>testProgramChange</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate program change by setting up an organ instrument to play on.<P>
+<P>
+</I><B>testSysex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate system exclusive commands by loading the Santur scale<BR>
+&nbsp;&nbsp;&nbsp;and playing a scale.<P>
+</I><I><FONT SIZE=+1><P>
+driver performance tests<P>
+<P>
+</I></FONT><B>testRandomPlayHighLevel: num dur: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play 'num' random pitches (molto legato) spaced 'dur' msec apart.<P>
+<P>
+</I><B>testRandomPlayLowLevel: num dur: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play 'num' random pitches spaced 'dur' msec apart.<P>
+<P>
+</I><B>testRollLowLevel: num dur: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a roll of 'num' notes spaced 'dur' msec apart.<P>
+</I><I><FONT SIZE=+1><P>
+output tests<P>
+<P>
+</I></FONT><B>testAllNotesOff</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to open and close the MIDI port.<P>
+<P>
+</I><B>testANote</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play a note.<P>
+<P>
+</I><B>testARandomNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play a note.<P>
+<P>
+</I><B>testAScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play a fast scale.<P>
+<P>
+</I><B>testInspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect a MIDI port.<P>
+<P>
+</I><B>testMouseMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play notes based on the mouse position.<P>
+<P>
+</I><B>testNoteOnOff</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play a note, and close it.<P>
+<P>
+</I><B>testOpenClose</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to open and close the MIDI port.<P>
+<P>
+</I><B>testOutput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play some random notes, and close it.<P>
+</I><I><FONT SIZE=+1><P>
+input tests<P>
+<P>
+</I></FONT><B>dumpExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a MIDI dump object as a dependent of the input port. Dump for 10 seconds,<BR>
+&nbsp;&nbsp;&nbsp;then turn off. The default update: method just dumps the MIDI packet into the transcript; <BR>
+&nbsp;&nbsp;&nbsp;customize this by writing your own update: method.<P>
+<P>
+</I><B>testInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, try to read something--dump it to the transcript.<P>
+<P>
+</I><B>testInputStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Execute this to end the input test<P>
+</I><I><FONT SIZE=+1><P>
+controller tests<P>
+<P>
+</I></FONT><B>testControllerCaching</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up uncached controller reading--make a loop that reads and prints controller 48 <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;twice a second (until you press the shift button).<P>
+<P>
+</I><B>testControllerCaching2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up uncached controller reading--read controllers 48-52 as an array and print it; stop on mouse press.<P>
+<P>
+</I><B>testControllerCachingFrom: lo to: hi</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up uncached controller reading--read controllers from lo to hi (inclusive) as an array and print it; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stop on <SHIFT> press.<P>
+<P>
+</I><B>testControllerRecording</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up uncached controller reading--make a loop that reads and prints controller 48 <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40 times a second for 5 seconds.<P>
+</I><I><FONT SIZE=+1><P>
+utilities<P>
+<P>
+</I></FONT><B>allNotesOff</B><I><BR>
+&nbsp;&nbsp;&nbsp;MIDIPort allNotesOff<P>
+<P>
+</I><B>cleanUp</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close down and clean up all MIDI, sound IO, event lists, etc.<P>
+<P>
+</I><B>showInput</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, wait to read something, then dump it to the transcript.<P>
+</I><I><FONT SIZE=+1><P>
+general MIDI patches<P>
+<P>
+</I></FONT><B>setAllInstrumentsTo: iname</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set instruments 0-15 to the General MIDI name iname<P>
+<P>
+</I><B>setEnsemble: orch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for the given ensemble (a collection of <BR>
+&nbsp;&nbsp;&nbsp;[chan -> name] associations).<P>
+<P>
+</I><B>setEnsembleInOrder: orch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for the given ensemble (a collection of symbolic keys <BR>
+&nbsp;&nbsp;&nbsp;into the General MIDI voice map) mapping the first element to MIDI channel 1, etc.<P>
+<P>
+</I><B>setupDefaultGeneralMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for a 16-voice percussion ensemble.<P>
+<P>
+</I><B>setupOrgan</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for a 4-voice organ.<P>
+<P>
+</I><B>setupTunedPercussion</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for a 16-voice percussion ensemble.<P>
+<P>
+</I><B>setupWindOrchestra</B><I><BR>
+&nbsp;&nbsp;&nbsp;Down-load a general MIDI patch for a 16-voice wind ensemble.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>examples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Select and execute the following for usage examples.<P>
+<P>
+</I><B>scaleFrom: lo to: hi in: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer array of (start dur pitch amp)<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>concreteClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class to use for MIDI<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initializeData</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the dictionaries of commands, ioctl primitive selectors and arguments, and general MIDI maps.<P>
+<P>
+</I><B>initializeMIDITables</B><I><BR>
+&nbsp;&nbsp;&nbsp;MIDIPort initializeMIDITables</I></FONT>
+</BODY>
+</HTML>

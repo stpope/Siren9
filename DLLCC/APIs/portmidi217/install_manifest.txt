@@ -1,0 +1,5 @@
+/usr/local/lib/libportmidi_s.a
+/usr/local/lib/libpmjni.dylib
+/usr/local/lib/libportmidi.dylib
+/usr/local/include/portmidi.h
+/usr/local/include/porttime.h

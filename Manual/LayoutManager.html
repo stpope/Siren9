@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				LayoutManager</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>LayoutManager<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Layout<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>view orientation itemAccessor <P>
+<P>
+<P>
+</FONT><I>Instances of the LayoutManager classes are used to generate display lists given random data structures and possibly hints in terms of structure accessors.<BR>
+This is David's miraculous idea and the heart of the Navigator architecture.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;view&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DisplayListView> the view--May provide the displayItems<BR>
+&nbsp;&nbsp;&nbsp;orientation&nbsp;&nbsp;&nbsp;<Symbol or nil> my 'base' symbol (e.g., #top)<BR>
+&nbsp;&nbsp;&nbsp;itemAccessor&nbsp;&nbsp;&nbsp;<StructureAccessor> my referencing protocol translator<P>
+<P>
+Look for class references to the LayoutManager classes (mostly from DisplayListView classes), for lots of examples of the use of LayoutManagers.<P>
+<P>
+This implementation is Topaz 0, STEIM, Amsterdam, May/June 1990.<P>
+<P>
+The entirety of this software is Copyright (c) 1990, Stephen Travis Pope, Nomad Object Design/Nomad Computer Music Research. <BR>
+All Rights Reserved.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>displayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's display list (generated).<P>
+<P>
+</I><B>displayListFor: aView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's display list (generated).<P>
+<P>
+</I><B>orientation: aSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's orientation.<P>
+<P>
+</I><B>view: aView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's view.<P>
+</I><I><FONT SIZE=+1><P>
+generating<P>
+<P>
+</I></FONT><B>addItem: anAss atNode: aPath in: aDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given item to the display list.<P>
+<P>
+</I><B>generateDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Generate and answer the receiver's display list.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>LayoutManager class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

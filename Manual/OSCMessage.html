@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OSCMessage</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OSCMessage<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.AbstractOSCPacket<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-OSC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>address arguments <P>
+<P>
+<P>
+</FONT><I>OSCMessages are concrete old-format (untyped) OSC messages<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;address&nbsp;&nbsp;&nbsp;<String>  my OSC cmomand address<BR>
+&nbsp;&nbsp;&nbsp;arguments&nbsp;&nbsp;&nbsp;<Collection>  the arguments<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+osc<P>
+<P>
+</I></FONT><B>addressToOSCBytes: convertor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Convert the address to the OSC format<P>
+<P>
+</I><B>argumentsToOSCBytes: convertor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the type tags, then the arguments<P>
+<P>
+</I><B>toOSCBytes: converter</B><I><BR>
+&nbsp;&nbsp;&nbsp;Convert myself to OSC format<P>
+<P>
+</I><B>typesToOSC: converter</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initAddress: t1 arguments: t2</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OSCMessage class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance-creation<P>
+<P>
+</I></FONT><B>for: addr</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>for: addr with: args</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a TOM with the given address and arguments<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example1</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCMessage example1<P>
+<P>
+</I><B>example2</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCMessage example2<P>
+<P>
+</I><B>example3</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCMessage example3</I></FONT>
+</BODY>
+</HTML>

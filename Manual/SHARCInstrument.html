@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SHARCInstrument</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SHARCInstrument<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicApps-SHARC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name directory range samples <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SHARCOrchestra <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>directory</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'directory'.<P>
+<P>
+</I><B>directory: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'directory' to be anObject.<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'name'.<P>
+<P>
+</I><B>name: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'name' to be anObject.<P>
+<P>
+</I><B>range</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'range'.<P>
+<P>
+</I><B>range: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'range' to be anObject.<P>
+<P>
+</I><B>sampleNamed: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's sample by the given name.<P>
+<P>
+</I><B>samples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'samples'.<P>
+<P>
+</I><B>samples: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'samples' to be anObject.<P>
+<P>
+</I><B>sampleWithKey: k</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's sample by the given name.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asSpectrum</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SHARCInstrument class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>loadOrchDir: dir</B><I><BR>
+&nbsp;&nbsp;&nbsp;SHARCInstrument loadOrchDir: 'sharc'<P>
+<P>
+</I><B>orchestra</B><I><BR>
+&nbsp;&nbsp;&nbsp;SHARCInstrument orchestra inspect<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>fromDir: dirName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SHARC instrument group read from the CONTENTS file in the <BR>
+&nbsp;&nbsp;&nbsp; given directory. The contents file describes a number of samples, each<BR>
+&nbsp;&nbsp;&nbsp; of which has a description file with its overtones.</I></FONT>
+</BODY>
+</HTML>

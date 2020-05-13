@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MusicalDescendingInterval</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MusicalDescendingInterval<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MusicalInterval<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<P>
+<P>
+<P>
+</FONT><I>La theorie des intervalles "descendants" n'est pas tres claire:<BR>
+Que voudrait dire DescendingInterval topIfBottomIs: N C ?<BR>
+(quelle difference avec ascending ?).<BR>
+Introduit juste pour les besoins de la cause, mais un peu incoherent.<BR>
+Herite tout de MusicalInterval, et donc se comporte presque pareil.<BR>
+Utilisee uniquement en creation dans la methode intervalBetween: de OctaveDependentNote.<BR>
+Il faudrait d'ailleurs modifier aussi la methode similaire de PitchClass<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isAscending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDescending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+computing notes<P>
+<P>
+</I></FONT><B>bottomIfTopIs: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the note for which I am the interval self<P>
+<P>
+</I><B>topIfBottomIs: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the note for which I am the interval self<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>ascending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>descending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicalDescendingInterval class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;(N C octave: 3) intervalBetween: (N D octave: 2) descending Minor seventh<BR>
+(N B flat octave: 3) intervalBetween: (N B flat flat octave: 2) descending augmented octave</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Roll</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Roll<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Cluster<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventGenerators<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>number delta noteDuration <P>
+<P>
+<P>
+</FONT><I>Rolls repeat their single events.<BR>
+It will eventually be possible to apply pitch, amplitude or duration envelopes to them as well.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;number <Integer> how many notes to play<BR>
+&nbsp;&nbsp;&nbsp;delta <Number> delta time between events<BR>
+&nbsp;&nbsp;&nbsp;noteDuration <Number> duration of events<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize<P>
+<P>
+</I></FONT><B>length: aLength rhythm: aDuration note: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;make a new roll of the specified length...<P>
+<P>
+</I><B>number: aNumber rhythm: aDuration note: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;make a new roll with the specified number of notes...<P>
+</I><I><FONT SIZE=+1><P>
+playing<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an eventList for me<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>duration</B><I><BR>
+&nbsp;&nbsp;&nbsp;compute and answer the duration<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Roll class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>length: aNumber rhythm: aDuration note: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a new roll of the specified length...<P>
+<P>
+</I><B>number: aNumber rhythm: aDuration note: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a new roll with the specified number of events...<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>rollExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and edit/play a few rolls.</I></FONT>
+</BODY>
+</HTML>

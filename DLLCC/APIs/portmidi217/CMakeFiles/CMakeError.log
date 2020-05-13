@@ -1,0 +1,15 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: /Content/Code/Audio/IO/portmidi217/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/opt/local/bin/gmake cmTC_489bf/fast && /opt/local/bin/gmake -f CMakeFiles/cmTC_489bf.dir/build.make CMakeFiles/cmTC_489bf.dir/build
+gmake[1]: Entering directory '/Content/Code/Audio/IO/portmidi217/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_489bf.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Qunused-arguments -w -arch i386  -arch i386 -arch ppc -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_489bf.dir/testCCompiler.c.o   -c /Content/Code/Audio/IO/portmidi217/CMakeFiles/CMakeTmp/testCCompiler.c
+error: unable to create target: 'No available targets are compatible with this triple.'
+1 error generated.
+gmake[1]: *** [CMakeFiles/cmTC_489bf.dir/build.make:83: CMakeFiles/cmTC_489bf.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory '/Content/Code/Audio/IO/portmidi217/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:138: cmTC_489bf/fast] Error 2
+
+
+

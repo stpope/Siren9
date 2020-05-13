@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				StructureAccessor</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>StructureAccessor<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Layout<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>subject itemGenerator <P>
+<P>
+<P>
+</FONT><I>Instances of StructureAccessor and its subclasses are 'protocol convertors' which provide predictable interfaces (e.g., tree-speak), for diverse data structures.<BR>
+The basic display item generating protocol is: <BR>
+&nbsp;&nbsp;&nbsp;(aStructureAccessor itemFor: aModelNode).<P>
+<P>
+InstanceVariableNames:<BR>
+&nbsp;&nbsp;&nbsp;subject&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Object> the model or victim<BR>
+&nbsp;&nbsp;&nbsp;itemGenerator   &nbsp;&nbsp;&nbsp;<Symbol or Block> the DisplayItem generator<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model items are passed to it (if it's a Block),<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or have to perform: it (if it's a Symbol).<P>
+<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>itemGenerator</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the iG of the receiver.<P>
+<P>
+</I><B>itemGenerator: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the iG of the receiver.<P>
+<P>
+</I><B>subject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the subject of the receiver.<P>
+<P>
+</I><B>subject: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the subject of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+item accessing<P>
+<P>
+</I></FONT><B>itemFor: aModel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display item for the argument<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>StructureAccessor class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

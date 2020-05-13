@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIFileVoice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIFileVoice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Voice<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Voices<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>fileType tracks ppq tempo <P>
+<P>
+<P>
+</FONT><I>A MIDIFileVoice can read version 2 MIDI files.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>defaultEventClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>tempo</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>tempo: tem</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+read/write<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;load a MIDI file into anEventList.<P>
+<P>
+</I><B>readMThd</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read the header chunk from MIDI binary file.<P>
+<P>
+</I><B>readMTrk</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a track chunk from MIDI binary file. Answer its length.<P>
+<P>
+</I><B>readOnto: eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a MIDI file<P>
+<P>
+</I><B>readTrackOnto: anEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a track of MIDI events from my stream into anEventList<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>getVarLen</B><I><BR>
+&nbsp;&nbsp;&nbsp;Combine 1 or more input bytes from my stream into a variable length item<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the stream, device, or whatever.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIFileVoice class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>newOn: fnam</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>midiFileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;MIDIFileVoice midiFileExample</I></FONT>
+</BODY>
+</HTML>

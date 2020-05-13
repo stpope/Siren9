@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR"
+ content="Mozilla/4.06 (Macintosh; I; PPC) [Netscape]">
+  <title>Siren 7.5 GUI Tour</title>
+</head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 204);"
+ alink="#000099" link="#000099" vlink="#990099">
+<h1>
+<b><font face="Arial,Helvetica"><font color="#3366ff">The Siren
+Version 7.5 (2007) GUI Tour</font></font></b></h1>
+The Siren system is a general-purpose music description and
+composition system; it is a collection of about 3750 Smalltalk classes
+for
+building musical applications. The current version works on VisualWorks
+Smalltalk
+running on Mac/Windows/*nix&nbsp; systems with MIDI, stereo audio, and
+OpenSoundControl I/O. The Siren release is available <a
+ href="http://fastlabinc.com/Siren">here</a>.
+<p>These screen dumps were made with Siren 7.5 running on an
+Intel-based Apple Macintosh.&nbsp;
+Details can be found in the on-line
+<a href="../Workbook/index.html">Siren outline text</a>, and in the
+on-line
+<a href="../Manual/index.html">Siren reference manual</a>. An earlier
+version of this tour (with more details) can be found <a
+ href="Siren.GUI_1998.html">here</a>.<br>
+</p>
+<h3>Outline</h3>
+<ul>
+  <li><a href="#dlv">Display List Views</a></li>
+  <li> <a href="#lm">Layout Manager Examples</a></li>
+  <li><a href="#tsv">Time Sequence View</a></li>
+  <li><a href="#ptv">Pitch/Time View</a></li>
+  <li><a href="#hsv">Hauer-Steffens View</a></li>
+  <li><a href="#fv">Function View</a></li>
+  <li><a href="#sv">Sound View</a></li>
+  <li><a href="#sonogram">Sonogram View</a></li>
+  <li><a href="#Loris">Loris Editors</a></li>
+  <li><a href="#LPC">LPC Data Editors</a></li>
+  <li><a href="#utilities">Launcher, Utility, and Transport Pane</a>s<br>
+  </li>
+</ul>
+<h3>
+<a name="dlv"></a>Display List Views</h3>
+The example screens below show the simple Siren display list editor;
+it allows you to manipulate hierarchical structured graphics objects.
+Using
+pop-up menus, keyboard commands and mouse interaction uesrs can zoom
+and scroll, select items, and operate on them. In the first example,
+we're using a variant of the MS-Windows
+XP look-and-feel, though running nuder Mac OS X and with the Siren
+scroll and zoom bars.<br>
+<br>
+<img alt="display list view" src="../gifs-new/hierarchicalDL.gif"
+ style="width: 558px; height: 503px;"><br>
+<br>
+The second starting example illustrates a different layout of the zoom
+and scroll widgets, and the use of another widget set. Note the
+selected rectangle, for which a context-sentitive menu can be used..<br>
+<br>
+<img alt="other dlist view" src="../gifs-new/dlist-view2.gif"
+ style="width: 588px; height: 392px;"><br>
+<h3>
+<a name="lm"></a>Layout Managers</h3>
+Siren is based on the "Navigator MVC" model; in it various kinds of
+layout
+managers take structured objects and create display lists. The two
+examples
+below (which use the Motif look-and-feel) show a class inheritance
+hierarchy presented first as an indented
+list and second as a simple tree. Color is used to denote class species
+relationships in the class hierarchies. A refined tree layout manage
+could
+do graphical balancing or top-down layout.
+<p>&nbsp;<img alt="class list" src="../gifs-new/class-list.gif"
+ style="width: 310px; height: 637px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img alt="color class list" src="../gifs-new/color-class-list.gif"
+ style="width: 302px; height: 665px;"><br>
+</p>
+<p><img alt="class tree" src="../gifs-new/class-tree.gif"
+ style="width: 528px; height: 490px;"><br>
+&nbsp;
+</p>
+<h4><a href="#top">Return to Top</a></h4>
+<h3><a name="hsv"></a>Hauer-Steffens Notation</h3>
+Hauer-Steffens view is related to piano-roll notation; the lines are
+placed
+corresponding to the accidentals or the black notes on the keyboard.
+The
+note display is done as in the pitch/time view above.
+<br>
+&nbsp;
+<br>
+<img alt="hs view" src="../gifs-new/hsview.gif"
+ style="width: 700px; height: 385px;"><br>
+<br>
+<h3>
+<a name="fv"></a>Function View</h3>
+The multi-function view allows the viewing and editing of up to 4
+functions
+of 1 variable. The example shows linear break-point functions in red
+and
+yellow, an exponential segment function in blue, and a cubic spline
+function
+in green. The buttons along the left are for selecting a particular
+function
+for editing or file I/O.
+<p><img alt="fcn view" src="../gifs-new/fcnview.gif"
+ style="width: 587px; height: 335px;"><br>
+</p>
+<h4><a href="#top">Return to Top</a></h4>
+<h3>
+<a name="sv"></a>Sound View</h3>
+The Siren sound view lets you zoom/scroll over stored sound object, and
+to create new sounds based on file I/O or simple synthesis algorithms.
+The figure below shows a frequency sweep and the editor's pop-up menu.
+<p><img alt="sound view" src="../gifs-new/soundview.gif"
+ style="width: 610px; height: 345px;"><br>
+&nbsp;
+</p>
+<h3><a name="sonogram"></a>Sonogram View</h3>
+The sonogram view displays an fft-derived spectrum. In the example
+below
+shows a sonogram os sung Chinese speech.
+<h3><img alt="sonogram" src="../gifs-new/spectrum.gif"
+ style="width: 828px; height: 553px;"></h3>
+<br>
+the same with colors<br>
+<br>
+<img alt="color spectrum" src="../gifs-new/spectrum2.gif"
+ style="width: 837px; height: 557px;"><br>
+<br>
+<h3><a name="Loris"></a>Loris Editors</h3>
+Siren includes a series of tools for sound analysis/resynthesis using
+the time-reassigned bandwidth-enhanced partial list representation
+supported by Kelly Fitz's Loris package. The view below is for analysis
+tuning and shows (from top to bottom) the original sound, the
+resynthesized sound, the amplitude and frequency envelopes, and the
+Loris spectrum.<br>
+<br>
+<img alt="loris" src="../gifs-new/LorisAnalEd.gif"
+ style="width: 738px; height: 831px;"><br>
+<br>
+The simple dialog box below is for tuning the parameters of the Loris
+analyzer.<br>
+<br>
+<img alt="loris" src="../gifs-new/LorisConfig.gif"
+ style="width: 344px; height: 276px;"><br>
+<br>
+<h3><a name="LPC"></a>LPC Editors</h3>
+There are also a few new tools for editing analysis files frmo linear
+predictive coding (LPC) of sound. The figure below shows several
+smoothed versions of the pitch estimates for a segment of a speech
+signal.<br>
+<br>
+<br>
+<img alt="lpc editor" src="../gifs-new/LPCEditor.gif"
+ style="width: 628px; height: 590px;"><br>
+<h3><a name="utilities"></a>Siren Utility and Transport Views</h3>
+A Smalltalk run-time environment usually includes a launcher view and a
+logging transcript, often combined into a single window, as in this
+view, which includes pull-down menu bar with access to all tools, tool
+launcher buttons, and a scrolling text field (stdout, called
+Transcript).<br>
+<br>
+<img alt="launcher" src="../gifs-new/launcher.gif"
+ style="width: 515px; height: 241px;"><br>
+<br>
+The Siren utility panel has buttons and menus for setting up Siren, and
+testing the external (MIDI, sound, OSC) interfaces, and for the user
+data load and flush functions.<br>
+<br>
+<img alt="utility" src="../gifs-new/SirenUtility.gif"
+ style="width: 609px; height: 236px;"><br>
+<br>
+The Siren transport view consists of standard transport buttons and
+clock counter, and a list of active scheuler clients, timers, etc. with
+a selection-sensitive pop-up menu for operating on them.<br>
+<br>
+<img alt="transport" src="../gifs-new/TransportMenu2.gif"
+ style="width: 601px; height: 234px;"><br>
+<br>
+The buttons on the left of the transport view are hierarchical pop-up
+menus of user data (sounds, scores), as in this list of my sounds.<br>
+<br>
+<img alt="snd list" src="../gifs-new/TransportMenu5.gif"
+ style="width: 658px; height: 336px;"><br>
+<br>
+or this list of stored scores.<br>
+<br>
+<img alt="score menu" src="../gifs-new/TransportMenu6.gif"
+ style="width: 617px; height: 248px;"><br>
+<br>
+<br>
+<hr>
+<h4><a href="#top">Return to Top</a></h4>
+<address>
+Stephen Travis Pope -- stp@create.ucsb.edu -- LastEditDate: 2007.04.14</address>
+<br>
+<br>
+</body>
+</html>

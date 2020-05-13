@@ -1,0 +1,518 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PitchClass</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PitchClass<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>A AllNatural AllNotes B C D E English F G <P>
+<P>
+<P>
+</FONT><I>Instances of (subclasses of) this class represent pitch-classes.<BR>
+A pitch class is an octave-independent note.<BR>
+There are 35 (sub) instances of this class.<BR>
+Octave-dependent notes are represented by instances of class<BR>
+OctaveDependentNote.<BR>
+Ideally PitchClass should be a metaclass, so that its instances<BR>
+be classes, and octave-dependent notes could then be instances<BR>
+of pitchClasses !!<BR>
+Unfortunately this is not possible straightforwadly in Smaltalk, so we<BR>
+use aggregation instead to represent octave-dependent notes<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+private intervals<P>
+<P>
+</I></FONT><B>descendingNumberOfSemiTonesBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;Important method in the theory. It is a 3-stage computation of the interval between 2 notes<P>
+<P>
+</I><B>descendingSemiTonesToNatural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>intervalBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the interval between the two notes<P>
+<P>
+</I><B>intervalTypeBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the interval between the two notes<P>
+<P>
+</I><B>nthFollowing: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the i th natural note following self<P>
+<P>
+</I><B>nthPreceding: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the i th natural note preceding self<P>
+<P>
+</I><B>numberOfSemiTonesBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;Important method in the theory. It is a 3-stage computation of the interval between 2 notes<P>
+<P>
+</I><B>semiToneCount</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>smallestIntervalBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the descending interval between the two notes<P>
+</I><I><FONT SIZE=+1><P>
+public intervals<P>
+<P>
+</I></FONT><B>alterate: note toReach: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>alterateBelow: note toReach: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedUnison</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>ninth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>second</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>seventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>thirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>unison</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isDoubleFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDoubleSharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isNatural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isSharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchEqual: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+chord creation<P>
+<P>
+</I></FONT><B>chordFromTokens: st</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorTriad</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorTriad</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>@ o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>chordFromString: st</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>inTessitura: qualTessitura</B><I><BR>
+&nbsp;&nbsp;&nbsp;N C pitchInTessitura: QTessitura high<P>
+<P>
+</I><B>octave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+scales<P>
+<P>
+</I></FONT><B>chromaticScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>harmonicMinorScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>melodicMinorScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pseudoMinorScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+making octave-dep notes<P>
+<P>
+</I></FONT><B>downAndUpOctaves: odNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns two octave dependent notes of self who are repectively<BR>
+&nbsp;&nbsp;&nbsp;lower and higher than the given odNote<P>
+<P>
+</I><B>pitchBetween: n1 and: n2</B><I><BR>
+&nbsp;&nbsp;&nbsp;return, if it exists, a pitch (octave dependent note) between the two given notes<P>
+<P>
+</I><B>the: nb octavesBeginningFrom: initialOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;N D the: 3 octavesBeginningFrom: 0<P>
+</I><I><FONT SIZE=+1><P>
+access<P>
+<P>
+</I></FONT><B>doubleFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>doubleSharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>natural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+saving<P>
+<P>
+</I></FONT><B>representBinaryOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;to ensure uniqueness, pitch classes save themselves as messages sent <BR>
+&nbsp;&nbsp;&nbsp;to the appropriate class, so that no duplicate are created<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;N C storeString<P>
+</I><I><FONT SIZE=+1><P>
+transpose<P>
+<P>
+</I></FONT><B>transposeOf: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;three cases: integer (+/-), method name (= ascending interval), or interval <BR>
+&nbsp;&nbsp;&nbsp;object<P>
+</I><I><FONT SIZE=+1><P>
+constraining<P>
+<P>
+</I></FONT><B>intervalTypeModuloOctaveBetween: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+Paleo<P>
+<P>
+</I></FONT><B>copy</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nameInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PitchClass class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+initialization<P>
+<P>
+</I></FONT><B>englishOrFrench</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;There are 35 pitch classes. That's too much for Squeak, so the method was split into two methods<P>
+<P>
+</I><B>initializeAllNaturalNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initializeClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;There are 35 pitch classes. That's too much for Squeak, so the method was split into two methods<P>
+<P>
+</I><B>initializeDoubleFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initializeFrenchNames</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initializeGlobals</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+global access<P>
+<P>
+</I></FONT><B>A</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>allNotesButDoubles</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>allPlausibleRootNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>allPlausibleRootsForMajorScales</B><I><BR>
+&nbsp;&nbsp;&nbsp;self allPlausibleRootsForMajorScales<P>
+<P>
+</I><B>allPlausibleRootsForMinorScales</B><I><BR>
+&nbsp;&nbsp;&nbsp;self allPlausibleRootsForMinorScales<P>
+<P>
+</I><B>B</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>C</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>D</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>do</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>E</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>F</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fa</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fromSemiTones: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;arbitrary method, used for transposing pitch classes (a strange notion...)<P>
+<P>
+</I><B>G</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>la</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>mi</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>naturalNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>noteNamed: c</B><I><BR>
+&nbsp;&nbsp;&nbsp;takes the case of flat into account. Sharps are naturally parsed out <BR>
+&nbsp;&nbsp;&nbsp;from the note name by the smalltalk parser.<BR>
+&nbsp;&nbsp;&nbsp;Since the algorithm proceeds from the left, it accepts any number of sharps and &nbsp;&nbsp;&nbsp;flats (using the common algebra) :<BR>
+&nbsp;&nbsp;&nbsp;N noteNamed: 'C#b#b#b#' ->  C# <P>
+<P>
+</I><B>re</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharpNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>si</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sol</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+vocal ranges<P>
+<P>
+</I></FONT><B>altoRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes de l'alto<P>
+<P>
+</I><B>altoRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>baseRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes de la basse<P>
+<P>
+</I><B>baseRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>sopranoRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes du soprano<P>
+<P>
+</I><B>sopranoRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>tenorRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes du tenor<P>
+<P>
+</I><B>tenorRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass sopranoRangeInScale: (N do sharp minorScale)<P>
+</I><I><FONT SIZE=+1><P>
+ordering<P>
+<P>
+</I></FONT><B>flatOrdering</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nFirstFlats: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass nFirstFlats: 3<P>
+<P>
+</I><B>nFirstSharps: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass nFirstSharps: 3<P>
+<P>
+</I><B>sharpOrdering</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>chordExamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;N C sharp chordFromString: '' ->  [C# ]<P>
+<P>
+(N C sharp chordFromString: 'min 7 dim5') notes -> OrderedCollection (C# E G B )<P>
+<P>
+<P>
+</I><B>closestEnharmonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+N D sharp closestEnharmonic Eb<BR>
+N E flat closestEnharmonic D#<P>
+<P>
+N B sharp closestEnharmonic C <BR>
+N C flat closestEnharmonic D#<P>
+<P>
+N D sharp sharp closestEnharmonic  E<BR>
+N E flat flat closestEnharmonic  D<BR>
+------<BR>
+(N D sharp @ 2)  closestEnharmonic Eb2 <BR>
+(N E flat @ 2) closestEnharmonic D#2<P>
+<P>
+(N B sharp @ 2) closestEnharmonic C3<BR>
+(N C flat @ 3) closestEnharmonic B2<P>
+<P>
+<P>
+</I><B>majorScaleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;PitchClass B majorScale notes- >  #(B C# D# E F# G# A# )<P>
+<P>
+</I><B>melodicMinorScaleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorScaleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchInTessituraExamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;N C pitchInTessitura: QTessitura high ->  C5<BR>
+&nbsp;&nbsp;&nbsp;N A pitchInTessitura: QTessitura high -> A4&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;N G pitchInTessitura: QTessitura high ->  G4<BR>
+&nbsp;&nbsp;&nbsp;N F pitchInTessitura: QTessitura high ->  F5<P>
+<P>
+&nbsp;&nbsp;&nbsp;N A pitchInTessitura: QTessitura low ->  A2&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharpflatAlgebraExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;sharp and flat's algebra<BR>
+&nbsp;&nbsp;&nbsp;N C sharp ->Do# <BR>
+&nbsp;&nbsp;&nbsp;N C sharp sharp ->Do## <BR>
+&nbsp;&nbsp;&nbsp;N C sharp sharp sharp ->error <BR>
+&nbsp;&nbsp;&nbsp;N C flat sharp -> Do<BR>
+&nbsp;&nbsp;&nbsp;N re sharp sharp natural -> re<P>
+<P>
+&nbsp;&nbsp;&nbsp;Intervals computation :<BR>
+&nbsp;&nbsp;&nbsp;N C diminishedFifth -> Solb<BR>
+&nbsp;&nbsp;&nbsp;N C augmentedFourth -> Fa#<BR>
+&nbsp;&nbsp;&nbsp;N C diminishedThirteenth -> Lab <BR>
+&nbsp;&nbsp;&nbsp;N C flat minorSeventh -> Sibb <BR>
+&nbsp;&nbsp;&nbsp;N C majorThird majorThird -> Sol#<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;Notes equivalence : pitchEgal methode<BR>
+&nbsp;&nbsp;&nbsp;N C sharp pitchEqual: N re flat -> true<BR>
+&nbsp;&nbsp;&nbsp;N C augmentedFourth pitchEqual: N C diminishedFifth -> true<BR>
+&nbsp;&nbsp;&nbsp;N C diminishedFifth pitchEqual: N F minorSecond -> true<BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				LPCSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>LPCSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MusicEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicApps-LPC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>filename filesize srate frate npoles nframes frames <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pchMax pchMin pitchRange rmsRange residRange <P>
+<P>
+<P>
+</FONT><I>An LPCSound represents LPC data read in from a Csound LPC file.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;filename&nbsp;&nbsp;&nbsp;<String>  my source file name<BR>
+&nbsp;&nbsp;&nbsp;filesize&nbsp;&nbsp;&nbsp;<Number>  the raw file size<BR>
+&nbsp;&nbsp;&nbsp;srate&nbsp;&nbsp;&nbsp;<Number>  the sound's sample rate<BR>
+&nbsp;&nbsp;&nbsp;frate&nbsp;&nbsp;&nbsp;<Number>  the frame rate<BR>
+&nbsp;&nbsp;&nbsp;npoles&nbsp;&nbsp;&nbsp;<Number>  the # of poles<BR>
+&nbsp;&nbsp;&nbsp;nframes&nbsp;&nbsp;&nbsp;<Number>  the # of frames<BR>
+&nbsp;&nbsp;&nbsp;frames&nbsp;&nbsp;&nbsp;<OrderedCollection of LPCFrame>  the frame data<BR>
+&nbsp;&nbsp;&nbsp;pchMax&nbsp;&nbsp;&nbsp;<Number>  max est. pitch<BR>
+&nbsp;&nbsp;&nbsp;pchMin&nbsp;&nbsp;&nbsp;<Number>  min est. pitch<BR>
+&nbsp;&nbsp;&nbsp;pitchRange&nbsp;&nbsp;&nbsp;<Interval>  est. pitch range<BR>
+&nbsp;&nbsp;&nbsp;rmsRange&nbsp;&nbsp;&nbsp;<Number>  RMS amplitude range<BR>
+&nbsp;&nbsp;&nbsp;residRange&nbsp;&nbsp;&nbsp;<Number>  error residual range<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+smoothing<P>
+<P>
+</I></FONT><B>smooth: data into: res</B><I><BR>
+&nbsp;&nbsp;&nbsp;filter the data<P>
+<P>
+</I><B>smoothAvg: data into: res</B><I><BR>
+&nbsp;&nbsp;&nbsp;filter the data<P>
+<P>
+</I><B>smoothPitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;filter the data<P>
+<P>
+</I><B>smoothRunning: data into: res</B><I><BR>
+&nbsp;&nbsp;&nbsp;filter the data<P>
+<P>
+</I><B>writePitch: howSmooth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Replace the pitch values in the receiver's frames with a smoothed version selected by the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>storeFile</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store the receiver as a Csound format LPC file.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store the receiver on the argument as a Csound format LPC file.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addFrame: frame</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>filename</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>filename: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>filesize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>filesize: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>float: ind from: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the swapped float from the data at the index.<P>
+<P>
+</I><B>floatAt: ind put: value in: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store the swapped float into the data at the index.<P>
+<P>
+</I><B>frameAt: ind put: frame</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>frames</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>frames: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>frate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>frate: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>long: ind from: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the swapped long int from the data at the index.<P>
+<P>
+</I><B>longAt: ind put: value in: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store the swapped long int into the data at the index.<P>
+<P>
+</I><B>nframes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nframes: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>npoles</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>npoles: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>srate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>srate: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+statistics<P>
+<P>
+</I></FONT><B>gatherStatistics</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute the max and min-non-0 pitch values for later.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>LPCSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>fromFile: filename</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read in an lpc sound from the given Csound format file.</I></FONT>
+</BODY>
+</HTML>

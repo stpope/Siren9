@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayVisual</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayVisual<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayItem<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayLists<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>visual <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicConstants <P>
+<P>
+<P>
+</FONT><I>Instances of DisplayVisual are used for displaying arbitrary visual objects (e.g., cached images) in display lists.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<VisualComponent> the object's visual object, typically an image<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>bounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the visual's bounds translated by the receiver's translation.<P>
+<P>
+</I><B>visual</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's visual.<P>
+<P>
+</I><B>visual: aVisual</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's visual.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver in the given Stream.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver in the given Stream.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver's visual on the given graphics context.<P>
+<P>
+</I><B>displayPostScriptOn: aPostscriptContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on the argument as a PostScript item.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayVisual class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>convertMusicConstants</B><I><BR>
+&nbsp;&nbsp;&nbsp;Convert all the forms to opaque forms<P>
+<P>
+</I><B>displayMusicConstants</B><I><BR>
+&nbsp;&nbsp;&nbsp;Draw a nice table of the hierarchical image dictionary.<P>
+<P>
+</I><B>storeMusicConstants</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write out all the forms to opaque forms<P>
+<P>
+</I><B>visualExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a display list view with randomly-placed random-color visuals over the given extent.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>model: aM visual: aV offset: aPt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.<P>
+<P>
+</I><B>visual: aV</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.<P>
+<P>
+</I><B>visual: aV offset: aPt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.<P>
+<P>
+</I><B>visual: aV origin: aPt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.</I></FONT>
+</BODY>
+</HTML>

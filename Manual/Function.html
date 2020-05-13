@@ -1,0 +1,275 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Function</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Function<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DurationEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Functions<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>data range domain scale offset <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Instances of of Function and its subclasses represent abstractions of 1- or n-dimensional functions of 1 variable (e.g., time). <BR>
+Class Function is concrete and represents functions that are described by a array of data points assumed to lie equally-spaced in the unit interval.<BR>
+Functions are normally created from an array of values over the unit interval; x varies from 0.0 to 1.0 and y is free over that range.<BR>
+One can address them within the unit interval with atX: or one can address them with integer indeces up to the data set's size with atIndex: (can be dangerous).<P>
+<P>
+Examples are a ramp from 0 to 1 such as:<BR>
+&nbsp;&nbsp;&nbsp;[(LinearFunction from: #((0 0) (1 2))) at: 0.33]<BR>
+or a spline that traces a sine-like path centered around 1:<BR>
+&nbsp;&nbsp;&nbsp;[(SplineFunction from: #((0 1) (0.33 2) (0.67 0) (1 1))) at: 0.35]<P>
+<P>
+InstanceVariables:<BR>
+&nbsp;&nbsp;&nbsp;data <Array of Numbers, OrderedCollection of (Z)Points, or UninterpretedBytes><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the data values or breakpoints of the function<BR>
+&nbsp;&nbsp;&nbsp;domain <Interval> the x-range<BR>
+&nbsp;&nbsp;&nbsp;range <Interval> the y-range<P>
+<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+ui<P>
+<P>
+</I></FONT><B>edit</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a function view on the receiver.<P>
+<P>
+</I><B>edit: extent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a function view on the receiver.<P>
+<P>
+</I><B>updateSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+processing<P>
+<P>
+</I></FONT><B>averagedTo: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an averaged version of the receiver of the given size.<P>
+<P>
+</I><B>freeData</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the receiver's 'data'.<P>
+<P>
+</I><B>maxTo: size win: wsize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a version of the receiver of the given size taking the maximum value of each window.<P>
+<P>
+</I><B>sampledTo: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a down-sampled version of the receiver of the given size.<P>
+<P>
+</I><B>smoothed</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a version of the receiver smoothed to about 32 points.<P>
+<P>
+</I><B>updateRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>add: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver's point collection.<P>
+<P>
+</I><B>at: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index (between 0 and 1 -or- 1 and data size).<P>
+<P>
+</I><B>at: anIndex put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Put the given value at the given index (between 0 and 1).<P>
+<P>
+</I><B>atX: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index (between 0 and 1).<P>
+<P>
+</I><B>data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'data'.<P>
+<P>
+</I><B>data: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'data' to be anObject.<P>
+<P>
+</I><B>dataClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class of the elements in the receiver's data collection.<P>
+<P>
+</I><B>domain</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'domain'.<P>
+<P>
+</I><B>domain: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'domain' to be anObject.<P>
+<P>
+</I><B>duration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the domain of the receiver's collection of breakpoints.<P>
+<P>
+</I><B>nextXMoreThan: delta from: thisIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the next X value after index whose Y value is more than delta from the value at thisIndex<P>
+<P>
+</I><B>nextXMoreThan: delta from: thisIndex step: step</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the next X value after thisIndex whose Y value is more than delta from the value at thisIndex<P>
+<P>
+</I><B>offset: offVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'offset'.<P>
+<P>
+</I><B>pointAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the given value in the receiver's breakpoint collection.<P>
+<P>
+</I><B>pointAt: index put: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assign the given values in the receiver's breakpoint collection.<P>
+<P>
+</I><B>points</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'data'.<P>
+<P>
+</I><B>range</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'range'.<P>
+<P>
+</I><B>range: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'range' to be anObject.<P>
+<P>
+</I><B>realPointAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the given value in the receiver's breakpoint collection (this is not overridden in ExpSeg).<P>
+<P>
+</I><B>sampleAt: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index (between 0 and 1).<P>
+<P>
+</I><B>scale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'scale'.<P>
+<P>
+</I><B>scale: scaleVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'scale'.<P>
+<P>
+</I><B>selection</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the size of the receiver's collection of breakpoints.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+enumerating<P>
+<P>
+</I></FONT><B>detect: aBlock ifNone: exceptionBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Evaluate aBlock with each of the receiver's elements as the argument.<BR>
+&nbsp;&nbsp;&nbsp;Answer the first element for which aBlock evaluates to true.<P>
+<P>
+</I><B>do: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Evaluate aBlock with each of the receiver's elements as the argument.<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver for the given size.<P>
+</I><I><FONT SIZE=+1><P>
+geometry<P>
+<P>
+</I></FONT><B>hasPointNear: anXValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether or not the receiver has a function breakpoint near the given x value.<P>
+<P>
+</I><B>indexOfPointNearestX: anXValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver`s point nearest the given x value.<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>* aFcnOrNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function graph with the argument multiplied by the receiver<P>
+<P>
+</I><B>+ aFcnOrNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function graph with the argument added to the receiver<P>
+<P>
+</I><B>- aFcnOrNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function graph with the argument subtracted from the receiver<P>
+<P>
+</I><B>/ aFcnOrNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function graph with the receiver divided by the argument<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Function class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+standard functions<P>
+<P>
+</I></FONT><B>exponentialADSR1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a exponential attack/decay/sustain/release envelope.<P>
+<P>
+</I><B>exponentialADSR2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a exponential attack/decay/sustain/release envelope.<P>
+<P>
+</I><B>linearADSR1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a linear attact/decat/sustain/release envelope.<P>
+<P>
+</I><B>linearADSR2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a linear attact/decat/sustain/release envelope.<P>
+<P>
+</I><B>spline</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a generic spline curve.<P>
+<P>
+</I><B>sumOfSines</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a simple Fourier summation.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default instance of the receiver class.<P>
+<P>
+</I><B>from: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function with the given array of collections, points, or data values.<P>
+<P>
+</I><B>fromFile: fName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load 1 or more functions from a text file.<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of the receiver class.<P>
+<P>
+</I><B>ofSize: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of the receiver class of the requested size.<P>
+<P>
+</I><B>randomOfSize: size from: low to: high</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function with the given number of data points in the given range.<P>
+<P>
+</I><B>randomWalkSize: size from: low to: high</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function with the given number of data points in the given range.<P>
+<P>
+</I><B>readFloatsFrom: filename</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function with the given points.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>averagedFunctionFileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; read a function from a binary file and view it.<P>
+<P>
+</I><B>fileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; read a function from a binary file and view it.<P>
+<P>
+</I><B>functionFileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; read a function from a binary file and view it.<P>
+<P>
+</I><B>functionPlayExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; make a roll-type eventList and apply a crescendo/decrescendo to it<P>
+<P>
+</I><B>functionViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; make a z-z function and view it.<P>
+<P>
+</I><B>maxedFunctionFileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; read a function from a binary file and view it.<P>
+<P>
+</I><B>randomViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; make a random walk fcn and view it.<P>
+<P>
+</I><B>randomViewExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Function usage example; make a random walk fcn and view it.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>defaultSize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default size for the instances' storage array.</I></FONT>
+</BODY>
+</HTML>

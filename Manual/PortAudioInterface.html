@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PortAudioInterface</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PortAudioInterface<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SirenExternalInterface<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-External<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>cbProcess ioSemaphore <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PA_Constants <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private Siren.PortAudioInterfaceDictionary.* <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Attributes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(#(#includeFiles #('portaudio_lite.h')) #(#includeDirectories #('Siren7.5/DLLCC')) #(#libraryFiles #('portaudio_lite.dylib' 'libportaudio.dylib')) #(#libraryDirectories #('/usr/local/lib')) #(#beVirtual false) #(#optimizationLevel #full)) <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+types<P>
+<P>
+</I></FONT><B>Callback</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>CallbackFcn</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>OEoop</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+procedures<P>
+<P>
+</I></FONT><B>pa_close</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_dev_in: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_dev_out: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_dev_rate: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_get_name: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_get_name: which with: resultString</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_in_device</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_in_rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_num_devices</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_num_in</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_num_out</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_open_p: device with: out_ch with: format with: rate with: blockSize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_open_s: device with: in_ch with: out_ch with: format with: rate with: blockSize with: cbBlock with: in_buffer with: out_buffer</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_out_device</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_out_rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_play: out_buffer with: numChannels with: numFrames</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_play: out_buffer with: numChannels with: numFrames with: swap</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_start</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pa_terminate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>cbProcess</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>cbProcess: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>ioSemaphore</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>ioSemaphore: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PortAudioInterface class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>const: flag</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class constants dictionary (PortAudio 19)<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example0</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate using the PortAudioInterface with the simple interface<P>
+<P>
+</I><B>example2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate using the PortAudioInterface with the non-semaphore-signalling interface</I></FONT>
+</BODY>
+</HTML>

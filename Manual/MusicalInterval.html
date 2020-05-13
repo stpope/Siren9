@@ -1,0 +1,340 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MusicalInterval</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MusicalInterval<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>type semiTones <P>
+<P>
+<P>
+</FONT><I>MusicalInterval commentStamp: '<historical>' prior: 0!<BR>
+Intervalle represente un intervalle entre deux notes.<BR>
+type represente l'ecart entre les deux notes extremites. Cet ecart ne tient compte<BR>
+que des notes naturelles. Par exemple, les tierces (majeures ou mineures) ont comme type 3,<BR>
+les quarte 4 etc.<BR>
+demisTons est le nombre de demis tons entre les deux notes. Par exemple une tierce<BR>
+majeure a comme type 3 et demisTons = 4.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+computing notes<P>
+<P>
+</I></FONT><B>topIfBottomIs: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the note making the interval self with aNote<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>isPrintable</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>printPrintableOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;Watch out : all Intervals cant print themselves.<BR>
+&nbsp;&nbsp;&nbsp;You can convert a musicalInterval into a ChromaticInterval.<BR>
+&nbsp;&nbsp;&nbsp;E.g. : Interval between Cbb and C ## (super super augmented <BR>
+&nbsp;&nbsp;&nbsp;unison!!).<BR>
+&nbsp;&nbsp;&nbsp;There are here 40 printable intervals. Cf. method MusicalInterval allPrintableIntervals<BR>
+(put in protocol constants)<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+automatic access<P>
+<P>
+</I></FONT><B>orientedSemiTones</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>semiTones</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>semiTones: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>type</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>type: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+arithmetics<P>
+<P>
+</I></FONT><B>+ anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;(MusicalInterval majorSecond) + (MusicalInterval perfectFifth)<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isA: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isAscending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDescending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>< anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B><= anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>= anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>> anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>>= anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasSameDirectionAs: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>ascending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>asChromaticInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>descending</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicalInterval class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>allPrintableIntervals</B><I><BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval allPrintableIntervals<P>
+<P>
+</I><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval majorThird inverse<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval perfectFourth topIfBottomIs: N C sharp -> Fa#<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval perfectFourth bottomIfTopIs: N F sharp ->  Do#<P>
+<P>
+&nbsp;&nbsp;&nbsp;N do intervalBetween: N re -> Major second <BR>
+&nbsp;&nbsp;&nbsp;N do flat intervalBetween: N sol -> Augmented fifth&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;N do flat intervalBetween: N do sharp ->  superAugmented unisson<BR>
+&nbsp;&nbsp;&nbsp;N do flat intervalBetween: N do sharp sharp ->  non printable interval<BR>
+&nbsp;&nbsp;&nbsp;(N do flat intervalBetween: N do sharp sharp) asChromaticInterval -> Chromatic 3<BR>
+&nbsp;&nbsp;&nbsp;(N do intervalBetween: N sol) = (N re intervalBetween: N la) -> true<BR>
+&nbsp;&nbsp;&nbsp;(N do intervalBetween: N fa sharp) = (N do intervalBetween: N sol flat)  -> false<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval allIntervalsType: 3 ->  #(Major third Minor third )<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval allIntervalsType: 2 -><BR>
+&nbsp;&nbsp;&nbsp;#(Augmented second Diminished second Major second Minor second )<BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval allIntervalsType: 1 -> #(Augmented unisson Diminished unisson superAugmented unisson superDiminished unisson  unisson )<BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>exampleTranspositions</B><I><BR>
+&nbsp;&nbsp;&nbsp;three ways of of transposing pitch classes and od notes<P>
+</I><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>allIntervalsType: t</B><I><BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval allIntervalsType: 2<P>
+<P>
+</I><B>type: aType semiTones: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+all-printable<P>
+<P>
+</I></FONT><B>augmentedEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;8 semitones<P>
+<P>
+</I><B>augmentedFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;6 semitones<P>
+<P>
+</I><B>augmentedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;15  semitones<P>
+<P>
+</I><B>augmentedOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;3 semitones<P>
+<P>
+</I><B>augmentedSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;3 semitones<P>
+<P>
+</I><B>augmentedTenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;17 semitones<P>
+<P>
+</I><B>augmentedTwelvth</B><I><BR>
+&nbsp;&nbsp;&nbsp;20 semitones<P>
+<P>
+</I><B>augmentedUnison</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;6 semitones<P>
+<P>
+</I><B>diminishedFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;5 semitones<P>
+<P>
+</I><B>diminishedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;1 octave + 1  semitones<P>
+<P>
+</I><B>diminishedOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;11 semitones<P>
+<P>
+</I><B>diminishedSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;0 semitones<P>
+<P>
+</I><B>diminishedSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;9  semitones<P>
+<P>
+</I><B>diminishedTenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;15 semitones<P>
+<P>
+</I><B>diminishedThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedTwelvth</B><I><BR>
+&nbsp;&nbsp;&nbsp;18 semitones<P>
+<P>
+</I><B>diminishedUnison</B><I><BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval diminishedUnison topIfBottomIs: N C<P>
+<P>
+</I><B>majorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;14 semitones<P>
+<P>
+</I><B>majorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;2 semitones<P>
+<P>
+</I><B>majorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;11  semitones<P>
+<P>
+</I><B>majorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;9  semitones<P>
+<P>
+</I><B>majorTenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;14 semitones<P>
+<P>
+</I><B>majorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;4 semitones<P>
+<P>
+</I><B>majorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorTwelvth</B><I><BR>
+&nbsp;&nbsp;&nbsp;19 semitones<P>
+<P>
+</I><B>minorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;1 octave + 1  semitones<P>
+<P>
+</I><B>minorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;1 semitone<P>
+<P>
+</I><B>minorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;10  semitones<P>
+<P>
+</I><B>minorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;8 semitones<P>
+<P>
+</I><B>minorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;3 semitones<P>
+<P>
+</I><B>minorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;5 semitones<P>
+<P>
+</I><B>perfectFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;7 semitones<P>
+<P>
+</I><B>perfectFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;5 semitones<P>
+<P>
+</I><B>superAugmentedUnison</B><I><BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval superAugmentedUnison topIfBottomIs: N C<P>
+<P>
+</I><B>superDiminishedUnison</B><I><BR>
+&nbsp;&nbsp;&nbsp;MusicalInterval superDiminishedUnison topIfBottomIs: N C<P>
+<P>
+</I><B>unison</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+constants nick-names<P>
+<P>
+</I></FONT><B>aug11</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>aug4</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>aug5</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>aug9</B><I><BR>
+&nbsp;&nbsp;&nbsp;15 semitones<P>
+<P>
+</I><B>dim13</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>dim5</B><I><BR>
+&nbsp;&nbsp;&nbsp;6 semitones<P>
+<P>
+</I><B>dim7</B><I><BR>
+&nbsp;&nbsp;&nbsp;9  semitones<P>
+<P>
+</I><B>dim9</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;1 octave + 1  semitones<P>
+<P>
+</I><B>flatThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>ninth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>second</B><I><BR>
+&nbsp;&nbsp;&nbsp;2 semitones<P>
+<P>
+</I><B>seventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>thirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

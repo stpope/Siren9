@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SEventQueue</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SEventQueue<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SequenceableCollection<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Support<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>first last <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>CurrentRecord RecordPool <P>
+<P>
+<P>
+</FONT><I>An SEventQueue is a doubly-linked list that has methods for inserting elements in time-sorted order.<BR>
+These are used for real-time schedules because they can have faster search methods than using SortedCollections of OrderedCollections for the EventScheduler.<BR>
+The current implementation uses a simple linear search. For really big schedules, this could be made faster with a binary search or tree-based schedule.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;first <ScheduleRecord> The first event in the Q<BR>
+&nbsp;&nbsp;&nbsp;last <ScheduleRecord> The last event in the Q<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>add: eventAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given eventAssociation to the receiver in the right place.<P>
+<P>
+</I><B>add: eventAss loop: aBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given eventAssociation to the receiver in the right place.<P>
+<P>
+</I><B>asOrderedCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver's items<P>
+<P>
+</I><B>detect: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Walk the list looking<P>
+<P>
+</I><B>do: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Refer to the comment in Collection|do:.<P>
+<P>
+</I><B>includes: sought</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>itemNamed: theName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver's items<P>
+<P>
+</I><B>ready: now</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether there's an event ready within 5000 usec of the given time<P>
+<P>
+</I><B>removeAllSuchThat: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Remove each element for which aBlock evaluates to true. <P>
+<P>
+</I><B>removeFirst</B><I><BR>
+&nbsp;&nbsp;&nbsp;Remove and answer the first item from the list.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer how many elements the receiver contains.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>locateSlotFor: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Find the proper slot for inserting a new event with the given start time.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Append to the argument aStream a sequence of characters that identifies the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SEventQueue class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+record pool<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class's record pool<P>
+<P>
+</I><B>nextRecord</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class's record pool</I></FONT>
+</BODY>
+</HTML>

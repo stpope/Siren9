@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Chord</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Chord<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Cluster<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventGenerators<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>root inversion type arity <P>
+<P>
+<P>
+</FONT><I>Instances of Chord are eventLists that can be created by giving them a root and inversion. They can return eventLists.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;root <Pitch> the root of the chord<BR>
+&nbsp;&nbsp;&nbsp;inversion <Integer> the inversion level (unused at present)<BR>
+&nbsp;&nbsp;&nbsp;type <Symbol> #major, #minor, etc.<BR>
+&nbsp;&nbsp;&nbsp;arity <Integer> number of notes of the chord<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>arity: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the number of notes of the receiver chord<P>
+<P>
+</I><B>duration: aDuration</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the durations of my notes<P>
+<P>
+</I><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's events<P>
+<P>
+</I><B>inversion: number</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the inversion of the receiver chord<P>
+<P>
+</I><B>root: tonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the root of the receiver chord<P>
+<P>
+</I><B>type: aSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the type symbol of the receiver chord<P>
+</I><I><FONT SIZE=+1><P>
+generating events<P>
+<P>
+</I></FONT><B>majorTetrad</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note major chord on the given tonic in the given inversion<P>
+<P>
+</I><B>majorTriad</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note major chord on the given tonic in the given inversion<P>
+<P>
+</I><B>minorTetrad</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note minor chord on the given tonic in the given inversion<P>
+<P>
+</I><B>minorTriad</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note minor chord on the given tonic in the given inversion<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Chord class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>majorTetradOn: tonic inversion: inversion</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note major chord on the given tonic in the given inversion<P>
+<P>
+</I><B>majorTriadOn: tonic inversion: inversion</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note major chord on the given tonic in the given inversion<P>
+<P>
+</I><B>minorTetradOn: tonic inversion: inversion</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note minor chord on the given tonic in the given inversion<P>
+<P>
+</I><B>minorTriadOn: tonic inversion: inversion</B><I><BR>
+&nbsp;&nbsp;&nbsp;return a three-note minor chord on the given tonic in the given inversion<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and edit some chords.</I></FONT>
+</BODY>
+</HTML>

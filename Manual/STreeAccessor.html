@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				STreeAccessor</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>STreeAccessor<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.StructureAccessor<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Layout<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>terminalQuery childAccessor <P>
+<P>
+<P>
+</FONT><I>Instances of STreeAccessor tree-navigation interfaces to diverse data structures.<BR>
+The basic display tree walking protocol is: <BR>
+&nbsp;&nbsp;&nbsp;(aSTreeAccessor childrenOf: aModelNode); and<BR>
+&nbsp;&nbsp;&nbsp;(aSTreeAccessor isTerminal: aModelNode).<P>
+<P>
+InstanceVariableNames:<BR>
+&nbsp;&nbsp;&nbsp;terminalQuery&nbsp;&nbsp;&nbsp;<Symbol or Block> the isLeaf or hasChildrenNot query<BR>
+&nbsp;&nbsp;&nbsp;childAccessor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Symbol or Block> accessor to get a node's children<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model items are passed to these (if they're Blocks),<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or have to perform: them (if they're Symbols).<P>
+<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>childAccessor: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the cA of the receiver.<P>
+<P>
+</I><B>terminalQuery: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the tQ of the receiver.<P>
+<P>
+</I><B>treeAccessor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+tree accessing<P>
+<P>
+</I></FONT><B>childrenOf: aNode</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the children of the argument by using the child accessor.<P>
+<P>
+</I><B>isTerminal: aNode</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the argument is terminal by using the terminal query.<P>
+<P>
+</I><B>leavesOf: aRoot</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the leaves of the argument by using the child accessor.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>STreeAccessor class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>subject: aS terminalQuery: aTQ childAccessor: aCA itemGenerator: anIG</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized instance.</I></FONT>
+</BODY>
+</HTML>

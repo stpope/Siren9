@@ -1,0 +1,240 @@
+
+HyperScore ToolKit Version 5.2 Overview
+	stp - 1 April 1989
+
+What's Included with HSTK 5.2 - Basic Distribution
+	Version 5.2 Software
+		Machine-readable medium (Macintosh-compatible diskette or 
+				Unix tar-format streamer tape)
+		~600 KBytes of Smalltalk-80 source code with a build script to file it 
+				into a Smalltalk-80 version 2.0 or newer virtual image.
+
+		Source Code for:
+			HyperScore ToolKit V5.2 basic class definitions--Smalltalk-80 code
+				+ build script
+			Guy Garnett's user primitive interface to Lee Boynton's MIDI Driver 
+				for the Macintosh Computers--C code + Makefile
+			John Maloney's MIDI Classes and Editors--Smalltalk-80 code
+			John M's new fast serial port primitives for the Mac--C code + Makefile
+
+		Object Code of:
+			Lee Boynton's MIDI Device Driver for Mac-II's
+				To be attached (using ResEdit) to ST80 VM File as a code resource
+
+		Score Dumps
+			Several Opcode, Adagio and EventList format score dumpsas examples
+
+	Documentation
+		Nice 5.2 cover letter
+		Copyright notice file (N.B.)
+
+		HSTK 5.2 Build Script 
+			(commands to rebuild the image--2 versions: Mac/VI 2.3 or Sun/VI 2.4)
+
+		HUG Tech Notes
+			1 - HyperScore ToolKit: A Description and Examples
+				reprint of current version of this article
+			2 - HSTK 5.2 Demo Script
+				commented demonstration walk-through
+			3 - Scheduling and real-time \I/O in HSTK
+				description of the three scheduler worlds
+
+What's Included with HSTK 5.2 - VI/VM Large Distribution
+	All source of the basic distribution
+	Pre-configured VI 2.3 or VI 2.4 Smalltalk-80 virtual image
+	Pre-configured Smalltalk-80 virtual machine with primitives built-in
+
+
+What's New since the September, 1988 HSTK 5.0 Release
+		Version 5.1 Update
+			Fixes for PrimScheduler initialization and release on Mac's
+			MidiPort initialize code neatened up
+			Better Score/EventList pluggability when swapping voices
+			Better cmusic/csound voices
+			More of the ARA EventGenerators
+				Clouds, Clusters, DynamicSelection, POD
+			Zooming and better caching on HSEventListEditor
+				LS-hack on scrollButton --> zoom
+			CodeView Buttons for Inspectors
+
+		Version 5.2 Update
+			Class IdentityAssociation renamed --> EventAssociation
+			HSEventListEditor LS-inspect --> inspect eventAssociation
+			Improved EventListDictionaryInspector
+			Peals now use primitive MIDI interface
+			Additions to standard Build script to file in 5.1 updates
+			Dump/Load of EventLists from 5.2 image
+			Addition of annotated demo scripts and tape examples
+			Vastly improved editors with:
+				zooming (LS-scroll button);
+				gracious handling of arbitrarily long event lists;
+				CMN working
+				Follow-the-bouncing-ball mode (LS-play button)
+			Old and New Opcode format voices (new courtesy of John Tangney)
+			New Midi world from John Maloney--now called MidiScores category
+			Demo Script improved and commented
+
+
+What You Need To Run HSTK 5.2?
+
+	Disk space
+		~4 MB disk per user for image and changes
+
+	Platforms
+	Macintosh 
+		2 MB or more main memory (5 or more preferred)
+		Mac Plus (slow), -SE (passable), and -II (ok with huge screen)
+		MIDI I/O supported with user primitives and 
+			device driver attached to VM as a code resource
+			Known to work with Opcode and Apple MIDI interfaces
+
+	Sun Workstations
+		4 MB or more main Memory (8 recommended)
+		Sun-2, -3 & -4, SPARCstation
+		MIDI I/O supported with user primitives and 
+			device driver merged into OS kernel or
+			use sound compiler such as CARL cmusic, cmix or MIT
+
+	Other Unix Platforms
+		4 MB or more main Memory
+		HP 9000/300; Apollo 3K & 4K; Sony NEWS; Textronix 440X; 
+		Cadmus 9000 & M-WS/4, /5; Fuji Xerox 11X1; ; Ardent Titan
+		Use sound compiler such as CARL cmusic, cmix or MIT
+		Write your own voices for MIDI drivers on other platforms (e.g., Hinton connections)
+
+	Atari Mega ST
+		4 MB Memory
+		MIDI I/O via scheduler primitives available from Georg Heeg Inc.,
+
+	IBM PC/Compatible
+		80386 CPU, 4 MB Memory
+
+
+Where to get Smalltalk-80 for your machine?
+
+(In alphabetical order)
+	Apple Macintosh(tm)
+		VI 2.3 available from ParcPlace Systems, Mt. View, CA
+
+	Apollo Workstations
+		VI 2.3 available from ParcPlace Systems, Mt. View, CA
+
+	Ardent Titan(tm) Super Computer
+		VI 2.4 available from ParcPlace Systems, Mt. View, CA
+
+	Atari MegaST(tm)
+		VI 2.3 available from Georg Heeg, Inc. Dortmund, F. R. Germany
+
+	Cadmus 9000 and MWS Workstations
+		VI 2.3 available from Georg Heeg, Inc. Dortmund, F. R. Germany
+
+	Fuji/Xerox 11XX Workstations
+		VI 2.3 available from Fuji/Xerox. Tokyo, Japan
+
+	H-P 9000/300 Workstations
+		VI 2.3 available from ParcPlace Systems, Mt. View, CA
+
+	IBM PC-class machines
+		80286-based machines - Smalltalk-AT from SoftSmarts, Palo Alto, CA
+		80386-based machines - VI 2.4 available from ParcPlace Systems
+
+	Sony NEWS Workstations
+		VI 2.3 available from Sony
+
+	SMI Sun Workstations
+		Sun 2 and 3 - VI 2.3 available from ParcPlace Systems
+		Sun 4 and 386i - VI 2.4 available from ParcPlace Systems
+
+	Tektronix 440X and 434X Workstations
+		VI 2.2 available from Tektronix Inc. Beaverton, OR
+
+	Xerox 11XX Workstations
+		VI 2.3 available from Xerox Special Information Systems, Pasadena, CA
+
+
+Semi-compatible versions (user interface classes differ)
+	Apple Macintosh
+		VI 0.4 available from APDA, Renton, WA 
+		(VI 1.0-based, user interface classes differ--must port MVC classes)
+
+	IBM PC-class machines
+		Smalltalk-V available from Digitalk, Inc. Los Angeles, CA 
+		(similar (not source code compatible) language and system classes)
+
+	DEC Vax and others
+		Little Smalltalk available from Prof. T. Budd, Oregon State U. 
+		(subset of classes with string-oriented user interfaces)
+
+	Portable
+		BrouHaHa available from Eliot Mirande, U. of London, UK 
+		(said to be VI2.0-compatible)
+
+
+Where to get more information?
+
+1 - HSTK Publications
+
+	"The Development of an Intelligent Composer's Assistant" Stephen T. Pope. Proceedings of the 1986 International Computer Music Conference
+
+	"A Smalltalk-80 Music Toolkit." Stephen T. Pope. Proceedings of the 1987 International Computer Music Conference
+
+	"HyperScore Tools for Composers." Computer Music Association Array Winter, 1987
+
+	"The HyperScore ToolKit and Smalltalk-80 Music Applications." Stephen T. Pope. Journal of Object-Oriented Programming, Volume 1 Number 1
+
+	Computer Music Journal Special Object-Oriented Programming Issue Volume 13 Number 2, Summer, 1989-forthcoming
+
+	HUG Tech Notes (available from HUG)
+		1 - HSTK Description and Example Doc
+		2 - HSTK Demo script
+		3 - Scheduling and real-time notes
+
+(See question-and-answer file QandA.t for more references)
+
+2 - Smalltalk-80 and General OOP Publications
+
+	BYTE Magazine Smalltalk-80 special Issue
+	BYTE Magazine, August, 1981
+
+	IEEE Computer Society Tutorials on Object-Oriented Computing (in 2 volumes)
+	(reprints of many of the best article from Byte, 1981)
+	Edited by Gerald E. Peterson, 1987
+	IEEE Computer Society Press
+
+	Three Books on Smalltalk-80 System published by Addison-Wesley in 1983
+		Smalltalk-80: The Language and its Implementation - Adele Goldberg & David Robson
+		Smalltalk-80: The Interactive Programming Environment - Adele Goldberg
+		Smalltalk-80: Bits of History, Words of Advice - Glenn Krasner (ed.)
+
+	Proceedings of the 1986, 87 & 88  OOPSLA Conferences
+		(ACM Conf. on Object-Oriented Programming Systems Languages and Applications) 
+	Available from the ACM (Association for Computing Machinery) as special issues of SIGPLAN Notices
+
+	Journal of Object-Oriented Programming
+	Editor, Dr. R. Wiener,
+	Box 6338, Woodland Park, CO 80866 USA
+
+	HOOPLA! (Hooray for Object-Oriented Programming Languages!)
+	Available from the user group OOPSTAD (O-O Programming for Smalltalk Application Developers)
+	Box 1565 Everett, WA 98206 USA
+
+	Smalltalk-80 Newsletter, and
+	ParcPlace Newsletter
+	Available from ParcPlace Systems
+	1550 Plymouth Ave.
+	Mt. View, CA 94043 USA
+
+
+HSTK Release Fileset and Media - Available from HSTK Users' Group - HUG
+	stp@CCRMA.Stanford.edu
+
+Source Files, Doc and Demo Script
+	(740 KBytes, cover letter, online doc, Smalltalk-80 and C source files, Copyright Notice Readme and build script)
+
+	Media (1 each):
+		Mac 3-1/2 Diskette 						$20
+		Sun tar-format streamer tape cartridge	$50
+
+Doc, Demos
+	Description document			 			$10
+	Demo Script and cassette tape				$20

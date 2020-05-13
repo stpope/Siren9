@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				NotelistVoice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>NotelistVoice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Voice<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Voices<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>parameterMap lastTime header <P>
+<P>
+<P>
+</FONT><I>Instances of the subclasses of NotelistVoice can read or write note list file streams in various formats for software sound synthesis packages such as cmusic, csound, or cmix.<P>
+<P>
+Note that we are output-only at present.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;parameterMap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<OrderedCollection of Symbols, Blocks, or Associations> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the object's P:=map, used to print out or parse note commands.<P>
+<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addMap: anItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument (a symbol or block), to the parameterMap of the receiver<P>
+<P>
+</I><B>header: aString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the file header string of the receiver.<P>
+<P>
+</I><B>parameterMap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the parameterMap of the receiver.<P>
+<P>
+</I><B>parameterMap: anOrderedCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the parameterMap of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+events<P>
+<P>
+</I></FONT><B>dump: aStringOrValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;The case I handle is strings. Subclasses may override.<P>
+<P>
+</I><B>endLine</B><I><BR>
+&nbsp;&nbsp;&nbsp;Put the proper command terminator on the receiver's stream.<P>
+<P>
+</I><B>mapProperty: item of: ass within: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write the given event association to the receiver's stream in the appropriate format.<P>
+<P>
+</I><B>play: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;Perform the argument.<P>
+<P>
+</I><B>play: anEL at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Perform the argument.<P>
+<P>
+</I><B>playAssociation: ass in: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write the given event association to the receiver's stream in the appropriate format.<P>
+<P>
+</I><B>space</B><I><BR>
+&nbsp;&nbsp;&nbsp;Put the proper field separator on the receiver's stream.<P>
+<P>
+</I><B>writeFooter</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write a notelist file footer on the receiver's stream.<P>
+<P>
+</I><B>writeHeader</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write a notelist file header on the receiver's stream.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the receiver's output stream (if it's a file).<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver.<P>
+<P>
+</I><B>initializeNamed: aName onStream: theStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new named NotelistVoice on the given stream.<P>
+<P>
+</I><B>initializeOnStream: theStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new named NotelistVoice on the given stream.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>NotelistVoice class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>defaultPMap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap of the receiver class's instances.<P>
+<P>
+</I><B>newNamed: aName onFile: fName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a NotelistVoice on the given output file<P>
+<P>
+</I><B>newNamed: aName onStream: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a NotelistVoice on the given output stream<P>
+<P>
+</I><B>onFileNamed: fName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a NotelistVoice on the given output file</I></FONT>
+</BODY>
+</HTML>

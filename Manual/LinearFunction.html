@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				LinearFunction</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>LinearFunction<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Function<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Functions<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Instances of LinearFunction are line-segment functions of one free variable.<P>
+<P>
+Example:<BR>
+&nbsp;&nbsp;&nbsp;LinearFunction from: #((0 0) (0.1 1) (0.2 0.6) (0.9 0.4) (1 0))<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+processing<P>
+<P>
+</I></FONT><B>normalize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Normalize the receiver to the range and domain of 0-1, inclusive.<P>
+<P>
+</I><B>scaleBy: scalePt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's points by the given scale.<P>
+<P>
+</I><B>updateRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>add: anItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver's point collection.<P>
+<P>
+</I><B>at: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index in my range--do linear interpolation.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the size of the receiver's collection of breakpoints.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>LinearFunction class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>a: att d: dec s: sus r: rel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an ADSR envelope.<P>
+<P>
+</I><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default instance of the receiver class - an ADSR shape.<P>
+<P>
+</I><B>fromLorisData: data size: siz duration: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a linear envelope from the given Loris linear envelope.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>exampleEnvelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a LinSeg of a typical envelope function.<P>
+<P>
+</I><B>linearExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make a LinSeg and answer a value.<P>
+<P>
+</I><B>linearViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make an ADSR-shaped LinSeg and open a view on its form.</I></FONT>
+</BODY>
+</HTML>

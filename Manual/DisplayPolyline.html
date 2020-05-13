@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayPolyline</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayPolyline<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayRectangle<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayLists<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>vertices <P>
+<P>
+<P>
+</FONT><I>A DisplayPolyline is a poly-line-segment display object<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;vertices&nbsp;&nbsp;&nbsp;<OrderedCollection of Point>  my point array<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>bounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's bounds.<P>
+<P>
+</I><B>extent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's extent.<P>
+<P>
+</I><B>vertices: pointArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's vertices.<P>
+</I><I><FONT SIZE=+1><P>
+transforming<P>
+<P>
+</I></FONT><B>scaledBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale all the receiver's points by the argument; answer a copy.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stroke the receiver's edges on the supplied GraphicsContext.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayPolyline class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>offset: offPt vertices: arrayOfPoints</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new DisplayPolyline with the arguments as its vertices.<P>
+<P>
+</I><B>vertices: arrayOfPoints</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new DisplayPolyline with the arguments as its vertices.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>polylineExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a display list view with randomly-placed random-color polylines over the given extent.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DurationEvent</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DurationEvent<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.AbstractEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Events<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>duration index startedAt realTime <P>
+<P>
+<P>
+</FONT><I>Instances of DurationEvent are events that have special slots for their duration and voice properties.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;duration <Duration species or nil> duration--a relative time<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>ampl</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's ampl<P>
+<P>
+</I><B>dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's duration.<P>
+<P>
+</I><B>dur: newValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's duration.<P>
+<P>
+</I><B>duration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's duration.<P>
+<P>
+</I><B>duration: newValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's duration.<P>
+<P>
+</I><B>index: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's event index.<P>
+<P>
+</I><B>order</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's order.<P>
+<P>
+</I><B>order: anOrder</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's order.<P>
+<P>
+</I><B>pitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's pitch<P>
+<P>
+</I><B>voice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's voice or some reasonable default.<P>
+<P>
+</I><B>voice: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's voice to the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and store the source the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+scheduling<P>
+<P>
+</I></FONT><B>isActive</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is in a schedule<P>
+<P>
+</I><B>nextTime: ignored</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether to reschedule the receiver<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver by scheduling it.<P>
+<P>
+</I><B>playAt: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver on its voice then.<P>
+<P>
+</I><B>playOn: aVoice at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;This is a no-op in the abstract class<P>
+<P>
+</I><B>reset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the receiver's index.<P>
+<P>
+</I><B>scheduleAt: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver on its voice then.<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>= anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument represent the same values.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the default state of the receiver--add props. dict.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DurationEvent class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>eventInspectExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the creation of a DEvent.<P>
+<P>
+</I><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the creation of a DEvent.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>dur: aD voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a DurationEvent instance initialized with the arguments.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,461 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PitchClassChord</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PitchClassChord<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>root structure notes possibleTonalities <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+automatic access<P>
+<P>
+</I></FONT><B>root</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>root: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>rootPitchClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>structure</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>structure: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;produces a printable name (without the sharps before symbols)<P>
+<P>
+</I><B>notesString</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>quotedPrintOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;as printOn but without the brackets [] and with quotes<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns a String representation of the receiver from which the receiver<BR>
+&nbsp;&nbsp;&nbsp;can be reconstructed<P>
+<P>
+</I><B>structureString</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+note testing<P>
+<P>
+</I></FONT><B>allNotesInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;The previous version couldnt deal with situations like<BR>
+&nbsp;&nbsp;&nbsp;  (FPChord newFromString: 'C  7 aug9')  possibleTonalitiesInScaleClass:  MajorScale<P>
+<P>
+</I><B>chordNotesAmong: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;select among given notes those that are chord notes<P>
+<P>
+</I><B>containsNote: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nextIn: aCS</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nonChordNotesAmong: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;select among given notes those that are chord notes<P>
+<P>
+</I><B>notes: aListOfNotes contains: anArrayOfIntervals</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>format</B><I><BR>
+&nbsp;&nbsp;&nbsp;format the structure. Assumes root is not nil<P>
+<P>
+</I><B>fromNotes: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;assumes the first note is the root<P>
+<P>
+</I><B>fromNotes: aList root: r</B><I><BR>
+&nbsp;&nbsp;&nbsp;l isa list of pitch-classes.<BR>
+&nbsp;&nbsp;&nbsp;This method computes the correct (and canonical) name for the chord<P>
+<P>
+</I><B>fromString: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;l is a list whose first element is a note and the rest a structure, in our<BR>
+&nbsp;&nbsp;&nbsp;standardized chord syntax<P>
+<P>
+</I><B>structureFromNotes: aList root: r</B><I><BR>
+&nbsp;&nbsp;&nbsp;l isa list of pitch-classes.<BR>
+&nbsp;&nbsp;&nbsp;This method computes the correct (and canonical) name for the chord<P>
+</I><I><FONT SIZE=+1><P>
+notes computation<P>
+<P>
+</I></FONT><B>computeAllNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;computes the list of notes from the structure. The job is the opposite <BR>
+&nbsp;&nbsp;&nbsp;of what is written is method fromListOfNotes. <BR>
+&nbsp;&nbsp;&nbsp;Assumes root is not nil. <BR>
+&nbsp;&nbsp;&nbsp;| c | <BR>
+&nbsp;&nbsp;&nbsp;c := FPChord newFromString: 'A halfDim7'. <BR>
+&nbsp;&nbsp;&nbsp;c computeAllNotes. <BR>
+&nbsp;&nbsp;&nbsp;c notes<P>
+<P>
+</I><B>computeDiminished</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeRoot</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>computeThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>notes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>notesWithinOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;accordingly, return the notes as in the case of a four note chord<BR>
+&nbsp;&nbsp;&nbsp;with no higher dissonances<P>
+</I><I><FONT SIZE=+1><P>
+compute possible tonalities<P>
+<P>
+</I></FONT><B>= c</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>analyseIn: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;en majeure, mineure harm et min mel<P>
+<P>
+</I><B>computePossibleTonalities</B><I><BR>
+&nbsp;&nbsp;&nbsp;self allInstancesDo: [:x| x computePossibleTonalities]<P>
+<P>
+</I><B>matchWith: c</B><I><BR>
+&nbsp;&nbsp;&nbsp;((Chord new fromString: 'D  min 7') computeAllNotes) format <BR>
+&nbsp;&nbsp;&nbsp;matchAvec: ((N re majorScale genereAccordsPoly: 4) at: 3).<P>
+<P>
+</I><B>possibleTonalitiesInScaleClass: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;possible tonalities in scale class s. <BR>
+&nbsp;&nbsp;&nbsp;(PitchClassChord newFromString: 'C  ') possibleTonalitiesInScaleClass:  MajorScale  AnalysisList ({I de C MajorScale} {IV de G MajorScale} {V de F MajorScale} )<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;There is a problem here, related to invalid scales. If you ask for <BR>
+&nbsp;&nbsp;&nbsp;instance the possible  tonalities of 'C# min', it will try to say that V of G# major is a <BR>
+&nbsp;&nbsp;&nbsp;possible tonality. But the creation of G# major raises an error since it <BR>
+&nbsp;&nbsp;&nbsp;is an invalid scale. For the moment I leave it as is because&nbsp;&nbsp;&nbsp;I would <BR>
+&nbsp;&nbsp;&nbsp;like to have a model of reasoning in an object-oriented setting first<P>
+<P>
+</I><B>standardPossibleTonalities</B><I><BR>
+&nbsp;&nbsp;&nbsp;possible tonalities in scale class major, minorMel and minorHarm <BR>
+&nbsp;&nbsp;&nbsp;(Chord new fromString: 'C min') standardPossibleTonalities <BR>
+&nbsp;&nbsp;&nbsp;ListeDAnalyses ({II de Sib MajorScale} {III de Lab MajorScale} {VI de <BR>
+&nbsp;&nbsp;&nbsp;Mib MajorScale} {I de Do HarmonicMinorScale} {IV de Sol <BR>
+&nbsp;&nbsp;&nbsp;HarmonicMinorScale} {I de Do MelodicMinorScale} {II de Sib <BR>
+&nbsp;&nbsp;&nbsp;MelodicMinorScale} )<P>
+<P>
+</I><B>tonalitesCommunesAvec: unAccord</B><I><BR>
+&nbsp;&nbsp;&nbsp;(FPChord newFromString: 'C min') tonalitesCommunesAvec: (FPChord <BR>
+&nbsp;&nbsp;&nbsp;newFromString: 'D b ') <P>
+<P>
+</I><B>tonalitesCommunesAvec: unAccord et: autreAccord</B><I><BR>
+&nbsp;&nbsp;&nbsp;(FPChord newFromString: 'C min') tonalitesCommunesAvec: (FPChord <BR>
+&nbsp;&nbsp;&nbsp;newFromString: 'D b ') <P>
+</I><I><FONT SIZE=+1><P>
+transposing<P>
+<P>
+</I></FONT><B>beTransposedBy: int</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>transposeOf: interval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+FP<P>
+<P>
+</I></FONT><B>natural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>possibleScales</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>possibleTonalities</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+initializations<P>
+<P>
+</I></FONT><B>initAnalyse</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>resetNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;reset notes to an empty collection when an important change occurred<P>
+</I><I><FONT SIZE=+1><P>
+accessing by  intervals<P>
+<P>
+</I></FONT><B>theFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theTonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+testing ok<P>
+<P>
+</I></FONT><B>commonTonalitiesWith: aChord</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasA: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;(FPChord newFromString: 'C min 7') hasA: #majorThird<P>
+<P>
+</I><B>hasADiminishedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasADiminishedSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasAMajorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasAMinorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasAnAugmentedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasNoFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hasNoSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isAlterate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDiminished</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDominant</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isHalfDiminished</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isMajor</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isMinor</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isSuspended</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>structureHasEitherOf: aList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>structureHasNeitherOf: aList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>@ o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>asPlayableObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>defaultOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fondamental</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>inTessitura: qt</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>lapse: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octave: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>startBeat: s duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;a default octave is used<P>
+<P>
+</I><B>startTime: s duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+tessitura<P>
+<P>
+</I></FONT><B>rootInTessitura: qt</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+other computations<P>
+<P>
+</I></FONT><B>intervalBetweenRoots: aChord</B><I><BR>
+&nbsp;&nbsp;&nbsp;remark: not that this method answers the interval between <BR>
+&nbsp;&nbsp;&nbsp;the root *pitch classes*!!<P>
+</I><I><FONT SIZE=+1><P>
+private-pact<P>
+<P>
+</I></FONT><B>bestTonalityInIsolatedCase</B><I><BR>
+&nbsp;&nbsp;&nbsp;answer the most plausible tonality when the chor is isolated.<BR>
+&nbsp;&nbsp;&nbsp;Later, I will rewrite it to bypass possibleTonalities for sake of efficience<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PitchClassChord class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>newFromNotes: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;computes the name from the list of notes, according to our syntax<P>
+<P>
+</I><B>newFromNotesNames: aStringOfNoteNames</B><I><BR>
+&nbsp;&nbsp;&nbsp;computes the name from the list of notes, according to our syntax<BR>
+&nbsp;&nbsp;&nbsp;PitchClassChord newFromNotesNames: 'A C# E G'  [La 7 ] <P>
+<P>
+</I><B>newFromString: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;computes the list of notes fom the name acording to our syntax<P>
+<P>
+</I><B>root: r structure: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+editing<P>
+<P>
+</I></FONT><B>openEditor</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>allChordsFromListOfNotes: aList</B><I><BR>
+&nbsp;&nbsp;&nbsp;self allChordsFromListOfNotes: (Array with: N do with: N mi with: N sol)<BR>
+ #(Do  Mi #min #no5 #no11 #no9 #no7 #dim13  Sol #sus4 #no5 #sixth  )<BR>
+&nbsp;&nbsp;&nbsp;self allChordsFromListOfNotes: (Array with: N do with: N mi with: N sol with: N si)<P>
+<P>
+</I><B>commonTonalities</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+(PitchClassChord new fromString: 'C maj7') <BR>
+&nbsp;&nbsp;&nbsp;possibleTonalities AnalysisList ({I of C MajorScale} {IV of G MajorScale} {VI of E HarmonicMinorScale} )<P>
+<P>
+(PitchClassChord new fromString: 'F maj7')<BR>
+&nbsp;&nbsp;&nbsp;possibleTonalities AnalysisList ({I of F MajorScale} {IV of C MajorScale} {VI of A HarmonicMinorScale} )<P>
+<P>
+(PitchClassChord new fromString: 'E min 7')<BR>
+&nbsp;&nbsp;&nbsp;possibleTonalities  AnalysisList ({II of D MajorScale} {III of C MajorScale} {VI of G MajorScale} {IV of B HarmonicMinorScale} {II of D MelodicMinorScale} )<BR>
+----<BR>
+(PitchClassChord new fromString: 'C maj7') <BR>
+&nbsp;&nbsp;&nbsp;tonalitesCommunesAvec: (PitchClassChord new fromString: 'F maj7')<BR>
+&nbsp;&nbsp;&nbsp;et: (PitchClassChord new fromString: 'E min 7') Set (C MajorScale )<P>
+<P>
+<P>
+<P>
+</I><B>examples</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+(PitchClassChord new fromString: 'Re maj7') notes OrderedCollection (Re Fa# La Do# )<BR>
+(PitchClassChord new fromString: 'Re# maj7') notes  OrderedCollection (Re# Fa## La# Do## )<BR>
+(PitchClassChord new fromString: 'C') notes    OrderedCollection (Do Mi Sol )<BR>
+(PitchClassChord new fromString: 'D min 7 dim5') notes OrderedCollection (Re Fa Lab Do )<BR>
+(PitchClassChord new fromString: 'C aug9') notes   OrderedCollection (Do Mi Sol Sib Re# )<BR>
+(PitchClassChord new fromString: 'C aug9 dim5') notes OrderedCollection (Do Mi Solb Sib Re# )   <BR>
+(PitchClassChord new fromString: 'C 13') notes OrderedCollection (Do Mi Sol Sib Re Fa La )<BR>
+(PitchClassChord new fromString: 'C 13 aug9') notes OrderedCollection (Do Mi Sol Sib Re# Fa La )<BR>
+(PitchClassChord new fromString: 'C 13 aug9 no7') notes OrderedCollection (Do Mi Sol Re# Fa La )<BR>
+(PitchClassChord new fromString: 'C halfDim7') notes  OrderedCollection (Do Mib Solb Sib )<P>
+<P>
+'F min 7' asChord notes > OrderedCollection (F Ab C Eb ) &nbsp;&nbsp;&nbsp;<BR>
+'F min7' asChord notes  > OrderedCollection (F A C )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+'F m 7' asChord notes  > OrderedCollection (F A C Eb )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+'Fm 7' asChord notes > error&nbsp;&nbsp;&nbsp;<BR>
+'F maj 7' asChord notes > error&nbsp;&nbsp;&nbsp;<BR>
+'F m7' asChord notes  > OrderedCollection (F A C )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+'F maj 7' asChord notes > OrderedCollection (F A C Eb )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+'F maj7' asChord notes > OrderedCollection (F A C E )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+'F halfDim7' asChord notes  > OrderedCollection (F Ab Cb Eb ) &nbsp;&nbsp;&nbsp;<BR>
+'F min dim5 7' asChord notes  OrderedCollection (F Ab Cb Eb )<BR>
+'F min b5 7' asChord notes OrderedCollection (F Ab Cb Eb )<BR>
+'F dim7' asChord notes OrderedCollection (F A C Ebb )<P>
+<P>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N sol)  Do<BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N sol sharp) Do #aug5 <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N fa with: N sol )   &nbsp;&nbsp;&nbsp; Do #sus4<BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N sol with: N la)  Do #sixth  <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N la)  Do #no5 #sixth <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N la)  Do #no3 #no5 #sixth <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N sol sharp with: N si)  Do #aug5 #maj7 <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N sol flat with: N si flat) Do #dim5 7<BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi flat with: N sol flat with: N si flat)   Do #halfDim7<BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi flat with: N sol flat with: N si flat flat)  Do #dim7 <P>
+<P>
+PitchClassChord new fromNotes: (Array with: N do with: N mi flat) Do #min #no5 <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N mi with: N fa  with: N fa sharp )  Do #no5 #no9 #no7 11 #aug11 <BR>
+PitchClassChord new fromNotes: (Array with: N do with: N sol flat with: N sol sharp) Do #no3 #dim5 #aug5<P>
+<P>
+A chord of A. holdsworth<BR>
+PitchClassChord new fromNotes: (Array with: N re sharp with: N fa sharp sharp  with: N la with: N do sharp sharp)   Re# #dim5 #maj7 <P>
+<P>
+<P>
+(PitchClassChord new fromString: 'C min') standardPossibleTonalities OrderedCollection ({II de Sib MajorScale} {III de Lab MajorScale} {VI de Mib MajorScale} {I de Do HarmonicMinorScale} {IV de Sol HarmonicMinorScale} {I de Do MelodicMinorScale} {II de Sib MelodicMinorScale} )<P>
+<P>
+(PitchClassChord new fromString: 'Do') possibleTonalities<BR>
+ ListeDAnalyses ({V de Fa HungarianMinor} {VI de Mi HungarianMinor} {I de Do MajorScale} {IV de Sol MajorScale} {V de Fa MajorScale} {I de Do DoubleHarmonic} {II de Si DoubleHarmonic} {IV de Sol MelodicMinorScale} {V de Fa MelodicMinorScale} {IV de Sol Oriental} {IV de Sol NeapolitanMajor} {V de Fa HarmonicMinorScale} {VI de Mi HarmonicMinorScale} {II de Si NeapolitanMinor} {VI de Mi NeapolitanMinor} )<P>
+<P>
+(PitchClassChord new fromString: 'D min ') possibleTonalities<BR>
+ListeDAnalyses ({I de Re HungarianMinor} {VII de Mib HungarianMinor} {II de Do MajorScale} {III de Sib MajorScale} {VI de Fa MajorScale} {III de Sib DoubleHarmonic} {IV de La DoubleHarmonic} {I de Re MelodicMinorScale} {II de Do MelodicMinorScale} {I de Re NeapolitanMajor} {I de Re HarmonicMinorScale} {IV de La HarmonicMinorScale} {I de Re NeapolitanMinor} {IV de La NeapolitanMinor} )<P>
+<P>
+<P>
+</I><B>exampleShort</B><I><BR>
+&nbsp;&nbsp;&nbsp;'C min 7 dim5' asChord. <BR>
+&nbsp;&nbsp;&nbsp;('C min 7 dim5 9' asChordOct: 4) notes<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderedCollection (C4 Eb4 Gb4 Bb4 D5 )<P>
+<P>
+</I><B>holdsworth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyAllChordsFromListOfNotes: aList</B><I><BR>
+&nbsp;&nbsp;&nbsp;self reallyAllChordsFromListOfNotes: (Array with: N do with: N mi with: N sol)<BR>
+ OrderedCollection ([La #noRoot #min 7 ] [Si #noRoot #sus4 #no5 #no7 #dim9 #dim13 ] [Do ] [Re #noRoot #sus4 #no5 7 9 ] [Mi #min #no5 #no11 #no9 #no7 #dim13 ] [Fa #noRoot #no3 #maj7 9 ] [Sol #sus4 #no5 #sixth ] [La# #noRoot #no3 #dim5 ] [Do# #noRoot #min #dim5 ] [Re# #noRoot #no3 #no5 #dim9 ] [Fa# #noRoot #no3 #dim5 7 #dim9 ] [Sol# #noRoot #no3 #no5 #no11 #no9 #no7 #dim13 ] [Lab #noRoot #aug5 #maj7 ] [Sib #noRoot #no3 #no5 #no7 9 #aug11 #sixth ] [Reb #noRoot #no3 #no5 #maj7 #aug9 #aug11 ] [Mib #noRoot #no5 #sixth ] [Solb #noRoot #no3 #no5 #no9 #no7 #aug11 ] )<P>
+</I></FONT>
+</BODY>
+</HTML>

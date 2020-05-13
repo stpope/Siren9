@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Content/Code/Audio/IO/portmidi217/pm_test/qtest.c
+portmidi.h
+/Content/Code/Audio/IO/portmidi217/pm_test/portmidi.h
+pmutil.h
+/Content/Code/Audio/IO/portmidi217/pm_test/pmutil.h
+stdlib.h
+/Content/Code/Audio/IO/portmidi217/pm_test/stdlib.h
+stdio.h
+/Content/Code/Audio/IO/portmidi217/pm_test/stdio.h
+
+pm_common/pmutil.h
+
+pm_common/portmidi.h
+stdint.h
+-
+

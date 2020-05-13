@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PitchTimeView</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PitchTimeView<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.TimeSequenceView<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Editors<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>pitchOffset yScale yScaleDefault <P>
+<P>
+<P>
+</FONT><I>Instances of PitchTimeView (and its subclasses) are time-line oriented DisplayListViews which make the assumption that the y-coordinate is related to pitch.<BR>
+The relationship may be a function (as in piano-roll and Hauer-Steffens notation), or involve a look-up table (as in CMN).<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;pitchOffset&nbsp;&nbsp;&nbsp;<Number> the view's lowest pitch (normally a key number)<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>highlightFrom: pt1 to: pt2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Show selection of the range pt1--pt2<P>
+<P>
+</I><B>zoom: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'zoom' to be aPoint.<P>
+</I><I><FONT SIZE=+1><P>
+transforming<P>
+<P>
+</I></FONT><B>pitchFromY: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the transformed pitch represented by the y-coordinate of the argument.<P>
+</I><I><FONT SIZE=+1><P>
+layout manager access<P>
+<P>
+</I></FONT><B>generateItemFor: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the correct visual item for the given assoc. (sent from layoutManagers).<P>
+<P>
+</I><B>itemFor: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the correct visual item for the given assoc. (sent from layoutManagers).<P>
+<P>
+</I><B>layoutManager</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default layout manager for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the instance variables of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+controller access<P>
+<P>
+</I></FONT><B>defaultControllerClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class of the default controller for the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PitchTimeView class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a p-t view on a random event list.<P>
+<P>
+</I><B>randomExampleLong</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a p-t view on a random event list.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>label</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the view label for the receiver's instances.<P>
+</I><I><FONT SIZE=+1><P>
+subview creation<P>
+<P>
+</I></FONT><B>addButtonsOn: me for: dled to: container in: rect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the default button panel to the instance in the given rectangle.</I></FONT>
+</BODY>
+</HTML>

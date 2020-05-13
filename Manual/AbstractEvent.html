@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				AbstractEvent</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>AbstractEvent<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Events<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>properties <P>
+<P>
+<P>
+</FONT><I>AbstractEvent is the base class in the event/event-list hierarchy (although it can be instantiated). Instances of AbstractEvent are objects that can be used as dictionaries or property lists. Their properties can be accessed either with at: and at:put: or by using the new property names themselves as selectors (e.g., (anAEventInstance at: #color put: #green) or (anAEventInstance color: #green)).<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;properties&nbsp;&nbsp;&nbsp; <Dictionary or nil> property list dictionary<P>
+<P>
+The global dictionary called Events can be used for sharing event instances.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>, anArgument</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument as a property of the receiver.<P>
+<P>
+</I><B>date</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'date'.<P>
+<P>
+</I><B>date: obj</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'date'.<P>
+<P>
+</I><B>inspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the receiver--Use a special inspector for Event types<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'name'.<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Edit, play (if <shift>) or inspect (if <ctrl>) the receiver, depending on the keyboard state<P>
+<P>
+</I><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer AEvent--all subclasses look like me<P>
+<P>
+</I><B>version</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'version'.<P>
+<P>
+</I><B>version: obj</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'version'.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>asExplorerString: showHide</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>display: showHide field: filter on: stream</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>displayField: filter on: stream</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and store the source the receiver on the argument.<P>
+<P>
+</I><B>templateFields</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the field names for the instances of the receiver class.<P>
+</I><I><FONT SIZE=+1><P>
+scheduling<P>
+<P>
+</I></FONT><B>scheduleOn: aChannel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Perform or interpret the receiver on the argument; override in subclasses.<P>
+</I><I><FONT SIZE=+1><P>
+properties<P>
+<P>
+</I></FONT><B>at: aProp</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a value from the property list dictionary (or an instVar).<P>
+<P>
+</I><B>at: aProp ifAbsent: otherCase</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a value from the property list dictionary or the value of the given block.<P>
+<P>
+</I><B>at: aProp put: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set a value in the receiver's property list dictionary (or instVar).<P>
+<P>
+</I><B>doesNotUnderstand: aMessage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle doesNotUnderstand: to try to access the property dictionary.<BR>
+&nbsp;&nbsp;&nbsp;If this is unsuccessful, announce that the receiver does not understand the argument.<P>
+<P>
+</I><B>hasProperty: aSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether or not the receiver's property list dictionary includes the symbol as a key.<P>
+<P>
+</I><B>properties</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's property list dictionary.<P>
+<P>
+</I><B>respondsTo: aSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the method dictionary of the receiver's class contains <BR>
+&nbsp;&nbsp;&nbsp;aSymbol as a message selector OR if the selector is unary and is a key <BR>
+&nbsp;&nbsp;&nbsp;in the receiver's property dictionary.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the default state of the receiver--add props. dict.<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flush the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>propCheck</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make sure the receiver has a property list dictionary.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer true.<P>
+<P>
+</I><B>isSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer false.<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>= anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument represent the same values.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>AbstractEvent class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>eventInspectExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the creation of an AEvent.<P>
+<P>
+</I><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the creation of an AEvent.</I></FONT>
+</BODY>
+</HTML>

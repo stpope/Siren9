@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OSCVoice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OSCVoice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.NotelistVoice<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-OSC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>port <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>An OSCVoice can play events out to an OSC server using a predefined parameter mapping block to generate the OSC message.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;port&nbsp;&nbsp;&nbsp;<Siren.OSCPort>  my output port<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+events<P>
+<P>
+</I></FONT><B>oscMessageFrom: event</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a message for the given event by passing it to my parameter-mapper block<P>
+<P>
+</I><B>play: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand the list and play it now.<P>
+<P>
+</I><B>playAssociation: ass in: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the association...<P>
+<P>
+</I><B>playEvent: event at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand the list and play it at the given time.<P>
+<P>
+</I><B>waitTill: time</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+utilities<P>
+<P>
+</I></FONT><B>send: command args: args</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send an OSC command with the given arguments<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>port</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the OSCPort<P>
+<P>
+</I><B>port: aPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the OSCPort<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OSCVoice class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>fmExample1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a few random notes on the CSL FM instrument<P>
+<P>
+</I><B>fmExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play molto legato notes on 4 CSL FM instruments and loop until interrupted <P>
+<P>
+</I><B>fmExample3</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a long CSL FM note and apply some real-time control functions to it<P>
+<P>
+</I><B>fmExample4</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play an FM bell using CSL; fork a block that plays a note and waits a bit; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stop the scheduler to stop the block.<P>
+<P>
+</I><B>functionExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a function out to OSC<P>
+<P>
+</I><B>midiScaleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCVoice midiScaleExample<P>
+<P>
+</I><B>sndExample1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play random notes on the CSL sound file instruments<P>
+<P>
+</I><B>sndExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play random notes on the CSL sound file instruments; loop until interrupted<P>
+<P>
+</I><B>sosExample1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play random notes on the CSL sum-of-sines instruments; loop until interrupted<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an OSC voice for use with OSC-to-MIDI by default.<P>
+<P>
+</I><B>localhost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance on the local host<P>
+<P>
+</I><B>map: mapSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default instance that uses the given parameter map name<P>
+<P>
+</I><B>onPort: pt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance on the given port<P>
+<P>
+</I><B>scHost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default voice for SC over OSC<P>
+</I><I><FONT SIZE=+1><P>
+parameter maps<P>
+<P>
+</I></FONT><B>defaultPMap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with OSC.<P>
+<P>
+</I><B>pMapForCSLAdditive</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with the CSL sum-of-sines instrument.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This creates an OSC bundle with a 'ps' message for the spectrum followed<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by a 'pn' message to play a note.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSL SOSInstrument args: dur, ampl, freq, pos, [att, dec, sus, rel] <P>
+<P>
+</I><B>pMapForCSLFM</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with the CSL FM example instrument.<P>
+<P>
+</I><B>pMapForCSLSimpleFM</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with the CSL FM example instrument.<P>
+<P>
+</I><B>pMapForCSLSnd</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with the CSL FM example instrument.<P>
+<P>
+</I><B>pMapForMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with OSC-to-MIDI. <BR>
+&nbsp;&nbsp;&nbsp;In this class, we create and return a OSCMessage with data taken from the given event.<P>
+<P>
+</I><B>pMapForMIDItoFM</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with the CSL FM example instrument.<P>
+<P>
+</I><B>pMapWithBundle</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default parameterMap for use with OSC-to-MIDI. In this class, we create and return a TypedOSCMessage with data taken from the given event. This allows us to have other versions that create OSC bundles.</I></FONT>
+</BODY>
+</HTML>

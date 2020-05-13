@@ -1,0 +1,483 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SampledSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SampledSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name rate format channels samplesInMemory firstIndex <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MagicNumbers MaxIntSample MinIntSample <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private SoundConstants.* <P>
+<P>
+<P>
+</FONT><I>Instances of SampledSound represent digitally-sampled sound objects.  Their "samples" are stored in the "data" instance variable inherited from Function. They can be read/written to/from files (using SoundFile objects), displayed (in SoundViews) and played (via SoundPorts).<P>
+<P>
+The class SampledSound is concrete and assumes 16-bit linear encoding of samples; there are subclasses for floating-point and 8-bit Mu-law sample types. There are useful class methods for creating a number of standard sounds such as silence, impulses, swept sine waves, etc. Note that SampledSound uses the 'range' instance variable inherited from Function as its (integer) size.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;name <String> the file name or object ID<BR>
+&nbsp;&nbsp;&nbsp;rate <Number> the sample rate<BR>
+&nbsp;&nbsp;&nbsp;format <Symbol> the sample format, e.g., #lin16Bit<BR>
+&nbsp;&nbsp;&nbsp;channels <Integer> the # of channels<BR>
+&nbsp;&nbsp;&nbsp;samplesInMemory&nbsp;&nbsp;&nbsp;<Integer> The number of samples held in memory (may be smaller than <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size for very large sounds)<BR>
+&nbsp;&nbsp;&nbsp;firstIndex&nbsp;&nbsp;&nbsp;<Integer> The sample index of the start of the in-memory samples  (may be non-zero <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for very large "paged" sounds)<P>
+<P>
+Other properties, such as the sound's (optional) file name, its sample rate, or the number of channels, are stored in the property list dictionary that is inherited by virtue of being an event subclass.<P>
+<P>
+KNOWN BUGS:<P>
+<P>
+Note that not all of this class is finished--there are methods that call non-existent user primitives and have no Smalltalk implementations (like the heavy DSP).<P>
+<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>allocateData</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>channels</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'channels'.<P>
+<P>
+</I><B>channels: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'channels' to be anObject.<P>
+<P>
+</I><B>copy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a 'clean' copy of the receiver.<P>
+<P>
+</I><B>copyAllButSamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a 'clean' copy of the receiver, but don't write in the samples yet.<P>
+<P>
+</I><B>copyFrom: start to: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver for the given sample range.<P>
+<P>
+</I><B>cueNamed: cName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a sound derived from the receiver using the samples between the named cue points.<P>
+<P>
+</I><B>envelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's envelope.<P>
+<P>
+</I><B>envelope: anEnv</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's envelope property.<P>
+<P>
+</I><B>file</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sound file for the receiver (if present).<P>
+<P>
+</I><B>firstIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'firstIndex'.<P>
+<P>
+</I><B>firstIndex: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'firstIndex' to be anObject.<P>
+<P>
+</I><B>floatsFrom: aStart to: aStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver's data within the given sample range.<P>
+<P>
+</I><B>format</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'format'.<P>
+<P>
+</I><B>format: fSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'format' to be fSymbol.<P>
+<P>
+</I><B>frameRate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'rate'.<P>
+<P>
+</I><B>from: aStart to: aStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver within the given time range.<P>
+<P>
+</I><B>fromSample: start toSample: finish</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver within the given sample range.<P>
+<P>
+</I><B>hasFile</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is stored on a file of the same name.<P>
+<P>
+</I><B>longFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's format as a descriptive string.<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'name'.<P>
+<P>
+</I><B>name: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'name' to be anObject.<P>
+<P>
+</I><B>rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'rate'.<P>
+<P>
+</I><B>rate: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'rate' to be anObject.<P>
+<P>
+</I><B>sampleRate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'rate'.<P>
+<P>
+</I><B>samples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'data'.<P>
+<P>
+</I><B>samples: theArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theArray', (a Byte, Word, or Float array, or an UninterpretedBytes)<BR>
+&nbsp;&nbsp;&nbsp;as the new instance variable 'samples'.<P>
+<P>
+</I><B>samplesInMemory</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'samplesInMemory'.<P>
+<P>
+</I><B>samplesInMemory: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'samplesInMemory' to be anObject.<P>
+<P>
+</I><B>sampleSize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the size in bytes of the receiver's samples (2).<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the receiver's size in sample frames.<P>
+<P>
+</I><B>size: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'size' in samples.<P>
+<P>
+</I><B>sizeInBytes</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the size in bytes of the receiver.<P>
+<P>
+</I><B>sizeInFrames</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the receiver's size in sample frames.<P>
+</I><I><FONT SIZE=+1><P>
+sample accessing<P>
+<P>
+</I></FONT><B>at: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index (between 0 and 1).<P>
+<P>
+</I><B>at: anIndex put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given sample at the given index (after lots of checking and testing).<P>
+<P>
+</I><B>cutFrom: startSample to: stopSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cut the designated section from the receiver; answer a new sound (!).<P>
+<P>
+</I><B>floatSampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as a normalized floating-point number.<P>
+<P>
+</I><B>floatSampleAt: index put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given floating-point sample at the given index after scaling.<P>
+<P>
+</I><B>intSampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as an integer.<P>
+<P>
+</I><B>intSampleAt: index put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given integer sample at the given index.<P>
+<P>
+</I><B>paste: aSound from: startSample to: stopSample at: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Paste the given sound into the receiver; answer a new sound (!).<P>
+<P>
+</I><B>sampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index, mapping and paging as necessary.<P>
+<P>
+</I><B>sampleAt: anIndex put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given sample at the given index (after lots of checking and testing).<P>
+</I><I><FONT SIZE=+1><P>
+interpolating<P>
+<P>
+</I></FONT><B>autoCorrelationBetween: index1 and: index2 length: length</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the cummulative error between the portions of my waveform starting at the given two indices and extending for the given length. The larger this error, the greater the difference between the two waveforms.<P>
+<P>
+</I><B>errorBetween: sampleArray1 and: sampleArray2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the cummulative error between the two sample arrays, which are assumed to be the same size.<P>
+<P>
+</I><B>fadeInOver: fTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply a fade-in ramp to the receiver with the given time.<P>
+<P>
+</I><B>fadeOutOver: fTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply a fade-in ramp to the receiver with the given time.<P>
+<P>
+</I><B>interpolatedWindowAt: anIndex width: nSamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return an array of N samples starting at the given index in my data.<P>
+<P>
+</I><B>sampledFrom: aStart to: aStop into: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a down-sampled version of the receiver in the argument array.<P>
+<P>
+</I><B>sampledTo: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a down-sampled version of the receiver in the argument array.<P>
+<P>
+</I><B>sampleMaxFrom: aStart to: aStop into: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a version of the root-mean-square energy of the receiver in the argument array.<P>
+</I><I><FONT SIZE=+1><P>
+merging<P>
+<P>
+</I></FONT><B>extractChannel: cNumber into: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Extract the given channel from the receiver into the argument sound.<P>
+<P>
+</I><B>mergeChannel: cNumber from: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Merge the argument sound into the given channel of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+envelopes<P>
+<P>
+</I></FONT><B>average</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the average sample value of the receiver (normally the DC offset).<P>
+<P>
+</I><B>computeEnvelope: type</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute a sample envelope for the receiver with 128 points per second.<P>
+<P>
+</I><B>computePeakEnvelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute a windowed peak sample envelope for the receiver with 1024 points per 4 seconds.<P>
+<P>
+</I><B>computeRMSEnvelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute a windowed root-mean-square sample envelope for the receiver.<P>
+<P>
+</I><B>edit</B><I><BR>
+&nbsp;&nbsp;&nbsp;Edit the receiver.<P>
+<P>
+</I><B>max</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the maximum value of the samples.<P>
+<P>
+</I><B>offsetBy: aFactor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver offset by the given factor.<P>
+<P>
+</I><B>offsetFrom: aStart to: aStop by: anOffset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver offset by the given factor.<P>
+<P>
+</I><B>peakEnvelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's peak-detected envelope, or compute a new one.<P>
+<P>
+</I><B>peaksFrom: aStart to: aStop into: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a version of the root-mean-square energy of the receiver in the argument array.<P>
+<P>
+</I><B>readEnvelope: type</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to read the sample envelope for the receiver from a file named XXX.env.<P>
+<P>
+</I><B>rmsEnvelope</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's envelope, or compute a new one.<P>
+<P>
+</I><B>rmsFrom: aStart to: aStop into: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a version of the root-mean-square energy of the receiver in the argument array.<P>
+<P>
+</I><B>rmsTo: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Place a version of the root-mean-square energy of the receiver in the argument array.<P>
+<P>
+</I><B>scaleBy: aScaleFactor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's samples by the given factor.<P>
+<P>
+</I><B>scaledBy: aScaleFactor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given factor.<P>
+<P>
+</I><B>scaledByEnvelopeArray: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given envelope array.<P>
+<P>
+</I><B>scaledByFunction: aFunction</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given breakpoint envelope expressed as points.<P>
+<P>
+</I><B>scaledFrom: aStart to: aStop by: aScaleFactor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given factor.<P>
+<P>
+</I><B>scaledFrom: aStart to: aStop byEnvelopeArray: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given envelope array.<P>
+<P>
+</I><B>scaledFrom: aStart to: aStop byFunction: aFunction</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver scaled by the given breakpoint envelope expressed as points.<P>
+<P>
+</I><B>scaleFrom: aStart to: aStop by: aScaleFactor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's damples by the given factor.<P>
+<P>
+</I><B>writeEnvelope: type</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write the sample envelope for the receiver to a file named XXX.env or XXX.pk.<P>
+</I><I><FONT SIZE=+1><P>
+enumerating<P>
+<P>
+</I></FONT><B>do: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Evaluate aBlock with each of the receiver's elements as the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;pretty-print the receiver.<P>
+<P>
+</I><B>printSamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;pretty-print a few samples.<P>
+<P>
+</I><B>printSamplesOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Pretty-print a few samples--32 by default, 1024 if shift-down, *all* of ctrl and shift down.<P>
+<P>
+</I><B>storeOnFileNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Save the receiver on the sound file named by the argument.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>getData</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read samples in from the file if none in memory.<P>
+<P>
+</I><B>mapSampleIndex: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the given sample index according to the 'page' (firstIndex) of the receiver.<P>
+<P>
+</I><B>privateSampleAt: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as an integer.<P>
+<P>
+</I><B>privateSampleAt: anIndex in: cPtr bigEndian: isBE</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as an integer, <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assuming the output is a cPointer; handle endianness.<P>
+<P>
+</I><B>privateSampleAt: anIndex in: cPtr put: value bigEndian: isBE</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as an integer, <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assuming the output is a cPointer; handle endianness.<P>
+<P>
+</I><B>privateSampleAt: anIndex put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given sample at the given index (safely).<P>
+<P>
+</I><B>readSamplesFrom: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read in samples from disk starting a bit before the given index.<P>
+<P>
+</I><B>realSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the real sound for the receiver (overridden in virtual subclasses).<P>
+<P>
+</I><B>scaleSampleIndex: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the given sample index according to the sample size of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+play/record<P>
+<P>
+</I></FONT><B>nextBufferInto: outBuffer frames: bufferSize channels: outChannels format: sformat startingAt: startFrame</B><I><BR>
+&nbsp;&nbsp;&nbsp;Copy data from the receiver into the given output buffer; answer the current sample index.<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver out over the default sound port.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>hasGaps</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver has any gaps.<P>
+<P>
+</I><B>isComposite</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is a composite sound.<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is empty.<P>
+<P>
+</I><B>isVirtual</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is a virtual sound.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a default sound.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SampledSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default empty sound.<P>
+<P>
+</I><B>duration: aDur named: nameString rate: aRate channels: aChannels format: aFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new 16-bit linear sound with the given properties.<P>
+<P>
+</I><B>duration: aDur rate: aRate channels: aChannels</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new sound with the given properties.<P>
+<P>
+</I><B>duration: aDur rate: aRate channels: aChannels format: aFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new sound with the given properties.<P>
+<P>
+</I><B>fromData: anArray named: nameString rate: aRate channels: aChannels format: aFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new sound from the given data.<P>
+<P>
+</I><B>fromData: anArray rate: aRate channels: aChannels format: aFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new 16-bit linear sound from the given data.<P>
+<P>
+</I><B>fromDblData: anArray rate: aRate channels: aChannels size: siz</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new sound from the given data.<P>
+<P>
+</I><B>headerFromFile: nameString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the given file (EBICSF, NeXT, or SPARC soundfile format)<P>
+<P>
+</I><B>named: aName size: aSize format: formatSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given name and storage size.<P>
+<P>
+</I><B>named: nameString size: size rate: rate channels: chans format: formatSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size (in sample frames), etc.<P>
+<P>
+</I><B>named: nameString size: size rate: rate channels: chans format: formatSymbol data: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size (in sample frames), etc.<P>
+<P>
+</I><B>size: size format: formatSymbol channels: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size, etc.<P>
+<P>
+</I><B>size: size rate: aRate channels: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size, etc.<P>
+<P>
+</I><B>size: size rate: rate channels: chans format: formatSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size, etc.<P>
+<P>
+</I><B>size: size rate: rate format: formatSymbol channels: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new Sound with the given storage size, etc.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>immediateInspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a sampled sound from immediate data; inspect it.<P>
+<P>
+</I><B>rmsViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a sampled sound from the file, take the rms into 64 values, and edit that.<P>
+<P>
+</I><B>sweepExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on a swept sine wave.<P>
+<P>
+</I><B>sweepView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on a swept sine wave.<P>
+</I><I><FONT SIZE=+1><P>
+standard wave forms<P>
+<P>
+</I></FONT><B>constantOfDur: dur value: value rate: rate chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a sound with a constant value.<P>
+<P>
+</I><B>expSweepDur: dur rate: rate from: start to: stop chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SampledSound with a swept sine wave.<P>
+<P>
+</I><B>impulseOfDur: dur width: width rate: rate chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a sound with an impulse of the given characteristics.<P>
+<P>
+</I><B>linearSweepDur: dur rate: rate from: start to: stop chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a swept sine wave.<P>
+<P>
+</I><B>pulseTrainDur: dur rate: rate freq: freq width: width chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a pulse train.<P>
+<P>
+</I><B>pulseTrainDur: dur rate: rate freq: freq width: width chans: chans zero: zero</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a pulse train.<P>
+<P>
+</I><B>rampDur: dur rate: rate chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a single ramp of samples.<P>
+<P>
+</I><B>sawtooth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with raw sawtooth samples.<P>
+<P>
+</I><B>sawtoothDur: dur rate: rate freq: freq chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with raw sawtooth samples.<P>
+<P>
+</I><B>sineDur: dur rate: rate freq: freq chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a pulse train.<P>
+<P>
+</I><B>squareDur: dur rate: rate freq: freq chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a square wave.<P>
+<P>
+</I><B>sweepDur: dur rate: rate from: start to: stop chans: chans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a StoredSound with a swept sine wave.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>formatSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the symbolic code used for the format of the receiver's instances.<P>
+<P>
+</I><B>maxSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the maximum value of the receiver class.<P>
+<P>
+</I><B>minSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the minimum value of the receiver class.</I></FONT>
+</BODY>
+</HTML>

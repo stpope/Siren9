@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DBLoudness</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DBLoudness<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.RatioLoudness<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<P>
+<P>
+<P>
+</FONT><I>Instances of DBLoudness represent deciBel loudness values.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>units</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the units string of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+double dispatch<P>
+<P>
+</I></FONT><B>differenceFromDynamic: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Subtract the argument from the receiver after turning both into db.<P>
+<P>
+</I><B>differenceFromVelocity: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Subtract the argument from the receiver after turning both into db.<P>
+<P>
+</I><B>productFromDynamic: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Multiply the argument by the receiver after turning both into db.<P>
+<P>
+</I><B>productFromVelocity: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Multiply the argument by the receiver after turning both into db.<P>
+<P>
+</I><B>quotientFromDynamic: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Divide the argument by the receiver after turning both into db.<P>
+<P>
+</I><B>quotientFromVelocity: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Divide the argument by the receiver after turning both into db.<P>
+<P>
+</I><B>sumFromDynamic: aDyn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver after turning both into db.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Amplitude.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MIDI key velocity (0 to 127)<P>
+<P>
+</I><B>asRatio</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver as a ratio between 0 and 1.<P>
+<P>
+</I><B>positiveDB</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the zero-based positive dB value of the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DBLoudness class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+coercion<P>
+<P>
+</I></FONT><B>ddMsgName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the selector to be used in coercing double-dispatching messages.</I></FONT>
+</BODY>
+</HTML>

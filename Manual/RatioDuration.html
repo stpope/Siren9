@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				RatioDuration</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>RatioDuration<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.RatioMagnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<P>
+<P>
+<P>
+</FONT><I>Instances of RatioDuration are 'beat' fractions.<BR>
+They can be expanded into msec. relative to some given event (a whole note), or use the default tempo of 1 sec.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn0: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver as a fractional duration.<P>
+<P>
+</I><B>units</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the units string of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Duration.<P>
+</I><I><FONT SIZE=+1><P>
+double dispatching<P>
+<P>
+</I></FONT><B>quotientFromInteger: numerator</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MM whose value is the argument over the receiver's value.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asMS</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MSecondDuration.<P>
+<P>
+</I><B>asMsec</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MSecondDuration.<P>
+<P>
+</I><B>asSec</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SecondDuration.<P>
+<P>
+</I><B>asUsec</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a USecondDuration.<P>
+<P>
+</I><B>asUseconds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a USecondDuration.<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most numerically meaningful version of the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>RatioDuration class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+coercion<P>
+<P>
+</I></FONT><B>ddMsgName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the selector to be used in coercing double-dispatching messages.</I></FONT>
+</BODY>
+</HTML>

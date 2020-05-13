@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				TimeSequenceView</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>TimeSequenceView<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayListView<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Editors<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>clefForm xScaleDefault xScale xColor yColor headColor <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clefColor itemAccessors <P>
+<P>
+<P>
+</FONT><I>Instances of SequenceView (and its subclasses) are time-line oriented DisplayListViews.<BR>
+Time may run horizontally (default) or vertically, depending on the layout manager.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;clefForm&nbsp;&nbsp;&nbsp;<Form> the view's clef form or axes (optional), may be staff or scale/grid/ruler<BR>
+&nbsp;&nbsp;&nbsp;xScale&nbsp;&nbsp;&nbsp;<Number> the time-to-x-coordinate scale<BR>
+&nbsp;&nbsp;&nbsp;xColor&nbsp;&nbsp;&nbsp;<ColorValue> the color of the lines for note duration<BR>
+&nbsp;&nbsp;&nbsp;yColor&nbsp;&nbsp;&nbsp;<ColorValue> the color of the lines for note amplitude<BR>
+&nbsp;&nbsp;&nbsp;headColor&nbsp;&nbsp;&nbsp;<ColorValue> the note head color<BR>
+&nbsp;&nbsp;&nbsp;clefColor&nbsp;&nbsp;&nbsp;<ColorValue> the clef color<BR>
+&nbsp;&nbsp;&nbsp;itemAccessors&nbsp;&nbsp;&nbsp;<Symbol or Dictionary of (Voice -> Symbol)> the item accessor(s) to use to generate the display list items for the notes<P>
+<P>
+This implementation is MODE 1.1, STEIM, Amsterdam, May/June 1990; updated at the Lagoon in Palo Alto, July, 1991-May, 1992.<P>
+<P>
+The entirety of this software is Copyright (c) 1990, Stephen Travis Pope, Nomad Object Design/Nomad Computer Music Research. <BR>
+All Rights Reserved.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayOn: aGC</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on the argument.<P>
+<P>
+</I><B>displayOnImage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on its cached form.<P>
+<P>
+</I><B>highlightFrom: pt1 to: pt2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Show selection of the range pt1--pt2.<P>
+<P>
+</I><B>highlightTime: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Show selection of the time value value.<P>
+<P>
+</I><B>reallyDisplayOn: gc</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on its cached form.<P>
+<P>
+</I><B>zoom: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'zoom' to be aPoint.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>cachedPixmap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's cached pixmap.<P>
+<P>
+</I><B>clefColor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'clefColor'.<P>
+<P>
+</I><B>clefColor: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'clefColor' to be anObject.<P>
+<P>
+</I><B>clefForm</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's clef form.<P>
+<P>
+</I><B>clefWidth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's clef form width.<P>
+<P>
+</I><B>headColor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'headColor'.<P>
+<P>
+</I><B>headColor: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'headColor' to be anObject.<P>
+<P>
+</I><B>xColor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'xColor'.<P>
+<P>
+</I><B>xColor: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'xColor' to be anObject.<P>
+<P>
+</I><B>xScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'xScale'.<P>
+<P>
+</I><B>xScale: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'xScale' to be anObject.<P>
+<P>
+</I><B>yColor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'yColor'.<P>
+<P>
+</I><B>yColor: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'yColor' to be anObject.<P>
+</I><I><FONT SIZE=+1><P>
+transforming<P>
+<P>
+</I></FONT><B>formXFromTime: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;take a note's time and return a display point x coordinate relative to the form.<P>
+<P>
+</I><B>timeFromX: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list time from the argument.<P>
+</I><I><FONT SIZE=+1><P>
+layout manager access<P>
+<P>
+</I></FONT><B>generateItemFor: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the correct visual item for the given assoc. (sent from layoutManagers).<P>
+<P>
+</I><B>itemFor: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the correct visual item for the given assoc. (sent from layoutManagers).<P>
+<P>
+</I><B>layoutManager</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default layout manager for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the instance variables of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+controller access<P>
+<P>
+</I></FONT><B>defaultControllerClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class of the default controller for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+updating<P>
+<P>
+</I></FONT><B>update: ignored</B><I><BR>
+&nbsp;&nbsp;&nbsp;Redraw the display<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>TimeSequenceView class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sequence view on a random event list.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>openOnEventList: anEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the receiver on the given event list.<P>
+</I><I><FONT SIZE=+1><P>
+constant access<P>
+<P>
+</I></FONT><B>defaultCacheExtent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default extent of the receiver's instances' cache.<P>
+<P>
+</I><B>inset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default display inset.</I></FONT>
+</BODY>
+</HTML>

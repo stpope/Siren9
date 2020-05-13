@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				EventListEditor</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>EventListEditor<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayListEditor<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Editors<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>eventList ostinato defaultEvent <P>
+<P>
+<P>
+</FONT><I>Instances of EventListEditor are used as the models of EventListViews.<BR>
+They hold onto EventLists and send messages to them.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;list &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EventList> my EventList (subject)<BR>
+&nbsp;&nbsp;&nbsp;ostinato &nbsp;&nbsp;&nbsp;<Ostinato> my loop process (if i'm looping)<BR>
+&nbsp;&nbsp;&nbsp;selection &nbsp;&nbsp;&nbsp;<EventList> The "selected" notes<BR>
+&nbsp;&nbsp;&nbsp;ampl &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number or Amplitude> My default amplitude<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+list access<P>
+<P>
+</I></FONT><B>add: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given EventAssociation to the model list.<P>
+<P>
+</I><B>doInspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the receiver's list.<P>
+<P>
+</I><B>eraseList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flush the receiver's list.<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver's eventList.<P>
+<P>
+</I><B>remove: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Remove the given event from the receiver's list<P>
+<P>
+</I><B>startStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;If not playing, create ostinato and start; if playing, stop and release.<P>
+</I><I><FONT SIZE=+1><P>
+links and groups<P>
+<P>
+</I></FONT><B>group: events</B><I><BR>
+&nbsp;&nbsp;&nbsp;Group the event list argument within the receiver's list.<P>
+<P>
+</I><B>link: anEvent with: anOtherEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a link between the two events or lists.<P>
+<P>
+</I><B>select: anAorEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given association to the list of selected items.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>ampl</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the amplitude of the default event.<P>
+<P>
+</I><B>ampl: newValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the amplitude of the default event.<P>
+<P>
+</I><B>defaultEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's default event.<P>
+<P>
+</I><B>defaultEvent: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's default event.<P>
+<P>
+</I><B>displayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer nil.<P>
+<P>
+</I><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's subject eventList.<P>
+<P>
+</I><B>eventList: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the given EventList as the receiver's model.<P>
+<P>
+</I><B>items</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the subject eventList's events.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the receiver's list.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>EventListEditor class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+Siren external interfaces
+
+These files implement Smalltalk DLLCC external interfaces that allow VisualWorks
+users to access several audio/MIDI/DSP libraries. The facilities at present are
+the following:
+
+libsndfile_lite -- interface to Erik de Castro Lopo's libsndfile
+	See http://www.zip.com.au/~erikd/libsndfile/
+	Supports multiple open files using integer indeces (like FILE)
+	Currently supports all file types, but only 16-bit linear and 32-bit floating-point sample I/O to Smalltalk.
+
+portmidi_lite -- interface to the portmidi library
+	See http://www-2.cs.cmu.edu/~music/portmusic/
+	Supports multiple open 1-way streams using integer indeces (like FILE)
+	MIDI input is via a blocking read function that's called from a threaded DLLCC interface.
+	Supports cached controllers.
+
+portaudio_lite -- interface to the portaudio library
+	See http://www.portaudio.com/
+	Supports a single PortAudio stream
+	Uses callbacks via Smalltalk blocks (buggy) and shared I/O sample buffers
+
+fftw_lite.h -- interface to the FFTW FFT library
+	See http://www.fftw.org
+
+Building the DLLCC libraries
+
+There are 4 pairs of header/source files for portMIDI, portAudio, libSndFile, and FFTW.
+I use the command-line make utility and provide Makefiles for several platforms.
+You can change the compiler and linker flags in the Makefiles
+
+Binaries
+
+The xxx.dylib files are for Mac OSX/Intel; the xxx.so files are for Linux; the xxx.dll are for MS-Windows.
+
+Notes
+ 
+Most of the API calls return 0 on success.
+They return other values (like -1) on non-fatal errors and use oeFail() on fatal errors.
+Compiling with -D DEBUG_SIREN dumps verbose info from the VM to "stdout" like the console.

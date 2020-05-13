@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MusicMagnitude</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MusicMagnitude<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Magnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Representation<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>value <P>
+<P>
+<P>
+</FONT><I>Instances of the subclasses of MusicMagnitude are used to represent scalar magnitudes in musical objects. The class MusicMagnitude is a place for the music magnitudes to share their state and basic accessing behavior.<P>
+<P>
+MusicMagnitudes generally implement precise mixed-mode arithmetic and comparison methods using a per-species generality table and auto-coercion within a species.<P>
+<P>
+The "type abstraction" classes (Duration, Pitch, Amplitude, etc.) represent "what"; they are never instantiated; their class creation methods answer instances of their species, but they manage coercion within the classes of their species. The "representational abstraction" classes (NominalMagnitude, OrdinalMagnitude, NumericalMagnitude, RatioMagnitude, etc.) represent "how"; they share value model semantics and coercion techniques. Note that the concrete implementation classes therefore answer their species by property model rather than by implementation subclass (i.e., HertzPitch species --> Pitch rather than NumericalMagnitude).<P>
+<P>
+MusicMagnitudes can have dependents (observers), and send themselves the changed: message when their values are changed.<P>
+<P>
+There are many examples in the implementation classes and the Siren  outline.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number or Symbol> the magnitude's value<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>, anArgument</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer en Event with the given magnitude as its first property.<P>
+<P>
+</I><B>value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'value'.<P>
+<P>
+</I><B>value: theValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theValue', as the new instance variable 'value' <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and signal any dependents.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver on the argument as a MM declaration.<P>
+<P>
+</I><B>printOn: aStream parens: useParens</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver on the argument as a MM declaration.<P>
+<P>
+</I><B>printString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a String whose characters are a description of the receiver.<P>
+<P>
+</I><B>printStringParens: bool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a String whose characters are a description of the receiver.<P>
+<P>
+</I><B>printValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store the receiver on the argument as a MM declaration.<P>
+<P>
+</I><B>units</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the units string of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer MusicMagnitude.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>adaptToNumber: rcvr andSend: selector</B><I><BR>
+&nbsp;&nbsp;&nbsp;If I am involved in arithmetic with a number, convert me to a number.<P>
+<P>
+</I><B>coerceTo: type</B><I><BR>
+&nbsp;&nbsp;&nbsp;Coerce the receiver to the given class and answer a new object.<P>
+<P>
+</I><B>ddMsgName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the selector to be used in coercing double-dispatching messages.<P>
+<P>
+</I><B>msec</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MSecondDuration.<P>
+<P>
+</I><B>usec</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MSecondDuration.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isImmediate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver has an immediate representation.<P>
+<P>
+</I><B>isMusicMagnitude</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer true for the receiver and all subsclasses.<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>* aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the product of the receiver and the argument<P>
+<P>
+</I><B>+ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sum of the receiver and the argument, doing generality-based<BR>
+&nbsp;&nbsp;&nbsp;class coercion within a species using auto-generated coercion messages.<P>
+<P>
+</I><B>- aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the difference of the receiver and the argument<P>
+<P>
+</I><B>/ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the quotient of the receiver and the argument<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>< aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is less than the argument<P>
+<P>
+</I><B>= aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument are equal.<P>
+<P>
+</I><B>hash</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SmallInteger unique to the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicMagnitude class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>value: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer and instance with the argument as its value.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default color to display instances with (hack for making pretty graphs).<P>
+<P>
+</I><B>propertyName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's default property name.<P>
+<P>
+</I><B>relativeMember</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's species member used as a relative magnitude.</I></FONT>
+</BODY>
+</HTML>

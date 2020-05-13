@@ -1,0 +1,255 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				FunctionView</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>FunctionView<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayListView<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Functions<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>models aScale vRange hRange colors normalize lineWidth <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>LineWidth <P>
+<P>
+<P>
+</FONT><I>Instances of class FunctionView are views on breakpoint or sampled data functions.<BR>
+They can display up to 4 model functions on a fixed-size non-scrolling field.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;models&nbsp;&nbsp;&nbsp; <Array of 1 to 4 Functions> the function array<BR>
+&nbsp;&nbsp;&nbsp;aScale <Number> the y-scale of the view<BR>
+&nbsp;&nbsp;&nbsp;vRange <Number> the vertical range, normally = aScale<BR>
+&nbsp;&nbsp;&nbsp;hRange <Number> the horizontal range<BR>
+&nbsp;&nbsp;&nbsp;colors <Array of 1 to 4 ColorValues> the colors for the 4 functions<BR>
+&nbsp;&nbsp;&nbsp;normalize <<Array of 1 to 4 Booleans> whether to normalize (to +- 1) the fnuctions<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'aScale'.<P>
+<P>
+</I><B>aScale: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'aScale' to be anObject.<P>
+<P>
+</I><B>colors</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's color array.<P>
+<P>
+</I><B>colors: anArrayOfSize4</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's color array to the argument.<P>
+<P>
+</I><B>displayExtent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's visual extent.<P>
+<P>
+</I><B>dontNormalize: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'hRange'.<P>
+<P>
+</I><B>hRange: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's horizontal extent to aNumber.<P>
+<P>
+</I><B>lineWidth: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's line width to the argument.<P>
+<P>
+</I><B>model</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the fisrt element from receiver's array of models.<P>
+<P>
+</I><B>modelAt: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's model at the given index.<P>
+<P>
+</I><B>modelAt: anIndex put: aFunction</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's model at the given index to the given function.<P>
+<P>
+</I><B>models</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's first model.<P>
+<P>
+</I><B>models: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's array of models to the argument.<P>
+<P>
+</I><B>normalize: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>normalizeArray: arrayOfBooleans</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's array of normalization switches.<P>
+<P>
+</I><B>vRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'vRange'.<P>
+<P>
+</I><B>vRange: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's vertical extent to aNumber.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayGridsOn: gc</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the gridding for the receiver on its cached form.<P>
+<P>
+</I><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcript show: 'FcnView size: ', hRange printString, ' @ ', vRange printString; cr.<P>
+<P>
+</I><B>displayOnImage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on its cached form.<P>
+<P>
+</I><B>updateBetween: p1 and: p2 with: color on: gc</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on its cached form.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver's instance variables for cacheing the pixmap during display.<P>
+<P>
+</I><B>initializeCacheing</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver's instance variables for cacheing the pixmap during display.<P>
+<P>
+</I><B>initializeCacheingSmall</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver's instance variables for cacheing the pixmap during display.<P>
+<P>
+</I><B>initializeCacheSized: x by: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver's instance variables for cacheing the pixmap during display.<P>
+<P>
+</I><B>setPixmap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the receiver's pixmap display cache after changing its size.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>setModel: aModel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's model to be aModel<P>
+<P>
+</I><B>source</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+controller access<P>
+<P>
+</I></FONT><B>bounds: aRectangle</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's bounds.<P>
+<P>
+</I><B>defaultControllerClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>FunctionView class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>componentOnFunction: function color: color normalize: normal x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>componentOnFunctions: functionArray withColors: colorArray normalize: normArray x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>componentOnFunctions: functionArray withColors: colorArray x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>onFunction: function</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView example<P>
+<P>
+</I><B>onFunction: function normalize: norm</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView example<P>
+<P>
+</I><B>onFunction: function x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunction: (LinearFunction from: #((0@0) (0.1@1.0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0.15@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 256 y: 128<P>
+<P>
+</I><B>onFunctions: functionArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunctions: (Array <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.15@1.0) (0.25@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.1) (0.3@0.7) (0.7@0.45) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.05@1) (0.2@0.35) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.2) (0.6@0.3) (1@0.3))))<P>
+<P>
+</I><B>onFunctions: functionArray normalize: normArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunctions: (Array <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.15@1.0) (0.25@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.1) (0.3@0.7) (0.7@0.45) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.05@1) (0.2@0.35) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.2) (0.6@0.3) (1@0.3))))<P>
+<P>
+</I><B>onFunctions: functionArray withColors: colorArray normalize: normArray x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunctions: (Array <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.15@1.0) (0.25@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.1) (0.3@0.7) (0.7@0.45) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.05@1) (0.2@0.35) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.2) (0.6@0.3) (1@0.3))))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;withColors: (Array with: ColorValue blue with: ColorValue red<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: ColorValue cyan with: ColorValue green)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;normalize: #(false false false false)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 512 y: 256<P>
+<P>
+</I><B>onFunctions: functionArray withColors: colorArray x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunctions: (Array <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.15@1.0) (0.25@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.1) (0.3@0.7) (0.7@0.45) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.05@1) (0.2@0.35) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.2) (0.6@0.3) (1@0.3))))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;withColors: (Array with: ColorValue blue with: ColorValue red<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: ColorValue cyan with: ColorValue green)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 512 y: 256<P>
+<P>
+</I><B>onFunctions: functionArray x: x y: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView onFunctions: (Array <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.15@1.0) (0.25@0.75) (0.75@0.5) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.1) (0.3@0.7) (0.7@0.45) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0) (0.05@1) (0.2@0.35) (1@0))) <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: (LinearFunction from: #((0@0.2) (0.6@0.3) (1@0.3))))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x: 512 y: 256<P>
+<P>
+</I><B>openOn: function</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>smallOnFunction: function</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView example<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView example<P>
+<P>
+</I><B>expSegExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate an ExpSeg function with different weights.<P>
+<P>
+</I><B>fileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read an extracted envelope as floating-point data from a file.<P>
+<P>
+</I><B>linSegExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;FunctionView linSegExample<P>
+<P>
+</I><B>multiFunctionExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a function editor on 4 different functions.<P>
+<P>
+</I><B>smallFileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read an extracted envelope as floating-point data from a file.<P>
+<P>
+</I><B>smallMultiFunctionExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a function editor on 4 different functions.<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the defaults<P>
+</I><I><FONT SIZE=+1><P>
+constant access<P>
+<P>
+</I></FONT><B>defaultColors</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default color array for the 4 functions.<P>
+<P>
+</I><B>inset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default display inset.<P>
+<P>
+</I><B>lineWidth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default line width for fnuction plots.<P>
+<P>
+</I><B>lineWidth: anInteger</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the default line width for fnuction plots.</I></FONT>
+</BODY>
+</HTML>

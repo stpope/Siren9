@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PortModel</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PortModel<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Model<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Support<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name status device in out <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>blockSize devices in instance mutex out properties rate <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;useSingleton <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;no-op<P>
+</I><I><FONT SIZE=+1><P>
+mutex support<P>
+<P>
+</I></FONT><B>critical: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Execute the given block as a critical section<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>device</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>device: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>in</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>in: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>name: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>out</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>out: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>status</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>status: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PortModel class<P>
+<P>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>instance devices in out properties useSingleton rate <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blockSize mutex <P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>concreteClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class to use for ports<P>
+<P>
+</I><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance, or the singleton<P>
+<P>
+</I><B>instance</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance, or the singleton<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance, or the singleton<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the unique instance<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the defaults for the class constants.<P>
+<P>
+</I><B>initializeData</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the defaults for the class constants.<P>
+</I><I><FONT SIZE=+1><P>
+class var accessing<P>
+<P>
+</I></FONT><B>blockSize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>blockSize: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>devices</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>devices: anArr</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>in</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>in: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>instance: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>mutex</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>out</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>out: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>properties</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>properties: anArr</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>rate: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>resetDevices</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flush the device list<P>
+<P>
+</I><B>sampleRate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sampleRate: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OrdinalMagnitude</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OrdinalMagnitude<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MusicMagnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>table <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Table <P>
+<P>
+<P>
+</FONT><I>Instances of the OrdinalMagnitude classes are order-only magnitudes.<BR>
+They use the instance or class instance tables for holding comparative relationships among instances (e.g., mag1 might know that it's > mag2).<BR>
+The relation-setting (i.e., order assignment) messages are: ==, >>, <<, =<, and =>.<BR>
+The query messages are: =?, > < <=, and >=.<P>
+<P>
+Each subclass may decide whether instances or the class will hold the table of relationships.<BR>
+The decision should be made on the basis of the expected number of magnitude instances and the sparseness of their relationships.<P>
+<P>
+See the subclass' class examples.<P>
+<P>
+Instance Variable:<BR>
+&nbsp;&nbsp;&nbsp;table <Dictionary of OrdinalMagnitude -> Symbol> instance rel. table<P>
+<P>
+Class Instance Variable:<BR>
+&nbsp;&nbsp;&nbsp;Table <Dictionary of OrdinalMagnitude -> Symbol> class rel. table of all instances<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>hash</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SmallInteger unique to the receiver.  Essential.  See  <BR>
+&nbsp;&nbsp;&nbsp;Object documentation whatIsAPrimitive.<P>
+<P>
+</I><B>table</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's loop-up table--its or the class'.<P>
+<P>
+</I><B>value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signal an error.<P>
+<P>
+</I><B>value: theValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signal an error.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the receiver's table.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver as an ordinal magnitude.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt coercion with ordinal magnitudes.<P>
+</I><I><FONT SIZE=+1><P>
+ordering<P>
+<P>
+</I></FONT><B>< anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is less than the argument.<P>
+<P>
+</I><B><< anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the receiver is less than the argument.<P>
+<P>
+</I><B><= anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is less than or equal to the argument.<P>
+<P>
+</I><B>=< anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the receiver is less than or equal to the argument.<P>
+<P>
+</I><B>== anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the receiver is equal to the argument.<P>
+<P>
+</I><B>=> anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the receiver is greater than or equal to the argument.<P>
+<P>
+</I><B>=? anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is equal to the argument.<P>
+<P>
+</I><B>> anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is greater than the argument.<P>
+<P>
+</I><B>>= anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is greater than or equal to the argument.<P>
+<P>
+</I><B>>> anotherOMag</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the receiver is greater than the argument.<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>* aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with ordinal magnitudes.<P>
+<P>
+</I><B>+ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with ordinal magnitudes.<P>
+<P>
+</I><B>- aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with ordinal magnitudes.<P>
+<P>
+</I><B>/ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with ordinal magnitudes.<P>
+<P>
+</I><B>= aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument are equivalent.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OrdinalMagnitude class<P>
+<P>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Table <P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+table access<P>
+<P>
+</I></FONT><B>table</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class' instance look-up table.<P>
+<P>
+</I><B>values</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sorted values.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance and, if it's in use, add it to the table.<P>
+<P>
+</I><B>value: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>flush</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the shared class table and all instances.<P>
+<P>
+</I><B>useTable</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a shared class table for all instances.</I></FONT>
+</BODY>
+</HTML>

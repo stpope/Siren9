@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SirenUtility</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SirenUtility<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>ApplicationModel<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Support<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DataDir DefaultMIDIIn DefaultMIDIOut DefaultOSCHost <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DefaultOSCPort LoggingStream ScoreDir SoundDir <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verbosity <P>
+<P>
+<P>
+</FONT><I>The class SirenUtility represents the package-level state of the Siren Framework. Its class methods answer a variety of Siren system variables such as default file directories.<P>
+<P>
+Class Variables:<BR>
+&nbsp;&nbsp;&nbsp;DataDir <String> the default sound/score directory.<BR>
+&nbsp;&nbsp;&nbsp;ScoreDir <String> the score directory.<BR>
+&nbsp;&nbsp;&nbsp;SoundDir <String> the sound directory.<P>
+<P>
+<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SirenUtility class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Edit these to taste for your installation.<P>
+<P>
+</I><B>postLoad: aParcel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load the missing pieces and put up a dialog after loading the parcel<P>
+</I><I><FONT SIZE=+1><P>
+logging<P>
+<P>
+</I></FONT><B>log: theMessage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Log the given string to the Transcript (or otgher output stream) if the system verbosity is >= the given verbosity level<P>
+<P>
+</I><B>log: theMessage level: verbosityInt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Log the given string to the Transcript (or otgher output stream) if the system verbosity is >= the given verbosity level<P>
+<P>
+</I><B>verbosity</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default verbosity, 0/1/2.<P>
+<P>
+</I><B>verbosity: aNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class's default verbosity, 0/1/2.<P>
+</I><I><FONT SIZE=+1><P>
+class var accessing<P>
+<P>
+</I></FONT><B>dataDir</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default data storage directory.<P>
+<P>
+</I><B>defaultMIDIIn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default MIDI input device.<P>
+<P>
+</I><B>defaultMIDIIn: num</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class's default MIDI input device.<P>
+<P>
+</I><B>defaultMIDIOut</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default MIDI output device.<P>
+<P>
+</I><B>defaultMIDIOut: num</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class's default MIDI output device.<P>
+<P>
+</I><B>defaultOSCHost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default OSC host IP.<P>
+<P>
+</I><B>defaultOSCHost: ip</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class's default OSC host IP.<P>
+<P>
+</I><B>defaultOSCPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default OSC port #.<P>
+<P>
+</I><B>defaultOSCPort: num</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class's default OSC port #.<P>
+<P>
+</I><B>scoreDir</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default score storage directory.<P>
+<P>
+</I><B>soundDir</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default sound storage directory.<P>
+</I><I><FONT SIZE=+1><P>
+utilities<P>
+<P>
+</I></FONT><B>categoryList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class categories for all of CSL<P>
+<P>
+</I><B>fileoutCategories</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create the source directory of old-fashioned ST80 file-outs (for Squeak users)<P>
+<P>
+</I><B>playSoundFile: nam</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a sound file using UNIX shell and libsndfile's play program<P>
+<P>
+</I><B>writeSirenManual</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create the big book<P>
+<P>
+</I><B>writeSirenManualToHTML: folder</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create the doxygen-style manual in an HTML folder<P>
+</I><I><FONT SIZE=+1><P>
+example access<P>
+<P>
+</I></FONT><B>formNamed: key</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the given item from the global music constants.<P>
+<P>
+</I><B>musicConstants</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the global music constants (mostly icons).<P>
+</I><I><FONT SIZE=+1><P>
+file support<P>
+<P>
+</I></FONT><B>addDir: dir to: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to locate the requested directory and, if found, add it to the given list<P>
+<P>
+</I><B>createS7: aFullPathName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an s7 folder and copy any files with the same name  into it<P>
+<P>
+</I><B>findDir: dir</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to locate the requested directory either locally or globally<P>
+<P>
+</I><B>findDir: dir tryHard: aggressive</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to locate the requested directory either locally or globally<P>
+<P>
+</I><B>findFile: fil</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to locate the requested file in the data directories, being smart about s7 files<P>
+<P>
+</I><B>findFile: fil in: theDir</B><I><BR>
+&nbsp;&nbsp;&nbsp;Try to locate the requested file in the given directory, being smart about s7 files<P>
+<P>
+</I><B>findFiles: ext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer all of the files in the user's data folders with the given filename extension<P>
+<P>
+</I><B>findFiles: ext in: theDir into: coll</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the files with the given name extension to the given collection<P>
+<P>
+</I><B>listS7: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;List the contents of the requested s7 file<P>
+<P>
+</I><B>nextName: aName type: extension</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the next free name with the given extension in the given s7 folder</I></FONT>
+</BODY>
+</HTML>

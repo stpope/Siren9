@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SymbolicPitch</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SymbolicPitch<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.NominalMagnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>fracPitch <P>
+<P>
+<P>
+</FONT><I>Instances of SymbolicPitch represent well-tempered note names relative to a4=440Hz.<BR>
+The range is c0 to g#9 and the values are symbols.<BR>
+Note the confusion between the sharp sign (always placed after the note name) and Smalltalk's symbol key #.<BR>
+One often writes ('c#3' asSymbol) to be safe.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;fracPitch <Float> the remainder for microtonal tunings<P>
+<P>
+The class instance variable NameMap is used for the name <--> MIDI key number mapping array.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn0: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver as a symbolic pitch.<P>
+<P>
+</I><B>units</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the units string of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>+ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sum of the receiver and the argument-handle adding Integers as a special case.<P>
+<P>
+</I><B>- aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sum of the receiver and the argument-handle adding Integers as a special case.<P>
+<P>
+</I><B>transposeBy: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;transpose a SymbolicPitch by aValue in fractional halfsteps<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Pitch.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asFracMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a symbolic note name, answer a key number.<P>
+<P>
+</I><B>asHertz</B><I><BR>
+&nbsp;&nbsp;&nbsp;assuming value is a symbolic note name, return a frequency <P>
+<P>
+</I><B>asHz</B><I><BR>
+&nbsp;&nbsp;&nbsp;assuming value is a symbolic note name, return a frequency <P>
+<P>
+</I><B>asMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a symbolic note name, answer a key number.<P>
+<P>
+</I><B>asSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SymbolicPitch.<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most numerically meaningful version of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>accidental</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's accidental, if any.<P>
+<P>
+</I><B>fracPitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;return microtonal offset as fractions of a halfstep<P>
+<P>
+</I><B>fracPitch: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;set microtonal offset as fractions of a halfstep<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SymbolicPitch class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class name mapping array.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>fromFracMIDI: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a key number, answer a symbolic pitch name<P>
+<P>
+</I><B>fromMIDI: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Assuming value is a key number, answer a symbolic pitch name<P>
+</I><I><FONT SIZE=+1><P>
+coercion<P>
+<P>
+</I></FONT><B>ddMsgName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the selector to be used in coercing double-dispatching messages.</I></FONT>
+</BODY>
+</HTML>

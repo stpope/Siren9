@@ -1,0 +1,63 @@
+#
+# Makefile for Siren DLLCC plug-ins
+#	Stephen Travis Pope -- stp@create.ucsb.edu -- 2001.07.16
+#	Modified for Linux by Alex Norman (2007.05.13)
+#		LastEditDate: 2007.05.13
+#
+
+# Edit your own include paths in here
+
+INSTALL_PREFIX = /usr/local
+
+# Where are the DLLCC includes?
+
+DLLCC_SRC = ../../VW_7.5/dllcc/src
+SIREN_INCL = SirenDLLCC.h
+
+# Tune these flags to your compiler and verbosity level (-DDEBUG_SIREN = verbose)
+
+CFLAGS = -I$(DLLCC_SRC) -I/usr/local/include -O2 -g -fno-common -shared -DDEBUG_SIREN
+
+GCC = gcc
+
+LINKOPTS = -shared -L/usr/local/lib -lgcc
+
+# Here are the make targets
+
+# Build all by default
+
+all:	file audio midi fftw
+
+# libsndfile plug-in
+
+file:	sndfile_lite.c $(SIREN_INCL)
+	$(GCC) -c sndfile_lite.c $(CFLAGS)
+	$(GCC) -o libsndfile_lite.so sndfile_lite.o $(LINKOPTS) -lsndfile -L/usr/local/lib
+
+# portaudio plug-in
+
+audio:	portaudio_lite.c
+	$(GCC) -c portaudio_lite.c $(CFLAGS)
+	$(GCC) -o libportaudio_lite.so portaudio_lite.o $(LINKOPTS) -lportaudio 
+
+# portmidi plug-in
+
+midi:	portmidi_lite.c
+	$(GCC) -c portmidi_lite.c $(CFLAGS)
+	$(GCC) -o libportmidi_lite.so portmidi_lite.o $(LINKOPTS) -lportmidi
+
+# FFTW plug-in
+
+fftw:	fftw_lite.c
+	$(GCC) -c fftw_lite.c $(CFLAGS)
+	$(GCC) -o libfftw_lite.so fftw_lite.o $(LINKOPTS) -lfftw3f 
+
+# Cheap install target
+
+install:
+	cp libsndfile_lite.so libportmidi_lite.so libportaudio_lite.so libfftw_lite.so $(INSTALL_PREFIX)/lib
+
+# clean-up target
+
+clean:
+	rm -f *.o *.so

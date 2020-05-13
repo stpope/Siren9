@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PortMidiInterface</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PortMidiInterface<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SirenExternalInterface<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-External<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private Siren.PortMidiInterfaceDictionary.* <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Attributes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(#(#includeFiles #('portmidi_lite.h')) #(#includeDirectories #('Siren7.5/DLLCC')) #(#libraryFiles #('portmidi_lite.dylib' 'portmidi.dylib' 'CoreMIDI')) #(#libraryDirectories #('/usr/local/lib' '/System/Library/Frameworks/CoreMIDI.framework/Versions/Current')) #(#beVirtual false) #(#optimizationLevel #full)) <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+types<P>
+<P>
+</I></FONT><B>OEoop</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+procedures<P>
+<P>
+</I></FONT><B>pm_close: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_count_devices</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_default_input_device</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_default_output_device</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_dev_dir: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_get: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_get_name: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_has_error: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_open: device with: direction</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_poll: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_read: which</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_read_controllers: which with: fromController with: toController with: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_start_controller_cacheing</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_stop_controller_cacheing</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_terminate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_test</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_write_data2: which with: d1 with: d2</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_write_data3: which with: d1 with: d2 with: d3</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_write_long: which with: msg with: length</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pm_write_short: which with: msg</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PortMidiInterface class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate using the PortMidiInterface<P>
+<P>
+</I><B>testMIDI</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate using the PortMidiInterface to call the test note function in the driver<P>
+<P>
+</I><B>testMIDI2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate using the PortMidiInterface to play a note on/off cmd pair</I></FONT>
+</BODY>
+</HTML>

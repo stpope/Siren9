@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIPacket</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIPacket<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>length time flags duration data <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private MIDICommands.* <P>
+<P>
+<P>
+</FONT><I>A MIDIPacket represents a simple MIDI datagram with a time-stamp and a data array.<P>
+<P>
+Instance Variables<BR>
+&nbsp;&nbsp;&nbsp;data <ByteArray> The MIDI data bytes (may include a MIDI command and running status messages)<BR>
+&nbsp;&nbsp;&nbsp;length <Integer> The number of meaningful bytes in the data<BR>
+&nbsp;&nbsp;&nbsp;time <Integer> The msec timestamp when the packet was created or received.<BR>
+&nbsp;&nbsp;&nbsp;flags <Integer> Any 'flags' received from the MIDI driver.<BR>
+&nbsp;&nbsp;&nbsp;duration <Integer> my event's length<P>
+<P>
+Pool dictionaries:<BR>
+&nbsp;&nbsp;&nbsp;MIDICommands <Dictionary of (command symbol -> octet)> e.g., (#noteOn -> 16r90)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(It is initialized by class MIDIPort.)<P>
+<P>
+See the class comment in MIDIPort for details.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>ampl</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI velocity.<P>
+<P>
+</I><B>ampl: a</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI velocity.<P>
+<P>
+</I><B>channel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI channel.<P>
+<P>
+</I><B>command</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI command nibble.<P>
+<P>
+</I><B>data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'data' byte array.<P>
+<P>
+</I><B>data: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'data' to be anObject.<P>
+<P>
+</I><B>duration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's duration.<P>
+<P>
+</I><B>duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's duration.<P>
+<P>
+</I><B>key</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI key number.<P>
+<P>
+</I><B>key: k</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI key number.<P>
+<P>
+</I><B>length</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'length'.<P>
+<P>
+</I><B>length: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'length' to be anObject.<P>
+<P>
+</I><B>pitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI key number.<P>
+<P>
+</I><B>pitch: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI key number.<P>
+<P>
+</I><B>second: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI key number.<P>
+<P>
+</I><B>setPitch: p dur: d loudness: vol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of the class with the given parameters.<P>
+<P>
+</I><B>status: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI command.<P>
+<P>
+</I><B>third: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI key velocity.<P>
+<P>
+</I><B>time</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'time'.<P>
+<P>
+</I><B>time: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'time' to be anObject.<P>
+<P>
+</I><B>vel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI velocity.<P>
+<P>
+</I><B>vel: v</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI velocity.<P>
+<P>
+</I><B>voice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI channel.<P>
+<P>
+</I><B>voice: v</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI channel.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>print: x on: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store a two-digit hexadecimal version of the 8-bit argument x on the stream.<P>
+<P>
+</I><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store a readable version of the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's time stamp<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIPacket class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>bytesFor14BitValue: val</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a two-element array with the 14-bit values that correspond to the given value.<P>
+<P>
+</I><B>fromBytes: aByteArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance of a MIDI packet instantiated from the given byte array.<P>
+<P>
+</I><B>fromInt: anInt at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance of a MIDI packet instantiated from the given 3-byte long value.<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance.<P>
+<P>
+</I><B>new: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance with a data array of the given size.<P>
+<P>
+</I><B>setPitch: p dur: d loudness: vol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of the class with the given parameters.</I></FONT>
+</BODY>
+</HTML>

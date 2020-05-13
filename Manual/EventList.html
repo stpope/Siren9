@@ -1,0 +1,401 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				EventList</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>EventList<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MusicEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Events<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>events <P>
+<P>
+<P>
+</FONT><I>Instances of class EventList (subclass of DurationEvent), are used for holding onto multiple timed events. EventLists are events themselves and can have arbitrary properties as well as a collection of (relative start time -> event) associations.<P>
+<P>
+Class EventList implements much collection-style protocol for event processing, as well as having special block application methods. All EventList algorithms are recurrsive in order to handle arbitrarily-deep hierarchical EventLists (possible because EventList is a subclass of DurationEvent). The class also has numerous powerful and flexible instance creation methods.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;events <SortedCollection of EventAssociations (Duration => MEvent)> <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the list's events, time/event associations sorted by relative start times<BR>
+&nbsp;&nbsp;&nbsp;index <Integer> the current position (used in scheduling)<BR>
+&nbsp;&nbsp;&nbsp;startedAt <Integer> the clock value when I sterted<P>
+<P>
+Standard properties are #tempoScale for the tempo scaling factor (used by the CMN editors as the MS/whole note scale), and #code (#duration, #delta, or #startStop) to support different event coding schemes. The class also supports typed links to other event lists, e.g., "eList1 isTonicAnswerOf: eList2" or "eList1 hasPreviousVersion: eList2", which can be very useful properties in editors and browsers.<P>
+<P>
+The global dictionary EventLists holds onto instances that can be referenced with their name symbols; these can have gensym-like names such as #temp.23. Creating a named EventList automatically adds it to the global dictionary. There are tools for browsing and maintaining this dictionary.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addModifier: aModifier</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given event modifier to the receiver's special modifier collection<P>
+<P>
+</I><B>code</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a symbol about the receiver's events' coding, usually #durations or #noteOnOff<P>
+<P>
+</I><B>code: aSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the code about the receiver's events, usually #durations or #noteOnOff<P>
+<P>
+</I><B>deepCopy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a careful deep copy.<P>
+<P>
+</I><B>defaultEventClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default note event class.<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's name.<P>
+<P>
+</I><B>name: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's name.<P>
+<P>
+</I><B>next</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the next event in the list.<P>
+<P>
+</I><B>removeModifier: aModifier</B><I><BR>
+&nbsp;&nbsp;&nbsp;Remove the given event modifier from the receiver's collection.<P>
+<P>
+</I><B>shallowCopy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a shallow copy of the receiver's events.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the number of events in the receiver.<P>
+<P>
+</I><B>tempo: someValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the tempo to scale the events by.<P>
+<P>
+</I><B>voices</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the collection of voices used by thereceiver  event list.<P>
+</I><I><FONT SIZE=+1><P>
+code conversion<P>
+<P>
+</I></FONT><B>continueProperties</B><I><BR>
+&nbsp;&nbsp;&nbsp;Fill in missing properties with values that are continued from previous ones.<P>
+<P>
+</I><B>findNoteOff: anAssociation</B><I><BR>
+&nbsp;&nbsp;&nbsp;Locate the noteOff event that corresponds to anAssociation; answer the sum of the delta times between (the duration)<P>
+<P>
+</I><B>setDurations</B><I><BR>
+&nbsp;&nbsp;&nbsp;Take a delta-time encoded event list and determine the durations.<P>
+</I><I><FONT SIZE=+1><P>
+collecting<P>
+<P>
+</I></FONT><B>collect: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>collectAll: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>do: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's event associations with the given block<P>
+<P>
+</I><B>eventsDo: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>excerptFrom: start to: end</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a hierarchical list delineated by the given times.<P>
+<P>
+</I><B>expanded</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand all sub-event lists and answer one large flat list.<P>
+<P>
+</I><B>expandedFrom: start to: end</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand all sub-event lists and answer one flat list with events between the given times.<P>
+<P>
+</I><B>group: selection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Group the argument's events as a sub-event list in the receiver's list.<P>
+<P>
+</I><B>includes: anAss</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the given association is in the receiver's event list.<P>
+<P>
+</I><B>keysAndValuesDo: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>remove: anA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Remove the given event from the receiver's  collection<P>
+<P>
+</I><B>select: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>selectAll: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>selectKey: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>selectValue: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events with the given block<P>
+<P>
+</I><B>timesDo: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over the receiver's events' relative start times with the given block<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>asExplorerString</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>asExplorerString: ignored</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print out the receiver's events on the argument.<P>
+<P>
+</I><B>readDataFrom: aDataStream size: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a new event list from the given stream using the compact format.<P>
+<P>
+</I><B>storeDataOn: aDataStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store myself on a DataStream. Answer self.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store source code for the receiver's events on the argument.<P>
+<P>
+</I><B>storeOnFile: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store out the receiver's events on the file named by the argument.<P>
+<P>
+</I><B>templateFields</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the field names for the instances of the receiver class.<P>
+</I><I><FONT SIZE=+1><P>
+processing<P>
+<P>
+</I></FONT><B>addValue: theValue toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add theValue to the aspect refered to by theSelector of all events.<P>
+<P>
+</I><B>applyBlock: theBlock toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply the given block to the aspect refered to by theSelector of all events.<P>
+<P>
+</I><B>applyFunction: aFunction to: aSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply the given function to the range of the given selector<P>
+<P>
+</I><B>applyFunction: aFunction to: aSelector startingAt: sTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply the given function to the range of the given selector starting at sTime.<P>
+<P>
+</I><B>chooseRange: theRange toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Select a value from the given range for the aspect refered to by theSelector of all events.<P>
+<P>
+</I><B>edit</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open your favorite graphical editor on the receiver (left-shift-sensitive)<P>
+<P>
+</I><B>scale: theSelector by: theValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Multiply the aspect refered to by theSelector of all events by theValue.<P>
+<P>
+</I><B>scaleStartTimesBy: theValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Multiply the start times all events by theValue.<P>
+<P>
+</I><B>scaleValue: theValue toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Multiply the aspect refered to by theSelector of all events by theValue.<P>
+<P>
+</I><B>setValue: theValue toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the aspect refered to by theSelector of all events to theValue.<P>
+<P>
+</I><B>spreadValue: theRandomPercent toProp: theSelector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Spread the given property of all events by the given random range (%+-).<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>hasItems</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether or not the receiver has items or components (true).<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is an event list (true).<P>
+<P>
+</I><B>isEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is an event list (true).<P>
+<P>
+</I><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer EventList.<P>
+</I><I><FONT SIZE=+1><P>
+scheduling<P>
+<P>
+</I></FONT><B>loop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the event list by passing it off to the event scheduler.<P>
+<P>
+</I><B>nextTime: now</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the time of the next appointment<P>
+<P>
+</I><B>nextTimeFor: ass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the time delay between the given event association and the one that follows it.<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the event list by passing it off to the event scheduler.<P>
+<P>
+</I><B>playOn: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the event list on the voice by expanding its events<P>
+<P>
+</I><B>playOn: aVoice at: startTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the event list on the voice by expanding its events<P>
+<P>
+</I><B>scheduleAt: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand an eventList for the appointment scheduler.<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the event list by passing it off to the event scheduler.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>empty</B><I><BR>
+&nbsp;&nbsp;&nbsp;Throw away the receiver's events.<P>
+<P>
+</I><B>initializeAnonymous</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize an un-named instance with default state.<P>
+<P>
+</I><B>initializeNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize a named instance with default state.<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flush the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+event accessing<P>
+<P>
+</I></FONT><B>, anEorA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a new event or association to the receiver.<P>
+<P>
+</I><B>add: anEorA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a new event or association to the receiver.<P>
+<P>
+</I><B>add: anEvent at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a new event to the receiver at the given relative start time.<P>
+<P>
+</I><B>addAll: anEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given event list's events to the receiver.<P>
+<P>
+</I><B>eventKeys</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the keys (durations) of the receiver's eventDictionary.<P>
+<P>
+</I><B>eventNear: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event within a reasonable distance (100 msec.) of the given point's x.<P>
+<P>
+</I><B>eventNearestTime: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event within a reasonable distance (32 msec.) of the given point.<P>
+<P>
+</I><B>eventNearTime: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event within a reasonable distance (32 msec.) of the given point.<P>
+<P>
+</I><B>events</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's eventDictionary.<P>
+<P>
+</I><B>events: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's eventDictionary.<P>
+<P>
+</I><B>eventValues</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the values (events) of the receiver's eventDictionary.<P>
+<P>
+</I><B>recomputeDuration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Recompute the total duration of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>map: anAssociation</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the receiver's special properties and/or eventModifiers onto the given event.<P>
+<P>
+</I><B>map: anAssociation at: startTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the receiver's special properties and/or eventModifiers onto the given event.<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>= anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument represent the same events.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>EventList class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>creationExamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Select the expressions below one-at-a-time and inspect the results.<P>
+<P>
+</I><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with random data.<P>
+<P>
+</I><B>randomExample: length</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with random data.<P>
+<P>
+</I><B>randomExample: length from: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with random data.<P>
+<P>
+</I><B>randomSWSSExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with random data appropriate for software sound synthesis.<P>
+<P>
+</I><B>randomSWSSExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with random data appropriate for software sound synthesis.<P>
+<P>
+</I><B>scaleExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a scale where the event property types are mixed.<P>
+<P>
+</I><B>scaleFrom: start to: stop in: dur</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list with a scale.<P>
+<P>
+</I><B>sentenceExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list for a beautiful sentence.<P>
+<P>
+</I><B>serialExample: length from: data</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list with serial data.<P>
+<P>
+</I><B>wordExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create an event list for a long word.<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>flush</B><I><BR>
+&nbsp;&nbsp;&nbsp;Erase the shared EventList dictionary and try to clean up all events.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the shared EventList dictionary.<P>
+<P>
+</I><B>storeAll</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write out all event lists.<P>
+</I><I><FONT SIZE=+1><P>
+named constants<P>
+<P>
+</I></FONT><B>named: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the named instance from the dictionary or a new EL.<P>
+<P>
+</I><B>named: aName ifAbsent: theBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the named instance from the dictionary or the result of the block.<P>
+<P>
+</I><B>namedLists</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the dictionary of named event lists.<P>
+<P>
+</I><B>newNamed</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the named instance with a temp name.<P>
+<P>
+</I><B>newNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new named (and stored) instance.<P>
+<P>
+</I><B>nextName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a gensym-type ('te6') event list name for which no EL exists in the dictionary.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>basicNew: ignored</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new default-named instance of me<P>
+<P>
+</I><B>fromFile: theName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new default un-named (and therefore un-persistent) instance of me<P>
+<P>
+</I><B>named: myName fromPitches: pitchCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list made with the given collection of pitches.<P>
+<P>
+</I><B>named: myName fromSelectors: selArray values: valueArrayArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list made with the given collection of values applied to the given array of selectors.<P>
+<P>
+</I><B>named: myName fromStartTimes: timeCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list with the given collection of relative start times.<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new default-named instance of me<P>
+<P>
+</I><B>new: ignored</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new default-named instance of me<P>
+<P>
+</I><B>newAnonymous</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new default un-named (and therefore un-persistent) instance of me</I></FONT>
+</BODY>
+</HTML>

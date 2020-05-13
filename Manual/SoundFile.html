@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SoundFile</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SoundFile<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.AbstractEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name mode fileFormat sampleFormat rate channels size <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index position sound <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>FileFormats Interface SampleFormats <P>
+<P>
+<P>
+</FONT><I>Instances of SoundFile are used for reading and writing sound objects to/from files using the libSndFile API.<BR>
+They handle formatting, headers and I/O.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;sound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SampledSound> the sound's samples<BR>
+&nbsp;&nbsp;&nbsp;rate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number> the sound's sampling rate<BR>
+&nbsp;&nbsp;&nbsp;channels&nbsp;&nbsp;&nbsp;<Number> the number of channels<BR>
+&nbsp;&nbsp;&nbsp;fileName&nbsp;&nbsp;&nbsp;<String> the file's name<BR>
+&nbsp;&nbsp;&nbsp;file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ExternalStream> the file's stream<BR>
+&nbsp;&nbsp;&nbsp;position&nbsp;&nbsp;&nbsp;<Number> the current position<BR>
+&nbsp;&nbsp;&nbsp;headerSize&nbsp;&nbsp;&nbsp;<Number> the size of the soundfile header<BR>
+&nbsp;&nbsp;&nbsp;properties&nbsp;&nbsp;&nbsp;<Dictionary> the property list dictionary of the receiver<BR>
+&nbsp;&nbsp;&nbsp;format&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Symbol> the format--currently only #linear16Bit is handled<BR>
+&nbsp;&nbsp;&nbsp;size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number> the size in samples<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>channels</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'channels'.<P>
+<P>
+</I><B>channels: theChannels</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theChannels', as the new instance variable 'channels'.<P>
+<P>
+</I><B>fileFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fileFormat: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>format</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>mode: theMode</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's mode to #read or #write<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'name'.<P>
+<P>
+</I><B>name: theFileName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theFileName', as the new instance variable 'name'.<P>
+<P>
+</I><B>rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the instance variable 'rate'.<P>
+<P>
+</I><B>rate: aRate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the instance variable 'rate'.<P>
+<P>
+</I><B>sampleFormat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sampleFormat: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>samples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the instance variable 'samples'.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the number of sample frames in the file.<P>
+<P>
+</I><B>size: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the number of sample frames in the file.<P>
+<P>
+</I><B>sizeInSamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the number of sample frames in the file.<P>
+<P>
+</I><B>sound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'sound'.<P>
+<P>
+</I><B>sound: theSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theSound', as the new instance variable 'sound'.<P>
+</I><I><FONT SIZE=+1><P>
+read/write<P>
+<P>
+</I></FONT><B>readSamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read samples from the file into the sample buffer.<P>
+<P>
+</I><B>readSamples: sndClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read samples from the file into the sample buffer.<P>
+<P>
+</I><B>saveSound: snd</B><I><BR>
+&nbsp;&nbsp;&nbsp;Write samples from the given sound to the receiver file.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the receiver's file.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the instance variables of a default sound file.<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the named file and read the header<P>
+<P>
+</I><B>openForReading</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the named file and read the header<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SoundFile class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>named: nameString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the given file (EBICSF, SPARC, or NeXT soundfile format)<P>
+<P>
+</I><B>openFileNamed: nameString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the given file (EBICSF, SPARC, AIFF, or NeXT soundfile format)<P>
+<P>
+</I><B>readFileNamed: nameString</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the given file (EBICSF, SPARC, or NeXT soundfile format)<P>
+<P>
+</I><B>readFileNamed: nameString  answer: theClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the given file (EBICSF, SPARC, or NeXT soundfile format)<P>
+<P>
+</I><B>releaseFileIndex: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Free the given sound file index<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the file format and sample format dictionaries to interface with libsndfile.</I></FONT>
+</BODY>
+</HTML>

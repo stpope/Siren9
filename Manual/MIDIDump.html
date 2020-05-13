@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIDump</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIDump<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Model<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>eventList live notesOn startedAt <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private MIDICommands.* <P>
+<P>
+<P>
+</FONT><I>An instance of MIDIDump is used as a dependent of the MIDIPort to demonstrate the use of dependency for MIDI input. See the class example.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;verbose <Boolean> should I log events to the Transcript?<BR>
+&nbsp;&nbsp;&nbsp;live <Boolean> should I match noteOn/Off commands on the fly?<BR>
+&nbsp;&nbsp;&nbsp;eventList <EventList> the event list I'm capturing input to<BR>
+&nbsp;&nbsp;&nbsp;notesOn <OrderedCollection of MusciEvents> the current playing notes<BR>
+&nbsp;&nbsp;&nbsp;startedAt <Integer> the clock time I was started at<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+updating<P>
+<P>
+</I></FONT><B>update: aspect with: aParameter from: aSender</B><I><BR>
+&nbsp;&nbsp;&nbsp;The model (port) changed; add the event to our event list.<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Setup the receiver's instance variables.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eventList: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>live: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIDump class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a MIDI dump object as a dependent of the input port. Dump for 10 seconds,<BR>
+&nbsp;&nbsp;&nbsp;then turn off. The default update: method just dumps the MIDI packet into the transcript; <BR>
+&nbsp;&nbsp;&nbsp;customize this by writing your own update: method.<P>
+<P>
+</I><B>exampleEditor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a MIDI dump object as a dependent of the input port. Capture it to an event list and update the view in real time BROKEN.<P>
+<P>
+</I><B>exampleList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a MIDI dump object as a dependent of the input port. Capture it to an event list.</I></FONT>
+</BODY>
+</HTML>

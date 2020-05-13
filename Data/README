@@ -1,0 +1,51 @@
+Example Data Files for MODE 1.1
+
+This list is out of date; browse these files with your local finder or Siren file list.
+
+8-bit 8 kHz MuLaw CODEC sounds
+attack.siren.au
+breaking_glass.au
+cowbell.au
+hal.im.afraid.au
+hal.sorry.dave.au
+hey_rocky.au
+open3.au
+
+16-bit 44100 Hz mono/stereo sounds
+ab.snd
+ac1.snd
+ar.snd
+b5b3.snd
+b5b4.snd
+b5b5.snd
+b5b6.snd
+bb.snd
+bc1.snd
+br.snd
+center.snd
+kombination.snd
+m2.snd
+m2b2.snd
+m2b3.snd
+pluck.snd
+y2c.snd
+y2c0b.snd
+y2c0c.snd
+y2cr4.snd
+y2cr4b.snd
+
+MIDI Dumps
+barok.midi
+cantata.midi
+fuga1.midi
+passepi.midi
+preludio.midi
+vivaldi.midi
+
+Misc
+instruments.in		cmusic score
+sampledataset.lpc	LPC analysis
+y2.2.env			extracted envelope data
+y2.env				 "
+
+Ignore or remove the symbolic links outside this directory

@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SHARCSample</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SHARCSample<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Function<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicApps-SHARC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name pitch key nHarm ampl noPitch rePitch centroid <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the receiver for the given size.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addLast: newObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add newObject to the end of the receiver.<P>
+<P>
+</I><B>ampl</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'ampl'.<P>
+<P>
+</I><B>ampl: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'ampl' to be anObject.<P>
+<P>
+</I><B>centroid</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'centroid'.<P>
+<P>
+</I><B>centroid: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'centroid' to be anObject.<P>
+<P>
+</I><B>key</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'key'.<P>
+<P>
+</I><B>key: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'key' to be anObject.<P>
+<P>
+</I><B>name</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'name'.<P>
+<P>
+</I><B>name: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'name' to be anObject.<P>
+<P>
+</I><B>nHarm</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'nHarm'.<P>
+<P>
+</I><B>nHarm: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'nHarm' to be anObject.<P>
+<P>
+</I><B>noPitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'noPitch'.<P>
+<P>
+</I><B>noPitch: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'noPitch' to be anObject.<P>
+<P>
+</I><B>pitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'pitch'.<P>
+<P>
+</I><B>pitch: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'pitch' to be anObject.<P>
+<P>
+</I><B>rePitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'rePitch'.<P>
+<P>
+</I><B>rePitch: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'rePitch' to be anObject.<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>transformAmp: dBval</B><I><BR>
+&nbsp;&nbsp;&nbsp;Concert a minus-dB amplitude to an amplitude scale.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>asSumOfSines</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a SOS-format description of the receiver.<P>
+<P>
+</I><B>asWavetable: len</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a wavetable derived from the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SHARCSample class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>in: dirName descr: strm</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a sample's data from the given directory based on the given line from the contents file.</I></FONT>
+</BODY>
+</HTML>

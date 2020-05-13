@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				VirtualSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>VirtualSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SampledSound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>source <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>An instance of VirtualSound is a "reference" to another sound, typically by a named cue list entry.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;source&nbsp;&nbsp;&nbsp;<StoredSound> the sound to which the VirtualSound points<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>cue: cueName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the cue name of the receiver<P>
+<P>
+</I><B>source</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's source sound.<P>
+<P>
+</I><B>source: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's source sound.<P>
+<P>
+</I><B>start: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the argument as the starting sample of the receiver.<P>
+<P>
+</I><B>stop: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the argument as the ending sample of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+sample accessing<P>
+<P>
+</I></FONT><B>sampleAt: index put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given sample at the given index **after transforming into a 'real' sound**.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>getReal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a 'real sound' based on the receiver.<P>
+<P>
+</I><B>mapSampleIndex: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the given sample index according to the 'page' (firstIndex) of the source and the receiver's relative offset.<P>
+<P>
+</I><B>realSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the real sound for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isVirtual</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is a virtual sound.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>VirtualSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>from: source cue: cName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a VirtualSound derived from the argument and named cue region.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>exampleView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on a ramp with a chunk cut out of it.</I></FONT>
+</BODY>
+</HTML>

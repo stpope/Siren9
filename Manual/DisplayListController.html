@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayListController</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayListController<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>ControllerWithMenu<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayListViews<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>selOffset <P>
+<P>
+<P>
+</FONT><I>Instances of DisplayListController (or its subclasses) are used by DisplayListViews (or subclass instances) for menu management and selection.<P>
+<P>
+By default, a simple YellowButton menu allows for group/inspect/redraw/zoom.<BR>
+The RedButton is used for display item selection (by pointing or boxing-in).<BR>
+LeftShift extends the selection, and dragging a selection moves it.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;selection&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DisplayList> the object's selected items<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+menu messages<P>
+<P>
+</I></FONT><B>again</B><I><BR>
+&nbsp;&nbsp;&nbsp;Repeat the last operation<P>
+<P>
+</I><B>copyItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Copy the selection.<P>
+<P>
+</I><B>cutItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cut the selection.<P>
+<P>
+</I><B>doInspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the view (if leftShiftDown) or the model.<P>
+<P>
+</I><B>flattenItems</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flatten the hierarchy of the selection.<P>
+<P>
+</I><B>groupItems</B><I><BR>
+&nbsp;&nbsp;&nbsp;Group the selection.<P>
+<P>
+</I><B>inspectDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the display list.<P>
+<P>
+</I><B>inspectEditor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the display list editor.<P>
+<P>
+</I><B>inspectModel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Inspect the model.<P>
+<P>
+</I><B>optionsDialog</B><I><BR>
+&nbsp;&nbsp;&nbsp;Run the options dialog box.<P>
+<P>
+</I><B>pasteFromBuffer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Paste the selection.<P>
+<P>
+</I><B>pasteItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Paste the selection.<P>
+<P>
+</I><B>redraw</B><I><BR>
+&nbsp;&nbsp;&nbsp;Redraw the view and clear the selection.<P>
+<P>
+</I><B>redrawView</B><I><BR>
+&nbsp;&nbsp;&nbsp;redraw the display list.<P>
+<P>
+</I><B>undo</B><I><BR>
+&nbsp;&nbsp;&nbsp;Un-do the last operation<P>
+<P>
+</I><B>ungroupItems</B><I><BR>
+&nbsp;&nbsp;&nbsp;Un-group the selection.<P>
+<P>
+</I><B>zoom</B><I><BR>
+&nbsp;&nbsp;&nbsp;Prompt the user for a scale point, zoom the view's scale, and redraw.<P>
+<P>
+</I><B>zoomInPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Zoom the view's scale, and redraw.<P>
+<P>
+</I><B>zoomOutPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Zoom the view's scale, and redraw.<P>
+<P>
+</I><B>zoomTo1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Zoom the view's scale, and redraw.<P>
+</I><I><FONT SIZE=+1><P>
+control defaults<P>
+<P>
+</I></FONT><B>blueButtonActivity</B><I><BR>
+&nbsp;&nbsp;&nbsp;Drag scroll amplified by 2@2 with the blue button.<P>
+<P>
+</I><B>redButtonActivity</B><I><BR>
+&nbsp;&nbsp;&nbsp;Hit-detect items from the display list or drag a selection.<P>
+<P>
+</I><B>redButtonPressedAt: pt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle the red mouse click<P>
+<P>
+</I><B>yellowButtonActivity0</B><I><BR>
+&nbsp;&nbsp;&nbsp;Drag scroll amplified by 2@2 with the blue button.<P>
+</I><I><FONT SIZE=+1><P>
+selecting<P>
+<P>
+</I></FONT><B>selectAtPoint: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Hit-detect the model for the given pt.<P>
+<P>
+</I><B>selectFromPoint: aPoint toPoint: anotherPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Hit-detect the model for the given range.<P>
+<P>
+</I><B>selectRangeWhile: durationBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Hit-detect items from the display list or drag a selection as long as the block is true.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>selection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'selection'.<P>
+<P>
+</I><B>selection: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'selection' to be anObject.<P>
+<P>
+</I><B>selectionTracker</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+events<P>
+<P>
+</I></FONT><B>dragSelection: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Dragging is event oriented.<P>
+<P>
+</I><B>mouseMovedEvent: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Mouse dragging<P>
+<P>
+</I><B>redButtonPressedEvent: event</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>redButtonReleasedEvent: event</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>selectEvent: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initializeMenu</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the receiver's YellowButtonMenu<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayListController class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+resources<P>
+<P>
+</I></FONT><B>defaultEditMenu</B><I><BR>
+&nbsp;&nbsp;&nbsp;MenuEditor new openOnClass: self andSelector: #defaultEditMenu</I></FONT>
+</BODY>
+</HTML>

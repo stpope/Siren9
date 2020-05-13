@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Amplitude</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Amplitude<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Ergon<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Representation<P>
+<P>
+<P>
+</FONT><I>Instances of classes whose species is Amplitude are used for the loudness parameters of musical events.<BR>
+Amplitudes come in several flavors, as in the classes RatioMagnitude, MIDIVelocity and SymbolicLoudness.<BR>
+The class Amplitude is abstract, its class creation method answers an instance of a concrete Amplitude/Loudness class.<P>
+<P>
+Examples:<BR>
+&nbsp;&nbsp;&nbsp;Amplitude value: 0.77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create a ratio instance - range 0.0 to 1.0 (cmusic)"<BR>
+&nbsp;&nbsp;&nbsp;Amplitude value: 77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create an MIDI instance - range 0 to 127"<BR>
+&nbsp;&nbsp;&nbsp;Amplitude value: #mp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create a symbolic instance - range #ppp to #fff"<P>
+<P>
+See also the class example.<P>
+<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Amplitude class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>value: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance of a member of my species.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default color to display instances with.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>initializeGenerality</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most general-purpose duration--relative<P>
+<P>
+</I><B>propertyName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's default property name.<P>
+<P>
+</I><B>relativeMember</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's species member used as a relative magnitude.<P>
+<P>
+</I><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Amplitude.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print a simple message to the transcript demonstrating the various types.</I></FONT>
+</BODY>
+</HTML>

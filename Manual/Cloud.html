@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Cloud</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Cloud<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.EventGenerator<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventGenerators<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>density <P>
+<P>
+<P>
+</FONT><I>Clouds are eventLists that are describe in terms of their contours or selection criteria.<BR>
+This can be (e.g.,) POD-style specification of ranges for random selection, or selection from a given set of pitches.<BR>
+See the class examples of my subclasses for description examples.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;density&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number> number of notes per second<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>density: theDensity</B><I><BR>
+&nbsp;&nbsp;&nbsp;set the density instance variable<P>
+</I><I><FONT SIZE=+1><P>
+playing<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make the cloud's events; assume that the receiver's pitch, loudness and <BR>
+&nbsp;&nbsp;&nbsp;durations are actually intervals<P>
+<P>
+</I><B>eventList0</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make the cloud's events; assume that the receiver's pitch, loudness and <BR>
+&nbsp;&nbsp;&nbsp;durations are actually intervals<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Cloud class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>dictionaryExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized Cloud generated from the given property map dictionary.<P>
+<P>
+</I><B>example1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and edit a low 6 second stochastic cloud with 5 events per second<P>
+<P>
+</I><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a stochastic cloud with random properties.<P>
+<P>
+</I><B>randomExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a stochastic cloud with random properties.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>dur: aD pitch: aP ampl: anA</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an initialized Cloud<P>
+<P>
+</I><B>dur: aD pitch: aP ampl: anA voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an initialized Cloud<P>
+<P>
+</I><B>dur: aD pitch: aP ampl: anA voice: aVoice density: aDe</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an initialized Cloud<P>
+<P>
+</I><B>dur: aD voice: aVoice density: aDe</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an initialized Cloud<P>
+<P>
+</I><B>fromDictionary: aDictionary</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized Cloud generated from the given property map dictionary.</I></FONT>
+</BODY>
+</HTML>

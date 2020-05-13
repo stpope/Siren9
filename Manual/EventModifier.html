@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				EventModifier</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>EventModifier<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventModifiers<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>selector function scale start stop index <P>
+<P>
+<P>
+</FONT><I>EventModifier is the abstract superclass of the classes whose instances operate on event lists. There are operations that can be done eagerly (at definition time) or lazily (at run time)<BR>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;selector&nbsp;&nbsp;&nbsp;<Symbol>  What aspect of the event list do I modify<BR>
+&nbsp;&nbsp;&nbsp;function&nbsp;&nbsp;&nbsp;<Function>  What function do I aply to the aspect<BR>
+&nbsp;&nbsp;&nbsp;scale&nbsp;&nbsp;&nbsp;<Number>  Do I apply a scalar scale?<BR>
+&nbsp;&nbsp;&nbsp;start&nbsp;&nbsp;&nbsp;<Number>  When do I start in the event list?<BR>
+&nbsp;&nbsp;&nbsp;stop&nbsp;&nbsp;&nbsp;<Number>  When do I stop in the event list?<BR>
+&nbsp;&nbsp;&nbsp;index&nbsp;&nbsp;&nbsp;<Number>  Used internally to count through events<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>function</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'function'.<P>
+<P>
+</I><B>function: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'function' to be anObject.<P>
+<P>
+</I><B>index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'index'.<P>
+<P>
+</I><B>index: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'index' to be anObject.<P>
+<P>
+</I><B>scale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'scale'.<P>
+<P>
+</I><B>scale: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'scale' to be anObject.<P>
+<P>
+</I><B>selector</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'selector'.<P>
+<P>
+</I><B>selector: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'selector' to be anObject.<P>
+<P>
+</I><B>start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'start'.<P>
+<P>
+</I><B>start: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'start' to be anObject.<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'stop'.<P>
+<P>
+</I><B>stop: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's instance variable 'stop' to be anObject.<P>
+</I><I><FONT SIZE=+1><P>
+application<P>
+<P>
+</I></FONT><B>applyTo: evtList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>valueIn: evtList at: time</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>EventModifier class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>function: aFunction</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a new modifier and initialize it<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a new modifier and initialize it</I></FONT>
+</BODY>
+</HTML>

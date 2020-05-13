@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Peal</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Peal<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SequenceableCollection<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventGenerators<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>base directions position finished <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Peals are repetitive note-generating sequences.  <BR>
+This implementation was written by Mark Lentczner in 1986.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;base <Collection of Numbers> the pitches i use<BR>
+&nbsp;&nbsp;&nbsp;directions <Array of +-1> the direction of the current sub-sequence<BR>
+&nbsp;&nbsp;&nbsp;position <Number> the current index<BR>
+&nbsp;&nbsp;&nbsp;finished <Boolean> an i done?<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+playing<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>playOn0: out durations: dur meter: mtr at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver<P>
+<P>
+</I><B>playOn: vox</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>playOn: out durations: dur meter: mtr at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>at: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the element in the base collection currently mapped into the index position.<P>
+<P>
+</I><B>at: index put: object</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>currentChange</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the base as mapped by the current change.<P>
+<P>
+</I><B>finished</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer is the peal has completed it's last change<P>
+<P>
+</I><B>setBase: baseSet</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the base set and everything else.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Redone here because SequencableCollection overrides it.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>changeOrder: n bounds: range</B><I><BR>
+&nbsp;&nbsp;&nbsp;Produce the next change in the peal by moving the element n within the range.  If the element wants to move outside the range, alter it's direction and move the next element (recursively call this).<P>
+<P>
+</I><B>indexOfElement: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the index the anElement item  (i.e. the n-th item, not the item = to n) within the receiver.<P>
+<P>
+</I><B>swap: index1 with: index2</B><I><BR>
+&nbsp;&nbsp;&nbsp;We need to redefine this, since we redefined at: & at:put: to map trhrough the base collection<P>
+</I><I><FONT SIZE=+1><P>
+changing<P>
+<P>
+</I></FONT><B>change</B><I><BR>
+&nbsp;&nbsp;&nbsp;Produce the next change in the peal<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Peal class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>pealExample1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a simple bell peal<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a new peal on the given size with 1..size as the base set.<P>
+<P>
+</I><B>upon: baseSet</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create a new peal on the base set given</I></FONT>
+</BODY>
+</HTML>

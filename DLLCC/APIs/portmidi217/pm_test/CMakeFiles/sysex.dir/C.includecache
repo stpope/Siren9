@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Content/Code/Audio/IO/portmidi217/pm_test/sysex.c
+stdio.h
+/Content/Code/Audio/IO/portmidi217/pm_test/stdio.h
+stdlib.h
+/Content/Code/Audio/IO/portmidi217/pm_test/stdlib.h
+assert.h
+/Content/Code/Audio/IO/portmidi217/pm_test/assert.h
+portmidi.h
+/Content/Code/Audio/IO/portmidi217/pm_test/portmidi.h
+porttime.h
+/Content/Code/Audio/IO/portmidi217/pm_test/porttime.h
+string.h
+/Content/Code/Audio/IO/portmidi217/pm_test/string.h
+windows.h
+/Content/Code/Audio/IO/portmidi217/pm_test/windows.h
+unistd.h
+-
+
+pm_common/portmidi.h
+stdint.h
+-
+
+porttime/porttime.h
+stdint.h
+-
+

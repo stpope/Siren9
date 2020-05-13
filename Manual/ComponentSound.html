@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				ComponentSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>ComponentSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>start stop sound <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>A ComponentSound is used as a component (a "splice" element, if you will).<BR>
+It represents another sound that "composes" the composite.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;sound <StoredSound> the "subject" sound <BR>
+&nbsp;&nbsp;&nbsp;start <Integer> the starting sample in the composite<BR>
+&nbsp;&nbsp;&nbsp;stop <Integer> the ending sample in the composite<BR>
+&nbsp;&nbsp;&nbsp;offset <Number> the offset into the selection<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>offset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'offset'.<P>
+<P>
+</I><B>offset: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'offset' to be anObject.<P>
+<P>
+</I><B>sound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'sound'.<P>
+<P>
+</I><B>sound: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'sound' to be anObject.<P>
+<P>
+</I><B>start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'start'.<P>
+<P>
+</I><B>start: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'start' to be anObject.<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 'stop'.<P>
+<P>
+</I><B>stop: anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's 'stop' to be anObject.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Pretty-print the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>includes: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the argument is within the range of the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>ComponentSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>on: sound from: start to: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance initialized with the arguments.<P>
+<P>
+</I><B>on: sound start: start stop: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance initialized with the arguments.<P>
+<P>
+</I><B>on: sound start: start stop: stop offset: offset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance initialized with the arguments.</I></FONT>
+</BODY>
+</HTML>

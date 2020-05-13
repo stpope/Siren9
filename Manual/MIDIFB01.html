@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIFB01</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIFB01<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MIDIDevice<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<P>
+<P>
+<P>
+</FONT><I>MidiFB01 is a type of MidiDevice for the system exclusive commands of the Yamaha FB-01 synthesiser.<BR>
+It implements the special commands available here (like note commands with fractional pitch and given duration).<P>
+<P>
+The standard FB01 note command is like:<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2n k f v d1 d2 = cmd:channel, noteNum, frac, vel, durLow, durHigh<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+note events<P>
+<P>
+</I></FONT><B>play: anEvent on: aChannel</B><I><BR>
+&nbsp;&nbsp;&nbsp;send FB01-specific code for note with fraction and duration<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2n k f v d1 d2 = cmd:channel, noteNum, frac, vel, durLow, durHigh<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIFB01 class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

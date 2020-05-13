@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MusicEvent</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MusicEvent<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DurationEvent<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Events<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>pitch loudness voice <P>
+<P>
+<P>
+</FONT><I>Instances of class MusicEvent are concrete musical note event objects used for eventLists and eventGenerators.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;pitch <Pitch-species MusicMagnitude> the pitch/frequency<BR>
+&nbsp;&nbsp;&nbsp;loudness <Loudness-species MusicMagnitude> the loudness/amplitude<BR>
+&nbsp;&nbsp;&nbsp;voice <Voice, Symbol or Number> voice--a voice or key<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>ampl</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's loudness<P>
+<P>
+</I><B>ampl: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's loudness to the argument.<P>
+<P>
+</I><B>amplitude</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's loudness<P>
+<P>
+</I><B>amplitude: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's loudness to the argument.<P>
+<P>
+</I><B>loudness</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's loudness<P>
+<P>
+</I><B>loudness: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's loudness to the argument.<P>
+<P>
+</I><B>pitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's pitch<P>
+<P>
+</I><B>pitch: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's pitch to the argument.<P>
+<P>
+</I><B>voice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's voice<P>
+<P>
+</I><B>voice: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's voice to the argument.<P>
+</I><I><FONT SIZE=+1><P>
+processing<P>
+<P>
+</I></FONT><B>transposeBy: aStep</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given step to the receiver's pitch.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>printTerseOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument as tersely as possible.<P>
+<P>
+</I><B>printVerboseOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I><B>readDataFrom: aDataStream size: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a new event from the given stream using the compact format.<P>
+<P>
+</I><B>storeDataOn: aDataStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Store myself on a DataStream. Answer self.<P>
+<P>
+</I><B>storeOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and store the source the receiver on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>= anObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver and the argument represent the same values.<P>
+</I><I><FONT SIZE=+1><P>
+scheduling<P>
+<P>
+</I></FONT><B>playOn: aVoice at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver on the voice then.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicEvent class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>ampl: anA voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD ampl: anA voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD pitch: aP</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD pitch: aP ampl: anA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD pitch: aP ampl: anA voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD pitch: aP voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>dur: aD voice: aVoice ampl: anA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>duration: aD pitch: aP</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>duration: aD pitch: aP ampl: anA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+<P>
+</I><B>pitch: aP</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the argument.<P>
+<P>
+</I><B>pitch: aP ampl: anA voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a MusicEvent instance initialized with the arguments.<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the global dictionary of Events (optional).<P>
+<P>
+</I><B>initializeEventDictionary</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the global dictionary of Events (optional).<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>eventInspectExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the terse format of event description.<P>
+<P>
+</I><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the terse format of event description.</I></FONT>
+</BODY>
+</HTML>

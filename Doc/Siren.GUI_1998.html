@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.06 (Macintosh; I; PPC) [Netscape]">
+   <TITLE>Siren2.3.GUITour.html</TITLE>
+</HEAD>
+<BODY>
+
+<H1>
+<A NAME="top"></A><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#3366FF">Siren
+Version 2.3 (1998) GUI Tour</FONT></FONT></B></H1>
+
+The Siren system is a general-purpose music description and
+composition system; it is a collection of about 200 Smalltalk classes for
+building musical applications. The current version works on Squeak 2.3
+running on Mac/Windows/SGI&nbsp; systems with MIDI&nbsp; drivers and CD-quality
+stereo audio I/O. The Siren release is available on the Web.
+<P>These screen dumps were made with Siren
+2.3 running on an Apple Macintosh PowerBook.
+<BR>Details can be found in the on-line
+<A HREF="../Workbook/index.html">Siren outline text</A>, and in the on-line
+<A HREF="../Manual/index.html">Siren reference manual</A>.
+<H3>
+Outline</H3>
+
+<BLOCKQUOTE>
+<LI>
+<A HREF="#dlv">Display List Views</A></LI>
+
+<LI>
+<A HREF="#lm">Layout Manager Examples</A></LI>
+
+<LI>
+<A HREF="#tsv">Time Sequence View</A></LI>
+
+<LI>
+<A HREF="#ptv">Pitch/Time View</A></LI>
+
+<LI>
+<A HREF="#hsv">Hauer-Steffens View</A></LI>
+
+<LI>
+<A HREF="#fv">Function View</A></LI>
+
+<LI>
+<A HREF="#sv">Sound View</A></LI>
+
+<LI>
+<A HREF="#mf">MIDI Fader View</A></LI>
+
+<LI>
+<A HREF="#mvp">MIDI Voice Picker</A></LI>
+
+<LI>
+<A HREF="#sonogram">Sonogram View</A></LI>
+
+</BLOCKQUOTE>
+
+<H3>
+<A NAME="dlv"></A>Display List Views</H3>
+The example screens below show the simple Siren display list editor ("SqueakDraw");
+it allows you to manipulate hierarchical structured graphics objects. The
+pop-up menu in the left view shows the default display list controller
+message. Keyboard commands and mouse interaction support zooming and scrolling.
+One item is selected in each view, and can be dragged or resized using
+its "selection handles."
+<BR>&nbsp;
+<P><IMG SRC="../gifs-old/displaylists.gif" BORDER=0 HEIGHT=227 WIDTH=629>
+<H3>
+<A NAME="lm"></A>Layout Managers</H3>
+Siren is based on the "Navigator MVC" model; in it various kinds of layout
+managers take structured objects and create display lists. The two examples
+below a show class inheritance hierarchy presented first as an indented
+list and second as a simple tree. Color is used to denote class species
+relationships in the class hierarchies. A refined tree layout manage could
+do graphical balancing or top-down layout.
+<P><IMG SRC="../gifs-old/classoutline.gif" BORDER=0 HEIGHT=496 WIDTH=319><IMG SRC="../gifs-old/classtree.gif" BORDER=0 HEIGHT=483 WIDTH=537>
+<BR>&nbsp;
+<H4>
+<A HREF="#top">Return to Top</A></H4>
+
+<H3>
+<A NAME="tsv"></A>Time Sequence View</H3>
+A time sequence view is a display list view that whose layout manager interprets
+time as running from left to right. In the example below, the note "head"
+is used to display the event's voice; this is a steady rhythm of 4 voices.
+<P><IMG SRC="../gifs-old/timeseq.gif" BORDER=0 HEIGHT=128 WIDTH=414>
+<H3>
+<A NAME="ptv"></A>Pitch/Time View</H3>
+In a pitch/time view, time runs left-to-right, and pitch is displayed from
+bottom-to-top. In the example below, the layout manager creates a separate
+sub-display-list for each note, adding lines to the note head image to
+show its amplitude (vertical in red) and duration (horizontal in blue).
+The example shows alto, tenor, and bass lines.
+<P><IMG SRC="../gifs-old/pitchtime.gif" BORDER=0 HEIGHT=319 WIDTH=519>
+<H4>
+<A HREF="#top">Return to Top</A></H4>
+
+<H3>
+<A NAME="hsv"></A>Hauer-Steffens Notation</H3>
+Hauer-Steffens view is related to piano-roll notation; the lines are placed
+corresponding to the accidentals or the black notes on the keyboard. The
+note display is done as in the pitch/time view above.
+<BR>&nbsp;
+<H3>
+<IMG SRC="../gifs-old/hauerstef.gif" BORDER=0 HEIGHT=196 WIDTH=511></H3>
+
+<H3>
+<A NAME="fv"></A>Function View</H3>
+The multi-function view allows the viewing and editing of up to 4 functions
+of 1 variable. The example shows linear break-point functions in red and
+yellow, an exponential segment function in blue, and a cubic spline function
+in green. The buttons along the left are for selecting a particular function
+for editing or file I/O.
+<P><IMG SRC="../gifs-old/fcnview.gif" BORDER=0 HEIGHT=311 WIDTH=727>
+<H4>
+<A HREF="#top">Return to Top</A></H4>
+
+<H3>
+<A NAME="sv"></A>Sound View</H3>
+The Siren sound view lets you zoom/scroll over stored sound object, and
+to create new sounds based on file I/O or simple synthesis algorithms.
+The figure below shows a frequency sweep and the editor's pop-up menu.
+<P><IMG SRC="../gifs-old/sndview.gif" BORDER=0 HEIGHT=325 WIDTH=512>
+<H3>
+<A NAME="mf"></A>MIDI Faders</H3>
+The MIDI fader view shows the real-time state of an arbitrary set of MIDI
+faders or control inputs.
+<P><IMG SRC="../gifs-old/midifaders.gif" BORDER=0 HEIGHT=384 WIDTH=318>
+<H4>
+<A HREF="#top">Return to Top</A></H4>
+
+<H3>
+<A NAME="mvp"></A>MIDI Voice Picker</H3>
+The MIDI voice picker is used in creating orchestras of general MIDI instruments.
+Pressing a button in this view auditions the selected general MIDI sound.
+<P><IMG SRC="../gifs-old/midivoices.gif" BORDER=0 HEIGHT=511 WIDTH=891>
+<BR>&nbsp;
+<H3>
+<A NAME="sonogram"></A>Sonogram View</H3>
+The sonogram view displays an fft-derived spectrum. In the example below
+shows a swept sine wave.
+<H3>
+<IMG SRC="../gifs-old/sonogram.gif" BORDER=0 HEIGHT=410 WIDTH=536></H3>
+
+<HR>
+<H4>
+<A HREF="#top">Return to Top</A></H4>
+
+<ADDRESS>
+Stephen Travis Pope -- stp@create.ucsb.edu -- LastEditDate: 1998.11.12</ADDRESS>
+
+<BR>&nbsp;
+</BODY>
+</HTML>

@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayList</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayList<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DependentComposite<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayLists<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>offset <P>
+<P>
+<P>
+</FONT><I>Instances of DisplayList are used for representing composed structured graphics. They can be nested (see the class examples) and can display themselves and their components.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;offset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Point> the object's offset distance relative to its container<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatten</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a copy of the receiver with its hierarchy flattened.<P>
+<P>
+</I><B>itemsFromX: x1 toX: x2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of items whose offsets are within the given X range.<P>
+<P>
+</I><B>itemsIntersecting: rect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of items whose boundingBoxes intersect the given rectangle. <BR>
+&nbsp;&nbsp;&nbsp;Clip them to the box's border if necessary.<P>
+<P>
+</I><B>itemsWithin: rect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of items whose boundingBoxes are entirely within the given rectangle.<P>
+<P>
+</I><B>itemsWithin: dist of: point</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of items whose boundingBoxes are entirely within the given rectangle.<P>
+<P>
+</I><B>itemWithin: dist of: point</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of items whose boundingBoxes are entirely within the given rectangle.<P>
+<P>
+</I><B>modelsFromX: x1 toX: x2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the list of model-space-items whose offsets are within the given X range.<P>
+<P>
+</I><B>nodeAt: aPath</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the element described by the collection of items in the argument.<P>
+<P>
+</I><B>nodeFor: aModel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the element whose model is the argument.<P>
+<P>
+</I><B>offset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's offset.<P>
+<P>
+</I><B>offset: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's offset.<P>
+<P>
+</I><B>wrapperClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Raise an error.<P>
+</I><I><FONT SIZE=+1><P>
+transforming<P>
+<P>
+</I></FONT><B>scaledBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's offset by the argument.<P>
+<P>
+</I><B>translateBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Translate the receiver's offset by the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printCompleteOn: aStream depth: depth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Descend the hierarchy printing on the stream.<P>
+<P>
+</I><B>printCompletePostScriptOn: aStream depth: depth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Descend the hierarchy printing on the stream.<P>
+<P>
+</I><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver on the argument using the recursive method.<P>
+<P>
+</I><B>printPostScriptOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver on the argument using the recursive method.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>hasItems</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether or not the receiver has items or components.<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;Amswer whether the receiver has any items.<P>
+</I><I><FONT SIZE=+1><P>
+bounds accessing<P>
+<P>
+</I></FONT><B>computePreferredBounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compute the receiver's preferredBounds<P>
+<P>
+</I><B>extent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+enumerating<P>
+<P>
+</I></FONT><B>do: aBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate the argument block over the receiver's components.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>display</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a DisplayListView on the receiver.<P>
+<P>
+</I><B>displayNonCached</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a DisplayListView on the receiver.<P>
+<P>
+</I><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display each of the receiver's components.<P>
+<P>
+</I><B>displayPostScriptOn: aPostscriptContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display each of the receiver's components.<P>
+</I><I><FONT SIZE=+1><P>
+adding-removing<P>
+<P>
+</I></FONT><B>add: aVisualComponent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver.<P>
+<P>
+</I><B>add: aVisualComponent at: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add aVisualComponent to the receiver's components with its offset set to aPoint.<P>
+<P>
+</I><B>add: anItem atPath: aPath</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the first argument at the node described by the second.<P>
+<P>
+</I><B>addAll: aCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver.<P>
+<P>
+</I><B>addComponent: aVisualComponent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument to the receiver.<P>
+<P>
+</I><B>addWrapper: aVisualWrapper</B><I><BR>
+&nbsp;&nbsp;&nbsp;Raise an error.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayList class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>exampleHierarchical</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a large display list with a lines, strings, and visuals.<P>
+<P>
+</I><B>gridExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a large display list with lines and strings.<P>
+<P>
+</I><B>gridExampleX: x byY: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a large display list with lines and strings.<P>
+<P>
+</I><B>polylineExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color polylines over the given extent.<P>
+<P>
+</I><B>polylineExampleHuge</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color polylines over the given (very large) extent.<P>
+<P>
+</I><B>polylinesX: x byY: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color polylines over the given extent.<P>
+<P>
+</I><B>polylinesX: x byY: y items: num</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color polylines over the given extent.<P>
+<P>
+</I><B>postScriptExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a large display list with a lines, strings, and visuals.<P>
+<P>
+</I><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a large display list with a lines, strings, and visuals.<P>
+<P>
+</I><B>rectangleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color rectangles over the given extent.<P>
+<P>
+</I><B>rectanglesX: x byY: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color rectangles over the given extent.<P>
+<P>
+</I><B>stringExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a display list view with randomly-placed random-color strings over the given extent.<P>
+<P>
+</I><B>stringsX: x byY: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color strings over the given extent.<P>
+<P>
+</I><B>visualsX: x byY: y</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a display list with randomly-placed random-color visuals over the given extent.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				CompositeSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>CompositeSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.VirtualSound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>components <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>An instance of CompositeSound can be used to represent a sound constructed by "splicing together" sections of other sounds.<BR>
+It uses its components collection to maintain sounds and sample ranges that have been pasted together.<BR>
+It responds to sampleAt: and sampleAt:put: just like other sounds, but stores only its components list on files unless explicitly told to store samples.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;components <SortedCollection of ComponentSounds> the "sub-sounds" of the CompositeSound<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+sample accessing<P>
+<P>
+</I></FONT><B>sampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index, mapping and paging as necessary.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>rippleUpFrom: start adding: insert</B><I><BR>
+&nbsp;&nbsp;&nbsp;Shift all the cues above the given one up by the given insert count.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>on: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's source sound.<P>
+<P>
+</I><B>paste: sound from: start to: stop at: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Paste the designated section into the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isComposite</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is a composite sound.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>CompositeSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>on: source paste: newSound from: start to: stop at: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a CompositeSound derived from the argument pasting in the given sound at the given index.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>exampleView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on a ramp with a chunk of a sine pasted into it.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SoundEditor</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SoundEditor<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.EditorModel<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>sound undoSound markers lastSelection changed <P>
+<P>
+<P>
+</FONT><I>A SoundEditor is the editor model for sound views.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;copyBuffer <Sound> the selected sound after a copy cmomand<BR>
+&nbsp;&nbsp;&nbsp;sound <Sound> the model sound<BR>
+&nbsp;&nbsp;&nbsp;markers <OrderedCollection of: Integer> the sample indices of the selected points<BR>
+&nbsp;&nbsp;&nbsp;selection1 <Integer> the sample index start of the current selection<BR>
+&nbsp;&nbsp;&nbsp;selection2 <Integer> the stop of the selection<BR>
+&nbsp;&nbsp;&nbsp;lastSelection <Integer> selection1 or 2, whichever was selected last<BR>
+&nbsp;&nbsp;&nbsp;view <Siren.SoundView> my view<BR>
+&nbsp;&nbsp;&nbsp;changed <Boolean> whether the sound has been changed<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+interaction<P>
+<P>
+</I></FONT><B>copy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Copy the current selection into the temporary copy buffer.<P>
+<P>
+</I><B>cut</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cut out the current selection.<P>
+<P>
+</I><B>file</B><I><BR>
+&nbsp;&nbsp;&nbsp;Save the receiver's sound to a file.<P>
+<P>
+</I><B>newCopy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make a fresh copy of the receiver's model's sound.<P>
+<P>
+</I><B>play</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver's sound<P>
+<P>
+</I><B>playAll</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver's sound<P>
+<P>
+</I><B>playSelection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the receiver's sound<P>
+<P>
+</I><B>spawn</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a soundfile editor.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>clearMarkers</B><I><BR>
+&nbsp;&nbsp;&nbsp;Flush the selection and markers<P>
+<P>
+</I><B>list</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>mark: aSampleNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's model<P>
+<P>
+</I><B>markChanged: aBoolean</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the flag to tell the receiver that the model's been changed.<P>
+<P>
+</I><B>markers</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's markers<P>
+<P>
+</I><B>markers: aCollection</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's marker collection.<P>
+<P>
+</I><B>selection1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's primary selection.<P>
+<P>
+</I><B>selection1: anInteger</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's primary selection.<P>
+<P>
+</I><B>selection2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's 2nd-ary selection.<P>
+<P>
+</I><B>selection2: anInteger</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's secondary selection.<P>
+<P>
+</I><B>selectionStart</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>selectionStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>setModel: aModel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's model.<P>
+<P>
+</I><B>size</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's model<P>
+<P>
+</I><B>sound: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's model to be the given sound<P>
+<P>
+</I><B>view: aView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's view to be the given view<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the proper default values for the receiver.<P>
+<P>
+</I><B>reinitialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the proper default values for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+selection<P>
+<P>
+</I></FONT><B>select: cursorX</B><I><BR>
+&nbsp;&nbsp;&nbsp;Take a mouse point and place a marker on the sound sample there.<P>
+<P>
+</I><B>selectedSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a sound from the receiver view's selection.<P>
+<P>
+</I><B>setSelection: aMarker</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the primary selection to be the given marker.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SoundEditor class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized instance.</I></FONT>
+</BODY>
+</HTML>

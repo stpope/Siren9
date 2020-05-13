@@ -1,0 +1,236 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Scale</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Scale<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchScales<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>root notes <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>AllNotes <P>
+<P>
+<P>
+</FONT><I><P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>allNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>noteAfter: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;aNote can be a pitchClass, a pitch (ODNote) or even a PlayableNote.<BR>
+&nbsp;&nbsp;&nbsp;coputation takes into accont circularity and is approximative  wrt aNote<BR>
+&nbsp;&nbsp;&nbsp;alterations<P>
+<P>
+</I><B>noteBefore: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;aNote can be a pitchClass, a pitch (ODNote) or even a PlayableNote.<BR>
+&nbsp;&nbsp;&nbsp;coputation takes into accont circularity and is approximative  wrt aNote<BR>
+&nbsp;&nbsp;&nbsp;alterations<P>
+<P>
+</I><B>notes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>root</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>root: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+scale tone chords<P>
+<P>
+</I></FONT><B>arpeggioFrom: startNote poly: n interval: int</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields n notes from startNote by intervals of int<P>
+<P>
+</I><B>chordFromNotes: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>following: noteDepart by: x</B><I><BR>
+&nbsp;&nbsp;&nbsp;rend la x ieme note a partir de noteDepart dans mes notes<P>
+<P>
+</I><B>generateChordsPoly: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;generate the list of 7 scale tone chords from my notes with polyphony n<P>
+<P>
+</I><B>generateChordsPoly: n inOctave: oct</B><I><BR>
+&nbsp;&nbsp;&nbsp;generate the list of 7 scale tone chords from my notes with polyphony n<P>
+<P>
+</I><B>indexDe: uneNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>scaleToneTriads</B><I><BR>
+&nbsp;&nbsp;&nbsp;N C majorScale scaleToneTriads <BR>
+&nbsp;&nbsp;&nbsp;(NeapolitanMinor root: N D ) scaleToneTriads<P>
+</I><I><FONT SIZE=+1><P>
+octave-dependent notes<P>
+<P>
+</I></FONT><B>ascendingFromOctave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;first note is in octave o. others follow (and may shift octave!)<P>
+<P>
+</I><B>asPitchesInOctave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>closestPitchClassTo: aPc</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>decendingFromOctave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;first note is in octave o. others follow (and may shift octave!)<P>
+<P>
+</I><B>diatonicNotesFrom: dep to: arr</B><I><BR>
+&nbsp;&nbsp;&nbsp;assumes a and b belong to the scale.<BR>
+&nbsp;&nbsp;&nbsp;N re  minorScale diatonicNotesFrom: (N do sharp  octave: 3) to: (N re octave: 4)<P>
+<P>
+</I><B>octave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+computing notes<P>
+<P>
+</I></FONT><B>computeNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;intervalList depends on the type of the scale. It is redefined in each <BR>
+&nbsp;&nbsp;&nbsp;subclass of Scale<P>
+<P>
+</I><B>intervalList</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the list of interval. Redefined in subclasses<P>
+<P>
+</I><B>leadingNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;N la minorScale leadingNote<P>
+<P>
+</I><B>reverseNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;first is root, others following descending order<P>
+<P>
+</I><B>tonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;N re minorScale tonic<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+degres<P>
+<P>
+</I></FONT><B>degreDeAccord: unAccord</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>degreeOfNote: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+transpose<P>
+<P>
+</I></FONT><B>transposeOf: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>= g</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>containsAllOfTheseNotes: listOfNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>containsNote: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isMajor</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isMinor</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isValid</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+querying<P>
+<P>
+</I></FONT><B>flatNotesInSignature</B><I><BR>
+&nbsp;&nbsp;&nbsp;Warning: doubles sharps are not sharps!<P>
+<P>
+</I><B>numberOfFlats</B><I><BR>
+&nbsp;&nbsp;&nbsp;Attention les doubles bemols ne sont pas des bemols!<P>
+<P>
+</I><B>numberOfSharps</B><I><BR>
+&nbsp;&nbsp;&nbsp;Attention les doubles dieses ne sont pas des dieses!<P>
+<P>
+</I><B>sharpNotesInSignature</B><I><BR>
+&nbsp;&nbsp;&nbsp;Warning: doubles sharps are not sharps!<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>hash</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+Paleo<P>
+<P>
+</I></FONT><B>costForPitch: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>enharmonicScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchClassFor: p</B><I><BR>
+&nbsp;&nbsp;&nbsp;N C majorScale pitchClassFor: N A<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Scale class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>askScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;self askScale<P>
+<P>
+</I><B>root: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>standardScales</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>warn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;N la flat majorScale notes ->  #(Lab Sib Do Reb Mib Fa Sol )<BR>
+&nbsp;&nbsp;&nbsp;N do harmonicMinorScale notes ->  #(Do Re Mib Fa Sol Lab Si )<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;N re majorScale numberOfSharps -> 2<P>
+<P>
+&nbsp;&nbsp;&nbsp;N do majorScale generateChordsPoly: 4 -><BR>
+OrderedCollection ([Do #maj7 ] [Re #min 7 ] [Mi #min 7 ] [Fa #maj7 ] [Sol 7 ] [La #min 7 ] [Si #halfDim7 ] ) <P>
+<P>
+&nbsp;&nbsp;&nbsp;N do majorScale generateChordsPoly: 6<BR>
+-> OrderedCollection (Do #maj7 9 11  Re #min 7 9 11  Mi #min 7 #dim9 11  Fa #maj7 9 #aug11  Sol 7 9 11  La #min 7 9 11  Si #min #dim5 7 #dim9 11  )<P>
+<P>
+&nbsp;&nbsp;&nbsp;N do majorScale generateChordsPoly: 7<BR>
+-> OrderedCollection (Do #maj7 9 11 13  Re #min 7 9 11 13  Mi #min 7 #dim9 11 #dim13  Fa #maj7 9 #aug11 13  Sol 7 9 11 13  La #min 7 9 11 #dim13  Si #min #dim5 7 #dim9 11 #dim13  )<P>
+<P>
+N re  HarmonicMinorScale generateChordsPoly: 3<P>
+<P>
+&nbsp;&nbsp;&nbsp;N do majorScale degreDeAccord: (FPChord new fromString: 'Fa min 7')<BR>
+-> 4<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+interval list<P>
+<P>
+</I></FONT><B>intervalList</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+Paleo class initialize<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

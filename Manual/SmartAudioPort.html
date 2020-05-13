@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SmartAudioPort</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SmartAudioPort<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.PortAudioPort<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>inChannels callbackBlock useProcess ioProcess <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ioSemaphore inClient outClients inBuffer outBuffer <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter <P>
+<P>
+<P>
+</FONT><I>SmartPortAudioPort is a more advanced IO port for PortAudio; it uses a Smalltalk process that sleeps on a semaphore that is signalled by the PortAudio callback. this allows one to synthesize sound interactively or to record into Siren sounds. The methods nextInBuffer and nextInBuffer are used to copy buffers or call synthesis clients.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;inChannels&nbsp;&nbsp;&nbsp; <Integer>  # of input channels<BR>
+&nbsp;&nbsp;&nbsp;ioSemaphore <Semaphore>  semaphore sent from the low-level driver<BR>
+&nbsp;&nbsp;&nbsp;inClient&nbsp;&nbsp;&nbsp; <Sound -> sample index>  the sound being recorded into<BR>
+&nbsp;&nbsp;&nbsp;outClients <OrderedCollection of (aSound -> Integer)>  my playing sounds and their sample indices<BR>
+&nbsp;&nbsp;&nbsp;ioProcess <Process>  my IO thread<BR>
+&nbsp;&nbsp;&nbsp;inBuffer <WordArray>  sample buffer handed to PortAudio<BR>
+&nbsp;&nbsp;&nbsp;outBuffer <WordArray>  sample buffer handed to PortAudio<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+play/record<P>
+<P>
+</I></FONT><B>callback</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle a callback from PortAudio; this is sent an an external callback<P>
+<P>
+</I><B>doIO</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle a callback from PortAudio; this is sent an an external callback through the class<P>
+<P>
+</I><B>nextInBuffer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the next input buffer for the clients from the interface.<P>
+<P>
+</I><B>nextOutBuffer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the next output buffer from the clients and sum it into my buffer for playing.<P>
+<P>
+</I><B>play: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver over the DACs.<P>
+<P>
+</I><B>record: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Record into the argument via the receiver.<P>
+<P>
+</I><B>start: duration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start the receiver's IO loop for the given duration.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>inChannels</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>inChannels: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>outClients</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>setInputDevice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the port to use the default input device<P>
+</I><I><FONT SIZE=+1><P>
+open/close<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the receiver sound port<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the receiver sound port<P>
+</I><I><FONT SIZE=+1><P>
+initialize/release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized version of the receiver.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SmartAudioPort class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>testPlay</B><I><BR>
+&nbsp;&nbsp;&nbsp;Test playing a sound through the call-back interface<P>
+<P>
+</I><B>testRecord</B><I><BR>
+&nbsp;&nbsp;&nbsp;SmartAudioPort testRecord<P>
+</I><I><FONT SIZE=+1><P>
+callbacks<P>
+<P>
+</I></FONT><B>callback</B><I><BR>
+&nbsp;&nbsp;&nbsp;Forward the callback to an instance<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance, or the singleton</I></FONT>
+</BODY>
+</HTML>

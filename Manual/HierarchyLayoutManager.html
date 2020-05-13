@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				HierarchyLayoutManager</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>HierarchyLayoutManager<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.LayoutManager<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Layout<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>length xStep yStep treeAccessor <P>
+<P>
+<P>
+</FONT><I>Instances of the HierarchyLayoutManager classes are used to generate display lists from tree-like data and tree accessors.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Integer or Point> temp. depth used in layout<BR>
+&nbsp;&nbsp;&nbsp;xStep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Integer> step size for x<BR>
+&nbsp;&nbsp;&nbsp;yStep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Integer> step size for x<BR>
+&nbsp;&nbsp;&nbsp;treeAccessor&nbsp;&nbsp;&nbsp;<TreeAccessor> the TreeAccessor used to access the model<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>accessor: aTA</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's tree accessor to the argument.<P>
+<P>
+</I><B>xStep: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's x step size to the argument.<P>
+<P>
+</I><B>yStep: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's y step size to the argument.<P>
+</I><I><FONT SIZE=+1><P>
+generating<P>
+<P>
+</I></FONT><B>addItem1: aModelNode atNode: aPath in: aDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given item to the display list.<P>
+<P>
+</I><B>addItem: aModelNode atNode: aPath in: aDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the given item to the display list.<P>
+<P>
+</I><B>displayPositionFor: aPath</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the display position of the element at the given path.<P>
+<P>
+</I><B>generateDisplayList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Generate and answer the receiver's display list.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>HierarchyLayoutManager class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

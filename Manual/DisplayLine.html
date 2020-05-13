@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayLine</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayLine<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayItem<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayLists<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>width extent <P>
+<P>
+<P>
+</FONT><I>Instances of DisplayLine are used for visual lines in display lists.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Number> the object's line width<BR>
+&nbsp;&nbsp;&nbsp;extent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Point> the object's visual extent<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>corner: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the corner of the receiver (offset + extent).<P>
+<P>
+</I><B>extent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver.<P>
+<P>
+</I><B>extent: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the extent of the receiver.<P>
+<P>
+</I><B>width: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver in the given Stream.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display a line between startPoint and endPoint.<P>
+<P>
+</I><B>displayPostScriptOn: aPostscriptContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on the argument as a PostScript item.<P>
+</I><I><FONT SIZE=+1><P>
+bounds accessing<P>
+<P>
+</I></FONT><B>bounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's bounds.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayLine class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>from: oPoint to: endPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized instance.<P>
+<P>
+</I><B>offset: oPoint extent: ePoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized instance.</I></FONT>
+</BODY>
+</HTML>

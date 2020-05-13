@@ -1,0 +1,480 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OctaveDependentNote</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OctaveDependentNote<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>oct pc midiPitch natural <P>
+<P>
+<P>
+</FONT><I>Instances of this class represent octave dependent notes.<BR>
+&nbsp;&nbsp;&nbsp;pc : the pitch class of the note (takes enharmonic spelling into account)<BR>
+&nbsp;&nbsp;&nbsp;octave: integer from 0 to .., represent the octave. <BR>
+Middle C is therefore represented by <BR>
+&nbsp;&nbsp;&nbsp;pc : C<BR>
+&nbsp;&nbsp;&nbsp;octave: 4<BR>
+Defines methods to compute intervals, midiPitches, and lots<BR>
+of thing that PitchClass implements too.<BR>
+So why not make this class and PitchClass have<BR>
+a common superclass, to factor out common computations ?<BR>
+Ontological questions :<BR>
+&nbsp;&nbsp;&nbsp;how to compute an interval between two octave-dependent notes,<BR>
+since their ambitus may be arbitrarily large (no question of computing 25th intervals).<BR>
+So intervals should be reduced to thirteenth, i.e. :<BR>
+&nbsp;&nbsp;&nbsp;octaves should be taken into account only in a 0/1 manner<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+access<P>
+<P>
+</I></FONT><B>oct</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>oct: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchClass: aPc</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+alterations<P>
+<P>
+</I></FONT><B>flat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDoubleFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isDoubleSharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isFlat</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isNatural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isSharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>natural</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;(N C sharp sharp octave: 3) storeString = '(N C sharp sharp @ 3)'<P>
+</I><I><FONT SIZE=+1><P>
+intervals<P>
+<P>
+</I></FONT><B>closestEnharmonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diatonicStepsTo: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the number of diatonic steps to aNote<P>
+<P>
+</I><B>following</B><I><BR>
+&nbsp;&nbsp;&nbsp;the next diatonic note of self's natural note<P>
+<P>
+</I><B>newdiatonicStepsTo: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the number of diatonic steps to aNote<P>
+<P>
+</I><B>nthFollowing: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the nth diatonic note following self. <BR>
+&nbsp;&nbsp;&nbsp;Takes octave shifts into account<P>
+<P>
+</I><B>nthPreceding: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the nth diatonic note preceding self. <BR>
+&nbsp;&nbsp;&nbsp;Takes octave shifts into account<P>
+<P>
+</I><B>olddiatonicStepsTo: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the number of diatonic steps to aNote<P>
+<P>
+</I><B>oldEquals: x</B><I><BR>
+&nbsp;&nbsp;&nbsp;important pour l'integrite des operations sur les melodies<P>
+<P>
+</I><B>preceding</B><I><BR>
+&nbsp;&nbsp;&nbsp;the next diatonic note of self's natural note<P>
+<P>
+</I><B>semiToneCount</B><I><BR>
+&nbsp;&nbsp;&nbsp;related to OctaveDependentNote fromMidiPitch<P>
+<P>
+</I><B>semiTonesWith: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+interval testing<P>
+<P>
+</I></FONT><B>intervalBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the interval between the two octaveDependentNotes. <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assume that aNote is really a OctaveDependentNote<P>
+<P>
+</I><B>intervalTypeBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the type of the interval between the two notes modulo one <BR>
+&nbsp;&nbsp;&nbsp;octave<BR>
+&nbsp;&nbsp;&nbsp;(N C octave: 6) intervalTypeBetween: (N re octave: 3)&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isLessThanA: interval from: od</B><I><BR>
+&nbsp;&nbsp;&nbsp; ascending or descending direction<P>
+<P>
+</I><B>realIntervalTypeBetween: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;returns the type of the interval between the two notes&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;(N C octave: 6) realIntervalTypeBetween: (N C octave: 3) <P>
+<P>
+</I><B>testIntervalsFrom: pitch1 to: pitch2</B><I><BR>
+&nbsp;&nbsp;&nbsp;(N C sharp @ 3) testIntervalsFrom: (N A @ 1) to: (N A @ 4)<P>
+</I><I><FONT SIZE=+1><P>
+public intervals<P>
+<P>
+</I></FONT><B>alterate: note toReach: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;Join semitons to note in order to obtain the required number of <BR>
+&nbsp;&nbsp;&nbsp;semitones with self. <BR>
+&nbsp;&nbsp;&nbsp;Redefined here because interval computation must take octave <BR>
+&nbsp;&nbsp;&nbsp;into account ...<P>
+<P>
+</I><B>alterateBelow: note toReach: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;Join semitons to note in order to obtain the required number of <BR>
+&nbsp;&nbsp;&nbsp;semitones with self. <BR>
+&nbsp;&nbsp;&nbsp;Redefined here because interval computation must take octave <BR>
+&nbsp;&nbsp;&nbsp;into account ...<P>
+<P>
+</I><B>augmentedEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>augmentedSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>diminishedThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flatThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>majorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorNinth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSecond</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorSixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>minorThirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>ninth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectEleventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>perfectFourth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>second</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>seventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sixth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>thirteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>unison</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+transpose<P>
+<P>
+</I></FONT><B>beDownAnOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>beTransposedBy: i</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>beTransposedOneStepDown</B><I><BR>
+&nbsp;&nbsp;&nbsp;used by the score editor as diatonic step!<P>
+<P>
+</I><B>beTransposedOneStepUp</B><I><BR>
+&nbsp;&nbsp;&nbsp;used by the score editor as diatonic step!<P>
+<P>
+</I><B>beUpAnOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>downAnOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>setPitchTo: aPitch</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>switchTo: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>transposeOf: anInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;three cases: integer (+/-), method name (= ascending interval), or interval <BR>
+&nbsp;&nbsp;&nbsp;object<P>
+<P>
+</I><B>upAnOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>< aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B><= aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>= x</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>> aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>>= aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>hash</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isbetween: n1 and: n2</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isNearerTo: n1 than: n2</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>midiPitchEquals: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>pitchEqual: aNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theNearestPitch: list</B><I><BR>
+&nbsp;&nbsp;&nbsp;(N A flat @ 2) theNearestPitch: (Array with:  (N C  @ 2) with: (N C @ 3))<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+leading<P>
+<P>
+</I></FONT><B>isLeadingToneTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>lowerLeadingToneInScale: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>upperLeadingToneInScale: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+private-pacts<P>
+<P>
+</I></FONT><B>respectsBassTessitura</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+modifying<P>
+<P>
+</I></FONT><B>inTessitura: qualTessitura</B><I><BR>
+&nbsp;&nbsp;&nbsp;modify octave according to the given tessitura<P>
+</I><I><FONT SIZE=+1><P>
+mutations more<P>
+<P>
+</I></FONT><B>dottedEighth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>dottedFull</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>dottedHalf</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>dottedQuarter</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eighth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>eighthInTriplet</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>full</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>half</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>quarter</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>quarterInTriplet</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sixteenth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing delegation<P>
+<P>
+</I></FONT><B>downAndUpOctaves: odNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+constraining<P>
+<P>
+</I></FONT><B>intervalTypeModuloOctaveBetween: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OctaveDependentNote class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>from: aNote to: n2</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>fromMidiPitch: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;yields the note that has n as midiPitch. Only natural and sharp <BR>
+&nbsp;&nbsp;&nbsp;notes are created as there is no possible way of knowing the <BR>
+&nbsp;&nbsp;&nbsp;intention<P>
+<P>
+</I><B>named: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;self named: 'Re#2'<P>
+<P>
+</I><B>octave: o pc: pc</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>examples</B><I><BR>
+&nbsp;&nbsp;&nbsp;(N do octave: 3) minorThird sharp sharp E#3<P>
+<P>
+(N C octave: 3) semiTonesWith: (N la  octave: 4) 21<P>
+<P>
+(#(do re mi fa sol la si ) collect: [:x | (N perform: x) octave: 3])<BR>
+&nbsp;&nbsp;&nbsp;collect: [:y | y - #octave]<P>
+<P>
+(N B octave: 3) intervalBetween: (N B flat octave: 4)<BR>
+(N B octave: 3) intervalBetween: (N B flat octave: 2)<P>
+<P>
+(N C octave: 3) intervalBetween: (N C octave: 2)    descending  octave<BR>
+(N C octave: 2) intervalBetween: (N C octave: 3)   octave<BR>
+ <P>
+</I><I><FONT SIZE=+1><P>
+vocal ranges<P>
+<P>
+</I></FONT><B>altoRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes de l'alto<P>
+<P>
+</I><B>altoRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;OctaveDependentNote sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>baseRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes de la basse<P>
+<P>
+</I><B>baseRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;OctaveDependentNote sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>sopranoRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes du soprano<P>
+<P>
+</I><B>sopranoRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;OctaveDependentNote sopranoRangeInScale: (N do sharp minorScale)<P>
+<P>
+</I><B>tenorRange</B><I><BR>
+&nbsp;&nbsp;&nbsp;retourne la collection des notes du tenor<P>
+<P>
+</I><B>tenorRangeInScale: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;OctaveDependentNote sopranoRangeInScale: (N do sharp minorScale)</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Signature</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Signature<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Object<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>sharps flats <P>
+<P>
+<P>
+</FONT><I>Notion of signature is related to the notion of "legal" scales, i.e.<BR>
+scales having only sharps OR flats in their signature.<BR>
+So method tonality here works only for legal scales.<BR>
+It should possible to compute the tonality for arbitrary scales though,<BR>
+but I am not sure how<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>flatsInRightOrder</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isEmpty</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>isLegal</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharpsInRightOrder</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+tonality<P>
+<P>
+</I></FONT><B>tonality</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+access<P>
+<P>
+</I></FONT><B>alterate: aNaturalNote</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>flats</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nbFlats: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>nbSharps: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reOrderSharpsAndFlats</B><I><BR>
+&nbsp;&nbsp;&nbsp;attempts to reorder flats and sharps according to the natural order as found in <BR>
+&nbsp;&nbsp;&nbsp;PitchClass<P>
+<P>
+</I><B>sharps</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharps: s flats: f</B><I><BR>
+&nbsp;&nbsp;&nbsp;attempts to reorder flats and sharps according to the natural order as found in <BR>
+&nbsp;&nbsp;&nbsp;PitchClass<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Signature class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>example2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signature new tonality -> C MajorScale<BR>
+&nbsp;&nbsp;&nbsp;(Signature new nbSharps: 4) tonality -> E MajorScale&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;(Signature new nbFlats: 3) tonality -> Eb MajorScale<P>
+<P>
+</I><B>example3</B><I><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature fromTonality: N D majorScale<BR>
+&nbsp;&nbsp;&nbsp;Signature fromTonality: N E flat majorScale<P>
+<P>
+</I><B>example4</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signatures may be created for illegal scales. However, method <BR>
+&nbsp;&nbsp;&nbsp;tonality yields an error for these scales: <BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;Signature fromTonality: N D minorScale -> 1 sharps; 1 flats <BR>
+&nbsp;&nbsp;&nbsp;Signature sharps: (Array with: N F sharp) flats: (Array with: (N E flat)) -> 1 sharps; 1 flats<BR>
+&nbsp;&nbsp;&nbsp;(Signature fromTonality: N D minorScale) tonality -> error<P>
+</I><I><FONT SIZE=+1><P>
+creation<P>
+<P>
+</I></FONT><B>choseSignature</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signature choseSignature<P>
+<P>
+</I><B>fromTonality: aScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Signature fromTonality: N E flat majorScale<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>sharps: s flats: f</B><I><BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,303 @@
+(Siren.EventList named: #Allemande2)
+add: (0 msec => (Siren.MusicEvent dur: 180 pitch: 76 ampl: 58 voice: 2)); 
+add: (180 msec => (Siren.MusicEvent dur: 180 pitch: 77 ampl: 58 voice: 2)); 
+add: (370 msec => (Siren.MusicEvent dur: 750 pitch: 72 ampl: 58 voice: 3)); 
+add: (370 msec => (Siren.MusicEvent dur: 560 pitch: 79 ampl: 58 voice: 2)); 
+add: (930 msec => (Siren.MusicEvent dur: 180 pitch: 81 ampl: 58 voice: 2)); 
+add: (1120 msec => (Siren.MusicEvent dur: 370 pitch: 74 ampl: 58 voice: 3)); 
+add: (1120 msec => (Siren.MusicEvent dur: 180 pitch: 79 ampl: 58 voice: 2)); 
+add: (1310 msec => (Siren.MusicEvent dur: 180 pitch: 77 ampl: 58 voice: 2)); 
+add: (1500 msec => (Siren.MusicEvent dur: 370 pitch: 67 ampl: 58 voice: 3))!
+(Siren.EventList named: #Allemande2)
+add: (1500 msec => (Siren.MusicEvent dur: 180 pitch: 76 ampl: 58 voice: 2)); 
+add: (1680 msec => (Siren.MusicEvent dur: 180 pitch: 74 ampl: 58 voice: 2)); 
+add: (1870 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 3)); 
+add: (1870 msec => (Siren.MusicEvent dur: 370 pitch: 76 ampl: 58 voice: 2)); 
+add: (2250 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 2)); 
+add: (2620 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 2)); 
+add: (3000 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 1)); 
+add: (3180 msec => (Siren.MusicEvent dur: 180 pitch: 86 ampl: 58 voice: 1)); 
+add: (3370 msec => (Siren.MusicEvent dur: 560 pitch: 88 ampl: 58 voice: 1)); 
+add: (3370 msec => (Siren.MusicEvent dur: 750 pitch: 72 ampl: 58 voice: 3))!
+(Siren.EventList named: #Allemande2)
+add: (3370 msec => (Siren.MusicEvent dur: 750 pitch: 79 ampl: 58 voice: 2)); 
+add: (3930 msec => (Siren.MusicEvent dur: 180 pitch: 89 ampl: 58 voice: 1)); 
+add: (4120 msec => (Siren.MusicEvent dur: 180 pitch: 88 ampl: 58 voice: 1)); 
+add: (4120 msec => (Siren.MusicEvent dur: 180 pitch: 72 ampl: 58 voice: 3)); 
+add: (4120 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 2)); 
+add: (4310 msec => (Siren.MusicEvent dur: 180 pitch: 86 ampl: 58 voice: 1)); 
+add: (4310 msec => (Siren.MusicEvent dur: 180 pitch: 74 ampl: 58 voice: 3)); 
+add: (4500 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 1)); 
+add: (4500 msec => (Siren.MusicEvent dur: 370 pitch: 76 ampl: 58 voice: 3)); 
+add: (4500 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 2))!
+(Siren.EventList named: #Allemande2)
+add: (4680 msec => (Siren.MusicEvent dur: 180 pitch: 83 ampl: 58 voice: 1)); 
+add: (4680 msec => (Siren.MusicEvent dur: 180 pitch: 79 ampl: 58 voice: 2)); 
+add: (4870 msec => (Siren.MusicEvent dur: 370 pitch: 81 ampl: 58 voice: 1)); 
+add: (4870 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 3)); 
+add: (4870 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 2)); 
+add: (5250 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 1)); 
+add: (5620 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 1)); 
+add: (6000 msec => (Siren.MusicEvent dur: 180 pitch: 77 ampl: 58 voice: 2)); 
+add: (6180 msec => (Siren.MusicEvent dur: 180 pitch: 79 ampl: 58 voice: 2)); 
+add: (6370 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 3))!
+(Siren.EventList named: #Allemande2)
+add: (6370 msec => (Siren.MusicEvent dur: 370 pitch: 81 ampl: 58 voice: 2)); 
+add: (6750 msec => (Siren.MusicEvent dur: 370 pitch: 76 ampl: 58 voice: 3)); 
+add: (6750 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 2)); 
+add: (7120 msec => (Siren.MusicEvent dur: 370 pitch: 74 ampl: 58 voice: 3)); 
+add: (7120 msec => (Siren.MusicEvent dur: 180 pitch: 77 ampl: 58 voice: 2)); 
+add: (7310 msec => (Siren.MusicEvent dur: 180 pitch: 81 ampl: 58 voice: 2)); 
+add: (7500 msec => (Siren.MusicEvent dur: 370 pitch: 74 ampl: 58 voice: 1)); 
+add: (7500 msec => (Siren.MusicEvent dur: 370 pitch: 67 ampl: 58 voice: 3)); 
+add: (7500 msec => (Siren.MusicEvent dur: 180 pitch: 79 ampl: 58 voice: 2)); 
+add: (7680 msec => (Siren.MusicEvent dur: 180 pitch: 77 ampl: 58 voice: 2))!
+(Siren.EventList named: #Allemande2)
+add: (7870 msec => (Siren.MusicEvent dur: 750 pitch: 79 ampl: 58 voice: 1)); 
+add: (7870 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 3)); 
+add: (7870 msec => (Siren.MusicEvent dur: 370 pitch: 76 ampl: 58 voice: 2)); 
+add: (8250 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 3)); 
+add: (8250 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 2)); 
+add: (8620 msec => (Siren.MusicEvent dur: 180 pitch: 81 ampl: 58 voice: 1)); 
+add: (8810 msec => (Siren.MusicEvent dur: 180 pitch: 83 ampl: 58 voice: 1)); 
+add: (9000 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 1)); 
+add: (9000 msec => (Siren.MusicEvent dur: 180 pitch: 81 ampl: 58 voice: 2)); 
+add: (9180 msec => (Siren.MusicEvent dur: 180 pitch: 86 ampl: 58 voice: 1))!
+(Siren.EventList named: #Allemande2)
+add: (9180 msec => (Siren.MusicEvent dur: 180 pitch: 83 ampl: 58 voice: 2)); 
+add: (9370 msec => (Siren.MusicEvent dur: 370 pitch: 88 ampl: 58 voice: 1)); 
+add: (9370 msec => (Siren.MusicEvent dur: 370 pitch: 72 ampl: 58 voice: 3)); 
+add: (9370 msec => (Siren.MusicEvent dur: 370 pitch: 84 ampl: 58 voice: 2)); 
+add: (9750 msec => (Siren.MusicEvent dur: 370 pitch: 86 ampl: 58 voice: 1)); 
+add: (9750 msec => (Siren.MusicEvent dur: 370 pitch: 74 ampl: 58 voice: 3)); 
+add: (9750 msec => (Siren.MusicEvent dur: 370 pitch: 83 ampl: 58 voice: 2)); 
+add: (10120 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 1)); 
+add: (10120 msec => (Siren.MusicEvent dur: 370 pitch: 76 ampl: 58 voice: 3)); 
+add: (10120 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 2))!
+(Siren.EventList named: #Allemande2)
+add: (10310 msec => (Siren.MusicEvent dur: 180 pitch: 88 ampl: 58 voice: 1)); 
+add: (10500 msec => (Siren.MusicEvent dur: 180 pitch: 86 ampl: 58 voice: 1)); 
+add: (10500 msec => (Siren.MusicEvent dur: 370 pitch: 77 ampl: 58 voice: 3)); 
+add: (10500 msec => (Siren.MusicEvent dur: 370 pitch: 81 ampl: 58 voice: 2)); 
+add: (10680 msec => (Siren.MusicEvent dur: 180 pitch: 84 ampl: 58 voice: 1)); 
+add: (10870 msec => (Siren.MusicEvent dur: 370 pitch: 83 ampl: 58 voice: 1)); 
+add: (10870 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 3)); 
+add: (10870 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 2)); 
+add: (11250 msec => (Siren.MusicEvent dur: 370 pitch: 79 ampl: 58 voice: 1)); 
+add: (11620 msec => (Siren.MusicEvent dur: 1120 pitch: 67 ampl: 58 voice: 3))!
+(Siren.EventList named: #Allemande2)
+add: (12000 msec => (Siren.MusicEvent dur: 180 pitch: 83 ampl: 58 voice: 1))!
+
+(Siren.EventList named: #Bach2)	tempoScale: 1200.
+(Siren.EventList named: #Bach2)
+add: (0 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 34 voice: 1)); 
+add: (150 msec => (Siren.MusicEvent dur: 150 pitch: 71 ampl: 34 voice: 1)); 
+add: (300 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 34 voice: 1)); 
+add: (600 msec => (Siren.MusicEvent dur: 300 pitch: 67 ampl: 34 voice: 1)); 
+add: (900 msec => (Siren.MusicEvent dur: 300 pitch: 68 ampl: 34 voice: 1)); 
+add: (1200 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 34 voice: 1)); 
+add: (1350 msec => (Siren.MusicEvent dur: 150 pitch: 71 ampl: 34 voice: 1)); 
+add: (1500 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 34 voice: 1)); 
+add: (1800 msec => (Siren.MusicEvent dur: 300 pitch: 74 ampl: 34 voice: 1))!
+(Siren.EventList named: #Bach2)
+add: (2100 msec => (Siren.MusicEvent dur: 300 pitch: 67 ampl: 34 voice: 1)); 
+add: (2400 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 34 voice: 1)); 
+add: (2550 msec => (Siren.MusicEvent dur: 150 pitch: 71 ampl: 34 voice: 1)); 
+add: (2700 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 34 voice: 1)); 
+add: (3000 msec => (Siren.MusicEvent dur: 300 pitch: 74 ampl: 34 voice: 1)); 
+add: (3300 msec => (Siren.MusicEvent dur: 150 pitch: 65 ampl: 34 voice: 1)); 
+add: (3450 msec => (Siren.MusicEvent dur: 150 pitch: 67 ampl: 34 voice: 1)); 
+add: (3600 msec => (Siren.MusicEvent dur: 600 pitch: 68 ampl: 34 voice: 1)); 
+add: (4200 msec => (Siren.MusicEvent dur: 150 pitch: 67 ampl: 34 voice: 1)); 
+add: (4350 msec => (Siren.MusicEvent dur: 150 pitch: 65 ampl: 34 voice: 1))!
+(Siren.EventList named: #Bach2)
+add: (4500 msec => (Siren.MusicEvent dur: 150 pitch: 63 ampl: 34 voice: 1)); 
+add: (4650 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 34 voice: 1)); 
+add: (4800 msec => (Siren.MusicEvent dur: 150 pitch: 71 ampl: 34 voice: 1)); 
+add: (4800 msec => (Siren.MusicEvent dur: 150 pitch: 79 ampl: 44 voice: 2)); 
+add: (4950 msec => (Siren.MusicEvent dur: 150 pitch: 69 ampl: 34 voice: 1)); 
+add: (4950 msec => (Siren.MusicEvent dur: 150 pitch: 78 ampl: 44 voice: 2)); 
+add: (5100 msec => (Siren.MusicEvent dur: 150 pitch: 67 ampl: 34 voice: 1)); 
+add: (5100 msec => (Siren.MusicEvent dur: 300 pitch: 79 ampl: 44 voice: 2)); 
+add: (5250 msec => (Siren.MusicEvent dur: 150 pitch: 65 ampl: 34 voice: 1)); 
+add: (5400 msec => (Siren.MusicEvent dur: 150 pitch: 63 ampl: 34 voice: 1))!
+(Siren.EventList named: #Bach2)
+add: (5400 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 44 voice: 2)); 
+add: (5550 msec => (Siren.MusicEvent dur: 150 pitch: 62 ampl: 34 voice: 1)); 
+add: (5700 msec => (Siren.MusicEvent dur: 300 pitch: 60 ampl: 34 voice: 1)); 
+add: (5700 msec => (Siren.MusicEvent dur: 300 pitch: 75 ampl: 44 voice: 2)); 
+add: (6000 msec => (Siren.MusicEvent dur: 300 pitch: 75 ampl: 34 voice: 1)); 
+add: (6000 msec => (Siren.MusicEvent dur: 150 pitch: 79 ampl: 44 voice: 2)); 
+add: (6150 msec => (Siren.MusicEvent dur: 150 pitch: 78 ampl: 44 voice: 2)); 
+add: (6300 msec => (Siren.MusicEvent dur: 300 pitch: 74 ampl: 34 voice: 1)); 
+add: (6300 msec => (Siren.MusicEvent dur: 300 pitch: 79 ampl: 44 voice: 2)); 
+add: (6600 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 34 voice: 1))!
+(Siren.EventList named: #Bach2)
+add: (6600 msec => (Siren.MusicEvent dur: 300 pitch: 81 ampl: 44 voice: 2)); 
+add: (6900 msec => (Siren.MusicEvent dur: 300 pitch: 70 ampl: 34 voice: 1)); 
+add: (6900 msec => (Siren.MusicEvent dur: 300 pitch: 74 ampl: 44 voice: 2)); 
+add: (7200 msec => (Siren.MusicEvent dur: 300 pitch: 69 ampl: 34 voice: 1)); 
+add: (7200 msec => (Siren.MusicEvent dur: 150 pitch: 79 ampl: 44 voice: 2)); 
+add: (7350 msec => (Siren.MusicEvent dur: 150 pitch: 78 ampl: 44 voice: 2)); 
+add: (7500 msec => (Siren.MusicEvent dur: 300 pitch: 70 ampl: 34 voice: 1)); 
+add: (7500 msec => (Siren.MusicEvent dur: 300 pitch: 79 ampl: 44 voice: 2)); 
+add: (7800 msec => (Siren.MusicEvent dur: 300 pitch: 72 ampl: 34 voice: 1)); 
+add: (7800 msec => (Siren.MusicEvent dur: 300 pitch: 81 ampl: 44 voice: 2))!
+(Siren.EventList named: #Bach2)
+add: (8100 msec => (Siren.MusicEvent dur: 300 pitch: 66 ampl: 34 voice: 1)); 
+add: (8100 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 44 voice: 2)); 
+add: (8250 msec => (Siren.MusicEvent dur: 150 pitch: 74 ampl: 44 voice: 2)); 
+add: (8400 msec => (Siren.MusicEvent dur: 300 pitch: 67 ampl: 34 voice: 1)); 
+add: (8400 msec => (Siren.MusicEvent dur: 600 pitch: 75 ampl: 44 voice: 2)); 
+add: (8700 msec => (Siren.MusicEvent dur: 300 pitch: 69 ampl: 34 voice: 1)); 
+add: (9000 msec => (Siren.MusicEvent dur: 300 pitch: 66 ampl: 34 voice: 1)); 
+add: (9000 msec => (Siren.MusicEvent dur: 150 pitch: 74 ampl: 44 voice: 2)); 
+add: (9150 msec => (Siren.MusicEvent dur: 150 pitch: 72 ampl: 44 voice: 2)); 
+add: (9300 msec => (Siren.MusicEvent dur: 600 pitch: 67 ampl: 34 voice: 1))!
+(Siren.EventList named: #Bach2)
+add: (9300 msec => (Siren.MusicEvent dur: 300 pitch: 70 ampl: 44 voice: 2)); 
+add: (9600 msec => (Siren.MusicEvent dur: 150 pitch: 75 ampl: 44 voice: 2)); 
+add: (9750 msec => (Siren.MusicEvent dur: 150 pitch: 74 ampl: 44 voice: 2)); 
+add: (9900 msec => (Siren.MusicEvent dur: 300 pitch: 75 ampl: 44 voice: 2))!
+
+(Siren.EventList named: #random1)
+add: (0 msec => (Siren.MusicEvent dur: 1232 pitch: 61 ampl: 93 voice: 2)); 
+add: (308 msec => (Siren.MusicEvent dur: 1016 pitch: 71 ampl: 75 voice: 2)); 
+add: (562 msec => (Siren.MusicEvent dur: 948 pitch: 63 ampl: 64 voice: 1)); 
+add: (799 msec => (Siren.MusicEvent dur: 788 pitch: 52 ampl: 83 voice: 3)); 
+add: (996 msec => (Siren.MusicEvent dur: 632 pitch: 61 ampl: 64 voice: 3)); 
+add: (1154 msec => (Siren.MusicEvent dur: 924 pitch: 51 ampl: 82 voice: 3)); 
+add: (1385 msec => (Siren.MusicEvent dur: 844 pitch: 66 ampl: 58 voice: 1)); 
+add: (1596 msec => (Siren.MusicEvent dur: 724 pitch: 66 ampl: 61 voice: 2))!
+(Siren.EventList named: #random1)
+add: (1777 msec => (Siren.MusicEvent dur: 1224 pitch: 66 ampl: 62 voice: 2)); 
+add: (2083 msec => (Siren.MusicEvent dur: 964 pitch: 70 ampl: 62 voice: 1)); 
+add: (2324 msec => (Siren.MusicEvent dur: 1300 pitch: 67 ampl: 84 voice: 2)); 
+add: (2649 msec => (Siren.MusicEvent dur: 724 pitch: 56 ampl: 59 voice: 2)); 
+add: (2830 msec => (Siren.MusicEvent dur: 1280 pitch: 71 ampl: 62 voice: 3)); 
+add: (3150 msec => (Siren.MusicEvent dur: 1348 pitch: 60 ampl: 76 voice: 2)); 
+add: (3487 msec => (Siren.MusicEvent dur: 1264 pitch: 54 ampl: 107 voice: 3)); 
+add: (3803 msec => (Siren.MusicEvent dur: 888 pitch: 69 ampl: 68 voice: 1)); 
+add: (4025 msec => (Siren.MusicEvent dur: 1236 pitch: 60 ampl: 79 voice: 2)); 
+add: (4334 msec => (Siren.MusicEvent dur: 1260 pitch: 65 ampl: 104 voice: 3))!
+(Siren.EventList named: #random1)
+add: (4649 msec => (Siren.MusicEvent dur: 1064 pitch: 59 ampl: 73 voice: 1)); 
+add: (4915 msec => (Siren.MusicEvent dur: 1084 pitch: 51 ampl: 62 voice: 1))!
+
+(Siren.EventList named: #random2)
+add: (0 msec => (Siren.MusicEvent dur: 259 pitch: 60 ampl: 95 voice: 2)); 
+add: (259 msec => (Siren.MusicEvent dur: 200 pitch: 56 ampl: 67 voice: 2)); 
+add: (459 msec => (Siren.MusicEvent dur: 321 pitch: 51 ampl: 88 voice: 2)); 
+add: (780 msec => (Siren.MusicEvent dur: 162 pitch: 60 ampl: 63 voice: 2)); 
+add: (942 msec => (Siren.MusicEvent dur: 347 pitch: 57 ampl: 102 voice: 1)); 
+add: (1289 msec => (Siren.MusicEvent dur: 186 pitch: 54 ampl: 102 voice: 1)); 
+add: (1475 msec => (Siren.MusicEvent dur: 276 pitch: 69 ampl: 102 voice: 1)); 
+add: (1751 msec => (Siren.MusicEvent dur: 297 pitch: 61 ampl: 52 voice: 1)); 
+add: (2048 msec => (Siren.MusicEvent dur: 218 pitch: 71 ampl: 104 voice: 3))!
+(Siren.EventList named: #random2)
+add: (2266 msec => (Siren.MusicEvent dur: 291 pitch: 54 ampl: 76 voice: 1)); 
+add: (2557 msec => (Siren.MusicEvent dur: 255 pitch: 70 ampl: 54 voice: 1)); 
+add: (2812 msec => (Siren.MusicEvent dur: 335 pitch: 48 ampl: 87 voice: 2)); 
+add: (3147 msec => (Siren.MusicEvent dur: 240 pitch: 70 ampl: 72 voice: 1)); 
+add: (3387 msec => (Siren.MusicEvent dur: 168 pitch: 59 ampl: 50 voice: 2)); 
+add: (3555 msec => (Siren.MusicEvent dur: 198 pitch: 69 ampl: 88 voice: 2)); 
+add: (3753 msec => (Siren.MusicEvent dur: 299 pitch: 70 ampl: 99 voice: 1)); 
+add: (4052 msec => (Siren.MusicEvent dur: 324 pitch: 64 ampl: 83 voice: 2)); 
+add: (4376 msec => (Siren.MusicEvent dur: 212 pitch: 64 ampl: 64 voice: 1)); 
+add: (4588 msec => (Siren.MusicEvent dur: 186 pitch: 71 ampl: 91 voice: 1))!
+(Siren.EventList named: #random2)
+add: (4774 msec => (Siren.MusicEvent dur: 158 pitch: 70 ampl: 61 voice: 1))!
+
+(Siren.EventList named: #Song2)	tempoScale: 1680.
+(Siren.EventList named: #Song2)
+add: (0 msec => (Siren.MusicEvent dur: 420 pitch: 62 ampl: 58 voice: 2)); 
+add: (0 msec => (Siren.MusicEvent dur: 420 pitch: 81 ampl: 58 voice: 2)); 
+add: (0 msec => (Siren.MusicEvent dur: 630 pitch: 86 ampl: 58 voice: 1)); 
+add: (420 msec => (Siren.MusicEvent dur: 420 pitch: 62 ampl: 58 voice: 2)); 
+add: (420 msec => (Siren.MusicEvent dur: 210 pitch: 79 ampl: 58 voice: 2)); 
+add: (630 msec => (Siren.MusicEvent dur: 210 pitch: 78 ampl: 58 voice: 2)); 
+add: (630 msec => (Siren.MusicEvent dur: 210 pitch: 83 ampl: 58 voice: 1)); 
+add: (840 msec => (Siren.MusicEvent dur: 420 pitch: 64 ampl: 58 voice: 2)); 
+add: (840 msec => (Siren.MusicEvent dur: 210 pitch: 76 ampl: 58 voice: 2))!
+(Siren.EventList named: #Song2)
+add: (840 msec => (Siren.MusicEvent dur: 210 pitch: 85 ampl: 58 voice: 1)); 
+add: (1050 msec => (Siren.MusicEvent dur: 210 pitch: 79 ampl: 58 voice: 2)); 
+add: (1050 msec => (Siren.MusicEvent dur: 210 pitch: 88 ampl: 58 voice: 1)); 
+add: (1260 msec => (Siren.MusicEvent dur: 420 pitch: 57 ampl: 58 voice: 2)); 
+add: (1260 msec => (Siren.MusicEvent dur: 420 pitch: 81 ampl: 58 voice: 2)); 
+add: (1260 msec => (Siren.MusicEvent dur: 420 pitch: 89 ampl: 58 voice: 1)); 
+add: (1690 msec => (Siren.MusicEvent dur: 420 pitch: 57 ampl: 58 voice: 2)); 
+add: (1690 msec => (Siren.MusicEvent dur: 420 pitch: 76 ampl: 58 voice: 2)); 
+add: (1690 msec => (Siren.MusicEvent dur: 420 pitch: 88 ampl: 58 voice: 1)); 
+add: (2110 msec => (Siren.MusicEvent dur: 420 pitch: 69 ampl: 58 voice: 2))!
+(Siren.EventList named: #Song2)
+add: (2110 msec => (Siren.MusicEvent dur: 420 pitch: 84 ampl: 58 voice: 2)); 
+add: (2110 msec => (Siren.MusicEvent dur: 420 pitch: 93 ampl: 58 voice: 1)); 
+add: (2530 msec => (Siren.MusicEvent dur: 210 pitch: 62 ampl: 58 voice: 2)); 
+add: (2530 msec => (Siren.MusicEvent dur: 210 pitch: 83 ampl: 58 voice: 2)); 
+add: (2530 msec => (Siren.MusicEvent dur: 210 pitch: 91 ampl: 58 voice: 1)); 
+add: (2740 msec => (Siren.MusicEvent dur: 420 pitch: 65 ampl: 58 voice: 2)); 
+add: (2740 msec => (Siren.MusicEvent dur: 420 pitch: 81 ampl: 58 voice: 2)); 
+add: (2740 msec => (Siren.MusicEvent dur: 420 pitch: 89 ampl: 58 voice: 1)); 
+add: (3160 msec => (Siren.MusicEvent dur: 210 pitch: 60 ampl: 58 voice: 2)); 
+add: (3160 msec => (Siren.MusicEvent dur: 210 pitch: 79 ampl: 58 voice: 2))!
+(Siren.EventList named: #Song2)
+add: (3160 msec => (Siren.MusicEvent dur: 210 pitch: 88 ampl: 58 voice: 1)); 
+add: (3380 msec => (Siren.MusicEvent dur: 420 pitch: 62 ampl: 58 voice: 2)); 
+add: (3380 msec => (Siren.MusicEvent dur: 420 pitch: 77 ampl: 58 voice: 2)); 
+add: (3380 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1)); 
+add: (3800 msec => (Siren.MusicEvent dur: 840 pitch: 57 ampl: 58 voice: 2)); 
+add: (3800 msec => (Siren.MusicEvent dur: 840 pitch: 76 ampl: 58 voice: 2)); 
+add: (3800 msec => (Siren.MusicEvent dur: 840 pitch: 85 ampl: 58 voice: 1)); 
+add: (4640 msec => (Siren.MusicEvent dur: 420 pitch: 61 ampl: 58 voice: 2)); 
+add: (4640 msec => (Siren.MusicEvent dur: 420 pitch: 76 ampl: 58 voice: 2)); 
+add: (4640 msec => (Siren.MusicEvent dur: 420 pitch: 81 ampl: 58 voice: 1))!
+(Siren.EventList named: #Song2)
+add: (5070 msec => (Siren.MusicEvent dur: 210 pitch: 62 ampl: 58 voice: 2)); 
+add: (5070 msec => (Siren.MusicEvent dur: 210 pitch: 74 ampl: 58 voice: 2)); 
+add: (5070 msec => (Siren.MusicEvent dur: 210 pitch: 83 ampl: 58 voice: 1)); 
+add: (5280 msec => (Siren.MusicEvent dur: 210 pitch: 57 ampl: 58 voice: 2)); 
+add: (5280 msec => (Siren.MusicEvent dur: 210 pitch: 76 ampl: 58 voice: 2)); 
+add: (5280 msec => (Siren.MusicEvent dur: 210 pitch: 85 ampl: 58 voice: 1)); 
+add: (5490 msec => (Siren.MusicEvent dur: 420 pitch: 69 ampl: 58 voice: 2)); 
+add: (5490 msec => (Siren.MusicEvent dur: 420 pitch: 77 ampl: 58 voice: 2)); 
+add: (5490 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1)); 
+add: (5910 msec => (Siren.MusicEvent dur: 420 pitch: 62 ampl: 58 voice: 2))!
+(Siren.EventList named: #Song2)
+add: (5910 msec => (Siren.MusicEvent dur: 420 pitch: 81 ampl: 58 voice: 2)); 
+add: (5910 msec => (Siren.MusicEvent dur: 420 pitch: 89 ampl: 58 voice: 1)); 
+add: (6330 msec => (Siren.MusicEvent dur: 210 pitch: 64 ampl: 58 voice: 2)); 
+add: (6330 msec => (Siren.MusicEvent dur: 420 pitch: 79 ampl: 58 voice: 2)); 
+add: (6330 msec => (Siren.MusicEvent dur: 420 pitch: 88 ampl: 58 voice: 1)); 
+add: (6540 msec => (Siren.MusicEvent dur: 100 pitch: 65 ampl: 58 voice: 2)); 
+add: (6650 msec => (Siren.MusicEvent dur: 100 pitch: 67 ampl: 58 voice: 2)); 
+add: (6760 msec => (Siren.MusicEvent dur: 420 pitch: 69 ampl: 58 voice: 2)); 
+add: (6760 msec => (Siren.MusicEvent dur: 420 pitch: 74 ampl: 58 voice: 2)); 
+add: (6760 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1))!
+(Siren.EventList named: #Song2)
+add: (7180 msec => (Siren.MusicEvent dur: 420 pitch: 57 ampl: 58 voice: 2)); 
+add: (7180 msec => (Siren.MusicEvent dur: 420 pitch: 84 ampl: 58 voice: 2)); 
+add: (7180 msec => (Siren.MusicEvent dur: 310 pitch: 93 ampl: 58 voice: 1)); 
+add: (7500 msec => (Siren.MusicEvent dur: 100 pitch: 91 ampl: 58 voice: 1)); 
+add: (7600 msec => (Siren.MusicEvent dur: 210 pitch: 57 ampl: 58 voice: 2)); 
+add: (7600 msec => (Siren.MusicEvent dur: 210 pitch: 81 ampl: 58 voice: 2)); 
+add: (7600 msec => (Siren.MusicEvent dur: 210 pitch: 89 ampl: 58 voice: 1)); 
+add: (7810 msec => (Siren.MusicEvent dur: 420 pitch: 60 ampl: 58 voice: 2)); 
+add: (7810 msec => (Siren.MusicEvent dur: 420 pitch: 79 ampl: 58 voice: 2)); 
+add: (7810 msec => (Siren.MusicEvent dur: 420 pitch: 88 ampl: 58 voice: 1))!
+(Siren.EventList named: #Song2)
+add: (8230 msec => (Siren.MusicEvent dur: 210 pitch: 62 ampl: 58 voice: 2)); 
+add: (8230 msec => (Siren.MusicEvent dur: 210 pitch: 77 ampl: 58 voice: 2)); 
+add: (8230 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1)); 
+add: (8450 msec => (Siren.MusicEvent dur: 420 pitch: 57 ampl: 58 voice: 2)); 
+add: (8450 msec => (Siren.MusicEvent dur: 420 pitch: 76 ampl: 58 voice: 2)); 
+add: (8660 msec => (Siren.MusicEvent dur: 210 pitch: 85 ampl: 58 voice: 1)); 
+add: (8870 msec => (Siren.MusicEvent dur: 420 pitch: 69 ampl: 58 voice: 2)); 
+add: (8870 msec => (Siren.MusicEvent dur: 420 pitch: 74 ampl: 58 voice: 2)); 
+add: (8870 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1)); 
+add: (9290 msec => (Siren.MusicEvent dur: 210 pitch: 65 ampl: 58 voice: 2))!
+(Siren.EventList named: #Song2)
+add: (9500 msec => (Siren.MusicEvent dur: 210 pitch: 67 ampl: 58 voice: 2)); 
+add: (9710 msec => (Siren.MusicEvent dur: 420 pitch: 69 ampl: 58 voice: 2)); 
+add: (9710 msec => (Siren.MusicEvent dur: 420 pitch: 74 ampl: 58 voice: 2)); 
+add: (9710 msec => (Siren.MusicEvent dur: 420 pitch: 86 ampl: 58 voice: 1))!

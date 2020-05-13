@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIDevice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIDevice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DeviceModel<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MStream <P>
+<P>
+<P>
+</FONT><I>MIDIDevice is a subclass of Model whose instances are used to model MIDI input/output hardware devices.<BR>
+The abstract class MIDIDevice implements the generic MIDI note on/off type events.<BR>
+Subclasses of MIDIDevice exist for specific models of devices and  implement the device-specific (system exclusive) commands.<BR>
+MIDIDevice are passed Events and channel numbers by their voices and generate commands as ByteArrays that they pass to MIDIPorts.<BR>
+Several devices may share one port (if there are several MIDI-capable devices on one cable), and one voice may point to several device/channel pairs on one or more devices.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;port <MidiPort> the MIDIPort I use<BR>
+&nbsp;&nbsp;&nbsp;stream <WriteStream> logging stream<BR>
+&nbsp;&nbsp;&nbsp;debug <Boolean> verbosity flag for Transcript dumping<P>
+<P>
+Class variable:<BR>
+&nbsp;&nbsp;&nbsp;MStream&nbsp;&nbsp;&nbsp;<WriteStream> the stream I dump by bytes on if my port is nil (good for debugging new subclasses)<P>
+<P>
+Standard MIDI Commands:<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note On = 9n kk vv<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note Off = 8n kk vv<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Key Pressure = An kk vv<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pitch Wheel = En ll ll<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After Touch Channel Pressure = Dn vv<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Control Change = Bn cc vv<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program change = Cn pp<P>
+<P>
+Relevant Constants for description of MIDI commands:<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = 4-bit channel number<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kk = 7-bit key number<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vv = 7-bit key velocity<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll = 7-bit low-order value<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hh = 7-bit high-order value<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cc = 7-bit control number<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp = 7-bit program number<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>port</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's I/O port.<P>
+<P>
+</I><B>port: aPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's I/O port.<P>
+<P>
+</I><B>stream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's MIDI stream ID.<P>
+<P>
+</I><B>stream: aNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's MIDI stream ID.<P>
+</I><I><FONT SIZE=+1><P>
+initialization<P>
+<P>
+</I></FONT><B>checkPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Ensure that the receiver's output port is initialized.<P>
+<P>
+</I><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release the receiver's hold on the port.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver up on the default output port.<P>
+<P>
+</I><B>initialize: thePort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver up on the given output port.<P>
+<P>
+</I><B>play: anAss on: channelNumber</B><I><BR>
+&nbsp;&nbsp;&nbsp;play the given event on my port as a default MIDI noteOn/noteOff pair<P>
+</I><I><FONT SIZE=+1><P>
+note events<P>
+<P>
+</I></FONT><B>play: anEvent at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the given event on my port as a default MIDI noteOn/noteOff pair.<P>
+</I><I><FONT SIZE=+1><P>
+parameter mapping<P>
+<P>
+</I></FONT><B>mapAmplitude: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map a numerical or symbolic amplitude to a MIDI-compatible <BR>
+&nbsp;&nbsp;&nbsp; volume number (key velocity)<P>
+<P>
+</I><B>mapDuration: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map a numerical or symbolic duration value to a <BR>
+&nbsp;&nbsp;&nbsp; MIDI-compatible duration in msec.<P>
+<P>
+</I><B>mapPitch: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map a numerical or symbolic pitch to a MIDI-compatible note number.<P>
+<P>
+</I><B>mapVoice: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map a numerical or symbolic pitch to a MIDI-compatible note number.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIDevice class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>playOnDevice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a note out MIDI from the device level.<P>
+<P>
+</I><B>scheduleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play MIDI using the event scheduler.<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a generic MidiDevice on the default Port<P>
+<P>
+</I><B>on: port</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a generic MidiDevice on the given Port<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the one class variable</I></FONT>
+</BODY>
+</HTML>

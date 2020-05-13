@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Duration</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Duration<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Chronos<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Representation<P>
+<P>
+<P>
+</FONT><I>Instances of classes whose species is Duration are used for the duration parameters of musical events.<BR>
+Durations come in several flavors, as in the classes RatioDuration, MSecondDuration and ConditionalDuration.<BR>
+The class Duration is abstract, its class creation method answers an instance of a concrete Duration class.<P>
+<P>
+Examples:<BR>
+&nbsp;&nbsp;&nbsp;Duration value: 0.77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create an instance with seconds as the unit"<BR>
+&nbsp;&nbsp;&nbsp;Duration value: 770&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create an instance with milliseconds as the unit"<BR>
+&nbsp;&nbsp;&nbsp;Duration value: 1/4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create an instance with beats as the unit"<BR>
+&nbsp;&nbsp;&nbsp;Duration value: [ :x | x > 4]&nbsp;&nbsp;&nbsp;"create an instance for: 'until x > 4'"<P>
+<P>
+See also the class example.<P>
+<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Duration class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>value: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance of a member of my species.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default color to display instances with.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>initializeGeneralities</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most general-purpose duration--seconds<P>
+<P>
+</I><B>propertyName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's default property name.<P>
+<P>
+</I><B>relativeMember</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's species member used as a relative magnitude.<P>
+<P>
+</I><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Duration.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print a simple message to the transcript demonstrating the various types.</I></FONT>
+</BODY>
+</HTML>

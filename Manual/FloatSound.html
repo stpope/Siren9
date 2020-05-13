@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				FloatSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>FloatSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SampledSound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Instances of FloatSound are used for sounds with 32-bit floating-point numbers as samples.<BR>
+There are behaviors for mapping into other formats.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>format</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the receiver's format--a symbol constant.<P>
+<P>
+</I><B>sampleSize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the size in bytes of the receiver's samples (4).<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>privateSampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index.<P>
+<P>
+</I><B>privateSampleAt: index put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stuff the given sample into the data array at the given index (no checking).<P>
+</I><I><FONT SIZE=+1><P>
+sample accessing<P>
+<P>
+</I></FONT><B>intSampleAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample at the given index as a scaled 16-bit integer.<P>
+<P>
+</I><B>intSampleAt: index put: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Put the given integer sample at the given index after scaling.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>FloatSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>formatSymbol</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the symbolic code used for the format of the receiver's instances.<P>
+<P>
+</I><B>maxSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the maximum value of the receiver class.<P>
+<P>
+</I><B>minSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the minimum value of the receiver class.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>fileExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a typical float sound read in from a file.</I></FONT>
+</BODY>
+</HTML>

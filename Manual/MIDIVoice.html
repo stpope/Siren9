@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				MIDIVoice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>MIDIVoice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Voice<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>currentTime <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>default <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Instance UseSingleton <P>
+<P>
+<P>
+</FONT><I>A MidiVoice is used to play note events onto one or more output devices.<BR>
+I store a MidiDevice (with a MIDIPort) in my instrument variable and play events onto it when asked to.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;instrument&nbsp;&nbsp;&nbsp;<MIDIDevice> my instrument, a MidiDevice<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the stream, device, or whatever.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a MIDIVoice's time counter.<P>
+<P>
+</I><B>reset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset my time.<P>
+</I><I><FONT SIZE=+1><P>
+events<P>
+<P>
+</I></FONT><B>play: anEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand the list and play it now.<P>
+<P>
+</I><B>playEvent: anEvent at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send the given Event to the instrument.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>number</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer my channel or icon number<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MIDIVoice class<P>
+<P>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>default <P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>randomExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play some random notes on a voice on a device on a port.<P>
+<P>
+</I><B>scaleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a scale on a voice on a device on a port to the Apple MIDI Mgr.<P>
+<P>
+</I><B>voiceInspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;MIDIVoice voiceInspect<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default MIDIVoice.<P>
+<P>
+</I><B>named: aName onDevice: aMidiDevice channel: aChannel</B><I><BR>
+&nbsp;&nbsp;&nbsp;set up a MidiVoice on the given device and channel<P>
+<P>
+</I><B>new</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cache the latest instance.<P>
+<P>
+</I><B>on: aMidiDevice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer up a MidiVoice on the given device.<P>
+<P>
+</I><B>on: aMidiDevice channel: aChannel</B><I><BR>
+&nbsp;&nbsp;&nbsp;set up a MidiVoice on the given device and channel<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>defaultOutInterface</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class's default intertface # (use external device list to get the right value).<P>
+<P>
+</I><B>flushDefault</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the class's default instance.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the class's default instance.</I></FONT>
+</BODY>
+</HTML>

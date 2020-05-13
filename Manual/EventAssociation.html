@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				EventAssociation</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>EventAssociation<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Association<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Support<P>
+<P>
+<P>
+</FONT><I>An EventAssociation is an Association with some special semantics for Siren. It can be created with the '=>' message to a Number, meaning start-time assicoated with event.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>, anArgument</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument as a property of the receiver.<P>
+<P>
+</I><B>event</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's event (value).<P>
+<P>
+</I><B>start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's start (key).<P>
+<P>
+</I><B>start: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's start (key).<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the stop time of the event association.<P>
+<P>
+</I><B>time</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's start (key).<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Append to the argument, aStream, the two elements of the <BR>
+&nbsp;&nbsp;&nbsp;EventAssociation separated by a double-right arrow (=>).<P>
+</I><I><FONT SIZE=+1><P>
+comparing<P>
+<P>
+</I></FONT><B>< anAssociation</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle events, associations, and time/order sorting.<P>
+<P>
+</I><B>= anAssociation</B><I><BR>
+&nbsp;&nbsp;&nbsp;If the argument's not an association, compare it to the receiver's value, otherwise answer whether the receiver's key and value are both equal to the argument's.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>EventAssociation class<P>
+<P>
+</FONT></FONT>
+</BODY>
+</HTML>

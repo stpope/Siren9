@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Ostinato</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Ostinato<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.EventGenerator<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-EventGenerators<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>list playing process <P>
+<P>
+<P>
+</FONT><I>Ostinati can repeat their basic eventList without end, if necessary.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;list <EventList> my riff<BR>
+&nbsp;&nbsp;&nbsp;playing <Boolean> am i on?<BR>
+&nbsp;&nbsp;&nbsp;process <Process> the process that's playing me<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+initializing<P>
+<P>
+</I></FONT><B>initializeAnonymous</B><I><BR>
+&nbsp;&nbsp;&nbsp;set up a new Ostinato.<P>
+<P>
+</I><B>initializeNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a new Ostinato.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>events</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>list</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>list: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>process: anBlockOrProc</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+playing<P>
+<P>
+</I></FONT><B>play: numberOfTimes</B><I><BR>
+&nbsp;&nbsp;&nbsp;return an event list from the given number of times playing<P>
+<P>
+</I><B>playAt: firstTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play an ostinato until turned off.<P>
+<P>
+</I><B>playOn: aVoice at: firstTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;play an ostinato until turned off.<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;stop a playing Ostinato.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Ostinato class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>named: aSymbol onList: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;create an Ostinato on the given EventList.<P>
+<P>
+</I><B>named: aSymbol onList: anEL dur: theDur</B><I><BR>
+&nbsp;&nbsp;&nbsp;create an Ostinato on the given EventList.<P>
+<P>
+</I><B>newNamed: aSymbol onList: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;create an Ostinato on the given EventList.<P>
+<P>
+</I><B>onList: anEL</B><I><BR>
+&nbsp;&nbsp;&nbsp;create an Ostinato on the given EventList.<P>
+<P>
+</I><B>onList: anEL dur: theDur</B><I><BR>
+&nbsp;&nbsp;&nbsp;create an Ostinato on the given EventList.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>ostinatoExamples</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and edit some ostinati.</I></FONT>
+</BODY>
+</HTML>

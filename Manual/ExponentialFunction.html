@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				ExponentialFunction</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>ExponentialFunction<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.LinearFunction<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Functions<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>Instances of ExponentialFunction are exponential-segment functions of one free variable.<BR>
+They use ZPoints for x/y/exponent. The exponent determines the speed of the exponential/logarithmic transition between breakpoint values. A value of 0 leads to linear interpolation.<P>
+<P>
+Example:<BR>
+&nbsp;&nbsp;&nbsp;ExponentialFunction from: #((0 0 -5) (0.2 1 -3) (0.8 0.5 -2) (1 0))<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>at: anIndex</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the value at the given index in my range--do exponential interpolation such<BR>
+ &nbsp;&nbsp;&nbsp;that if f(x, i) is the i-th function value in the transition from breakpoint v[J] to <BR>
+&nbsp;&nbsp;&nbsp;v[J+1], then:<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f(x) = v[J] + (v[J+1] - v[J])*(1 - exp(i*x[J]/(N-1)))/(1 - exp(x[J]))<BR>
+&nbsp;&nbsp;&nbsp;for 0 <= i < N, where N is the number of function points between t[J] and the next <BR>
+&nbsp;&nbsp;&nbsp;horizontal value, and x is the exponential weight whereby x = 0 will yield a <BR>
+&nbsp;&nbsp;&nbsp;straight line, x < 0 will yield an exponential transition, and x > 0 will yield a <BR>
+&nbsp;&nbsp;&nbsp;logarithmic transition.<P>
+<P>
+</I><B>pointAt: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the given value in the receiver's breakpoint collection as a 2-D point.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Format and print the receiver on the argument.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>ExponentialFunction class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>a: att d: dec s: sus r: rel</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an ADSR envelope.<P>
+<P>
+</I><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a default instance of the receiver class.<P>
+<P>
+</I><B>from: anArrayOfPoints</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a function with the given points.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>expADSRViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make an exp seg and open a view on its form.<P>
+<P>
+</I><B>expASRViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make an exp seg and open a view on its form.<P>
+<P>
+</I><B>expsegViewExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Make an exp seg and open a view on its form.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PortAudioPort</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PortAudioPort<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SoundPort<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>rate format outChannels interface isOpen isRunning <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bufferSize <P>
+<P>
+<P>
+</FONT><I>A PortAudioPort is an interface to the external PortAudio library. It is simple, supports playback only, and does not use callbacks from C into Smalltalk. For a fancier version that supports input as well , see SmartAudioPort.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;device <Integer> the PortAudio device flag for my device<BR>
+&nbsp;&nbsp;&nbsp;rate <Integer>  the sample rate in Hz<BR>
+&nbsp;&nbsp;&nbsp;format <Symbol>  sample format as in #lin16Bit<BR>
+&nbsp;&nbsp;&nbsp;outChannels <Integer>  # of out channels<BR>
+&nbsp;&nbsp;&nbsp;interface <Siren.PortAudioInterface>  my low-level interface<BR>
+&nbsp;&nbsp;&nbsp;isOpen&nbsp;&nbsp;&nbsp;<Boolean>  am I open?<BR>
+&nbsp;&nbsp;&nbsp;isRunning <Boolean>  am I running?<BR>
+&nbsp;&nbsp;&nbsp;bufferSize <Integer>  size of the preallocated IO buffers<P>
+<P>
+Shared Variables:<BR>
+&nbsp;&nbsp;&nbsp;Devices <Array of: Integer>  my total # of I/O channels and default I/O sample rates<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+open/close<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the receiver sound port<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the receiver sound port<P>
+<P>
+</I><B>start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start the receiver sound port<P>
+<P>
+</I><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop the receiver sound port<P>
+<P>
+</I><B>terminate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Shut down the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>format</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>format: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>outChannels</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>outChannels: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>rate</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>rate: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+initialize/release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an initialized version of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+play/record<P>
+<P>
+</I></FONT><B>play: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver over the DACs.<P>
+<P>
+</I><B>play: aSound from: start to: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver over the DACs.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PortAudioPort class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+initialize/release<P>
+<P>
+</I></FONT><B>stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop and close the running instance<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>playSweep</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a swept sine wave using the simple output-only port audio port.<P>
+<P>
+</I><B>playSweepLong</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play a *long* swept sine wave using the simple output-only port audio port.</I></FONT>
+</BODY>
+</HTML>

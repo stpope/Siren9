@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				SoundView</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>SoundView<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.DisplayListView<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-Sound<P>
+<P>
+<P>
+</FONT><I>Instances of SoundView are used for displaying samples sound objects in R4.<BR>
+They can do horizontal scrolling and scaling.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;step <Number> the step size for displaying--show every n'th sample<BR>
+&nbsp;&nbsp;&nbsp;scale <Number> the vertical scale for multiplying the sample's value<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+converting indeces<P>
+<P>
+</I></FONT><B>sampleForX: xValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sample under the point with x = xValue.<P>
+<P>
+</I><B>xForSample: sample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the xValue of the sample with the given index.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>bounds: aRectangle</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's bounds.<P>
+<P>
+</I><B>markerColor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the color for selection markers.<P>
+<P>
+</I><B>preferredBounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver's display object bounding box.<P>
+<P>
+</I><B>scale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the vertical scale.<P>
+<P>
+</I><B>scale: theScale</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theScale', as the new instance variable 'scale'.<P>
+<P>
+</I><B>sound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the model's sound.<P>
+<P>
+</I><B>sound: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the model's sound.<P>
+<P>
+</I><B>step</B><I><BR>
+&nbsp;&nbsp;&nbsp;Return the horizontal sample-per-pixel scale<P>
+<P>
+</I><B>step: theStep</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theStep', as the new instance variable 'step'.<P>
+<P>
+</I><B>text</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default display text for the receiver's sound.<P>
+<P>
+</I><B>viewExtent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver's display object bounding box.<P>
+</I><I><FONT SIZE=+1><P>
+selection<P>
+<P>
+</I></FONT><B>eraseMarkerAt: xValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;take a mouse point and place a marker on the sound sample there<P>
+<P>
+</I><B>selectBetween: startValue and: stopValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;take a mouse region and place a marker on the sound sample there<P>
+<P>
+</I><B>showMarkerAt: xValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;take a mouse point and place a marker on the sound sample there<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayMarkersOn: aGC</B><I><BR>
+&nbsp;&nbsp;&nbsp;Show the selections (up to 2 markers) in the current sound<P>
+<P>
+</I><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver's sound on the argument<P>
+<P>
+</I><B>displayOnGC: aGC</B><I><BR>
+&nbsp;&nbsp;&nbsp;Show the receiver's sound on the GC.<P>
+<P>
+</I><B>displayPosition: pos</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the mouse pos in the corner of my display<P>
+<P>
+</I><B>invalidate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Redisplay the receiver's sound<P>
+<P>
+</I><B>redraw</B><I><BR>
+&nbsp;&nbsp;&nbsp;Redisplay the receiver's sound<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the proper default values for the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+controller access<P>
+<P>
+</I></FONT><B>defaultControllerClass</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default controller class for use with the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>scrollableExtent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver's display object bounding box.<P>
+<P>
+</I><B>visibleExtent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver's clipping box.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>SoundView class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>componentOnSound: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a DLView for use as a component.<P>
+<P>
+</I><B>componentOnSoundNoFrills: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a DLView for use as a component.<P>
+<P>
+</I><B>openOn: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Take the sound as model and open a SoundView<P>
+<P>
+</I><B>soundViewOn: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Take the sound as model and open a SoundView<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on the example sound file.<P>
+<P>
+</I><B>example2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on the a sound from a file.<P>
+<P>
+</I><B>exampleLong</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on the a sound from a file.<P>
+<P>
+</I><B>exampleRamp</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on the a sound with a slow ramp.</I></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				ConditionalDuration</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>ConditionalDuration<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MusicMagnitude<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Implementation<P>
+<P>
+<P>
+</FONT><I>Instances of ConditionalDuration are duration times where the value is a block.<BR>
+The accessing protocol allows them to be spawned as co-processes in schedulers.<BR>
+The valueAt: and waitUntil: methods allow flexible conditional scheduling.<BR>
+ConditionalDurations can be made dependents of other objects using the until: instance creation message.<P>
+<P>
+See the class examples.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+updating<P>
+<P>
+</I></FONT><B>update: anAspect with: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Respond to a change in the receiver's model<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>valueAt: anArg</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the result of passing the argument to the receiver's block.<P>
+<P>
+</I><B>wait</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cycle the receiver until the argument fulfills the receiver's block.<P>
+<P>
+</I><B>waitUntil: anArg</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cycle the receiver until the argument fulfills the receiver's block.<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Duration.<P>
+</I><I><FONT SIZE=+1><P>
+converting<P>
+<P>
+</I></FONT><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;It is an error to try this here--we implement what's ok for CDs<P>
+</I><I><FONT SIZE=+1><P>
+arithmetic<P>
+<P>
+</I></FONT><B>* aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with this magnitude.<P>
+<P>
+</I><B>+ aDuration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the sum of the receiver and the argument--the composition of two blocks<P>
+<P>
+</I><B>- aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with this magnitude.<P>
+<P>
+</I><B>/ aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer that it is an error to attempt arithmetic with this magnitude.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>ConditionalDuration class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>on: aModel until: boolBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new conditional duration whose value is the given block<P>
+<P>
+</I><B>randomBetween: lo and: hi</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new conditional duration whose value is between lo and hi (given in seconds)<P>
+<P>
+</I><B>until: boolBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new conditional duration whose value is the given block<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print a simple message to the transcript demonstrating the various types.<P>
+<P>
+</I><B>exampleWithRands</B><I><BR>
+&nbsp;&nbsp;&nbsp;Demonstrate the random duration</I></FONT>
+</BODY>
+</HTML>

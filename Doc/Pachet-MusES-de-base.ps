@@ -1,0 +1,5255 @@
+%!PS-Adobe-3.0
+%%Title: (MusES-de-base)
+%%Creator: (Microsoft Word: LaserWriter 8 F1-8.2)
+%%CreationDate: (5:38 PM Monday, February 20, 1995)
+%%For: (fdp)
+%%Pages: 27
+%%DocumentFonts: Palatino-Roman Symbol Palatino-Bold Palatino-Italic Courier Times-Roman
+%%DocumentNeededFonts: Palatino-Roman Symbol Palatino-Bold Palatino-Italic Courier Times-Roman
+%%DocumentSuppliedFonts:
+%%DocumentData: Clean7Bit
+%%PageOrder: Ascend
+%%Orientation: Portrait
+%%DocumentMedia: Default 594 841 0 () ()
+%ADO_ImageableArea: 28 30 566 811
+%%EndComments
+userdict begin/dscInfo 5 dict dup begin
+/Title(MusES-de-base)def
+/Creator(Microsoft Word: LaserWriter 8 F1-8.2)def
+/CreationDate(5:38 PM Monday, February 20, 1995)def
+/For(fdp)def
+/Pages 1 def
+end def end
+
+save 
+/version23-manualfeedpatch where { pop false } { true }ifelse
+ % we don't do an explicit 'get' since product and version MAY
+ % be in systemdict or statusdict - this technique gets the lookup
+ % without failure
+statusdict begin
+  product (LaserWriter) eq        % true if LaserWriter
+  version cvr 23.0 eq             % true if version 23
+end
+
+and  % only install this patch if both are true
+and  % true only if patch is not installed and is for this printer
+     % save object and boolean on stack
+dup { exch restore }if
+% either true OR saveobject false
+dup
+{
+  /version23-manualfeedpatch true def
+  /oldversion23-showpage /showpage load def
+  /showpage       % this showpage will wait extra time if manualfeed is true
+  {%
+     statusdict /manualfeed known
+     {% manualfeed known in statusdict
+        statusdict /manualfeed get
+        {% if true then we loop for 5 seconds
+           usertime 5000 add       % target usertime
+           { % loop
+             dup usertime sub 0 lt
+             { exit }if
+           }loop
+           pop             % pop the usertime off the stac
+        }if
+     }if
+     oldversion23-showpage
+  }bind def
+}if
+not{ restore }if
+
+/md 153 dict def md begin/currentpacking where {pop /sc_oldpacking currentpacking def true setpacking}if
+%%BeginFile: adobe_psp_basic
+%%Copyright: Copyright 1990-1993 Adobe Systems Incorporated. All Rights Reserved.
+/bd{bind def}bind def
+/xdf{exch def}bd
+/xs{exch store}bd
+/ld{load def}bd
+/Z{0 def}bd
+/T/true
+/F/false
+/:L/lineto
+/lw/setlinewidth
+/:M/moveto
+/rl/rlineto
+/rm/rmoveto
+/:C/curveto
+/:T/translate
+/:K/closepath
+/:mf/makefont
+/gS/gsave
+/gR/grestore
+/np/newpath
+14{ld}repeat
+/$m matrix def
+/av 81 def
+/por true def
+/normland false def
+/psb-nosave{}bd
+/pse-nosave{}bd
+/us Z
+/psb{/us save store}bd
+/pse{us restore}bd
+/level2
+/languagelevel where
+{
+pop languagelevel 2 ge
+}{
+false
+}ifelse
+def
+/featurecleanup
+{
+stopped
+cleartomark
+countdictstack exch sub dup 0 gt
+{
+{end}repeat
+}{
+pop
+}ifelse
+}bd
+/noload Z
+/startnoload
+{
+{/noload save store}if
+}bd
+/endnoload
+{
+{noload restore}if
+}bd
+level2 startnoload
+/setjob
+{
+statusdict/jobname 3 -1 roll put
+}bd
+/setcopies
+{
+userdict/#copies 3 -1 roll put
+}bd
+level2 endnoload level2 not startnoload
+/setjob
+{
+1 dict begin/JobName xdf currentdict end setuserparams
+}bd
+/setcopies
+{
+1 dict begin/NumCopies xdf currentdict end setpagedevice
+}bd
+level2 not endnoload
+/pm Z
+/mT Z
+/sD Z
+/realshowpage Z
+/initializepage
+{
+/pm save store mT concat
+}bd
+/endp
+{
+pm restore showpage
+}def
+/$c/DeviceRGB def
+/rectclip where
+{
+pop/rC/rectclip ld
+}{
+/rC
+{
+np 4 2 roll
+:M
+1 index 0 rl
+0 exch rl
+neg 0 rl
+:K
+clip np
+}bd
+}ifelse
+/rectfill where
+{
+pop/rF/rectfill ld
+}{
+/rF
+{
+gS
+np
+4 2 roll
+:M
+1 index 0 rl
+0 exch rl
+neg 0 rl
+fill
+gR
+}bd
+}ifelse
+/rectstroke where
+{
+pop/rS/rectstroke ld
+}{
+/rS
+{
+gS
+np
+4 2 roll
+:M
+1 index 0 rl
+0 exch rl
+neg 0 rl
+:K
+stroke
+gR
+}bd
+}ifelse
+%%EndFile
+%%BeginFile: adobe_psp_colorspace_level1
+%%Copyright: Copyright 1991-1993 Adobe Systems Incorporated. All Rights Reserved.
+/G/setgray ld
+/:F/setrgbcolor ld
+%%EndFile
+%%BeginFile: adobe_psp_uniform_graphics
+%%Copyright: Copyright 1990-1993 Adobe Systems Incorporated. All Rights Reserved.
+/@a
+{
+np :M 0 rl :L 0 exch rl 0 rl :L fill
+}bd
+/@b
+{
+np :M 0 rl 0 exch rl :L 0 rl 0 exch rl fill
+}bd
+/arct where
+{
+pop
+}{
+/arct
+{
+arcto pop pop pop pop
+}bd
+}ifelse
+/x1 Z
+/x2 Z
+/y1 Z
+/y2 Z
+/rad Z
+/@q
+{
+/rad xs
+/y2 xs
+/x2 xs
+/y1 xs
+/x1 xs
+np
+x2 x1 add 2 div y1 :M
+x2 y1 x2 y2 rad arct
+x2 y2 x1 y2 rad arct
+x1 y2 x1 y1 rad arct
+x1 y1 x2 y1 rad arct
+fill
+}bd
+/@s
+{
+/rad xs
+/y2 xs
+/x2 xs
+/y1 xs
+/x1 xs
+np
+x2 x1 add 2 div y1 :M
+x2 y1 x2 y2 rad arct
+x2 y2 x1 y2 rad arct
+x1 y2 x1 y1 rad arct
+x1 y1 x2 y1 rad arct
+:K
+stroke
+}bd
+/@i
+{
+np 0 360 arc fill
+}bd
+/@j
+{
+gS
+np
+:T
+scale
+0 0 .5 0 360 arc
+fill
+gR
+}bd
+/@e
+{
+np
+0 360 arc
+:K
+stroke
+}bd
+/@f
+{
+np
+$m currentmatrix
+pop
+:T
+scale
+0 0 .5 0 360 arc
+:K
+$m setmatrix
+stroke
+}bd
+/@k
+{
+gS
+np
+:T
+0 0 :M
+0 0 5 2 roll
+arc fill
+gR
+}bd
+/@l
+{
+gS
+np
+:T
+0 0 :M
+scale
+0 0 .5 5 -2 roll arc
+fill
+gR
+}bd
+/@m
+{
+np
+arc
+stroke
+}bd
+/@n
+{
+np
+$m currentmatrix
+pop
+:T
+scale
+0 0 .5 5 -2 roll arc
+$m setmatrix
+stroke
+}bd
+%%EndFile
+%%BeginFile: adobe_psp_basic_text
+%%Copyright: Copyright 1990-1993 Adobe Systems Incorporated. All Rights Reserved.
+/S/show ld
+/A{
+0.0 exch ashow
+}bd
+/R{
+0.0 exch 32 exch widthshow
+}bd
+/W{
+0.0 3 1 roll widthshow
+}bd
+/J{
+0.0 32 4 2 roll 0.0 exch awidthshow
+}bd
+/V{
+0.0 4 1 roll 0.0 exch awidthshow
+}bd
+/fcflg true def
+/fc{
+fcflg{
+vmstatus exch sub 50000 lt{
+(%%[ Warning: Running out of memory ]%%\r)print flush/fcflg false store
+}if pop
+}if
+}bd
+/$f[1 0 0 -1 0 0]def
+/:ff{$f :mf}bd
+/MacEncoding StandardEncoding 256 array copy def
+MacEncoding 39/quotesingle put
+MacEncoding 96/grave put
+/Adieresis/Aring/Ccedilla/Eacute/Ntilde/Odieresis/Udieresis/aacute
+/agrave/acircumflex/adieresis/atilde/aring/ccedilla/eacute/egrave
+/ecircumflex/edieresis/iacute/igrave/icircumflex/idieresis/ntilde/oacute
+/ograve/ocircumflex/odieresis/otilde/uacute/ugrave/ucircumflex/udieresis
+/dagger/degree/cent/sterling/section/bullet/paragraph/germandbls
+/registered/copyright/trademark/acute/dieresis/notequal/AE/Oslash
+/infinity/plusminus/lessequal/greaterequal/yen/mu/partialdiff/summation
+/product/pi/integral/ordfeminine/ordmasculine/Omega/ae/oslash
+/questiondown/exclamdown/logicalnot/radical/florin/approxequal/Delta/guillemotleft
+/guillemotright/ellipsis/space/Agrave/Atilde/Otilde/OE/oe
+/endash/emdash/quotedblleft/quotedblright/quoteleft/quoteright/divide/lozenge
+/ydieresis/Ydieresis/fraction/currency/guilsinglleft/guilsinglright/fi/fl
+/daggerdbl/periodcentered/quotesinglbase/quotedblbase/perthousand
+/Acircumflex/Ecircumflex/Aacute/Edieresis/Egrave/Iacute/Icircumflex/Idieresis/Igrave
+/Oacute/Ocircumflex/apple/Ograve/Uacute/Ucircumflex/Ugrave/dotlessi/circumflex/tilde
+/macron/breve/dotaccent/ring/cedilla/hungarumlaut/ogonek/caron
+MacEncoding 128 128 getinterval astore pop
+level2 startnoload
+/copyfontdict
+{
+findfont dup length dict
+begin
+{
+1 index/FID ne{def}{pop pop}ifelse
+}forall
+}bd
+level2 endnoload level2 not startnoload
+/copyfontdict
+{
+findfont dup length dict
+copy
+begin
+}bd
+level2 not endnoload
+md/fontname known not{
+/fontname/customfont def
+}if
+/Encoding Z
+/:mre
+{
+copyfontdict
+/Encoding MacEncoding def
+fontname currentdict
+end
+definefont :ff def
+}bd
+/:bsr
+{
+copyfontdict
+/Encoding Encoding 256 array copy def
+Encoding dup
+}bd
+/pd{put dup}bd
+/:esr
+{
+pop pop
+fontname currentdict
+end
+definefont :ff def
+}bd
+/scf
+{
+scalefont def
+}bd
+/scf-non
+{
+$m scale :mf setfont
+}bd
+/ps Z
+/fz{/ps xs}bd
+/sf/setfont ld
+/cF/currentfont ld
+/mbf
+{
+/makeblendedfont where
+{
+pop
+makeblendedfont
+/ABlend exch definefont
+}{
+pop
+}ifelse
+def
+}def
+%%EndFile
+/currentpacking where {pop sc_oldpacking setpacking}if end
+%%EndProlog
+%%BeginSetup
+md begin
+countdictstack[{
+%%BeginFeature: *ManualFeed False
+statusdict /manualfeed false put
+%%EndFeature
+}featurecleanup
+countdictstack[{
+%%BeginFeature: *InputSlot Cassette
+
+%%EndFeature
+}featurecleanup
+(fdp)setjob
+/mT[1 0 0 -1 28 811]def
+/sD 16 dict def
+300 level2{1 dict dup/WaitTimeout 4 -1 roll put setuserparams}{statusdict/waittimeout 3 -1 roll put}ifelse
+%%IncludeFont: Palatino-Roman
+%%IncludeFont: Symbol
+%%IncludeFont: Palatino-Bold
+%%IncludeFont: Palatino-Italic
+%%IncludeFont: Courier
+%%IncludeFont: Times-Roman
+/f0_1/Palatino-Roman
+:mre
+/f0_96 f0_1 96 scf
+/f0_80 f0_1 80 scf
+/f0_14 f0_1 14 scf
+/f0_11 f0_1 11 scf
+/f0_10 f0_1 10 scf
+/f0_9 f0_1 9 scf
+/f1_1/Symbol
+:bsr
+240/apple pd
+:esr
+/f1_11 f1_1 11 scf
+/f2_1/Palatino-Bold
+:mre
+/f2_14 f2_1 14 scf
+/f2_11 f2_1 11 scf
+/f2_10 f2_1 10 scf
+/f3_1/Palatino-Italic
+:mre
+/f3_11 f3_1 11 scf
+/f3_10 f3_1 10 scf
+/f4_1/Courier
+:mre
+/f4_11 f4_1 11 scf
+/f4_10 f4_1 10 scf
+/f5_1/Times-Roman
+:mre
+/f5_11 f5_1 11 scf
+/Courier findfont[10 0 0 -10 0 0]:mf setfont
+%%EndSetup
+%%Page: 1 1
+%%BeginPageSetup
+initializepage
+(fdp; page : 1 / 27)setjob
+%%EndPageSetup
+gS 0 0 538 781 rC
+57 755 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+484 755 :M
+(1)S
+70 93 :M
+f2_14 sf
+-.077(An Object-Oriented Representation of Pitch-Classes, Intervals,)A
+208 109 :M
+.029 .003(Scales and Chords:)J
+214 125 :M
+-.171(The basic MusES)A
+172 157 :M
+-.115(\(revised and extended version\))A
+218 205 :M
+f0_14 sf
+1.295 .129(Fran\215ois Pachet)J
+145 218 :M
+f0_11 sf
+.304 .03(LAFORIA, Internal Report 93/38, November 1993)J
+196 254 :M
+.511 .051(E-mail : pachet@laforia.ibp.fr)J
+57 318 :M
+f2_11 sf
+.266(Abstract)A
+57 330 :M
+f0_11 sf
+2.226 .223(The MusES system is intended to provide an explicit representation of musical)J
+57 342 :M
+-.034(knowledge involved in tonal music chord sequences analysis. We describe in this paper)A
+57 354 :M
+1.175 .118(the first layer of the system, which provides an operational representation of pitch)J
+57 366 :M
+.461 .046(classes and their algebra, as well as standard calculus on scales, intervals and chords.)J
+57 378 :M
+.341 .034(The proposed representation takes enharmonic spelling into account, i.e differentiates)J
+57 390 :M
+2.1 .21(between equivalent pitch-classes \(e.g. C# and D)J
+f3_10 sf
+.448(b)A
+f0_11 sf
+1.548 .155(\). This first layer is intended to)J
+57 402 :M
+.128 .013(provide a solid foundation for musical symbolic knowledge-based systems. As such, it)J
+57 414 :M
+1.14 .114(provides an ontology to describe the basic units of harmony. This first layer of the)J
+57 426 :M
+.377 .038(MusES system may also be used as a pedagogical example for those wishing to apply)J
+57 438 :M
+-.046(object-oriented techniques to musical knowledge representation.)A
+57 474 :M
+f2_11 sf
+.136<528E73756D8E>A
+57 486 :M
+f0_11 sf
+2.122 .212(Le syst\217me MusES a comme objectif de repr\216senter les connaissances musicales)J
+57 498 :M
+.773 .077(n\216cessaires \210 l'analyse harmonique de s\216quences d'accords en musique tonale. Nous)J
+57 510 :M
+3.06 .306(d\216crivons ici la premi\217re couche du syst\217me qui propose une repr\216sentation)J
+57 522 :M
+1.867 .187(op\216rationnelle des notes et de leur alg\217bre, ainsi que des intervalles, gammes et)J
+57 534 :M
+2.693 .269(accords. Cette repr\216sentation a comme particularit\216 de prendre en compte les)J
+57 546 :M
+.164 .016(probl\217mes d'enharmonie, i.e. de diff\216rencier les notes \216quivalentes comme Do# et R\216)J
+f3_10 sf
+(b)S
+f0_11 sf
+(.)S
+57 558 :M
+-.015(Cette premi\217re couche est utilis\216e pour l'\216tude de m\216canismes d'analyse harmonique et)A
+57 570 :M
+.343 .034(peut \220tre consid\216r\216e comme une ontologie des concepts de base de l'harmonie. Le but)J
+57 582 :M
+2.407 .241(de ce document est aussi de proposer un exemple non trivial d'application de)J
+57 594 :M
+1.223 .122(Smalltalk-80 \210 l'usage des musiciens d\216sirant se lancer dans la programmation par)J
+57 606 :M
+.179(objets.)A
+endp
+%%Page: 2 2
+%%BeginPageSetup
+initializepage
+(fdp; page : 2 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(2)S
+85 100 :M
+f0_11 sf
+.75(1.)A
+107 100 :M
+-.133(Introduction)A
+168 100 :M
+.252(................................................................................................................)A
+167 100 :M
+.25 .025( )J
+504 100 :M
+(1)S
+85 112 :M
+.75(2.)A
+107 112 :M
+.286 .029(Algebra of pitch classes)J
+225 112 :M
+.253(.............................................................................................)A
+223 112 :M
+.25 .025( )J
+504 112 :M
+(2)S
+85 124 :M
+.75(3.)A
+107 124 :M
+1.826 .183(Notes as abstract data types.....................................................................................)J
+249 124 :M
+.25 .025( )J
+504 124 :M
+(3)S
+107 136 :M
+.5(3.1.)A
+134 136 :M
+.162 .016(From Abstract Data Types to Object-Oriented Programming)J
+429 136 :M
+.26(.........................)A
+428 136 :M
+.25 .025( )J
+504 136 :M
+(4)S
+107 148 :M
+.5(3.2.)A
+134 148 :M
+-.033(The hierarchy of notes)A
+243 148 :M
+.253(.......................................................................................)A
+242 148 :M
+.25 .025( )J
+504 148 :M
+(4)S
+107 160 :M
+.5(3.3.)A
+134 160 :M
+1.684 .168(Equivalence of pitches.......................................................................................)J
+243 160 :M
+.25 .025( )J
+504 160 :M
+(6)S
+107 172 :M
+.5(3.4.)A
+134 172 :M
+.212 .021(Note creation and initialization)J
+288 172 :M
+.254(........................................................................)A
+287 172 :M
+.25 .025( )J
+504 172 :M
+(7)S
+85 184 :M
+.75(4.)A
+107 184 :M
+-.109(Intervals)A
+150 184 :M
+.252(......................................................................................................................)A
+149 184 :M
+.25 .025( )J
+504 184 :M
+(8)S
+107 196 :M
+.5(4.1.)A
+134 196 :M
+.417 .042(Methods to access constant intervals)J
+315 196 :M
+.254(...............................................................)A
+314 196 :M
+.25 .025( )J
+504 196 :M
+(9)S
+107 208 :M
+.5(4.2.)A
+134 208 :M
+-.104(Computing interval extremities)A
+285 208 :M
+.253(.........................................................................)A
+284 208 :M
+.25 .025( )J
+504 208 :M
+(9)S
+107 220 :M
+.5(4.3.)A
+134 220 :M
+1.601 .16(Computations on intervals..............................................................................)J
+264 220 :M
+.25 .025( )J
+498 220 :M
+1(11)A
+107 232 :M
+.5(4.4.)A
+134 232 :M
+.864 .086(Computing intervals from its extremities........................................................)J
+330 232 :M
+.25 .025( )J
+498 232 :M
+1(12)A
+85 244 :M
+.75(5.)A
+107 244 :M
+.143(Scales)A
+138 244 :M
+.252(........................................................................................................................)A
+137 244 :M
+.25 .025( )J
+498 244 :M
+1(12)A
+107 256 :M
+.5(5.1.)A
+134 256 :M
+.269 .027(Definition and creation of scales)J
+294 256 :M
+.254(....................................................................)A
+292 256 :M
+.25 .025( )J
+498 256 :M
+1(13)A
+85 268 :M
+.75(6.)A
+107 268 :M
+.015(Chords)A
+144 268 :M
+.252(......................................................................................................................)A
+143 268 :M
+.25 .025( )J
+498 268 :M
+1(15)A
+107 280 :M
+.5(6.1.)A
+134 280 :M
+.153 .015(Definition and creation of chords)J
+297 280 :M
+.254(...................................................................)A
+296 280 :M
+.25 .025( )J
+498 280 :M
+1(15)A
+107 292 :M
+.5(6.2.)A
+134 292 :M
+1.301 .13(A vocabulary for chord names........................................................................)J
+282 292 :M
+.25 .025( )J
+498 292 :M
+1(15)A
+107 304 :M
+.5(6.3.)A
+134 304 :M
+.68 .068(Deducing the structure from the list of notes..................................................)J
+348 304 :M
+.25 .025( )J
+498 304 :M
+1(17)A
+107 316 :M
+.5(6.4.)A
+134 316 :M
+.68 .068(Deducing the list of notes from the structure..................................................)J
+348 316 :M
+.25 .025( )J
+498 316 :M
+1(18)A
+107 328 :M
+.5(6.5.)A
+134 328 :M
+.226 .023(Extracting scale-tone chords)J
+273 328 :M
+.253(...........................................................................)A
+272 328 :M
+.25 .025( )J
+498 328 :M
+1(19)A
+107 340 :M
+.5(6.6.)A
+134 340 :M
+-.046(Computing all possible chord names)A
+312 340 :M
+.254(..............................................................)A
+311 340 :M
+.25 .025( )J
+498 340 :M
+1(19)A
+107 352 :M
+.5(6.7.)A
+134 352 :M
+-.018(Computing possible analysis)A
+276 352 :M
+.253(..........................................................................)A
+274 352 :M
+.25 .025( )J
+498 352 :M
+1(20)A
+107 364 :M
+.5(6.8.)A
+134 364 :M
+-.062(Genericity and Reusability)A
+264 364 :M
+.253(..............................................................................)A
+262 364 :M
+.25 .025( )J
+498 364 :M
+1(21)A
+85 376 :M
+.75(7.)A
+107 376 :M
+-.044(Extending the system)A
+213 376 :M
+.253(...............................................................................................)A
+211 376 :M
+.25 .025( )J
+498 376 :M
+1(23)A
+107 388 :M
+.5(7.1.)A
+134 388 :M
+-.007(Representing actual octave-dependent notes)A
+351 388 :M
+.255(.................................................)A
+349 388 :M
+.25 .025( )J
+498 388 :M
+1(23)A
+107 400 :M
+.5(7.2.)A
+134 400 :M
+-.026(Problems not solved)A
+234 400 :M
+.253(........................................................................................)A
+233 400 :M
+.25 .025( )J
+498 400 :M
+1(24)A
+107 412 :M
+.5(7.3.)A
+134 412 :M
+-.141(Representing non trivial reasoning)A
+300 412 :M
+.254(..................................................................)A
+298 412 :M
+.25 .025( )J
+498 412 :M
+1(24)A
+85 424 :M
+.75(8.)A
+107 424 :M
+-.131(Conclusion)A
+162 424 :M
+.252(................................................................................................................)A
+161 424 :M
+.25 .025( )J
+498 424 :M
+1(24)A
+85 436 :M
+.75(9.)A
+107 436 :M
+-.151(References)A
+159 436 :M
+.252(.................................................................................................................)A
+158 436 :M
+.25 .025( )J
+498 436 :M
+1(24)A
+endp
+%%Page: 3 3
+%%BeginPageSetup
+initializepage
+(fdp; page : 3 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(1)S
+98 103 :M
+f2_14 sf
+-.077(An Object-Oriented Representation of Pitch-Classes, Intervals,)A
+238 119 :M
+-.025(Scales and Chords)A
+258 168 :M
+f0_11 sf
+.362 .036(Fran\215ois Pachet)J
+271 180 :M
+.059(LAFORIA)A
+222 192 :M
+.583 .058(E-mail : pachet@laforia.ibp.fr)J
+f0_9 sf
+0 -3 rm
+(1)S
+0 3 rm
+85 255 :M
+f2_14 sf
+.5(1.)A
+120 255 :M
+-.168(Introduction)A
+85 280 :M
+f0_11 sf
+.631 .063(Musical Analysis is an ideal field for testing knowledge representation techniques. It)J
+85 292 :M
+1.66 .166(involves complex knowledge which is well documented, and many examples are)J
+85 304 :M
+.365 .037(available. Lots of research have been devoted to complex harmonic problems, such as)J
+85 316 :M
+-.004(performing complete harmonic analyses of tonal pieces or extracting deep structures in)A
+85 328 :M
+.284 .028(jazz chord sequences.)J
+85 340 :M
+-.06(We focus here on a remarkably simple problem, which, to our knowledge, has yet never)A
+85 352 :M
+.283 .028(been fully addressed. The problem is simply to provide a "good" representation of the)J
+85 364 :M
+.006 .001(algebra of pitch classes, including the notion of "enharmonic spelling", which is so vital)J
+85 376 :M
+1.025 .103(to tonal harmony, and a representation of intervals, scales and chords to serve as a)J
+85 388 :M
+1.143 .114(foundation for implementing various types of harmonic analysis mechanisms. This)J
+85 400 :M
+1.047 .105(problem may be considered trivial compared with more complex problems such as)J
+85 412 :M
+.659 .066(computing Shenkerian analysis of Debussy's pieces, but it has always been solved in)J
+85 424 :M
+1.776 .178(ad hoc ways \(usually in Lisp\), using idiosyncratic representation techniques. For)J
+85 436 :M
+.112 .011(instance, [Winograd 93] emphasises the importance of taking enharmonic spelling into)J
+85 448 :M
+2.1 .21(account, but proposes an ad hoc representation of chords as \(Lisp\) dotted lists.)J
+85 460 :M
+1.357 .136(Similarily, [Steedman 84] proposes a solution for performing harmonic analysis of)J
+85 472 :M
+.602 .06(chords sequences but, considers all the entities \(chords, intervals or notes\) as Prolog-)J
+85 484 :M
+.717 .072(like constants and is interested only in higher level properties of sequences deduced)J
+85 496 :M
+-.125(from the mere ordering of their elements.)A
+85 520 :M
+1.43 .143(Our goal here is not only to write a program that solves the problems mentioned)J
+85 532 :M
+2.057 .206(above, but also to explicitly represent the underlying mechanisms of pitch-class)J
+85 544 :M
+2.153 .215(calculus. This representation is claimed to be natural, and the mechanisms that)J
+85 556 :M
+2.171 .217(implement the operations on pitch classes are considered isomorphic to human)J
+85 568 :M
+.213 .021(operations. Pushing this idea to its limit \(which we occasionally find ourselves doing\),)J
+85 580 :M
+.671 .067(the system described here may be considered as a )J
+f3_11 sf
+.941 .094(substitute for)J
+f0_11 sf
+.764 .076( a first-year text-book)J
+85 592 :M
+1.478 .148(of introduction to the basics of harmony. Indeed, many of the mysteries of music)J
+85 604 :M
+.036 .004(notation are explicitly solved here simply because the basic entities and mechanisms of)J
+85 616 :M
+.052 .005(music notation are given an operational status.)J
+85 640 :M
+.262 .026(We will first spend some time on defining precisely the algebra of alterations in pitch-)J
+85 652 :M
+1.08 .108(classes and interval computations \(parts 2, 3, 4\). These parts are important because)J
+85 664 :M
+.773 .077(they are the foundation of all the system, but they are not the most thrilling. Parts 5)J
+85 676 :M
+.368 .037(and 6 deal with computations on scales, chords, and scale-tone chords, and should be)J
+-4096 -4095 -1 1 -4094 -4095 1 -4096 -4096 @a
+85 703.24 -.24 .24 228.24 703 .24 85 703 @a
+85 715 :M
+f0_9 sf
+.12(1)A
+f0_10 sf
+0 3 rm
+.44 .044( The source code of the system presented here may be obtained on the web at: http://www-)J
+0 -3 rm
+85 730 :M
+.24(laforia.ibp.fr/~fdp/MusES.html.)A
+endp
+%%Page: 4 4
+%%BeginPageSetup
+initializepage
+(fdp; page : 4 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(2)S
+85 88 :M
+f0_11 sf
+1.516 .152(much more exciting to the reader. Finally we show how the system can be easily)J
+85 100 :M
+.254 .025(extended, e.g. to take into account exotic tonalities.)J
+85 139 :M
+f2_14 sf
+.5(2.)A
+120 139 :M
+-.27(Algebra of pitch classes)A
+85 164 :M
+f0_11 sf
+.441 .044(We are interested in representing )J
+f3_11 sf
+.534 .053(pitch classes)J
+f0_11 sf
+.488 .049(, i.e. octave-independent notes and their)J
+85 176 :M
+.814 .081(relations. For example, )J
+f3_11 sf
+.846 .085(pitch class)J
+f0_11 sf
+.521 .052( C refers to the set of all possible C's \(C1, C2 and so)J
+85 188 :M
+.107 .011(on, hence the name pitch-class\). In order to avoid confusion - because the word class is)J
+85 200 :M
+.309 .031(very polysemic - we will use the word )J
+f3_11 sf
+.092(note)A
+f0_11 sf
+.321 .032( to refer to pitch classes. This convention is)J
+85 212 :M
+1.47 .147(also needed in our context, since we will be speaking of "classes" \(in the sense of)J
+85 224 :M
+1.152 .115(object-oriented programming\) of such notes, and want to avoid talking about )J
+f3_11 sf
+.314(pitch)A
+85 236 :M
+-.146(class classes)A
+f0_11 sf
+(.)S
+85 248 :M
+.32 .032(For example, )J
+f3_11 sf
+.076(note)A
+f0_11 sf
+.213 .021( C will actually refer to )J
+f3_11 sf
+.35 .035(pitch class)J
+f0_11 sf
+.214 .021( C, i.e. the set of all Cs \(modulo 12\).)J
+85 260 :M
+.604 .06(We will not consider )J
+f3_11 sf
+.858 .086(actual notes)J
+f0_11 sf
+.543 .054(, with actual pitch \(such as Midi pitches in [1 .. 127]\))J
+85 272 :M
+.207 .021(in this presentation. The extension of our theory to represent actual notes - which may)J
+85 284 :M
+.834 .083(be thought of as "instances" of pitch classes - will be discussed in conclusion, and is)J
+85 296 :M
+.145 .015(rather straightforward once the theory of pitch classes is correctly set.)J
+85 320 :M
+1.1 .11(Here is a wish-list of what a good representation of notes \(read pitch-class\) should)J
+85 332 :M
+.304 .03(take into account :)J
+113 356 :M
+2.094 .209( -A note has a unique name. There are conceptually 35 different notes : 7)J
+113 368 :M
+1.358 .136(naturals, 7 flats, 7 sharps, 7 double sharps and 7 double flats. The unicity of)J
+113 380 :M
+-.011(notes is actually very important. There is only one occurrence of each note \(in our)A
+113 392 :M
+.212 .021(octave-independent context\). Practically, this means that, for example, the minor)J
+113 404 :M
+.212 .021(second of B \(C\) is )J
+f3_11 sf
+.075(physically)A
+f0_11 sf
+.139 .014( the )J
+f3_11 sf
+.092(same)A
+f0_11 sf
+.245 .024( note as the minor seventh of D, and so on.)J
+113 428 :M
+.381 .038(- There is a non trivial algebra for notes. The notes are linked to each other half-)J
+113 440 :M
+.862 .086(tone or tone wise, and form a circular list. But some notes are )J
+f3_11 sf
+.251(pitch-equivalent)A
+f0_11 sf
+(,)S
+113 452 :M
+1.74 .174(\(e.g. A# and B)J
+f3_10 sf
+.511(b)A
+f0_11 sf
+1.236 .124( , or C##, D and E)J
+f3_10 sf
+.511(bb)A
+f0_11 sf
+2.044 .204( \). Although the ability to differentiate)J
+113 464 :M
+1.177 .118(between equivalent notes may not seem important at this point, it becomes a)J
+113 476 :M
+1.027 .103(crucial point when doing harmonic computations. There is a subtle difference)J
+113 488 :M
+.235 .023(between C# and D)J
+f3_10 sf
+.055(b)A
+f0_11 sf
+.218 .022( which actually appears only when )J
+f3_11 sf
+.05(scales)A
+f0_11 sf
+.165 .016( come into play : for)J
+113 500 :M
+.857 .086(instance, the major scale built from C# contains no C, whereas the major scale)J
+113 512 :M
+1.118 .112(built from D)J
+f3_10 sf
+.274(b)A
+f0_11 sf
+1.048 .105( does contain a C. Stated differently, the names of notes contain)J
+113 524 :M
+2.856 .286(condensed harmonic information that are required by harmonic analysis)J
+113 536 :M
+-.031(techniques. Our theory should be able to interpret this information.)A
+113 560 :M
+1.505 .15(- There is an non trivial algebra of alterations, which includes the following)J
+113 572 :M
+.047 .005(equations :)J
+155 596 :M
+.213 .021(# o )J
+f3_10 sf
+.13(b)A
+f0_10 sf
+.064 .006( )J
+f2_11 sf
+.07 .007( )J
+f0_11 sf
+.22 .022(= )J
+f3_10 sf
+.167 .017(b )J
+f0_11 sf
+.364 .036( o # = identity.)J
+155 608 :M
+.233 .023(For any x in \(#, )J
+f3_10 sf
+.094(b)A
+f0_11 sf
+.304 .03(, natural\), x o natural  = natural.)J
+113 632 :M
+-.022(This algebra is non trivial because not everything is allowed, e.g. triple sharps.)A
+113 656 :M
+1.718 .172(- Notes are linked by the notion of )J
+f3_11 sf
+.513(interval)A
+f0_11 sf
+1.503 .15(, which, in a way, )J
+f3_11 sf
+.536(preserves)A
+f0_11 sf
+1.734 .173( this)J
+113 668 :M
+1.816 .182(algebra. For instance, the diminished fifth of C is not the same note as the)J
+113 680 :M
+-.023(augmented fourth of C, but the two notes are equivalent.)A
+113 704 :M
+.591 .059(- Certain intervals are forbidden for certain notes : for example, the diminished)J
+113 716 :M
+.439 .044(seventh of C)J
+f3_10 sf
+.107(b)A
+f0_11 sf
+.277 .028(  does not exist \(it would be B )J
+f3_10 sf
+.107(bbb)A
+f0_11 sf
+.217 .022( !\).)J
+endp
+%%Page: 5 5
+%%BeginPageSetup
+initializepage
+(fdp; page : 5 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(3)S
+113 88 :M
+f0_11 sf
+1.012 .101(- Certain scales do not exist, by virtue of the preceding remarks : G# major is)J
+113 100 :M
+.363 .036(impossible \(because it would contain a F## in its signature\). The same holds for)J
+113 112 :M
+(D)S
+f3_10 sf
+(b)S
+f0_11 sf
+-.006( harmonic minor, and so on.)A
+85 136 :M
+-.013(Although it is certainly possible to write a global algorithm in any procedural language)A
+85 148 :M
+.764 .076(\(such as Pascal or Lisp\) that takes all these cases into account, there is clearly here a)J
+85 160 :M
+.281 .028(better solution. This solution is based in )J
+f3_11 sf
+.344 .034(abstract data types)J
+f0_11 sf
+.327 .033(, and consists in considering)J
+85 172 :M
+.318 .032(all these 35 notes as a collection of )J
+f3_11 sf
+.102(instances)A
+f0_11 sf
+.29 .029( of various )J
+f3_11 sf
+.104(types)A
+f0_11 sf
+.379 .038(, each type having its own)J
+85 184 :M
+.131 .013(structure and set of )J
+f3_11 sf
+.038(operations)A
+f0_11 sf
+.17 .017(. This approach not only yields a simple implementation,)J
+85 196 :M
+.148 .015(but also provides us with a clear understanding of the operations on pitch classes.)J
+85 235 :M
+f2_14 sf
+.5(3.)A
+120 235 :M
+.196 .02(Notes as abstract data types)J
+85 260 :M
+f0_11 sf
+1.21 .121(The main idea underlying our representation paradigm is to model the world as a)J
+85 272 :M
+1.14 .114(collection of )J
+f3_11 sf
+1.333 .133(abstract data types)J
+f0_11 sf
+1.053 .105(, i.e. we do not separate operations on one hand and)J
+85 284 :M
+1.982 .198(data structures on the other, but rather try to define types \(or classes in object-)J
+85 296 :M
+.048 .005(oriented programming\) which gather structures and operations. The theory of )J
+f3_11 sf
+.011(algebraic)A
+85 308 :M
+1.133 .113(data types)J
+f0_11 sf
+.94 .094( gives a formal framework to represent abstract data types and the formal)J
+85 320 :M
+1.801 .18(properties of relations. Abstract data types and object-oriented programming are)J
+85 332 :M
+4.166 .417(particularily well suited to represent musical knowledge \(Cf. for instance)J
+85 344 :M
+.224 .022([Smaill&Wiggins 90] who use abstract data types to represent "constituents" useful for)J
+85 356 :M
+.666 .067(analysis, or [Pope 91] who use Smalltalk for sound editing and real-time algorithmic)J
+85 368 :M
+.072 .007(composition\). As it turned out, the problem of representing notes and their algebra is a)J
+85 380 :M
+.209 .021(prototypical example as it fits nicely in this formalism.)J
+85 404 :M
+.227 .023(This approach leads to us to considering the notes as follows :)J
+120 428 :M
+1.133 .113(- All \(35\) notes are not equal. Some operations are permitted on some notes)J
+85 440 :M
+1.066 .107(and not on others. There are 5 different types of notes : NaturalNotes, SharpNotes,)J
+85 452 :M
+1.41 .141(FlatNotes, DoubleFlatNotes and DoubleSharpNotes. It is interesting to distinguish)J
+85 464 :M
+.692 .069(different types of notes because its gives a precise definition to alterations : the #, )J
+f3_10 sf
+.193(b)A
+f0_11 sf
+.208 .021( ,)J
+85 476 :M
+.189 .019(and natural, may then be seen as )J
+f3_11 sf
+.344 .034(polymorphic functional operations)J
+f0_11 sf
+.194 .019( on types.)J
+85 488 :M
+.603 .06(For example, the # operation maps the )J
+f4_11 sf
+.226(NaturalNotes)A
+f0_11 sf
+.215 .022( to )J
+f4_11 sf
+.226(SharpNotes)A
+f0_11 sf
+.385 .039( : A# is then)J
+85 500 :M
+.575 .058(seen as the result of operation # to note A \(instance of )J
+f4_11 sf
+.255(NaturalNote)A
+f0_11 sf
+.808 .081(\), which yields)J
+85 512 :M
+.597 .06(an instance of )J
+f4_11 sf
+.254(SharpNote)A
+f0_11 sf
+.356 .036(, i.e. :)J
+120 536 :M
+.599 .06(sharp :  )J
+f4_11 sf
+.4(NaturalNote)A
+f0_11 sf
+1.181 .118( ------->)J
+295 536 :M
+f4_11 sf
+.452(SharpNote)A
+190 548 :M
+f0_11 sf
+.527 .053(sharp\(x\) is written x#.)J
+85 572 :M
+2.336 .234(This operation is polymorphic because there are actually several distinct sharp)J
+85 584 :M
+1.945 .194(operations, depending on the type of the argument. An other # operation maps)J
+85 596 :M
+f4_11 sf
+.545(SharpNotes)A
+f0_11 sf
+.519 .052( to )J
+f4_11 sf
+.545(DoubleSharpNotes)A
+f0_11 sf
+1.286 .129( \(e.g. A## = sharp \(A#\)\), and an other one)J
+85 608 :M
+5.792 .579(maps )J
+f4_11 sf
+1.961(FlatNotes)A
+f0_11 sf
+1.869 .187( to )J
+f4_11 sf
+1.961(NaturalNotes)A
+f0_11 sf
+3.422 .342( \(A)J
+f3_10 sf
+1.376(b)A
+f0_11 sf
+3.592 .359( # = sharp \(A)J
+f3_10 sf
+1.376(b)A
+f0_11 sf
+3.2 .32( \) = A\), and)J
+85 620 :M
+f4_11 sf
+.404(DoubleFlatNotes)A
+f0_11 sf
+.385 .039( to )J
+f4_11 sf
+.404(FlatNotes)A
+f0_11 sf
+(.)S
+85 644 :M
+.804 .08(Some operations are common to all note types \(e.g. the operation natural\), other are)J
+85 656 :M
+.647 .065(specific to one type of note \(e.g. the operation )J
+f3_11 sf
+.187(followingPitch)A
+f0_11 sf
+.452 .045( that links C to D, D to E)J
+85 668 :M
+.522 .052(and so on, is valid only for natural notes\) and other to a group of note types \(e.g. the)J
+85 680 :M
+f3_11 sf
+.163(sharp)A
+f0_11 sf
+.514 .051( operation is valid for all note types except )J
+f4_11 sf
+.22(doubleSharpNotes)A
+f0_11 sf
+.214(\).)A
+85 692 :M
+.739 .074(Similarily, the )J
+f3_11 sf
+.177(natural)A
+f0_11 sf
+.76 .076( operation is simply identity when applied to NaturalNotes \(A)J
+85 704 :M
+.343 .034(natural = A\), but is quite different when applied to SharpNotes \(A # natural = A\) and)J
+85 716 :M
+3.192 .319(still different when applied to double SharpNotes \(A ## natural = A\). This)J
+85 728 :M
+.297 .03(polymorphism of the natural operation is naturally captured by abstract data types.)J
+endp
+%%Page: 6 6
+%%BeginPageSetup
+initializepage
+(fdp; page : 6 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(4)S
+85 118 :M
+f2_11 sf
+.5(3.1.)A
+120 118 :M
+.213 .021(From Abstract Data Types to Object-Oriented Programming)J
+85 142 :M
+f0_11 sf
+.613 .061(Although the theory of abstract data types sheds a new light on the algebra of pitch-)J
+85 154 :M
+1.969 .197(class, it does not allow us to write a completely )J
+f3_11 sf
+.574(operational)A
+f0_11 sf
+2.404 .24( specification of the)J
+85 166 :M
+1.255 .125(mechanisms. We could write out all the axioms of the algebra of pitch-classes and)J
+85 178 :M
+.466 .047(intervals but this is not what we will do now. We will consider a variant/descendant)J
+85 190 :M
+1.719 .172(of this formalism, namely object-oriented programming and Smalltalk-80. Object-)J
+85 202 :M
+1.453 .145(oriented programming is based on this very idea of defining abstract entities that)J
+85 214 :M
+-.086(gather structure and operations in the context in programming languages.)A
+85 226 :M
+1.015 .102(The vocabulary here is a little bit different : Types are called )J
+f3_11 sf
+.27(classes)A
+f0_11 sf
+1.362 .136(. Classes define)J
+85 238 :M
+.483 .048(structure in terms of )J
+f3_11 sf
+.829 .083(instance variables)J
+f0_11 sf
+.446 .045( \(or slots, attributes\). Each class also has a set of)J
+85 250 :M
+f3_11 sf
+.04(methods)A
+f0_11 sf
+.134 .013(, which are the operations understood by its )J
+f3_11 sf
+.035(instances)A
+f0_11 sf
+.179 .018(. Polymorphism in object-)J
+85 262 :M
+1.979 .198(oriented languages is naturally present, since several classes may have different)J
+85 274 :M
+.034 .003(methods having the same name. An important feature of object-oriented programming)J
+85 286 :M
+.235 .024(is the )J
+f3_11 sf
+.1(inheritance)A
+f0_11 sf
+.514 .051( mechanism between classes, that allows factoring common structure)J
+85 298 :M
+-.011(and behavior.)A
+85 322 :M
+-.048(In this document, methods will be written with the following format :)A
+100 346 :M
+f0_10 sf
+1.033 .103(! aClassName methodsFor: aProtocol!)J
+100 358 :M
+.325 .033(aMethodName and its arguments)J
+100 370 :M
+.848 .085(the text of the method.)J
+85 394 :M
+f0_11 sf
+.923 .092(Where )J
+f4_11 sf
+.278(aProtocol)A
+f0_11 sf
+.666 .067( is simply a set of related methods for a particular class. The text)J
+85 406 :M
+.776 .078(of the method is a set of expressions. Each expression is a message sent of the form:)J
+85 418 :M
+f4_11 sf
+2.281 .228(object messageSelector arguments)J
+f0_11 sf
+1.381 .138( \(Cf. [Goldberg&Robson 89]\312for further)J
+85 430 :M
+.54 .054(details about Smalltalk\).)J
+85 454 :M
+1.156 .116(We will describe the main methods of the system, but not all of them ! The reader)J
+85 466 :M
+-.009(whishing to try the system out may obtain the Smalltalk source code by e-mail.)A
+85 496 :M
+f2_11 sf
+.5(3.2.)A
+120 496 :M
+.445 .045(The hierarchy of notes)J
+85 520 :M
+f0_11 sf
+.573 .057(In order to represent notes according to these requirements, we define a hierarchy of)J
+85 532 :M
+.486 .049(classes as follows. Each class has its set of instance variables and operations :)J
+85 556 :M
+.31 .031(1. )J
+f4_11 sf
+.242(Note)A
+f0_11 sf
+.614 .061( represents the root of all classes representing note. It is an abstract class and)J
+85 568 :M
+.214 .021(has no instance variables.)J
+85 592 :M
+1.169 .117(2. )J
+f4_11 sf
+.912(NaturalNote)A
+f0_11 sf
+2.457 .246( represents natural notes. There are 7 instances of this class,)J
+85 604 :M
+.809 .081(representing the 7 natural notes \(A, B, C, D, E, F, G\). Natural notes form the core of)J
+85 616 :M
+.16 .016(the system :)J
+113 628 :M
+.107 .011(-They have a )J
+f3_11 sf
+.042(name)A
+f0_11 sf
+.133 .013(, \(actually they have two names, to allow French terminology :)J
+113 640 :M
+.246 .025(A = La, B = Si, etc...\). The name is used for global access and printing.)J
+113 652 :M
+.541 .054(- They are linked to each other according to the order \(A, B, C, D, E, F, G\). This)J
+113 664 :M
+1.516 .152(is represented by two instance variables : )J
+f3_11 sf
+.391(following)A
+f0_11 sf
+.817 .082( and )J
+f3_11 sf
+.404(preceding)A
+f0_11 sf
+1.451 .145(, that point)J
+113 676 :M
+-.04(respectively to the following and preceding natural note,)A
+113 688 :M
+.366 .037(- Moreover, in order to represent the various intervals between notes, we assign)J
+113 700 :M
+.378 .038(to each natural note an arbitrary )J
+f3_11 sf
+.12(semiToneCount)A
+f0_11 sf
+.491 .049(, so that, e.g. semiToneCount\(A\))J
+113 712 :M
+.795 .08(= 1, semiToneCount\(B\) = 3, .., semiToneCount\(G\) = 11. This semiToneCount is)J
+113 724 :M
+.522 .052(used for interval computations \(Cf. method )J
+f4_11 sf
+.166(alterate:toReach)A
+f0_11 sf
+.161(\).)A
+endp
+%%Page: 7 7
+%%BeginPageSetup
+initializepage
+(fdp; page : 7 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(5)S
+113 88 :M
+f0_11 sf
+.122 .012(- Finally, there are two pointers towards the )J
+f3_11 sf
+.035(sharp)A
+f0_11 sf
+.068 .007( and )J
+f3_11 sf
+.026(flat)A
+f0_11 sf
+.129 .013( notes generated by the)J
+113 100 :M
+2.541 .254(natural notes. They represent the function sharp \(resp. flat\), which maps)J
+113 112 :M
+f4_11 sf
+1.131(NaturalNotes)A
+f0_11 sf
+1.131 .113( -> )J
+f4_11 sf
+1.131(SharpNotes)A
+f0_11 sf
+2.008 .201( \(resp. )J
+f4_11 sf
+1.131(FlatNotes)A
+f0_11 sf
+3.065 .306(\). These notes are)J
+113 124 :M
+.749 .075(instances of )J
+f4_11 sf
+.273(SharpNote)A
+f0_11 sf
+.485 .048( \(resp. )J
+f4_11 sf
+.273(FlatNote\))A
+f0_11 sf
+.77 .077( \(Cf. below\).)J
+85 148 :M
+.384 .038(The structure of class )J
+f4_11 sf
+.151(NaturalNote)A
+f0_11 sf
+.327 .033( is therefore :)J
+100 172 :M
+f0_10 sf
+1.031 .103(Note subclass: #NaturalNote)J
+120 184 :M
+.436 .044(instanceVariableNames: 'name nom semiToneCount following preceding sharp flat')J
+85 220 :M
+f0_11 sf
+.739 .074(Class )J
+f4_11 sf
+.273(NaturalNote)A
+f0_11 sf
+.83 .083( defines methods to access following, preceding, sharp and flat)J
+85 232 :M
+.56 .056(notes. These 4 methods are simple accessing methods : their result is the value of the)J
+85 244 :M
+2.664 .266(corresponding note. These values are assigned once, at initialization time \(Cf.)J
+85 256 :M
+.25 .025(initialization of notes\). For instance, the method sharp is defined as :)J
+85 280 :M
+f0_10 sf
+1.541 .154(!NaturalNote methodsFor: 'accessing'!)J
+85 292 :M
+f2_10 sf
+.364(sharp)A
+100 304 :M
+f0_10 sf
+.186(^sharp)A
+85 340 :M
+f0_11 sf
+.386 .039(3. )J
+f4_11 sf
+.301(AlteredNote)A
+f0_11 sf
+.823 .082( is the root of the classes representing altered \(and doubly altered\))J
+85 352 :M
+1.981 .198(notes. It is an abstract class. It defines only one instance variable called )J
+f3_11 sf
+.653(natural)A
+85 364 :M
+f0_11 sf
+.679 .068(pointing back to the natural note it comes from. For instance, A#, A##, A)J
+f3_10 sf
+.18(b)A
+f0_11 sf
+.39 .039( , and A)J
+f3_10 sf
+.359(bb)A
+85 376 :M
+f0_11 sf
+.176 .018(all have A as their )J
+f3_11 sf
+.064(natural)A
+f0_11 sf
+(.)S
+85 400 :M
+.217 .022(4. Finally, there are 4 subclasses of )J
+f4_11 sf
+.091(AlteredNote)A
+f0_11 sf
+.319 .032( for representing respectively sharp,)J
+85 412 :M
+.702 .07(flat, doubleSharp and doubleFlat notes. These classes implement the methods sharp,)J
+85 424 :M
+1.145 .115(flat and double flat so as to respect the natural algebra of alterations. For instance,)J
+85 436 :M
+.212 .021(class )J
+f4_11 sf
+.087(FlatNote)A
+f0_11 sf
+.262 .026( implements the following )J
+f4_11 sf
+.087(sharp)A
+f0_11 sf
+.217 .022( method :)J
+85 460 :M
+f0_10 sf
+1.577 .158(!FlatNote methodsFor: 'accessing'!)J
+85 472 :M
+f2_10 sf
+.364(sharp)A
+85 484 :M
+f0_10 sf
+.518 .052("my sharp is simply my natural note")J
+100 496 :M
+.14(^natural)A
+85 520 :M
+f0_11 sf
+.216 .022(Conversely, for sharp notes, the flat operation is defined as the natural operation :)J
+85 544 :M
+f0_10 sf
+1.493 .149(!SharpNote methodsFor: 'accessing'!)J
+85 556 :M
+f2_10 sf
+.819(flat)A
+85 568 :M
+f0_10 sf
+.684 .068("my flat is simply my natural note")J
+100 580 :M
+.14(^natural)A
+85 616 :M
+f0_11 sf
+.843 .084(For )J
+f4_11 sf
+.405(DoubleFlat)A
+f0_11 sf
+.555 .055(, the )J
+f4_11 sf
+.405(sharp)A
+f0_11 sf
+1.111 .111( method will consist in delegating the message to the)J
+85 628 :M
+.102 .01(natural note :)J
+85 652 :M
+f0_10 sf
+1.34 .134(!DoubleFlatNote methodsFor: 'accessing'!)J
+85 664 :M
+f2_10 sf
+.364(sharp)A
+85 676 :M
+f0_10 sf
+-.149("x bb # = x b")A
+100 688 :M
+1.812 .181(^natural flat)J
+85 712 :M
+f0_11 sf
+.782 .078(Method )J
+f4_11 sf
+.213(flat)A
+f0_11 sf
+.203 .02( in )J
+f4_11 sf
+.213(DoubleSharpNote)A
+f0_11 sf
+.52 .052( is similar.)J
+endp
+%%Page: 8 8
+%%BeginPageSetup
+initializepage
+(fdp; page : 8 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(6)S
+85 88 :M
+f0_11 sf
+.449 .045(Finally, we need to represent the functional link between a flat \(resp. sharp\) note and)J
+85 100 :M
+1.759 .176(its corresponding doubleFlat \(resp. doubleSharp\). This is realized by defining an)J
+85 112 :M
+.916 .092(instance variable in class )J
+f4_11 sf
+.33(FlatNote)A
+f0_11 sf
+1.083 .108( pointing to the corresponding doubleFlat note)J
+85 124 :M
+.329 .033(\(and idem for sharp\).)J
+85 136 :M
+.307 .031(Thus, the method flat is implemented as a simple access method for )J
+f4_11 sf
+.114(FlatNote)A
+f0_11 sf
+.361 .036( \(idem)J
+85 148 :M
+.59 .059(for sharp in class )J
+f4_11 sf
+.27(SharpNote)A
+f0_11 sf
+.263(\).)A
+85 172 :M
+.92 .092(To conclude, here is the list of all the implementations of the flat method \(the same)J
+85 184 :M
+.305 .03(mechanism applies for the )J
+f4_11 sf
+.101(sharp)A
+f0_11 sf
+.295 .03( operations\) :)J
+85 208 :M
+f0_10 sf
+2.323 .232(!NaturalNote methodsFor: 'alterations'!)J
+85 220 :M
+f2_10 sf
+.819(flat)A
+100 232 :M
+f0_10 sf
+.611(^flat)A
+289 208 :M
+2.4 .24(!FlatNote methodsFor: 'alterations'!)J
+289 220 :M
+f2_10 sf
+.819(flat)A
+304 232 :M
+f0_10 sf
+.611(^flat)A
+85 256 :M
+2.304 .23(!SharpNote methodsFor: 'alterations'!)J
+85 268 :M
+f2_10 sf
+.819(flat)A
+100 280 :M
+f0_10 sf
+.14(^natural)A
+289 256 :M
+2.008 .201(!DoubleSharpNote methodsFor: 'alterations'!)J
+289 268 :M
+f2_10 sf
+.819(flat)A
+304 280 :M
+f0_10 sf
+1.073 .107(^natural sharp)J
+85 316 :M
+f0_11 sf
+.846 .085(Note that the flat operation is intentionaly not defined for class )J
+f4_11 sf
+.321(DoubleFlatNote)A
+f0_11 sf
+(.)S
+85 328 :M
+.44 .044(The flat message sent to a )J
+f4_11 sf
+.199(DoubleFlatNote)A
+f0_11 sf
+.48 .048( will raise an error, which is conform to)J
+85 340 :M
+.342 .034(our philosophy. Idem for method sharp in class )J
+f4_11 sf
+.122(DoubleSharpNote)A
+f0_11 sf
+(.)S
+85 382 :M
+f2_11 sf
+.5(3.3.)A
+120 382 :M
+.582 .058(Equivalence of pitches)J
+85 406 :M
+f0_11 sf
+.098 .01(Last, we introduce a method for testing the equivalence of pitches. This method, called)J
+85 418 :M
+f4_11 sf
+.165(pitchEquals:)A
+f0_11 sf
+.499 .05( tests the semiToneCount, and allows to represent the equivalence of)J
+85 430 :M
+.065 .006(certain notes. This method is implemented as follows :)J
+85 454 :M
+f0_10 sf
+1.421 .142(!Note methodsFor: 'testing'!)J
+85 466 :M
+f2_10 sf
+.883 .088(pitchEquals: aNote)J
+120 478 :M
+f0_10 sf
+-.11(^self semiToneCount = aNote semiToneCount)A
+85 514 :M
+f0_11 sf
+1.089 .109(To implement method semiToneCount, we will once again use polymorphism. The)J
+85 526 :M
+.256 .026(method is defined as follows in the 5 classes :)J
+85 550 :M
+f0_10 sf
+1.683 .168(!NaturalNote methodsFor: 'access'!)J
+85 562 :M
+f2_10 sf
+-.443(semiToneCount)A
+85 574 :M
+f0_10 sf
+.854 .085("a simple acess method")J
+100 586 :M
+-.282(^semiToneCount)A
+289 550 :M
+1.729 .173(!FlatNote methodsFor: 'access'!)J
+289 562 :M
+f2_10 sf
+-.443(semiToneCount)A
+306 574 :M
+f0_10 sf
+-.098(^natural semiToneCount - 1)A
+85 610 :M
+1.636 .164(!SharpNote methodsFor: 'access'!)J
+85 622 :M
+f2_10 sf
+-.443(semiToneCount)A
+102 634 :M
+f0_10 sf
+-.127(^natural semiToneCount + 1)A
+289 610 :M
+1.385 .139(!DoubleSharpNote methodsFor: 'access'!)J
+289 622 :M
+f2_10 sf
+-.443(semiToneCount)A
+306 634 :M
+f0_10 sf
+-.127(^natural semiToneCount + 2)A
+289 658 :M
+1.463 .146(!DoubleFlatNote methodsFor: 'access'!)J
+289 670 :M
+f2_10 sf
+-.443(semiToneCount)A
+306 682 :M
+f0_10 sf
+-.098(^natural semiToneCount - 2)A
+endp
+%%Page: 9 9
+%%BeginPageSetup
+initializepage
+(fdp; page : 9 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(7)S
+85 88 :M
+f0_11 sf
+1.721 .172(Now all the note classes have been defined, and the algebra of pitch is correctly)J
+85 100 :M
+-.019(represented. The note classes form the following inheritance tree \(instance variables are)A
+85 112 :M
+-.003(between parenthesis, and inheritance is represented by indentation\) :)A
+93 137 :M
+f0_10 sf
+.351 .035(Object \(\))J
+-1 -1 91 128 1 1 90 127 @b
+-1 -1 91 128 1 1 90 127 @b
+91 128 -1 1 454 127 1 91 127 @a
+-1 -1 455 128 1 1 454 127 @b
+-1 -1 455 128 1 1 454 127 @b
+-1 -1 91 140 1 1 90 128 @b
+-1 -1 455 140 1 1 454 128 @b
+114 149 :M
+1.269 .127(Note \(\))J
+-1 -1 91 152 1 1 90 140 @b
+-1 -1 455 152 1 1 454 140 @b
+134 161 :M
+.531 .053(NaturalNote \(name following preceding sharp flat semiToneCount\))J
+-1 -1 91 164 1 1 90 152 @b
+-1 -1 455 164 1 1 454 152 @b
+134 173 :M
+2.165 .216(AlteredNote \(natural\))J
+-1 -1 91 176 1 1 90 164 @b
+-1 -1 455 176 1 1 454 164 @b
+154 185 :M
+2.691 .269(SharpNote \(sharp\))J
+-1 -1 91 188 1 1 90 176 @b
+-1 -1 455 188 1 1 454 176 @b
+154 197 :M
+3.671 .367(FlatNote \(flat\))J
+-1 -1 91 200 1 1 90 188 @b
+-1 -1 455 200 1 1 454 188 @b
+154 209 :M
+1.867 .187(DoubleFlatNote \(\))J
+-1 -1 91 212 1 1 90 200 @b
+-1 -1 455 212 1 1 454 200 @b
+154 221 :M
+1.688 .169(DoubleSharpNote \(\))J
+-1 -1 91 225 1 1 90 224 @b
+-1 -1 91 225 1 1 90 224 @b
+91 225 -1 1 454 224 1 91 224 @a
+-1 -1 455 225 1 1 454 224 @b
+-1 -1 455 225 1 1 454 224 @b
+-1 -1 91 224 1 1 90 212 @b
+-1 -1 455 224 1 1 454 212 @b
+85 246 :M
+f0_11 sf
+.319 .032(Figure 1 represents the class hierarchy as well as the instances A, B, A#, A##, A)J
+f3_10 sf
+.088(b)A
+f0_11 sf
+.329 .033(, and)J
+85 258 :M
+.126(A)A
+f3_10 sf
+.068(bb)A
+f0_11 sf
+.316 .032(, and their relationships.)J
+85 285 434 246 rC
+277.5 302.5 42 22 rS
+gS
+.125 .125 scale
+2280.278 2528.309 :M
+f0_96 sf
+(Note)S
+gR
+181.5 350.5 84 22 rS
+gS
+.125 .125 scale
+1512.185 2912.356 :M
+f0_96 sf
+(NaturalNote)S
+gR
+319.5 350.5 83 22 rS
+gS
+.125 .125 scale
+2616.319 2912.356 :M
+f0_96 sf
+(AlteredNote)S
+gR
+211.5 428.5 74 22 rS
+gS
+.125 .125 scale
+1752.214 3536.432 :M
+f0_96 sf
+(SharpNote)S
+gR
+391.5 428.5 63 22 rS
+gS
+.125 .125 scale
+3192.39 3536.432 :M
+f0_96 sf
+(FlatNote)S
+gR
+289.5 428.5 93 22 rS
+gS
+.125 .125 scale
+2376.29 3536.432 :M
+f0_96 sf
+(DblSharpNote)S
+gR
+436.5 455.5 82 22 rS
+gS
+.125 .125 scale
+3552.434 3752.458 :M
+f0_96 sf
+(DblFlatNote)S
+gR
+.5 G
+127.5 416.5 26 22 rS
+gS
+.125 .125 scale
+1080.132 3440.42 :M
+0 G
+f0_96 sf
+(A)S
+gR
+127.5 488.5 24 22 rS
+gS
+.125 .125 scale
+1080.132 4016.49 :M
+0 G
+f0_96 sf
+(B)S
+gR
+217.5 482.5 33 22 rS
+gS
+.125 .125 scale
+1800.22 3968.484 :M
+0 G
+f0_96 sf
+(A#)S
+gR
+397.5 494.5 32 22 rS
+gS
+.125 .125 scale
+3240.396 4064.496 :M
+0 G
+f0_96 sf
+(Ab)S
+gR
+307.5 483.5 40 22 rS
+gS
+.125 .125 scale
+2520.308 3976.485 :M
+0 G
+f0_96 sf
+(A##)S
+gR
+gS
+.125 .125 scale
+1896.231 3680.449 :M
+0 G
+f0_80 sf
+(sharp)S
+gR
+gS
+.125 .125 scale
+3296.402 3688.45 :M
+0 G
+f0_80 sf
+(flat)S
+gR
+gS
+.125 .125 scale
+2760.337 3120.381 :M
+0 G
+f0_80 sf
+(\(natural\))S
+gR
+0 G
+164 432 355 99 rC
+156 425 -1 1 216 483 1 156 424 @a
+gR
+gS 85 285 434 246 rC
+156 425 -1 1 165 438 1 156 424 @a
+-1 -1 165 439 1 1 170 432 @b
+156 425 -1 1 171 432 1 156 424 @a
+np 156 424 :M
+164 438 :L
+170 432 :L
+156 424 :L
+eofill
+gS
+.125 .125 scale
+1560.19 3728.455 :M
+f0_80 sf
+(natural)S
+gR
+85 285 214 246 rC
+252 491 -1 1 307 490 1 252 490 @a
+gR
+gS 85 285 434 246 rC
+291 487 -1 1 307 490 1 291 486 @a
+-1 -1 292 495 1 1 291 486 @b
+-1 -1 292 495 1 1 306 490 @b
+np 306 490 :M
+291 486 :L
+291 494 :L
+306 490 :L
+eofill
+gS
+.125 .125 scale
+2088.255 3872.473 :M
+f0_80 sf
+(sharp)S
+gR
+gS
+.125 .125 scale
+1656.202 3104.379 :M
+f0_80 sf
+(\(following)S
+gR
+gS
+.125 .125 scale
+1656.202 3216.393 :M
+f0_80 sf
+(preceding)S
+gR
+gS
+.125 .125 scale
+1656.202 3328.406 :M
+f0_80 sf
+(sharp ...\))S
+gR
+85 285 124 205 rC
+144 443 -1 1 216 495 1 144 442 @a
+gR
+gS 85 285 434 246 rC
+207 485 -1 1 217 496 1 207 484 @a
+-1 -1 202 491 1 1 207 484 @b
+201 491 -1 1 217 496 1 201 490 @a
+np 216 496 :M
+207 484 :L
+201 491 :L
+216 496 :L
+eofill
+gS
+.125 .125 scale
+1224.149 3776.461 :M
+f0_80 sf
+(sharp)S
+gR
+85 285 434 192 rC
+-1 -1 139 485 1 1 138 442 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 139 485 1 1 142 469 @b
+134 470 -1 1 143 469 1 134 469 @a
+134 470 -1 1 139 484 1 134 469 @a
+np 138 484 :M
+142 469 :L
+134 469 :L
+138 484 :L
+eofill
+gS
+.125 .125 scale
+840.103 3680.449 :M
+f0_80 sf
+(following)S
+gR
+85 285 202 246 rC
+-1 -1 217 350 1 1 294 325 @b
+gR
+gS 85 285 434 246 rC
+278 326 -1 1 295 325 1 278 325 @a
+278 326 -1 1 282 333 1 278 325 @a
+-1 -1 282 334 1 1 294 325 @b
+np 294 325 :M
+278 325 :L
+281 334 :L
+294 325 :L
+eofill
+100 425 -1 1 131 424 1 100 424 @a
+-1 -1 101 514 1 1 100 425 @b
+85 285 304 246 rC
+101 516 -1 1 397 515 1 101 515 @a
+gR
+gS 85 285 434 246 rC
+381 512 -1 1 397 515 1 381 511 @a
+-1 -1 382 520 1 1 381 511 @b
+-1 -1 382 520 1 1 396 515 @b
+np 396 515 :M
+381 511 :L
+381 519 :L
+396 515 :L
+eofill
+311 329 208 202 rC
+303 325 -1 1 346 349 1 303 324 @a
+gR
+gS 85 285 434 246 rC
+303 325 -1 1 315 336 1 303 324 @a
+-1 -1 315 337 1 1 318 328 @b
+303 325 -1 1 319 328 1 303 324 @a
+np 303 324 :M
+314 336 :L
+318 328 :L
+303 324 :L
+eofill
+85 377 245 154 rC
+-1 -1 253 428 1 1 336 372 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 323 378 1 1 337 372 @b
+322 378 -1 1 328 384 1 322 377 @a
+-1 -1 328 385 1 1 337 372 @b
+np 337 372 :M
+322 377 :L
+327 384 :L
+337 372 :L
+eofill
+85 380 434 151 rC
+-1 -1 339 429 1 1 338 372 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 335 388 1 1 338 372 @b
+334 388 -1 1 343 387 1 334 387 @a
+338 373 -1 1 343 387 1 338 372 @a
+np 338 372 :M
+334 387 :L
+342 387 :L
+338 372 :L
+eofill
+382 380 137 151 rC
+377 373 -1 1 416 427 1 377 372 @a
+gR
+gS 85 285 434 246 rC
+377 373 -1 1 383 387 1 377 372 @a
+-1 -1 383 388 1 1 389 382 @b
+377 373 -1 1 390 382 1 377 372 @a
+np 377 372 :M
+382 387 :L
+389 382 :L
+377 372 :L
+eofill
+395 378 124 153 rC
+387 373 -1 1 491 455 1 387 372 @a
+gR
+gS 85 285 434 246 rC
+387 373 -1 1 397 385 1 387 372 @a
+-1 -1 397 386 1 1 401 378 @b
+387 373 -1 1 402 378 1 387 372 @a
+np 387 372 :M
+396 385 :L
+402 378 :L
+387 372 :L
+eofill
+.5 G
+85 460 434 71 rC
+-1 -1 408 492 1 1 407 452 @b
+gR
+.5 G
+gS 85 285 434 246 rC
+-1 -1 404 468 1 1 407 452 @b
+403 468 -1 1 412 467 1 403 467 @a
+407 453 -1 1 412 467 1 407 452 @a
+np 407 452 :M
+403 467 :L
+411 467 :L
+407 452 :L
+eofill
+85 459 434 72 rC
+-1 -1 322 483 1 1 321 451 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 318 467 1 1 321 451 @b
+317 467 -1 1 326 466 1 317 466 @a
+321 452 -1 1 326 466 1 321 451 @a
+np 321 451 :M
+317 466 :L
+325 466 :L
+321 451 :L
+eofill
+85 460 434 71 rC
+-1 -1 234 484 1 1 233 452 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 230 468 1 1 233 452 @b
+229 468 -1 1 238 467 1 229 467 @a
+233 453 -1 1 238 467 1 233 452 @a
+np 233 452 :M
+229 467 :L
+237 467 :L
+233 452 :L
+eofill
+85 379 105 152 rC
+-1 -1 139 416 1 1 196 373 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 183 380 1 1 197 373 @b
+182 380 -1 1 189 385 1 182 379 @a
+-1 -1 189 386 1 1 197 373 @b
+np 197 373 :M
+182 379 :L
+188 386 :L
+197 373 :L
+eofill
+gS
+.125 .125 scale
+1352.165 4112.502 :M
+0 G
+f0_80 sf
+(flat)S
+gR
+85 309 434 222 rC
+-1 -1 104 333 1 1 103 301 @b
+gR
+gS 85 285 434 246 rC
+-1 -1 100 317 1 1 103 301 @b
+99 317 -1 1 108 316 1 99 316 @a
+103 302 -1 1 108 316 1 103 301 @a
+np 103 301 :M
+99 316 :L
+107 316 :L
+103 301 :L
+eofill
+gS
+.125 .125 scale
+952.116 2576.314 :M
+0 G
+f0_80 sf
+(= instance of)S
+gR
+0 G
+85 345 434 186 rC
+-1 -1 104 369 1 1 103 337 @b
+gR
+0 G
+gS 85 285 434 246 rC
+-1 -1 100 353 1 1 103 337 @b
+99 353 -1 1 108 352 1 99 352 @a
+103 338 -1 1 108 352 1 103 337 @a
+np 103 337 :M
+99 352 :L
+107 352 :L
+103 337 :L
+eofill
+gS
+.125 .125 scale
+944.115 2856.349 :M
+f0_80 sf
+(= subclass of)S
+gR
+.5 G
+472.5 497.5 39 22 rS
+gS
+.125 .125 scale
+3840.469 4088.499 :M
+0 G
+f0_96 sf
+(Abb)S
+gR
+85 484 434 47 rC
+488 477 -1 1 490 496 1 488 476 @a
+gR
+.5 G
+gS 85 285 434 246 rC
+-1 -1 485 492 1 1 488 476 @b
+484 492 -1 1 494 491 1 484 491 @a
+488 477 -1 1 494 491 1 488 476 @a
+np 488 476 :M
+484 491 :L
+493 491 :L
+488 476 :L
+eofill
+0 G
+85 285 379 246 rC
+429 508 -1 1 472 507 1 429 507 @a
+gR
+0 G
+gS 85 285 434 246 rC
+456 504 -1 1 472 507 1 456 503 @a
+-1 -1 457 512 1 1 456 503 @b
+-1 -1 457 512 1 1 471 507 @b
+np 471 507 :M
+456 503 :L
+456 511 :L
+471 507 :L
+eofill
+gS
+.125 .125 scale
+3504.428 4008.489 :M
+f0_80 sf
+(flat)S
+gR
+gR
+gS 28 30 538 781 rC
+192 540 :M
+f0_10 sf
+.578 .058(Figure 1. Relationships between several notes.)J
+85 582 :M
+f2_11 sf
+.5(3.4.)A
+120 582 :M
+.282 .028(Note creation and initialization)J
+85 606 :M
+f0_11 sf
+.775 .077(Once these classes are defined, we define an initialization method as a class method)J
+85 618 :M
+.536 .054(for )J
+f4_11 sf
+.295(Note)A
+f0_11 sf
+.793 .079(. This method will create the 35 instances of notes and link them according)J
+85 630 :M
+.266 .027(the instance variables defined above. Here is an outline of the method \(dot ... are used)J
+85 642 :M
+.278 .028(to avoid repetition for all notes\):)J
+85 666 :M
+f0_10 sf
+1.565 .156(!Note class methodsFor: 'note initialization'!)J
+85 678 :M
+f2_10 sf
+.436(initialize)A
+100 690 :M
+f0_10 sf
+-.032(| as bs .. af bb .. ass bss .. aff bff .. |)A
+100 702 :M
+.119 .012(A := \(NaturalNote new\) semiToneCount: 1; name: #A.)J
+100 714 :M
+.311 .031(B := \(NaturalNote new\) semiToneCount: 3; name: #B...)J
+100 726 :M
+.647 .065(as := SharpNote new natural: A.)J
+endp
+%%Page: 10 10
+%%BeginPageSetup
+initializepage
+(fdp; page : 10 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(8)S
+100 88 :M
+f0_10 sf
+.649 .065(bs := SharpNote new natural: B...)J
+100 100 :M
+.809 .081(af := FlatNote new natural: A.)J
+100 112 :M
+.806 .081(bf := FlatNote new natural: B...)J
+100 124 :M
+.516 .052(ass := DoubleSharpNote new natural: A.)J
+100 136 :M
+.52 .052(bss := DoubleSharpNote new natural: B...)J
+100 148 :M
+.769 .077(aff := DoubleFlatNote new natural: A.)J
+100 160 :M
+.767 .077(bff := DoubleFlatNote new natural: B...)J
+100 172 :M
+.791 .079(A following: B; preceding: G; sharp: as; flat: af...)J
+100 184 :M
+.498 .05(as sharp: ass. bs sharp: bss...)J
+85 220 :M
+f0_11 sf
+.481 .048(Since notes are unique, we want to have a global access to them. This global access is)J
+85 232 :M
+.511 .051(realized by 7 class variables )J
+f4_11 sf
+.197(\(A)A
+f0_11 sf
+.187 .019( to )J
+f4_11 sf
+.197(G\))A
+f0_11 sf
+.596 .06( which point to the corresponding natural notes)J
+85 244 :M
+.587 .059(created during the initialization phase. A set of special methods are written to access)J
+85 256 :M
+.386 .039(these natural notes by messages such as A, B, C \(or do, re, mi\). Altered notes are then)J
+85 268 :M
+.189 .019(accessed by sending appropriate alteration messages to natural notes.)J
+85 292 :M
+.247 .025(Here is a micro session that illustrates note access)J
+f0_9 sf
+0 -3 rm
+.061(2)A
+0 3 rm
+f0_11 sf
+(.)S
+93 317 :M
+f0_10 sf
+.397 .04(Note C)J
+330 317 :M
+.218 .022(->  C)J
+-1 -1 91 308 1 1 90 307 @b
+-1 -1 91 308 1 1 90 307 @b
+91 308 -1 1 482 307 1 91 307 @a
+-1 -1 483 308 1 1 482 307 @b
+-1 -1 483 308 1 1 482 307 @b
+-1 -1 91 320 1 1 90 308 @b
+-1 -1 483 320 1 1 482 308 @b
+93 329 :M
+.672 .067(Note C sharp)J
+330 329 :M
+.185 .019(->  C#)J
+-1 -1 91 332 1 1 90 320 @b
+-1 -1 483 332 1 1 482 320 @b
+93 341 :M
+1.061 .106(Note C sharp sharp flat)J
+330 341 :M
+.185 .019(->  C#)J
+-1 -1 91 344 1 1 90 332 @b
+-1 -1 483 344 1 1 482 332 @b
+93 353 :M
+1.602 .16(Note C flat flat flat)J
+225 353 :M
+.502 .05(-> error: 'flat' not understood by class DoubleFlatNote)J
+-1 -1 91 356 1 1 90 344 @b
+-1 -1 483 356 1 1 482 344 @b
+93 365 :M
+.856 .086(Note C sharp pitchEquals: Note D flat)J
+330 365 :M
+.681 .068(-> true)J
+-1 -1 91 369 1 1 90 368 @b
+-1 -1 91 369 1 1 90 368 @b
+91 369 -1 1 482 368 1 91 368 @a
+-1 -1 483 369 1 1 482 368 @b
+-1 -1 483 369 1 1 482 368 @b
+-1 -1 91 368 1 1 90 356 @b
+-1 -1 483 368 1 1 482 356 @b
+85 417 :M
+f2_14 sf
+.5(4.)A
+120 417 :M
+.031(Intervals)A
+85 442 :M
+f0_11 sf
+3.078 .308(Now that notes and the algebra of alterations are correctly defined, interval)J
+85 454 :M
+.836 .084(computation is easy to add \(and more interesting !\). The same kind of requirements)J
+85 466 :M
+2.54 .254(that hold for notes hold for intervals, namely the possibility of differentiating)J
+85 478 :M
+.657 .066(synonymous intervals. For instance, we want to be able to distinguish the )J
+f3_11 sf
+.193(diminished)A
+85 490 :M
+.195(fifth)A
+f0_11 sf
+.645 .065( of C \(which is G)J
+f3_10 sf
+.247(b)A
+f0_11 sf
+.51 .051( \) from its )J
+f3_11 sf
+1.621 .162(augmented fourth)J
+f0_11 sf
+.945 .094( \(which is F#, a pitch-equivalent of)J
+85 502 :M
+.31(G)A
+f3_10 sf
+.171(b)A
+f0_11 sf
+.282 .028( \).)J
+85 514 :M
+-.036(There are a number of things one can do with intervals, which are :)A
+113 538 :M
+.193 .019(- computing the top or bottom lacking extremity of an interval, given a note \(e.g.)J
+113 550 :M
+f3_11 sf
+.387 .039(what is the major third of C)J
+f0_11 sf
+.207 .021(, or )J
+f3_11 sf
+.405 .04(what is the note whose major third is C)J
+f0_11 sf
+.179(\),)A
+113 562 :M
+1.185 .118(- computing an interval given two notes. For example, we want to be able to)J
+113 574 :M
+.515 .051(answer the question : )J
+f3_11 sf
+.389 .039(what is the interval between  C and F#  ?)J
+f0_11 sf
+.48 .048( \(the answer here is)J
+113 586 :M
+f3_11 sf
+.651 .065(an augmented fourth)J
+f0_11 sf
+.175(\),)A
+113 598 :M
+-.027(- performing some computations on intervals themselves, such as :)A
+120 610 :M
+f3_11 sf
+.092(adding)A
+f0_11 sf
+.269 .027( intervals \(e.g. a major third + a perfect fifth = a major seventh\) )J
+120 622 :M
+-.066(computing )A
+f3_11 sf
+-.053(reverse)A
+f0_11 sf
+-.057( intervals \(the reverse of an augmented fourth is a )A
+120 634 :M
+-.008(diminished fifth\).)A
+85 658 :M
+.652 .065(In order to do so, we must have an explicit representation of intervals, that supports)J
+85 670 :M
+.209 .021(those operations. The class )J
+f4_11 sf
+.071(Interval)A
+f0_11 sf
+.189 .019( is defined with the following structure :)J
+-4096 -4095 -1 1 -4094 -4095 1 -4096 -4096 @a
+85 703.24 -.24 .24 228.24 703 .24 85 703 @a
+85 715 :M
+f0_9 sf
+.162(2)A
+f0_10 sf
+0 3 rm
+.469 .047( Note that the instance of )J
+0 -3 rm
+f4_10 sf
+0 3 rm
+.216(SharpNote)A
+0 -3 rm
+f0_10 sf
+0 3 rm
+.474 .047( that represents C# is )J
+0 -3 rm
+f3_10 sf
+0 3 rm
+.149(accessed)A
+0 -3 rm
+f0_10 sf
+0 3 rm
+.626 .063( by sending the message)J
+0 -3 rm
+85 730 :M
+.576 .058(sharp to the note C, but )J
+f3_10 sf
+.928 .093(prints itself)J
+f0_10 sf
+.529 .053( as C#.)J
+endp
+%%Page: 11 11
+%%BeginPageSetup
+initializepage
+(fdp; page : 11 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+512 785 :M
+(9)S
+113 88 :M
+f0_11 sf
+.603 .06(a )J
+f3_11 sf
+.416(type)A
+f0_11 sf
+1.685 .169(, which indicates how many notes should be enumerated. The type is)J
+113 100 :M
+.18 .018(represented by an integer \(e.g., 2 for a second, 3 for a third, and so forth\),)J
+113 112 :M
+.091 .009(a number of )J
+f3_11 sf
+.032(semiTones)A
+f0_11 sf
+.113 .011(, that represents its actual width \(also an integer\).)J
+85 136 :M
+.025 .002(These two informations are sufficient to actually compute the real name of the interval.)J
+85 148 :M
+.081 .008(For instance, a major third interval is represented by an instance of Interval whose )J
+f3_11 sf
+.029(type)A
+85 160 :M
+f0_11 sf
+.403 .04(is 3 \(for 'third'\), and whose )J
+f3_11 sf
+.141(semiTones)A
+f0_11 sf
+.46 .046( is 5. This is represented by the printing method)J
+85 172 :M
+1.301 .13(of class )J
+f4_11 sf
+.654(Interval)A
+f0_11 sf
+1.943 .194(, that prints an interval according to the human \(mysterious\))J
+85 184 :M
+.106 .011(terminology, that allows )J
+f3_11 sf
+.02(perfect)A
+f0_11 sf
+.069 .007( fifths ou fourths, but )J
+f3_11 sf
+.025(major)A
+f0_11 sf
+.046 .005( and )J
+f3_11 sf
+.026(minor)A
+f0_11 sf
+.097 .01( thirds:)J
+85 208 :M
+f0_10 sf
+1.608 .161(!Interval methodsFor: 'printing'!)J
+85 220 :M
+f2_10 sf
+-.182(printOn: s)A
+100 232 :M
+f0_10 sf
+.145 .014(type = 2 ifTrue: [s nextPutAll: \(#\(diminished minor major augmented\) at: \(semiTones + 1\)\)].)J
+100 244 :M
+.159 .016(type = 3 ifTrue: [s nextPutAll: \(#\(minor major\) at: \(semiTones - 2\)\) ].)J
+100 256 :M
+.318 .032(type = 4 ifTrue: [s nextPutAll: \(#\(diminished perfect augmented\) at: \(semiTones - 3\)\) ].)J
+100 268 :M
+.318 .032(type = 5 ifTrue: [s nextPutAll: \(#\(diminished perfect augmented\) at: \(semiTones - 5\)\) ].)J
+100 280 :M
+.064 .006(type = 6 ifTrue: [s nextPutAll: \(#\(minor major augmented\) at: \(semiTones - 7\)\) ].)J
+100 292 :M
+.241 .024(type = 7 ifTrue: [s nextPutAll: \(#\(diminished minor major\) at: \(semiTones - 8\)\) ].)J
+100 304 :M
+.89 .089(s nextPutAll: ' ', \(#\(octave second third fourth fifth sixth seventh\) at: type\).)J
+85 346 :M
+f2_11 sf
+.5(4.1.)A
+120 346 :M
+.798 .08(Methods to access constant intervals)J
+85 370 :M
+f0_11 sf
+.234 .023(To ease access to commonly used intervals, we define a set of methods that instantiate)J
+85 382 :M
+.42 .042(class )J
+f4_11 sf
+.173(Interval)A
+f0_11 sf
+.748 .075( accordingly.)J
+85 406 :M
+.084 .008(Here are some of these methods that speak for themselves :)J
+85 430 :M
+f0_10 sf
+1.121 .112(!Interval class methodsFor: 'constants'!)J
+85 442 :M
+f2_10 sf
+.615(fifth)A
+100 454 :M
+f0_10 sf
+-.005(^self type: 5 semiTones: 7)A
+296 430 :M
+1.121 .112(!Interval class methodsFor: 'constants'!)J
+296 442 :M
+f2_10 sf
+.065(diminishedSeventh)A
+311 454 :M
+f0_10 sf
+-.005(^self type: 7 semiTones: 9)A
+85 508 :M
+f2_11 sf
+.5(4.2.)A
+120 508 :M
+.081 .008(Computing interval extremities)J
+85 532 :M
+f0_11 sf
+.004 0(In order to compute the note forming a given interval with a given note, we will follow)J
+85 544 :M
+.465 .046(the human algorithm which says that computing an interval consists in the following)J
+85 556 :M
+.125 .012(steps : \(we will take the example of computing the diminished fifth of C)J
+f3_10 sf
+(b)S
+f0_11 sf
+.055 .006(\) :)J
+113 580 :M
+(1. getting to the natural note. In our example, C)S
+f3_10 sf
+(b)S
+f0_11 sf
+( yields C.)S
+113 592 :M
+.673 .067(2. enumerating as many steps as the interval says. Here, a diminished fifth is a)J
+113 604 :M
+.103 .01(fifth, so we will enumerate five notes, starting from C : C, D, E, F, G. We get a G.)J
+113 616 :M
+1.282 .128(3. Adding one or two # or )J
+f3_10 sf
+.442(b)A
+f0_11 sf
+1.453 .145( to the resulting note \(here G\) to yield the right)J
+113 628 :M
+1.086 .109(number of half-tones. In our example, we want a diminished fifth, which is 6)J
+113 640 :M
+.256 .026(half-tones. From C)J
+f3_10 sf
+(b)S
+f0_11 sf
+.147 .015( to G there are 8 half tones, so we send the message )J
+f3_11 sf
+.181 .018(flat flat)J
+f0_11 sf
+.11 .011( to)J
+113 652 :M
+-.079(the result, eventually getting G)A
+f3_10 sf
+-.078(bb)A
+f0_11 sf
+(.)S
+85 676 :M
+.134 .013(Here is the corresponding method, which computes the diminished fifth of a note. It is)J
+85 688 :M
+.376 .038(defined in the root class of notes \()J
+f4_11 sf
+.161(Note)A
+f0_11 sf
+.156(\).)A
+endp
+%%Page: 12 12
+%%BeginPageSetup
+initializepage
+(fdp; page : 12 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(10)A
+85 88 :M
+f0_10 sf
+1.835 .184(!Note methodsFor: 'intervals'!)J
+85 100 :M
+f2_10 sf
+.217(diminishedFifth)A
+100 112 :M
+f0_10 sf
+1.653 .165(^Interval diminishedFifth topIfBottomIs: self)J
+85 136 :M
+f0_11 sf
+1.55 .155(The main method is )J
+f4_11 sf
+.605(topIfBottomIs:)A
+f0_11 sf
+1.2 .12( , which is defined in class )J
+f4_11 sf
+.605(Interval)A
+f0_11 sf
+.986 .099( as)J
+85 148 :M
+.332 .033(follows :)J
+85 184 :M
+f0_10 sf
+.996 .1(!Interval methodsFor: 'computing'!)J
+85 196 :M
+f2_10 sf
+.466 .047(topIfBottomIs: aNote)J
+100 208 :M
+f0_10 sf
+1.187 .119("yields the note making the interval self with aNote")J
+100 220 :M
+.884 .088(^aNote alterate: \(aNote nthFollowing: type - 1\) toReach: semiTones)J
+85 256 :M
+f0_11 sf
+3.029 .303(This method of class )J
+f4_11 sf
+1.192(Interval)A
+f0_11 sf
+2.949 .295( uses two methods defined in class )J
+f4_11 sf
+1.192(Note)A
+f0_11 sf
+.904 .09( :)J
+85 268 :M
+f4_11 sf
+.387(nthFollowing:)A
+f0_11 sf
+.565 .057( and )J
+f4_11 sf
+.387(alterate:toReach:)A
+f0_11 sf
+(.)S
+85 280 :M
+.054 .005(Method )J
+f4_11 sf
+.015(nthFollowing:)A
+f0_11 sf
+.041 .004( simply yields the nth following note, in the natural ordering)J
+85 292 :M
+(:)S
+85 316 :M
+f0_10 sf
+1.835 .184(!Note methodsFor: 'intervals'!)J
+85 328 :M
+f2_10 sf
+.197 .02(nthFollowing: i)J
+100 340 :M
+f0_10 sf
+-.223(| result|)A
+100 352 :M
+.779 .078(result := self natural.)J
+100 364 :M
+.625 .062(i timesRepeat: [result := result following].)J
+100 376 :M
+-.038(^result)A
+85 400 :M
+f0_11 sf
+1.089 .109(Now the main method is actually the method )J
+f4_11 sf
+.395(alterate:toReach:)A
+f0_11 sf
+1.188 .119(, which takes)J
+85 412 :M
+.195 .019(two arguments : a naturalNote )J
+f3_11 sf
+.063(n)A
+f0_11 sf
+.167 .017(, and a number of semiTones )J
+f3_11 sf
+(s)S
+f0_11 sf
+.19 .019(. The method sends the)J
+85 424 :M
+.571 .057(right number of sharp or flat messages to the natural note to reach an interval with )J
+f3_11 sf
+(s)S
+85 436 :M
+f0_11 sf
+-.073(semiTones.)A
+85 448 :M
+1.259 .126(It is important here to note that this method may be sent to any type of note. The)J
+85 460 :M
+1.908 .191(action to perform depends on the type of the note so we actually define 5 such)J
+85 472 :M
+-.014(methods.)A
+85 484 :M
+1.292 .129(The first one deals with natural notes. The computation is based on the difference)J
+85 496 :M
+-.033(between semiToneCounts of its extremities. Depending on this difference, the messages)A
+85 508 :M
+.349 .035(sharp and flat are sent to the note passed in parameter.)J
+85 532 :M
+f0_10 sf
+2.24 .224(!NaturalNote methodsFor: 'intervals'!)J
+85 544 :M
+f2_10 sf
+.656 .066(alterate: note toReach: s)J
+100 556 :M
+f0_10 sf
+-.023(| delta |)A
+100 568 :M
+1.103 .11(delta := \(self semiTonesWithNaturalNote: note\) - s.)J
+100 580 :M
+.11 .011(delta = 0 ifTrue: [^note].)J
+100 592 :M
+.464 .046(delta = 1 ifTrue: [^note flat].)J
+100 604 :M
+.35 .035(delta = -1 ifTrue: [^note sharp].)J
+100 616 :M
+.708 .071(delta = 2 ifTrue: [^note flat flat].)J
+100 628 :M
+.445 .044(delta = -2 ifTrue: [^note sharp sharp].)J
+100 640 :M
+1.696 .17(^self error: 'illegal interval')J
+85 664 :M
+f0_11 sf
+1.228 .123(The method )J
+f4_11 sf
+.408(semiTonesWithNaturalNote:)A
+f0_11 sf
+1.002 .1( is defined simply as a difference of)J
+85 676 :M
+.045 .004(semiToneCounts mod 12 :)J
+85 700 :M
+f0_10 sf
+2.24 .224(!NaturalNote methodsFor: 'intervals'!)J
+85 712 :M
+f2_10 sf
+1.349 .135(semiTonesWithNaturalNote: aNote)J
+120 724 :M
+f0_10 sf
+-.147(^aNote semiToneCount - semiToneCount \\\\ 12)A
+endp
+%%Page: 13 13
+%%BeginPageSetup
+initializepage
+(fdp; page : 13 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(11)A
+85 100 :M
+f0_11 sf
+.981 .098(Now what happens to non natural notes ? The answer is simple. For )J
+f4_11 sf
+.422(SharpNotes)A
+85 112 :M
+f0_11 sf
+1.087 .109(for instance, the computation consists in delegating the result to the corresponding)J
+85 124 :M
+.087 .009(natural note, and then sending a sharp message to the result, as follows :)J
+85 148 :M
+f0_10 sf
+2.217 .222(!SharpNote methodsFor: 'intervals'!)J
+85 160 :M
+f2_10 sf
+.656 .066(alterate: note toReach: s)J
+100 172 :M
+f0_10 sf
+1.083 .108(^\(natural alterate: note toReach: s\) sharp)J
+85 196 :M
+f0_11 sf
+.019 .002(Similarily, the same mechanism holds for Flat, DoubleFlat and DoubleSharp notes.)J
+85 220 :M
+.519 .052(The dual problem, i.e. finding the "bottom" of an interval, given its top, is now easily)J
+85 232 :M
+-.009(defined as follows, by using the "reverse" of an interval :)A
+85 256 :M
+f0_10 sf
+.996 .1(!Interval methodsFor: 'computing'!)J
+85 268 :M
+f2_10 sf
+-.075(bottomIfTopIs: aNote)A
+100 280 :M
+f0_10 sf
+1.13 .113("yields the note from which aNote yields interval self")J
+100 292 :M
+1.022 .102(^self reverse topIfBottomIs: aNote!)J
+85 322 :M
+f2_11 sf
+.5(4.3.)A
+120 322 :M
+.277 .028(Computations on intervals)J
+85 346 :M
+f0_11 sf
+.785 .078(The reverse of an interval is trivially defined by computing the complement to 9 for)J
+85 358 :M
+.366 .037(type, and to 12 for semiTones :)J
+85 382 :M
+f0_10 sf
+1.655 .165(!Interval methodsFor: 'reverse'!)J
+85 394 :M
+f2_10 sf
+.037(reverse)A
+100 406 :M
+f0_10 sf
+.191 .019(^self class type: \(9 - type\) semiTones: \(12 - semiTones\))J
+85 430 :M
+f0_11 sf
+1.106 .111(Adding intervals is as easy to do, by simulating an actual computation starting for)J
+85 442 :M
+1.436 .144(instance in C. Note that this adding operation is not well defined, because all the)J
+85 454 :M
+1.492 .149(combinations do not yield valid intervals. For instance a minor second + a minor)J
+85 466 :M
+.815 .082(second would yield a theoretic )J
+f3_11 sf
+1.231 .123(diminished third)J
+f0_11 sf
+.744 .074(, which does not exist. Our + method)J
+85 478 :M
+.358 .036(does not perform any test at this point, and in these illegal cases will yield an interval)J
+85 490 :M
+.193 .019(that cannot print itself ! \(this method is just here for fun\) :)J
+85 514 :M
+f0_10 sf
+2.217 .222(!Interval methodsFor: 'arithmetics'!)J
+85 526 :M
+f2_10 sf
+.586 .059(+ anInterval)J
+100 538 :M
+f0_10 sf
+-.29(| note1 note2|)A
+100 550 :M
+.476 .048(note1 := self topIfBottomIs: Note C.)J
+100 562 :M
+.604 .06(note2 := anInterval topIfBottomIs: note1.)J
+100 574 :M
+1.152 .115(^Note C intervalWith: note2)J
+85 598 :M
+f0_11 sf
+.066 .007(Here is a micro-session that exemplifies interval computations :)J
+93 623 :M
+f0_10 sf
+2.208 .221(Note C flatFifth)J
+260 623 :M
+1.613(->)A
+295 623 :M
+-1.159(Gb)A
+-1 -1 91 614 1 1 90 613 @b
+-1 -1 91 614 1 1 90 613 @b
+91 614 -1 1 454 613 1 91 613 @a
+-1 -1 455 614 1 1 454 613 @b
+-1 -1 455 614 1 1 454 613 @b
+-1 -1 91 626 1 1 90 614 @b
+-1 -1 455 626 1 1 454 614 @b
+93 635 :M
+-.007(Note C augmentedFourth)A
+260 635 :M
+1.613(->)A
+295 635 :M
+.381(F#)A
+-1 -1 91 638 1 1 90 626 @b
+-1 -1 455 638 1 1 454 626 @b
+93 647 :M
+.461 .046(Note C majorThird majorThird)J
+260 647 :M
+1.613(->)A
+295 647 :M
+-.689(G#)A
+-1 -1 91 650 1 1 90 638 @b
+-1 -1 455 650 1 1 454 638 @b
+93 659 :M
+.9 .09(Note C flat minorSeventh)J
+260 659 :M
+1.613(->)A
+295 659 :M
+-.084(Bbb)A
+-1 -1 91 662 1 1 90 650 @b
+-1 -1 455 662 1 1 454 650 @b
+93 671 :M
+1.432 .143(Note C flat diminishedSeventh)J
+260 671 :M
+.927 .093(-> )J
+295 671 :M
+1.942 .194(error: illegal interval)J
+-1 -1 91 674 1 1 90 662 @b
+-1 -1 455 674 1 1 454 662 @b
+-1 -1 91 686 1 1 90 674 @b
+-1 -1 455 686 1 1 454 674 @b
+93 695 :M
+1.284 .128(Interval diminishedFifth bottomIfTopIs: \(Note F sharp\))J
+365 695 :M
+.787 .079(-> C)J
+-1 -1 91 698 1 1 90 686 @b
+-1 -1 455 698 1 1 454 686 @b
+93 707 :M
+1.34 .134(Interval diminishedFifth bottomIfTopIs: \(Note G flat\))J
+365 707 :M
+.209 .021(-> Dbb)J
+-1 -1 91 710 1 1 90 698 @b
+-1 -1 455 710 1 1 454 698 @b
+-1 -1 91 723 1 1 90 722 @b
+-1 -1 91 723 1 1 90 722 @b
+91 723 -1 1 454 722 1 91 722 @a
+-1 -1 455 723 1 1 454 722 @b
+-1 -1 455 723 1 1 454 722 @b
+-1 -1 91 722 1 1 90 710 @b
+-1 -1 455 722 1 1 454 710 @b
+endp
+%%Page: 14 14
+%%BeginPageSetup
+initializepage
+(fdp; page : 14 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(12)A
+93 89 :M
+f0_10 sf
+1.007 .101(Interval majorThird reverse)J
+330 89 :M
+.688 .069(-> minor sixth)J
+-1 -1 91 80 1 1 90 79 @b
+-1 -1 91 80 1 1 90 79 @b
+91 80 -1 1 454 79 1 91 79 @a
+-1 -1 455 80 1 1 454 79 @b
+-1 -1 455 80 1 1 454 79 @b
+-1 -1 91 92 1 1 90 80 @b
+-1 -1 455 92 1 1 454 80 @b
+93 101 :M
+.862 .086(Interval perfectFifth + Interval majorSecond )J
+330 101 :M
+1.885 .188(-> majorSixth)J
+-1 -1 91 104 1 1 90 92 @b
+-1 -1 455 104 1 1 454 92 @b
+-1 -1 91 116 1 1 90 104 @b
+-1 -1 455 116 1 1 454 104 @b
+93 125 :M
+.677 .068(\(Note C diminishedFifth\) pitchEquals: \(Note F minorSecond\)  -> true)J
+-1 -1 91 129 1 1 90 128 @b
+-1 -1 91 129 1 1 90 128 @b
+91 129 -1 1 454 128 1 91 128 @a
+-1 -1 455 129 1 1 454 128 @b
+-1 -1 455 129 1 1 454 128 @b
+-1 -1 91 128 1 1 90 116 @b
+-1 -1 455 128 1 1 454 116 @b
+85 168 :M
+f2_11 sf
+.5(4.4.)A
+120 168 :M
+-.016(Computing intervals from its extremities)A
+85 192 :M
+f0_11 sf
+.058 .006(Finally, computing an interval from two notes is simple, and implemented by only one)J
+85 204 :M
+.412 .041(method in class )J
+f4_11 sf
+.159(Note)A
+f0_11 sf
+.121 .012( :)J
+85 228 :M
+f0_10 sf
+1.835 .184(!Note methodsFor: 'intervals'!)J
+85 240 :M
+f2_10 sf
+2.672 .267(intervalWith: aNote)J
+100 252 :M
+f0_10 sf
+-.316(| b b2 type |)A
+100 264 :M
+.457 .046(type := 1.)J
+100 276 :M
+.572 .057(b := self natural.)J
+100 288 :M
+.64 .064(b2 := aNote natural.)J
+100 300 :M
+.606 .061([b2 = b] whileFalse:)J
+155 312 :M
+-.037([b := b following.)A
+155 324 :M
+.232 .023(type := type + 1].)J
+100 336 :M
+.733 .073(^Interval type: type semiTones: \(self numberOfSemiTonesWith: aNote\))J
+85 360 :M
+f0_11 sf
+.806 .081(The method )J
+f4_11 sf
+.268(numberOfSemiTonesWith:)A
+f0_11 sf
+.653 .065( is implemented as follows in class )J
+f4_11 sf
+.268(Note)A
+f0_11 sf
+(,)S
+85 372 :M
+-.024(by cutting the job in three pieces :)A
+85 396 :M
+f0_10 sf
+1.835 .184(!Note methodsFor: 'intervals'!)J
+85 408 :M
+f2_10 sf
+-.089(numberOfSemiTonesWith: aNote)A
+120 420 :M
+f0_10 sf
+1.275 .127(^self semiTonesWithNatural +)J
+120 432 :M
+1.484 .148(\(self natural semiTonesWithNaturalNote: aNote natural\) -)J
+120 444 :M
+2.302 .23(aNote semiTonesWithNatural)J
+85 468 :M
+f0_11 sf
+2.418 .242(The methods )J
+f4_11 sf
+.771(semiTonesWithNatural)A
+f0_11 sf
+1.127 .113( and )J
+f4_11 sf
+.771(semiTonesWithNatural:)A
+f0_11 sf
+1.604 .16( are)J
+85 480 :M
+.251 .025(implemented respectively in each subclass to yield the correct result, once again using)J
+85 492 :M
+-.11(polymorphism.)A
+85 516 :M
+.123 .012(This method may be used as follows :)J
+93 541 :M
+f0_10 sf
+1.274 .127(Note C intervalWith: Note F sharp)J
+330 541 :M
+1.613(->)A
+365 541 :M
+-.034(augmented fourth)A
+-1 -1 91 532 1 1 90 531 @b
+-1 -1 91 532 1 1 90 531 @b
+91 532 -1 1 454 531 1 91 531 @a
+-1 -1 455 532 1 1 454 531 @b
+-1 -1 455 532 1 1 454 531 @b
+-1 -1 91 544 1 1 90 532 @b
+-1 -1 455 544 1 1 454 532 @b
+93 553 :M
+1.144 .114(Note C sharp intervalWith: Note G)J
+330 553 :M
+1.613(->)A
+365 553 :M
+2.572 .257(diminished fifth)J
+-1 -1 91 556 1 1 90 544 @b
+-1 -1 455 556 1 1 454 544 @b
+-1 -1 91 568 1 1 90 556 @b
+-1 -1 455 568 1 1 454 556 @b
+93 577 :M
+1.084 .108(\(Note C intervalWith: Note G\) =)J
+-1 -1 91 580 1 1 90 568 @b
+-1 -1 455 580 1 1 454 568 @b
+93 589 :M
+1.341 .134(\(Note D sharp intervalWith: Note A sharp\))J
+330 589 :M
+1.613(->)A
+365 589 :M
+(true)S
+-1 -1 91 593 1 1 90 592 @b
+-1 -1 91 593 1 1 90 592 @b
+91 593 -1 1 454 592 1 91 592 @a
+-1 -1 455 593 1 1 454 592 @b
+-1 -1 455 593 1 1 454 592 @b
+-1 -1 91 592 1 1 90 580 @b
+-1 -1 455 592 1 1 454 580 @b
+85 641 :M
+f2_14 sf
+.5(5.)A
+120 641 :M
+.072(Scales)A
+85 666 :M
+f0_11 sf
+1.429 .143(Let us now proceed with much more exciting matter : scales and chords. We will)J
+85 678 :M
+.414 .041(consider only 7-note scales here. The theory of modern music implicitly distinguishes)J
+85 690 :M
+.409 .041(between )J
+f3_11 sf
+.076(synthetic)A
+f0_11 sf
+.283 .028( scales form so-called )J
+f3_11 sf
+.092(modes)A
+f0_11 sf
+.278 .028(. Modes are scales that can be derived by)J
+85 702 :M
+.559 .056(transpositing a synthetic scale. For example, the major \(synthetic\) scale \(C D E F G A)J
+85 714 :M
+2.082 .208(B\) may generate 7 different modes \(referred to by greek names such as dorian,)J
+85 726 :M
+.706 .071(myxolidian, aeolian etc\), by starting the major scale from all 7 possible notes. We do)J
+endp
+%%Page: 15 15
+%%BeginPageSetup
+initializepage
+(fdp; page : 15 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(13)A
+85 88 :M
+f0_11 sf
+.37 .037(not know of any publicized effort to describe exhaustively all possible diatonic 7-note)J
+85 100 :M
+1.132 .113(synthetic scales. [Slonimsky 47] is a attempt to classify scales and melodic patterns)J
+85 112 :M
+1.002 .1(according to various divisions of an octave, upon which ornementation designs are)J
+85 124 :M
+2.074 .207(built by interpolation, infrapolations and ultrapolations. Although his thesaurus)J
+85 136 :M
+.985 .099(contains around 1500 scales and patterns, his treatment of 7-note scales is not quite)J
+85 148 :M
+.672 .067(convincing. Only 54 scales are given \(under the form of "heptatonic arpeggios"\), and)J
+85 160 :M
+.118 .012(not all of them are synthetic modes)J
+f0_9 sf
+0 -3 rm
+(3)S
+0 3 rm
+f0_11 sf
+(.)S
+85 172 :M
+1.528 .153(Slonimsky mentions an attempt by composer Busoni to find new exotic scales \(in)J
+85 184 :M
+f3_11 sf
+1.822 .182(Entwurf einer neuen Aesthetik\))J
+f0_11 sf
+1.404 .14(. Busoni would have found 113 7-note scales, but no)J
+85 196 :M
+.077 .008(consideration on exhaustivity is made.)J
+85 208 :M
+.571 .057(An exhaustive account of 7-note scales should not be too hard however. The number)J
+85 220 :M
+.281 .028(of scales starting from C, and containing all 7 notes \(and excluding double sharps and)J
+85 232 :M
+.449 .045(double flats\) is easy to compute: each note may be either natural, sharp or flat, which)J
+85 246 :M
+.781 .078(yields a total of 3)J
+0 -3 rm
+.307(6)A
+0 3 rm
+.85 .085( = 729 scales. Each of this scale may then be transposed in any of)J
+85 258 :M
+.558 .056(the 12 tones. Some of them are not very interesting because they include enharmonic)J
+85 270 :M
+2.241 .224(duplicates \(e.g. scales starting by C D# Eb ...\). Deciding which ones should be)J
+85 282 :M
+.179 .018(considered synthetic and which ones should be considered as modes is less trivial. We)J
+85 294 :M
+.241 .024(did not address this problem yet.)J
+85 318 :M
+.886 .089(We will address here the problem of representing the notion of a scale, building up)J
+85 330 :M
+.317 .032(from our previous notions of Note and Interval. Strangely, these are extremely simple)J
+85 342 :M
+.87 .087(to represent, once the foundation is set \(and solid!\). Here are some of the things we)J
+85 354 :M
+.18 .018(will want to do with scales, in the context of harmonic amalysis :)J
+120 378 :M
+.111 .011(- Find all the scales that contain n given notes,)J
+120 390 :M
+.192 .019(- Find the signature of scales \(number of sharps and flats\),)J
+120 402 :M
+.066 .007(- Compute the notes of a given scale,)J
+120 414 :M
+.286 .029(- Represent the fact that certain scales are "forbidden",)J
+120 426 :M
+.464 .046(- Extract scale-tone chords from a scale.)J
+85 468 :M
+f2_11 sf
+.5(5.1.)A
+120 468 :M
+.265 .027(Definition and creation of scales)J
+85 492 :M
+f0_11 sf
+.188 .019(We actually have all we need to represent scales : a scale is an ordered list of intervals,)J
+85 504 :M
+.546 .055(starting on a given root note. The class )J
+f4_11 sf
+.23(Scale)A
+f0_11 sf
+.66 .066( is defined with the following instance)J
+85 516 :M
+.267 .027(variables :)J
+113 540 :M
+.181 .018(a )J
+f3_11 sf
+.116(root)A
+f0_11 sf
+.399 .04( that points to the root note,)J
+113 552 :M
+.399 .04(a list of )J
+f3_11 sf
+.195(notes)A
+f0_11 sf
+.553 .055( of the scale)J
+f0_9 sf
+0 -3 rm
+.189(4)A
+0 3 rm
+f0_11 sf
+.665 .067(. This list of notes may be deduced from the root and)J
+113 564 :M
+.188 .019(type as we will see.)J
+-4096 -4095 -1 1 -4094 -4095 1 -4096 -4096 @a
+85 595.24 -.24 .24 228.24 595 .24 85 595 @a
+85 607 :M
+f0_9 sf
+.339(3)A
+f0_10 sf
+0 3 rm
+1.225 .123( It is surprinsing to see Slonimsky often referred to as an exhaustive compiler of musical)J
+0 -3 rm
+85 622 :M
+.741 .074(material. Not only his thesaurus is not exhaustive \(as Slonimsky himself jokingly remarks at)J
+85 634 :M
+.412 .041(then end of his introduction\), but his method for classifying melodic patterns is laborious and)J
+85 646 :M
+1.649 .165(never justified. Even Schoenberg, in a rather unconvinced liner note seems to have been)J
+85 658 :M
+1.195 .12(cheated: "I looked through your book and was very interested to find that you have in all)J
+85 670 :M
+.757 .076(probability organized every possible succession of notes. This is an admirable feat of mental)J
+85 682 :M
+1.388 .139(gymnastics. But as a composer, I must believe in inspiration rather than in mechanics". It)J
+85 694 :M
+1.171 .117(seems that Slonimsky acquired a reputation of music radicalism mainly because his works)J
+85 706 :M
+.589 .059(were hardly ever read \(See also his redoubtable 1600-page "Music Since 1900"\).)J
+85 718 :M
+.577 .058(4 At this point, we do not consider the problem of finding the scale corresponding to a set of)J
+85 730 :M
+.402 .04(notes, as this is handled by successive layers of the system.)J
+endp
+%%Page: 16 16
+%%BeginPageSetup
+initializepage
+(fdp; page : 16 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(14)A
+85 88 :M
+f0_11 sf
+1.426 .143(Now there are, as we saw, different types of scale : major scales, harmonic minor)J
+85 100 :M
+.993 .099(scales, melodic minor scales and a vast amount of synthetic scales)J
+f0_9 sf
+0 -3 rm
+.232(5)A
+0 3 rm
+f0_11 sf
+.726 .073(. The type of the)J
+85 112 :M
+1.558 .156(scale could be represented by yet an other instance variable. But there is a better)J
+85 124 :M
+.612 .061(solution that allows us to benefit, once more, from the advantages of polymorphism.)J
+85 136 :M
+.422 .042(This solution consists in representing types of scales by different classes. Each class is)J
+85 148 :M
+2.54 .254(defined as a subclass of an abstract class )J
+f4_11 sf
+1.042(Scale)A
+f0_11 sf
+3.219 .322(, and implements the actual)J
+85 160 :M
+1.302 .13(definitions \(here, the series of intervals\) of the corresponding type of scale. in this)J
+85 172 :M
+.158 .016(scheme, instances of these classes represent actual scales, whose type is determined by)J
+85 184 :M
+.382 .038(their class.)J
+85 208 :M
+1.714 .171(Here is how it works. The main creation method is defined as follows, with one)J
+85 220 :M
+.645 .064(argument : the root of the scale. This creation method is also in charge of computing)J
+85 232 :M
+.221 .022(the list of notes and testing the validity of the scale.)J
+85 256 :M
+f0_10 sf
+1.385 .138(!Scale class methodsFor: 'creation'!)J
+85 268 :M
+f2_10 sf
+.725 .073(root: aNote)J
+100 280 :M
+f0_10 sf
+-1.179(|s|)A
+100 292 :M
+.07 .007(s := self new root: aNote; computeNotes.)J
+100 304 :M
+1.317 .132(s isValid ifFalse: [^self error: 'invalid scale'].)J
+100 316 :M
+-1.298(^s)A
+85 340 :M
+f0_11 sf
+1.078 .108(Now the 2 important methods are )J
+f4_11 sf
+.39(computeNotes)A
+f0_11 sf
+.57 .057( and )J
+f4_11 sf
+.39(isValid)A
+f0_11 sf
+1.052 .105(, and are defined)J
+85 352 :M
+.544 .054(as follows :)J
+85 376 :M
+f0_10 sf
+.541 .054(!Scale methodsFor: 'computing notes'!)J
+85 388 :M
+f2_10 sf
+-.189(computeNotes)A
+85 400 :M
+f0_10 sf
+.59 .059("intervalList depends on the type of the scale. It is defined in each subclass of Scale")J
+100 412 :M
+.322 .032(notes := self class intervalList collect: [:s | root perform: s]!)J
+f0_9 sf
+0 -3 rm
+(6)S
+0 3 rm
+85 436 :M
+f0_11 sf
+.233 .023(The actual interval list is defined in each particular subclass of )J
+f4_11 sf
+.089(Scale)A
+f0_11 sf
+.189 .019(. This is the only)J
+85 448 :M
+.661 .066(method needed to define a subclass of Scale. Since this information does not depend)J
+85 460 :M
+.675 .067(on the actual instance of scale which performs the computation, we represent it by a)J
+85 472 :M
+.933 .093(class method. For instance, here are the definition of )J
+f4_11 sf
+.349(Major)A
+f0_11 sf
+.242 .024(, )J
+f4_11 sf
+.349(HarmonicMinor)A
+f0_11 sf
+.869 .087( and)J
+85 484 :M
+f4_11 sf
+1.077(MelodicMinor)A
+f0_11 sf
+3.317 .332( scales by their intervalList definition in the corresponding)J
+85 496 :M
+.123(metaclasses:)A
+85 532 :M
+f0_10 sf
+1.568 .157(!MajorScale class methodsFor: 'interval list'!)J
+85 544 :M
+f2_10 sf
+.296(intervalList)A
+100 556 :M
+f0_10 sf
+.654 .065(^#\(yourself second majorThird fourth fifth majorSixth majorSeventh\))J
+85 580 :M
+1.422 .142(!HarmonicMinorScale class methodsFor: 'interval list'!)J
+85 592 :M
+f2_10 sf
+.296(intervalList)A
+100 604 :M
+f0_10 sf
+.593 .059(^#\(yourself second minorThird fourth fifth minorSixth majorSeventh\))J
+85 628 :M
+1.298 .13(!MelodicMinorScale class  methodsFor: 'interval list'!)J
+85 640 :M
+f2_10 sf
+.296(intervalList)A
+100 652 :M
+f0_10 sf
+.624 .062(^#\(yourself second minorThird fourth fifth majorSixth majorSeventh\))J
+-4096 -4095 -1 1 -4094 -4095 1 -4096 -4096 @a
+85 691.24 -.24 .24 228.24 691 .24 85 691 @a
+85 703 :M
+f0_9 sf
+(5)S
+f0_10 sf
+0 3 rm
+.033 .003( These 3 types of scales are sufficient to describe most of standard be-bop Jazz music.)J
+0 -3 rm
+85 715 :M
+f0_9 sf
+.157(6)A
+f0_10 sf
+0 3 rm
+.439 .044( Note the "smart" use of )J
+0 -3 rm
+f4_10 sf
+0 3 rm
+.209(perform:)A
+0 -3 rm
+f0_10 sf
+0 3 rm
+.643 .064( to compute the intervals using the interval computation)J
+0 -3 rm
+85 730 :M
+.143(methods.)A
+endp
+%%Page: 17 17
+%%BeginPageSetup
+initializepage
+(fdp; page : 17 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(15)A
+85 88 :M
+f0_11 sf
+.073 .007(The validation test consists in checking the absence of any double altered note :)J
+85 112 :M
+f0_10 sf
+1.69 .169(!Scale methodsFor: 'testing'!)J
+85 124 :M
+f2_10 sf
+.449(isValid)A
+100 136 :M
+f0_10 sf
+.328 .033(^\(notes detect: [:n | \(n isKindOf: DoubleSharpNote\) or: [n isKindOf: DoubleFlatNote]] )J
+120 148 :M
+1.54 .154(ifNone: [nil]\) isNil)J
+85 172 :M
+f0_11 sf
+1.022 .102(The creation of scales is defined as follows in class )J
+f4_11 sf
+.421(Note)A
+f0_11 sf
+1.061 .106( by sending the a creation)J
+85 184 :M
+.11 .011(message to the corresponding Scale class with self as the root parameter :)J
+85 208 :M
+f0_10 sf
+1.5 .15(!Note methodsFor: 'scales'!)J
+85 220 :M
+f2_10 sf
+-.06(majorScale)A
+100 232 :M
+f0_10 sf
+.602 .06(^MajorScale root: self)J
+85 256 :M
+f0_11 sf
+.161 .016(Here is a micro-session for scales :)J
+93 281 :M
+f0_10 sf
+1.07 .107(Note A flat majorScale)J
+260 281 :M
+-.027(-> Ab major)A
+-1 -1 91 272 1 1 90 271 @b
+-1 -1 91 272 1 1 90 271 @b
+91 272 -1 1 454 271 1 91 271 @a
+-1 -1 455 272 1 1 454 271 @b
+-1 -1 455 272 1 1 454 271 @b
+-1 -1 91 284 1 1 90 272 @b
+-1 -1 455 284 1 1 454 272 @b
+93 293 :M
+.656 .066(Note A flat majorScale notes)J
+260 293 :M
+-.08(-> \(Ab Bb C Db Eb F G\))A
+-1 -1 91 296 1 1 90 284 @b
+-1 -1 455 296 1 1 454 284 @b
+-1 -1 91 308 1 1 90 296 @b
+-1 -1 455 308 1 1 454 296 @b
+93 317 :M
+.307 .031(Note C harmonicMinorScale notes)J
+260 317 :M
+-.032(-> \(C D Eb F G Ab B\))A
+-1 -1 91 320 1 1 90 308 @b
+-1 -1 455 320 1 1 454 308 @b
+-1 -1 91 332 1 1 90 320 @b
+-1 -1 455 332 1 1 454 320 @b
+93 341 :M
+.594 .059(Note G sharp majorScale)J
+260 341 :M
+1.425 .143(-> error: 'invalid scale')J
+-1 -1 91 345 1 1 90 344 @b
+-1 -1 91 345 1 1 90 344 @b
+91 345 -1 1 454 344 1 91 344 @a
+-1 -1 455 345 1 1 454 344 @b
+-1 -1 455 345 1 1 454 344 @b
+-1 -1 91 344 1 1 90 332 @b
+-1 -1 455 344 1 1 454 332 @b
+85 393 :M
+f2_14 sf
+.5(6.)A
+120 393 :M
+.07(Chords)A
+85 424 :M
+f2_11 sf
+.5(6.1.)A
+120 424 :M
+.226 .023(Definition and creation of chords)J
+85 448 :M
+f0_11 sf
+2.039 .204(Let us proceed with the core of harmonic analysis : chords. We propose here a)J
+85 460 :M
+1.199 .12(representation of chords that is based on the representation of notes, intervals and)J
+85 472 :M
+.151 .015(scales defined above, which allows to make various computations such as :)J
+103 496 :M
+.095 .009(- finding the name of a chord given a set of notes and a root,)J
+103 508 :M
+.185 .019(- finding all the possible chord interpretations of a set of notes,)J
+103 520 :M
+-.004(- finding the set of notes corresponding to a chord name,)A
+103 532 :M
+.137 .014(- finding all the possible harmonic analysis of a chord, in various scale classes.)J
+85 556 :M
+.299 .03(Chords are represented by a class with two main instance variables : a )J
+f4_11 sf
+.116(root)A
+f0_11 sf
+.279 .028(, which is)J
+85 568 :M
+1.206 .121(a note, and a )J
+f4_11 sf
+.665(structure)A
+f0_11 sf
+1.609 .161(, which is a list of symbols. Chords may be created by)J
+85 580 :M
+-.014(sending a message to the root, with the structure as argument, or by sending a message)A
+85 592 :M
+.125 .012(to class )J
+f4_11 sf
+.063(Chord)A
+f0_11 sf
+.161 .016( with the complete string as argument, such as :)J
+93 629 :M
+f0_10 sf
+.482 .048(Note C sharp chordFromString: 'min')J
+295 629 :M
+-.113(-> [C#  min])A
+-1 -1 91 620 1 1 90 619 @b
+-1 -1 91 620 1 1 90 619 @b
+91 620 -1 1 454 619 1 91 619 @a
+-1 -1 455 620 1 1 454 619 @b
+-1 -1 455 620 1 1 454 619 @b
+-1 -1 91 632 1 1 90 620 @b
+-1 -1 455 632 1 1 454 620 @b
+93 641 :M
+.543 .054(Note D chordFromString: '')J
+295 641 :M
+.479 .048(-> [D])J
+-1 -1 91 644 1 1 90 632 @b
+-1 -1 455 644 1 1 454 632 @b
+-1 -1 91 656 1 1 90 644 @b
+-1 -1 455 656 1 1 454 644 @b
+93 665 :M
+-.013(Chord newFromString: 'A min 7 9')A
+295 665 :M
+-.106(-> [A min 7 9])A
+-1 -1 91 669 1 1 90 668 @b
+-1 -1 91 669 1 1 90 668 @b
+91 669 -1 1 454 668 1 91 668 @a
+-1 -1 455 669 1 1 454 668 @b
+-1 -1 455 669 1 1 454 668 @b
+-1 -1 91 668 1 1 90 656 @b
+-1 -1 455 668 1 1 454 656 @b
+85 708 :M
+f2_11 sf
+.5(6.2.)A
+120 708 :M
+.31 .031(A vocabulary for chord names)J
+endp
+%%Page: 18 18
+%%BeginPageSetup
+initializepage
+(fdp; page : 18 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(16)A
+85 88 :M
+f0_11 sf
+.05 .005(Chord name vocabularies abound. None of them is complete, as each one is devoted to)J
+85 100 :M
+.771 .077(a particular style of music. Classical music chord names are very precise concerning)J
+85 112 :M
+1.007 .101(the relative organization of notes within the chord \(inversions\), while Jazz-oriented)J
+85 124 :M
+.871 .087(chord names insist on short-cuts for complex chord superstructures \(the famous "+")J
+85 136 :M
+.571 .057(symbol which means something like "add whatever altered interval pleases you. The)J
+85 148 :M
+.315 .032(more the better"\). We introduce a grammar for chords that is able to take into account)J
+85 160 :M
+1.33 .133(all possible chords, including the most exotic ones. The syntax rules for the chord)J
+85 172 :M
+-.1(name are the following:)A
+85 196 :M
+1.225 .122(1. By default, the root, major third and perfect fifth are included, unless otherwise)J
+85 208 :M
+.625 .063(stated \(UOS\). For instance [A] is A major = \(A C# E\).)J
+85 232 :M
+-.062(2. min)A
+85 244 :M
+.173 .017(means a minor third. E.g. [A min] = \(A C E\).)J
+85 268 :M
+.363 .036(3. noRoot)J
+85 280 :M
+.643 .064(means a chord without root, whatever the rest of the structure may be. For example,)J
+85 292 :M
+.31 .031([C noRoot] has notes \(E G\), and [C min noRoot] has notes \(Eb G\).)J
+85 316 :M
+.73 .073(4. no3)J
+85 328 :M
+.177 .018(means a chord without third. For example [C no3] is \(C G\).)J
+85 352 :M
+.73 .073(5. no5)J
+85 364 :M
+.324 .032(means a chord without fifth. E.g [C 7 no5] = \(C E Bb\).)J
+85 376 :M
+.73 .073(6. no7)J
+85 388 :M
+.253 .025(means a chord without seventh. E.g. [C 9 no7] = \(C E G D\).)J
+85 400 :M
+.73 .073(7. no9)J
+85 412 :M
+-.029(means a chord without without ninth.)A
+85 424 :M
+.997 .1(8. no11)J
+85 436 :M
+-.044(means a chord without eleventh.)A
+85 448 :M
+.997 .1(9. no13)J
+85 460 :M
+-.023(means a chord without thirteenth.)A
+85 484 :M
+.024 .002(10. diminishedFifth)J
+85 496 :M
+.087 .009(means a chord with diminishedFifth, and no perfect fifth.)J
+85 508 :M
+-.038(11. augmentedFifth)A
+85 520 :M
+.034 .003(means a chord with augmentedFifth, and no perfect fifth.)J
+85 544 :M
+-.071(12. minorSeventh)A
+85 556 :M
+-.066(means a chord with minorSeventh.)A
+85 568 :M
+.186 .019(13. majorSeventh)J
+85 580 :M
+-.017(means a chord with majorSeventh.)A
+85 592 :M
+-.044(14. diminishedSeventh)A
+85 604 :M
+-.052(means a chord with diminishedSeventh.)A
+85 628 :M
+.174 .017(15. suspendedFourth)J
+85 640 :M
+.093 .009(means a chord with a fourth and no third.)J
+85 664 :M
+-.039(16. diminishedNinth)A
+85 676 :M
+-.066(means a chord with diminishedNinth and minorSeventh.)A
+85 688 :M
+.287 .029(17. ninth)J
+85 700 :M
+.025 .002(means a chord with ninth, and minorSeventh, \(UOS\).)J
+85 712 :M
+-.083(18. augmentedNinth)A
+85 724 :M
+-.043(means a chord with augmentedNinth and minorSeventh \(UOS\))A
+endp
+%%Page: 19 19
+%%BeginPageSetup
+initializepage
+(fdp; page : 19 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(17)A
+85 100 :M
+f0_11 sf
+-.049(19. diminishedEleventh)A
+85 112 :M
+-.012(means a chord with diminishedEleventh, ninth and seventh \(UOS\))A
+85 124 :M
+-.009(20. eleventh)A
+85 136 :M
+.033 .003(means a chord with eleventh, ninth and seventh  \(UOS\))J
+85 148 :M
+-.087(21. augmentedEleventh)A
+85 160 :M
+-.028(means a chord with augmentedEleventh ninth and seventh \(UOS\))A
+85 184 :M
+-.05(22. diminishedThirteenth)A
+85 196 :M
+-.023(means a chord with diminishedThirteenth, eleventh, ninth and seventh  \(UOS\))A
+85 208 :M
+.205 .02(23. thirteenth)J
+85 220 :M
+-.005(means a chord with thirteenth, eleventh, ninth and seventh \(UOS\))A
+85 232 :M
+-.085(24. augmentedThirteenth)A
+85 244 :M
+-.037(means a chord with augmentedThirteenth, eleventh ninth and seventh  \(UOS\))A
+85 268 :M
+(25. diminished)S
+85 280 :M
+-.05(means a chord with root, minorThird, diminishedFifth and diminishedSeventh)A
+85 292 :M
+.176 .018(26. halfDiminished)J
+85 304 :M
+-.057(means a chord with root, minorThird, diminishedFifth and minorSeventh)A
+85 340 :M
+.26 .026(This vocabulary may represent any combination of notes in a unique way. It does not,)J
+85 352 :M
+.051 .005(however, take note orders into account. No verification is made on the compatibility of)J
+85 364 :M
+.1 .01(the various structure components. For example [A augmentedFifth no5] has no precise)J
+85 376 :M
+-.016(meaning. See next sections for examples.)A
+85 406 :M
+f2_11 sf
+.5(6.3.)A
+120 406 :M
+.382 .038(Deducing the structure from the list of notes)J
+85 428 :M
+f5_11 sf
+.821 .082(Deducing the structure of a chord from the list of its notes is a purely procedural process. It)J
+85 439 :M
+1.754 .175(is represented by a big \(and not very elegant\) method, that represents a finite automata,)J
+85 450 :M
+.688 .069(testing each possible case. Here is an outline of the method:)J
+85 473 :M
+f0_10 sf
+1.282 .128(!Chord methodsFor: 'creation'!)J
+85 485 :M
+f2_10 sf
+-.019(fromNotes: l)A
+100 497 :M
+f0_10 sf
+.549 .055("assumes the first note is the root")J
+100 509 :M
+.487 .049(^self fromNotes: l root: l first)J
+85 533 :M
+f2_10 sf
+.036 .004(fromNotes: aList root: r)J
+100 545 :M
+f0_10 sf
+-.507(| l |)A
+100 557 :M
+-.015(root := r.)A
+100 569 :M
+.803 .08(l := aList  asOrderedCollection.)J
+100 581 :M
+-.033(notes := l copy.)A
+100 593 :M
+(structure := OrderedCollection new.)S
+100 617 :M
+.201 .02(\(l includes: r\) ifTrue: [l remove: r] ifFalse: [structure add: #noRoot].)J
+100 641 :M
+.447 .045(\(self notes: l contains: #\(majorThird minorThird fourth\)\) ifFalse: [structure add: #no3].)J
+100 653 :M
+.397 .04(\(\(\(self notes: l contains: #\(majorThird minorThird\)\) not\) and: [l includes: r fourth]\))J
+155 665 :M
+-.013(ifTrue: [structure add: #sus4. l remove: r fourth].)A
+100 677 :M
+.265 .026(\(l includes: root majorThird\) ifTrue: [l remove: root majorThird].)J
+100 689 :M
+.092 .009(\(l includes: root minorThird\) ifTrue: [structure add: #min. l remove: root minorThird].)J
+100 701 :M
+.75(...)A
+endp
+%%Page: 20 20
+%%BeginPageSetup
+initializepage
+(fdp; page : 20 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(18)A
+85 88 :M
+f2_11 sf
+.5(6.4.)A
+120 88 :M
+.382 .038(Deducing the list of notes from the structure)J
+85 112 :M
+f0_11 sf
+.754 .075(The reverse problem consists in finding the list of notes given a particular structure.)J
+85 124 :M
+.953 .095(The computation is performed automatically in a lazy mode, when the notes access)J
+85 136 :M
+.121 .012(message is sent for the first time to a chord:)J
+85 160 :M
+f0_10 sf
+.587 .059(!Chord methodsFor: 'notes access'!)J
+85 172 :M
+f2_10 sf
+-.358(notes)A
+100 184 :M
+f0_10 sf
+.507 .051(notes isNil ifTrue: [self computeAllnotes].)J
+100 196 :M
+-.324(^notes)A
+85 220 :M
+f0_11 sf
+.161 .016(For example, the notes of a chord may be computed as :)J
+93 245 :M
+f0_10 sf
+-.019(\(Chord newFromString: 'C min dim5 aug9'\) notes)A
+330 245 :M
+1.613(->)A
+365 245 :M
+-.141(\(C Eb Gb Bb D#\))A
+-1 -1 91 236 1 1 90 235 @b
+-1 -1 91 236 1 1 90 235 @b
+91 236 -1 1 454 235 1 91 235 @a
+-1 -1 455 236 1 1 454 235 @b
+-1 -1 455 236 1 1 454 235 @b
+-1 -1 91 249 1 1 90 248 @b
+-1 -1 91 249 1 1 90 248 @b
+91 249 -1 1 454 248 1 91 248 @a
+-1 -1 455 249 1 1 454 248 @b
+-1 -1 455 249 1 1 454 248 @b
+-1 -1 91 248 1 1 90 236 @b
+-1 -1 455 248 1 1 454 236 @b
+85 282 :M
+f0_11 sf
+.12 .012(The )J
+f4_11 sf
+.053(computeAllnotes)A
+f0_11 sf
+.172 .017( method is implemented as follows:, by successively invoking)J
+85 294 :M
+.369 .037(specialized methods to compute each part of the chord \(computeRoot, computeThird,)J
+85 306 :M
+.08 .008(computeSeventh and so forth\).)J
+85 330 :M
+f0_10 sf
+.496 .05(!Chord methodsFor: 'notes computation'!)J
+85 342 :M
+f2_10 sf
+-.037(computeAllNotes)A
+85 354 :M
+f0_10 sf
+3.255 .326("computes the list of notes from the structure. The job is the opposite of method)J
+85 366 :M
+.209 .021(fromListOfNotes. Assumes root is not nil.")J
+100 390 :M
+.059 .006(notes := OrderedCollection new.)J
+100 402 :M
+.355 .036(self computeRoot; computeThird; computeFifth; computeSixth; computeSeventh; )J
+120 414 :M
+.618 .062(computeNinth; computeEleventh; computeThirteenth; computeDiminished)J
+85 450 :M
+f0_11 sf
+.173 .017(As an example, here are two of the specialized note computation methods:)J
+85 474 :M
+f2_10 sf
+-.14(computeThird)A
+100 486 :M
+f0_10 sf
+-.028(\(structure includes: #no3\) ifTrue: [^nil].)A
+100 498 :M
+-.041(\(structure includes: #sus4\) ifTrue: [^notes add: root fourth].)A
+100 510 :M
+-.024(\(structure includes: #min\) ifTrue: [^notes add: root minorThird].)A
+100 522 :M
+.111 .011(notes add: root majorThird)J
+85 546 :M
+f2_10 sf
+-.126(computeSeventh)A
+100 558 :M
+f0_10 sf
+-.028(\(structure includes: #no7\) ifTrue: [^nil].)A
+100 570 :M
+-.006(\(structure includes: 7\) ifTrue: [^notes add: root minorSeventh].)A
+100 582 :M
+-.004(\(structure includes: #maj7\) ifTrue: [^notes add: root majorSeventh].)A
+100 594 :M
+.228 .023(\(structure includes: #dim7\) ifTrue: [^notes add: root diminishedSeventh].)J
+100 618 :M
+.322 .032(\(self structureHasEitherOf: #\(9 dim9 aug9 11 aug11 13 dim13\)\))J
+120 630 :M
+.128 .013(ifTrue: [notes add: root minorSeventh])J
+85 666 :M
+f0_11 sf
+-.043(Here are some examples of chord name computations using both mechanisms:)A
+90 691 :M
+f0_10 sf
+.083 .008(\(Chord new fromString: 'Re maj7'\) notes )J
+330 691 :M
+.25 .025(OrderedCollection \(D F# A C# \))J
+-1 -1 88 682 1 1 87 681 @b
+-1 -1 88 682 1 1 87 681 @b
+88 682 -1 1 519 681 1 88 681 @a
+-1 -1 520 682 1 1 519 681 @b
+-1 -1 520 682 1 1 519 681 @b
+-1 -1 88 694 1 1 87 682 @b
+-1 -1 520 694 1 1 519 682 @b
+90 703 :M
+.076 .008(\(Chord new fromString: 'Re# maj7'\) notes )J
+330 703 :M
+.21 .021(OrderedCollection \(D# F## A# C## \))J
+-1 -1 88 706 1 1 87 694 @b
+-1 -1 520 706 1 1 519 694 @b
+90 715 :M
+.104 .01(\(Chord new fromString: 'C'\) notes )J
+330 715 :M
+.144 .014(OrderedCollection \(C E G \))J
+-1 -1 88 718 1 1 87 706 @b
+-1 -1 520 718 1 1 519 706 @b
+90 727 :M
+-.015(\(Chord new fromString: 'D min 7 dim5'\) notes )A
+330 727 :M
+.201 .02(OrderedCollection \(D F Ab C \))J
+-1 -1 88 731 1 1 87 730 @b
+-1 -1 88 731 1 1 87 730 @b
+88 731 -1 1 519 730 1 88 730 @a
+-1 -1 520 731 1 1 519 730 @b
+-1 -1 520 731 1 1 519 730 @b
+-1 -1 88 730 1 1 87 718 @b
+-1 -1 520 730 1 1 519 718 @b
+endp
+%%Page: 21 21
+%%BeginPageSetup
+initializepage
+(fdp; page : 21 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(19)A
+90 89 :M
+f0_10 sf
+-.006(\(Chord new fromString: 'C aug9'\) notes )A
+330 89 :M
+.055 .005(OrderedCollection \(C E G Bb D# \))J
+-1 -1 88 80 1 1 87 79 @b
+-1 -1 88 80 1 1 87 79 @b
+88 80 -1 1 519 79 1 88 79 @a
+-1 -1 520 80 1 1 519 79 @b
+-1 -1 520 80 1 1 519 79 @b
+-1 -1 88 92 1 1 87 80 @b
+-1 -1 520 92 1 1 519 80 @b
+90 101 :M
+-.013(\(Chord new fromString: 'C aug9 dim5'\) notes )A
+330 101 :M
+(OrderedCollection \(C E Gb Bb D# \))S
+-1 -1 88 104 1 1 87 92 @b
+-1 -1 520 104 1 1 519 92 @b
+90 113 :M
+.038 .004(\(Chord new fromString: 'C 13'\) notes )J
+330 113 :M
+.019 .002(OrderedCollection \(C E G Bb D F A \))J
+-1 -1 88 116 1 1 87 104 @b
+-1 -1 520 116 1 1 519 104 @b
+90 125 :M
+-.018(\(Chord new fromString: 'C 13 aug9'\) notes )A
+330 125 :M
+.014 .001(OrderedCollection \(C E G Bb D# F A \))J
+-1 -1 88 128 1 1 87 116 @b
+-1 -1 520 128 1 1 519 116 @b
+90 137 :M
+-.056(\(Chord new fromString: 'C 13 aug9 no7'\) notes )A
+330 137 :M
+.056 .006(OrderedCollection \(C E G Re# F A \))J
+-1 -1 88 140 1 1 87 128 @b
+-1 -1 520 140 1 1 519 128 @b
+90 149 :M
+.479 .048(\(Chord new fromString: 'C halfDim'\) notes )J
+330 149 :M
+-.009(OrderedCollection \(C Eb Gb Bb \))A
+-1 -1 88 152 1 1 87 140 @b
+-1 -1 520 152 1 1 519 140 @b
+-1 -1 88 164 1 1 87 152 @b
+-1 -1 520 164 1 1 519 152 @b
+90 173 :M
+.054 .005(Chord newFromNoteNames: 'C E G')J
+330 173 :M
+-.373([C])A
+-1 -1 88 176 1 1 87 164 @b
+-1 -1 520 176 1 1 519 164 @b
+90 185 :M
+-.006(Chord new FromNoteNames: 'C E G#')A
+330 185 :M
+-.262([C aug5])A
+-1 -1 88 188 1 1 87 176 @b
+-1 -1 520 188 1 1 519 176 @b
+90 197 :M
+-.017(Chord newFromNoteNames: 'C F G'   )A
+330 197 :M
+-.393([C sus4])A
+-1 -1 88 200 1 1 87 188 @b
+-1 -1 520 200 1 1 519 188 @b
+90 209 :M
+.012 .001(Chord newFromNoteNames: 'C E G A')J
+330 209 :M
+.763 .076([C sixth])J
+-1 -1 88 212 1 1 87 200 @b
+-1 -1 520 212 1 1 519 200 @b
+90 221 :M
+.025 .002(Chord newFromNoteNames: 'C E A'  )J
+330 221 :M
+-.034([C no5 sixth])A
+-1 -1 88 224 1 1 87 212 @b
+-1 -1 520 224 1 1 519 212 @b
+90 233 :M
+.194 .019(Chord newFromNoteNames: 'C A' )J
+330 233 :M
+-.136([C no3 no5 sixth])A
+-1 -1 88 236 1 1 87 224 @b
+-1 -1 520 236 1 1 519 224 @b
+90 245 :M
+.085 .009(Chord newFromNoteNames: 'C E G# B')J
+330 245 :M
+-.208([C aug5 maj7])A
+-1 -1 88 248 1 1 87 236 @b
+-1 -1 520 248 1 1 519 236 @b
+90 257 :M
+-.023(Chord newFromNoteNames: 'C E Gb Bb' )A
+330 257 :M
+-.177([C dim5 7])A
+-1 -1 88 260 1 1 87 248 @b
+-1 -1 520 260 1 1 519 248 @b
+90 269 :M
+-.061(Chord newFromNoteNames: 'C Eb Gb Bb'   )A
+330 269 :M
+1.613 .161([C halfDim])J
+-1 -1 88 272 1 1 87 260 @b
+-1 -1 520 272 1 1 519 260 @b
+90 281 :M
+-.05(Chord newFromNoteNames: 'C Eb Gb Bbb' )A
+330 281 :M
+-.182([C dim])A
+-1 -1 88 284 1 1 87 272 @b
+-1 -1 520 284 1 1 519 272 @b
+90 293 :M
+.068 .007(Chord newFromNoteNames: 'C Eb' )J
+330 293 :M
+-.358([C min no5])A
+-1 -1 88 296 1 1 87 284 @b
+-1 -1 520 296 1 1 519 284 @b
+90 305 :M
+.16 .016(Chord newFromNoteNames: 'C E F F#')J
+330 305 :M
+-.333([C no5 no9 no7 11 aug11])A
+-1 -1 88 308 1 1 87 296 @b
+-1 -1 520 308 1 1 519 296 @b
+90 317 :M
+-.023(Chord newFromNoteNames: 'C Gb G#')A
+330 317 :M
+-.247([C no3 dim5 aug5])A
+-1 -1 88 320 1 1 87 308 @b
+-1 -1 520 320 1 1 519 308 @b
+-1 -1 88 332 1 1 87 320 @b
+-1 -1 520 332 1 1 519 320 @b
+90 341 :M
+.352 .035("A nice chord from A. Holdsworth")J
+-1 -1 88 344 1 1 87 332 @b
+-1 -1 520 344 1 1 519 332 @b
+90 353 :M
+.083 .008(Chord newFromNoteNames: 'D# F## A C##\)'  )J
+330 353 :M
+-.113([D# dim5 maj7])A
+-1 -1 88 357 1 1 87 356 @b
+-1 -1 88 357 1 1 87 356 @b
+88 357 -1 1 519 356 1 88 356 @a
+-1 -1 520 357 1 1 519 356 @b
+-1 -1 520 357 1 1 519 356 @b
+-1 -1 88 356 1 1 87 344 @b
+-1 -1 520 356 1 1 519 344 @b
+85 402 :M
+f2_11 sf
+.5(6.5.)A
+120 402 :M
+.666 .067(Extracting scale-tone chords)J
+85 426 :M
+f0_11 sf
+.188 .019(An extremely important and interesting feature of scales is their ability to generate the)J
+85 438 :M
+.117 .012(so-called )J
+f3_11 sf
+.142 .014(scale-tone chords)J
+f0_11 sf
+.09 .009(. In a way, the whole mechanics of harmonic analysis is based)J
+85 450 :M
+.014 .001(on this principle \(in the other way round, Cf. below\).)J
+85 462 :M
+.273 .027(Generating chords from a scale is an operation that takes two arguments: a number of)J
+85 474 :M
+(polyphony )S
+f3_11 sf
+(p)S
+f0_11 sf
+(, and an interval )S
+f3_11 sf
+(i)S
+f0_11 sf
+.004 0(. The generation of chords consists simply in building \(7\))J
+85 486 :M
+.912 .091(sets of notes. Each set of notes \(a chord\) is built by taking successively each note of)J
+85 498 :M
+.656 .066(the scale, and iteratively \(p times\) getting its )J
+f3_11 sf
+.188 .019(i )J
+f0_11 sf
+.721 .072(th following note. The classical case is)J
+85 510 :M
+.263 .026(when )J
+f4_11 sf
+.087(i)A
+f0_11 sf
+.23 .023( = 3, so that chords are built by successive thirds. The method that implements)J
+85 522 :M
+1.836 .184(this latter case is )J
+f4_11 sf
+.881(generateChordsPoly:)A
+f0_11 sf
+2.726 .273(, which only needs the polyphony)J
+85 534 :M
+.014(parameter.)A
+85 558 :M
+.041 .004(Here is a micro-session that generates chords :)J
+93 583 :M
+f0_10 sf
+.522 .052(Note C majorScale generateChordsPoly: 7)J
+295 583 :M
+1.613(->)A
+-1 -1 91 574 1 1 90 573 @b
+-1 -1 91 574 1 1 90 573 @b
+91 574 -1 1 454 573 1 91 573 @a
+-1 -1 455 574 1 1 454 573 @b
+-1 -1 455 574 1 1 454 573 @b
+-1 -1 91 586 1 1 90 574 @b
+-1 -1 455 586 1 1 454 574 @b
+-1 -1 91 598 1 1 90 586 @b
+-1 -1 455 598 1 1 454 586 @b
+93 607 :M
+-.055(OrderedCollection \([C maj7 9 11 13] [D min 7 9 11 13] [E min 7 dim9 11 13] [F maj7)A
+-1 -1 91 610 1 1 90 598 @b
+-1 -1 455 610 1 1 454 598 @b
+93 619 :M
+-.17(9 aug11 13] [G 7 9 11 1] [A min 7 9 11 dim13] [B min dim5 11 dim13]\))A
+-1 -1 91 622 1 1 90 610 @b
+-1 -1 455 622 1 1 454 610 @b
+-1 -1 91 634 1 1 90 622 @b
+-1 -1 455 634 1 1 454 622 @b
+93 643 :M
+.638 .064(Note D harmonicMinorScale generateChordPoly: 3)J
+330 643 :M
+1.613(->)A
+-1 -1 91 646 1 1 90 634 @b
+-1 -1 455 646 1 1 454 634 @b
+93 655 :M
+-.032(OrderedCollection \([D min] [E min flat5] [F aug5,  G min] [A] [Bb] [C# min flat5]\))A
+-1 -1 91 659 1 1 90 658 @b
+-1 -1 91 659 1 1 90 658 @b
+91 659 -1 1 454 658 1 91 658 @a
+-1 -1 455 659 1 1 454 658 @b
+-1 -1 455 659 1 1 454 658 @b
+-1 -1 91 658 1 1 90 646 @b
+-1 -1 455 658 1 1 454 646 @b
+85 710 :M
+f2_11 sf
+.5(6.6.)A
+120 710 :M
+.071 .007(Computing all possible chord names)J
+endp
+%%Page: 22 22
+%%BeginPageSetup
+initializepage
+(fdp; page : 22 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(20)A
+85 88 :M
+f0_11 sf
+.069 .007(An interesting problem to solve is the problem of deducing a chord name from a list of)J
+85 100 :M
+-.002(notes, without knowing its root. Actually there are two sub-problems: one in which the)A
+85 112 :M
+.379 .038(root is one of the notes in the list, one - more difficult - in which the root is unknown,)J
+85 124 :M
+.058 .006(and may be absent from the list. These two problems are trivial to solve once the chord)J
+85 136 :M
+.011 .001(vocabulary and the two main creation methods are written.)J
+85 160 :M
+.084 .008(The first problem is solved by method allChordsFromListOfNotes:, which is written as)J
+85 172 :M
+.05(follows:)A
+85 196 :M
+f0_10 sf
+.796 .08(Chord methodsFor: 'examples')J
+85 208 :M
+f2_10 sf
+1.158 .116(allChordsFromlistOfNotes: aList)J
+100 220 :M
+f0_10 sf
+.274 .027(^alist collect: [:x | self new fromNotes: alist root: n])J
+85 244 :M
+f0_11 sf
+.059 .006(The second one is trivially represented by method reallyAllChordsFromlistOfNotes: as)J
+85 256 :M
+.242 .024(follows, where allPlausibleRootNotes yields the list of natural, sharps and flat notes:)J
+85 280 :M
+f0_10 sf
+.796 .08(Chord methodsFor: 'examples')J
+85 292 :M
+f2_10 sf
+1.467 .147(reallyAllChordsFromlistOfNotes: aList)J
+85 304 :M
+f0_10 sf
+.449 .045(^Note allPlausibleRootNotes collect: [:x | self new fromNotes: alist root: n])J
+85 340 :M
+f0_11 sf
+.154 .015(These methods are illustrated by the following session, where we compute all possible)J
+85 352 :M
+.285 .029(chord interpretations of the set of notes \(C E G\):)J
+93 377 :M
+f0_10 sf
+1.018 .102(Chord allChordsFromlistOfNoteNames: 'C E G')J
+-1 -1 91 368 1 1 90 367 @b
+-1 -1 91 368 1 1 90 367 @b
+91 368 -1 1 454 367 1 91 367 @a
+-1 -1 455 368 1 1 454 367 @b
+-1 -1 455 368 1 1 454 367 @b
+-1 -1 91 380 1 1 90 368 @b
+-1 -1 455 380 1 1 454 368 @b
+100 389 :M
+-.222(orderedCollection \( [C] [E min no5 no7 no9 no11 dim13] [G sus4 no5 6])A
+-1 -1 91 392 1 1 90 380 @b
+-1 -1 455 392 1 1 454 380 @b
+-1 -1 91 404 1 1 90 392 @b
+-1 -1 455 404 1 1 454 392 @b
+93 413 :M
+1.261 .126(Chord reallyAllChordsFromlistOfNotesNames: 'C E G')J
+-1 -1 91 416 1 1 90 404 @b
+-1 -1 455 416 1 1 454 404 @b
+93 425 :M
+-.107(OrderedCollection \([A noRoot min 7 ] [B noRoot sus4 no5 no7 dim9 dim13 ] [C ] [D)A
+-1 -1 91 428 1 1 90 416 @b
+-1 -1 455 428 1 1 454 416 @b
+93 437 :M
+-.244(noRoot sus4 no5 7 9 ] [E min no5 no11 no9 no7 dim13 ] [F noRoot no3 maj7 9 ] [G sus4)A
+-1 -1 91 440 1 1 90 428 @b
+-1 -1 455 440 1 1 454 428 @b
+93 449 :M
+-.17(no5 sixth ] [A# noRoot no3 dim5 ] [C# noRoot min dim5 ] [D# noRoot no3 no5 dim9)A
+-1 -1 91 452 1 1 90 440 @b
+-1 -1 455 452 1 1 454 440 @b
+93 461 :M
+-.277(] [F# noRoot no3 dim5 7 dim9 ] [G# noRoot no3 no5 no11 no9 no7 dim13 ] [Ab noRoot)A
+-1 -1 91 464 1 1 90 452 @b
+-1 -1 455 464 1 1 454 452 @b
+93 473 :M
+-.075(aug5 maj7 ] [Bb noRoot no3 no5 no7 9 aug11 sixth ] [Db noRoot no3 no5 maj7 aug9)A
+-1 -1 91 476 1 1 90 464 @b
+-1 -1 455 476 1 1 454 464 @b
+93 485 :M
+-.265(aug11 ] [Eb noRoot no5 sixth ] [Gb noRoot no3 no5 no9 no7 aug11 ] \))A
+-1 -1 91 489 1 1 90 488 @b
+-1 -1 91 489 1 1 90 488 @b
+91 489 -1 1 454 488 1 91 488 @a
+-1 -1 455 489 1 1 454 488 @b
+-1 -1 455 489 1 1 454 488 @b
+-1 -1 91 488 1 1 90 476 @b
+-1 -1 455 488 1 1 454 476 @b
+85 528 :M
+f2_11 sf
+.5(6.7.)A
+120 528 :M
+(Computing possible analysis)S
+85 552 :M
+f0_11 sf
+.75 .075(Now that we know how to generate scale-tone chords from a given scale, we are, of)J
+85 564 :M
+.608 .061(course, also interested in the reverse operation, which is the at the heart of harmonic)J
+85 576 :M
+.422 .042(analysis : knowing, for a given chord, what analysis it can "support", i.e. what are the)J
+85 588 :M
+.74 .074(scales from which is may be generated, and, for each of these possible scale, what is)J
+85 600 :M
+.072 .007(the )J
+f3_11 sf
+.026(degree)A
+f0_11 sf
+.084 .008( of the chord.)J
+85 624 :M
+1.464 .146(Let us first represent explicitly the notion of )J
+f4_11 sf
+.574(HarmonicAnalysis)A
+f0_11 sf
+1.316 .132(, with a trivial)J
+85 636 :M
+.137 .014(representation by two instance variables :)J
+85 660 :M
+f0_10 sf
+.289 .029(Object subclass: HarmonicAnalysis)J
+100 672 :M
+1.654 .165(instanceVariableNames: 'scale degree')J
+85 696 :M
+f4_11 sf
+.377(HarmonicAnalysis)A
+f0_11 sf
+1.039 .104( defines a printing method to print itself between brackets {},)J
+85 708 :M
+.057 .006(and with roman literals :)J
+endp
+%%Page: 23 23
+%%BeginPageSetup
+initializepage
+(fdp; page : 23 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(21)A
+85 88 :M
+f0_10 sf
+1.322 .132(!HarmonicAnalysis methodsFor: 'printing'!)J
+85 100 :M
+f2_10 sf
+.235 .024(printOn: aStream)J
+85 112 :M
+f0_10 sf
+1.216 .122(aStream nextPutAll: '{', self romanDegree,' 'of ',scale printString,'}')J
+85 148 :M
+f0_11 sf
+1.208 .121(Now the method that computes all possible analysis for a given chord is naturally)J
+85 160 :M
+1.599 .16(defined in class )J
+f4_11 sf
+.636(Chord)A
+f0_11 sf
+1.471 .147( by adding all the possible analysis in a given scale \(i.e. a)J
+85 172 :M
+.462 .046(subclass of Scale\), for all possible scales :)J
+85 208 :M
+f0_10 sf
+.923 .092(!Chord methodsFor: 'computing tonalities'!)J
+85 220 :M
+f2_10 sf
+-.067(possibleTonalites)A
+100 232 :M
+f0_10 sf
+.922 .092("In all possible tonalities = all subclasses of Scale")J
+100 244 :M
+-.223(| result|)A
+100 256 :M
+.286 .029(result := OrderedCollection new.)J
+100 268 :M
+1.209 .121(Scale allSubclasses do:)J
+111 280 :M
+1.728 .173([:aScaleClass| result addAll: self possibleTonalitiesInScaleClass: aScaleClass].)J
+100 292 :M
+-.038(^result)A
+85 316 :M
+f2_10 sf
+.458 .046(possibleTonalitesInScaleClass: aScaleClass)J
+97 328 :M
+f0_10 sf
+.306 .031(| ana scale chords  possibleTonalities|)J
+97 340 :M
+1.389 .139(self format.)J
+97 352 :M
+.743 .074(possibleTonalities := OrderedCollection new.)J
+97 364 :M
+.805 .081(scale := aScaleClass root: Note C.)J
+97 376 :M
+.363 .036(chords := scale generateChordsPoly: notes size.)J
+97 388 :M
+.468 .047(chords do: [:c | \(c matchWith: self\) ifTrue:)J
+107 400 :M
+.396 .04([ana := Analysis new degree: \(scale degreeOfChord: c\).)J
+107 412 :M
+1.379 .138(ana scale: \(aScaleClass root:)J
+190 424 :M
+1.316 .132(\(self root transposeOf: \(aScaleClass root intervalWith: scale root\)\)\).)J
+107 436 :M
+1.188 .119(possibleTonalities add: ana]].)J
+97 448 :M
+.192(^possibleTonalities)A
+85 484 :M
+f0_11 sf
+-.056(Here is the corresponding micro-session :)A
+93 509 :M
+f0_10 sf
+.583 .058(\(Chord new fromString: 'C maj'\) possibleTonalities)J
+365 509 :M
+1.613(->)A
+-1 -1 91 500 1 1 90 499 @b
+-1 -1 91 500 1 1 90 499 @b
+91 500 -1 1 454 499 1 91 499 @a
+-1 -1 455 500 1 1 454 499 @b
+-1 -1 455 500 1 1 454 499 @b
+-1 -1 91 512 1 1 90 500 @b
+-1 -1 455 512 1 1 454 500 @b
+93 521 :M
+.536 .054( OrderedCollection \()J
+-1 -1 91 524 1 1 90 512 @b
+-1 -1 455 524 1 1 454 512 @b
+100 533 :M
+.232 .023({IV of G MelodicMinor})J
+225 533 :M
+.324 .032({V of F MelodicMinor})J
+-1 -1 91 536 1 1 90 524 @b
+-1 -1 455 536 1 1 454 524 @b
+100 545 :M
+.092 .009({I of C Major})J
+225 545 :M
+.145 .014({IV of G Major})J
+-1 -1 91 548 1 1 90 536 @b
+-1 -1 455 548 1 1 454 536 @b
+100 557 :M
+.25 .025({V of F Major})J
+225 557 :M
+.191 .019({V of F HarmonicMinor})J
+-1 -1 91 560 1 1 90 548 @b
+-1 -1 455 560 1 1 454 548 @b
+100 569 :M
+.192 .019({VI of E HarmonicMinor} \))J
+-1 -1 91 572 1 1 90 560 @b
+-1 -1 455 572 1 1 454 560 @b
+-1 -1 91 584 1 1 90 572 @b
+-1 -1 455 584 1 1 454 572 @b
+93 593 :M
+.388 .039(\(Chord new fromString: 'D min 7 dim5'\) possibleTonalities)J
+365 593 :M
+1.613(->)A
+-1 -1 91 596 1 1 90 584 @b
+-1 -1 455 596 1 1 454 584 @b
+93 605 :M
+.925 .093(OrderedCollection \()J
+-1 -1 91 608 1 1 90 596 @b
+-1 -1 455 608 1 1 454 596 @b
+100 617 :M
+.442 .044({IV of F MelodicMinor})J
+225 617 :M
+.34 .034({VII of Eb MelodicMinor})J
+-1 -1 91 620 1 1 90 608 @b
+-1 -1 455 620 1 1 454 608 @b
+100 629 :M
+.274 .027({VII of Eb Major})J
+225 629 :M
+.171 .017({II of C HarmonicMinor} \))J
+-1 -1 91 633 1 1 90 632 @b
+-1 -1 91 633 1 1 90 632 @b
+91 633 -1 1 454 632 1 91 632 @a
+-1 -1 455 633 1 1 454 632 @b
+-1 -1 455 633 1 1 454 632 @b
+-1 -1 91 632 1 1 90 620 @b
+-1 -1 455 632 1 1 454 620 @b
+85 672 :M
+f2_11 sf
+.5(6.8.)A
+120 672 :M
+.313 .031(Genericity and Reusability)J
+85 696 :M
+f0_11 sf
+.563 .056(One of the main advantages of our approach, besides the clarification it brings to the)J
+85 708 :M
+.67 .067(overall algebra of alterations, intervals and scales, is the fact that all the mechanisms)J
+85 720 :M
+-.03(may be extended very easily, mainly by subclassing.)A
+endp
+%%Page: 24 24
+%%BeginPageSetup
+initializepage
+(fdp; page : 24 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(22)A
+85 88 :M
+f0_11 sf
+.733 .073(For instance, our representation of scales makes it straightforward to add new types)J
+85 100 :M
+.135 .014(of scales, using inheritance. Introducing a new type of scale consists simply in creating)J
+85 112 :M
+.426 .043(a new subclass of )J
+f4_11 sf
+.187(Scale)A
+f0_11 sf
+.451 .045(, and defining its interval list. The new class is then ready to)J
+85 124 :M
+-.103(use.)A
+85 148 :M
+.421 .042(For instance, let us define the )J
+f4_11 sf
+.177(HungarianMinor)A
+f0_11 sf
+.385 .038( scale as follows :)J
+85 172 :M
+f0_10 sf
+.309 .031(Scale subclass: HungarianMinor)J
+85 196 :M
+1.404 .14(!HungarianMinor methodsFor: 'interval list'!)J
+85 208 :M
+f2_10 sf
+.296(intervalList)A
+100 220 :M
+f0_10 sf
+.174 .017("example : \(C D Eb F G Ab B\)")J
+100 232 :M
+.45 .045(^#\(yourself second minorThird augmentedFourth fifth minorSixth majorSeventh\))J
+85 256 :M
+f0_11 sf
+1.75 .175(We can right away use all the preceding methods without any modification. For)J
+85 268 :M
+1.151 .115(instance, we can compute the new \(exotic\) set of possible chords generated by this)J
+85 280 :M
+.717 .072(scale as :)J
+93 317 :M
+f0_10 sf
+.353 .035(\(HungarianMinor root: Note C\) generateChordPoly: 4)J
+365 317 :M
+1.613(->)A
+-1 -1 91 308 1 1 90 307 @b
+-1 -1 91 308 1 1 90 307 @b
+91 308 -1 1 464 307 1 91 307 @a
+-1 -1 465 308 1 1 464 307 @b
+-1 -1 465 308 1 1 464 307 @b
+-1 -1 91 320 1 1 90 308 @b
+-1 -1 465 320 1 1 464 308 @b
+93 329 :M
+-.013(OrderedCollection \([C min maj7] [D dim5 7] [Eb aug5 maj7] [F dim5 dim7] [G maj7])A
+-1 -1 91 332 1 1 90 320 @b
+-1 -1 465 332 1 1 464 320 @b
+93 341 :M
+-.119([Ab maj7] [B min dim7]\))A
+-1 -1 91 345 1 1 90 344 @b
+-1 -1 91 345 1 1 90 344 @b
+91 345 -1 1 464 344 1 91 344 @a
+-1 -1 465 345 1 1 464 344 @b
+-1 -1 465 345 1 1 464 344 @b
+-1 -1 91 344 1 1 90 332 @b
+-1 -1 465 344 1 1 464 332 @b
+85 366 :M
+f0_11 sf
+.63 .063(Of course, we will be also able to use this scale for performing exotic analysis, in the)J
+85 378 :M
+.169 .017(successive layers, at a minimal cost !)J
+85 402 :M
+.153 .015(Here are for example, the possible analysis of a chord, in this new tonality :)J
+93 427 :M
+f0_10 sf
+.583 .058(\(Chord new fromString: 'C maj'\) possibleTonalities)J
+330 427 :M
+1.613(->)A
+-1 -1 91 418 1 1 90 417 @b
+-1 -1 91 418 1 1 90 417 @b
+91 418 -1 1 454 417 1 91 417 @a
+-1 -1 455 418 1 1 454 417 @b
+-1 -1 455 418 1 1 454 417 @b
+-1 -1 91 430 1 1 90 418 @b
+-1 -1 455 430 1 1 454 418 @b
+93 439 :M
+.536 .054( OrderedCollection \()J
+-1 -1 91 442 1 1 90 430 @b
+-1 -1 455 442 1 1 454 430 @b
+93 451 :M
+.249 .025({V of F HungarianMinor})J
+225 451 :M
+.259 .026({VI of E HungarianMinor})J
+-1 -1 91 454 1 1 90 442 @b
+-1 -1 455 454 1 1 454 442 @b
+93 463 :M
+.232 .023({IV of G MelodicMinor})J
+225 463 :M
+.324 .032({V of F MelodicMinor})J
+-1 -1 91 466 1 1 90 454 @b
+-1 -1 455 466 1 1 454 454 @b
+93 475 :M
+.092 .009({I of C Major})J
+225 475 :M
+.145 .014({IV of G Major})J
+-1 -1 91 478 1 1 90 466 @b
+-1 -1 455 478 1 1 454 466 @b
+93 487 :M
+.25 .025({V of F Major})J
+225 487 :M
+.191 .019({V of F HarmonicMinor})J
+-1 -1 91 490 1 1 90 478 @b
+-1 -1 455 490 1 1 454 478 @b
+93 499 :M
+.192 .019({VI of E HarmonicMinor} \))J
+-1 -1 91 502 1 1 90 490 @b
+-1 -1 455 502 1 1 454 490 @b
+-1 -1 91 514 1 1 90 502 @b
+-1 -1 455 514 1 1 454 502 @b
+93 523 :M
+.477 .048(\(Chord new fromString: 'D min'\) possibleTonalitiesIn: HungarianMinor ->)J
+-1 -1 91 526 1 1 90 514 @b
+-1 -1 455 526 1 1 454 514 @b
+93 535 :M
+.166 .017(OrderedCollection \( {I of D HungarianMinor }  {VII of Eb HungarianMinor }\))J
+-1 -1 91 539 1 1 90 538 @b
+-1 -1 91 539 1 1 90 538 @b
+91 539 -1 1 454 538 1 91 538 @a
+-1 -1 455 539 1 1 454 538 @b
+-1 -1 455 539 1 1 454 538 @b
+-1 -1 91 538 1 1 90 526 @b
+-1 -1 455 538 1 1 454 526 @b
+85 572 :M
+f0_11 sf
+1.668 .167(As John McLaughlin \(one of the inventor of Jazz-rock, who, among other things,)J
+85 584 :M
+.18 .018(introduced sophisticated and hard-to-analyse harmonic progressions in Jazz\) writes in)J
+85 596 :M
+.842 .084(the foreword of [Mahavishnu 76] : )J
+f3_11 sf
+.762 .076("... Not all of the following synthetic modes and their)J
+85 608 :M
+.888 .089(derivatives have been used in this book. However I have included them for the benefit of the)J
+85 620 :M
+.536 .054(serious music student, because one can find so much hidden within them, particularily in the)J
+85 632 :M
+.226 .023(extraction of their scale-tone chords".)J
+85 656 :M
+f0_11 sf
+.545 .055(Well, the extraction and study of these exotic scale-tone chords and their interactions)J
+85 668 :M
+.249 .025(is now a child's play :)J
+85 692 :M
+f0_10 sf
+1.917 .192(!NeapolitanMinor methodsFor: 'interval list'!)J
+85 704 :M
+f2_10 sf
+.296(intervalList)A
+100 716 :M
+f0_10 sf
+.124 .012("example : \(C Db Eb F G Ab B\)")J
+100 728 :M
+.632 .063(^#\(yourself minorSecond minorThird perfectFourth fifth minorSixth majorSeventh\))J
+endp
+%%Page: 25 25
+%%BeginPageSetup
+initializepage
+(fdp; page : 25 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(23)A
+85 100 :M
+f0_10 sf
+1.97 .197(!NeapolitanMajor methodsFor: 'interval list'!)J
+85 112 :M
+f2_10 sf
+.296(intervalList)A
+100 124 :M
+f0_10 sf
+.174 .017("example : \(C Db Eb F G A B\)")J
+100 136 :M
+.659 .066(^#\(yourself minorSecond minorThird perfectFourth fifth majorSixth majorSeventh\))J
+85 160 :M
+1.379 .138(!DoubleHarmonic methodsFor: 'interval list'!)J
+85 172 :M
+f2_10 sf
+.296(intervalList)A
+100 184 :M
+f0_10 sf
+.174 .017("example : \(C Db E F G Ab B\)")J
+100 196 :M
+.602 .06(^#\(yourself minorSecond majorThird fourth fifth minorSixth majorSeventh\))J
+85 220 :M
+1.458 .146(!MajorLocrian methodsFor: 'interval list'!)J
+85 232 :M
+f2_10 sf
+.296(intervalList)A
+100 244 :M
+f0_10 sf
+.124 .012("example : \(C D E F Gb Ab Bb\)")J
+100 256 :M
+.722 .072(^#\(yourself second majorThird fourth diminishedFifth minorSixth minorSeventh\))J
+85 280 :M
+f0_11 sf
+1.313 .131(... and so on : McLaughlin gives 16 synthetic modes, which can be all represented)J
+85 292 :M
+.466 .047(similarily. We can now have the full possible analysis for any chord in any scale, and)J
+85 304 :M
+.098 .01(study them by appropriate queries to MusES.)J
+85 343 :M
+f2_14 sf
+.5(7.)A
+120 343 :M
+-.149(Extending the system)A
+85 378 :M
+f2_11 sf
+.5(7.1.)A
+120 378 :M
+1.206 .121(Representing actual octave-dependent notes)J
+85 402 :M
+f0_11 sf
+.097 .01(As we said in the beginning, our theory only takes pitch-classes into account, and does)J
+85 414 :M
+1.585 .158(not differentiate several notes belonging to the same pitch class \()J
+f3_11 sf
+.431(octave-dependent)A
+85 426 :M
+.341(notes)A
+f0_11 sf
+1.388 .139(\). The first idea that comes to mind to include these actual octave-dependent)J
+85 438 :M
+.246 .025(notes in our system is to have our present notes \(instances of the various subclasses of)J
+85 450 :M
+f4_11 sf
+.09(Note)A
+f0_11 sf
+.072 .007(\) )J
+f3_11 sf
+.361 .036(become classes)J
+f0_11 sf
+.201 .02(, in the sense of OOP, so that one can make instances out of them !)J
+85 462 :M
+.452 .045(For instance, we would like to say that note )J
+f3_11 sf
+.183(C3)A
+f0_11 sf
+.441 .044( is an instance of pitch-class C. And of)J
+85 474 :M
+.442 .044(course pitch-class C would still be an instance of class )J
+f4_11 sf
+.174(NaturalNote)A
+f0_11 sf
+.139 .014( !)J
+85 486 :M
+.446 .045(This procedure, which consists in raising all the classes and instances one step higher)J
+85 498 :M
+1.166 .117(in the instanciation tree is technically possible)J
+f0_9 sf
+0 -3 rm
+.257(7)A
+0 3 rm
+f0_11 sf
+1.031 .103(, but raises an ontological problem :)J
+85 510 :M
+.208 .021(What do we want to consider global vs volatile ?)J
+85 522 :M
+.544 .054(Intuitively, we would like to say that pitch-classes are global objects, but that octave-)J
+85 534 :M
+1.165 .117(dependent notes are not. There are two arguments to support this claim : \(1\) Pitch)J
+85 546 :M
+.515 .051(classes are not too many \(35\), compared to actual octave-dependent notes \(35 * say, 8)J
+85 558 :M
+.356 .036(octaves =  280 notes !\), and \(2\) there is no reason to decide a priori what are the limits)J
+85 570 :M
+.149 .015(in the octave multiplication : 8 seems a good approximation, but then we will have the)J
+85 582 :M
+.113 .011(problem of deciding what happens to the upper or lower bounds \(would we authorize)J
+85 594 :M
+1.617 .162(interval computations on these bounds for instance ?\). This lead us to consider a)J
+85 606 :M
+1.009 .101(representation for octave-dependent notes as instances, and pitch-classes as classes.)J
+85 618 :M
+.141 .014(Because of space limitation, we will not discuss these technical details here.)J
+85 642 :M
+.767 .077(Ins\216rer ici la description des OctaveDependentNotes, et les modifications \210 apporter)J
+85 654 :M
+-.017(pour les calculs d'intervalles.)A
+-4096 -4095 -1 1 -4094 -4095 1 -4096 -4096 @a
+85 691.24 -.24 .24 228.24 691 .24 85 691 @a
+85 703 :M
+f0_9 sf
+.732(7)A
+f0_10 sf
+0 3 rm
+2.551 .255( But it is not trivial, since metaclasses are not really first-class objects in Smalltalk.)J
+0 -3 rm
+85 718 :M
+2.631 .263(However,  small extensions to Smalltalk allow the user to have complete control on)J
+85 730 :M
+.879 .088(metaclasses \(Cf. the ClassTalk system by [Cointe&Briot 89]\).)J
+endp
+%%Page: 26 26
+%%BeginPageSetup
+initializepage
+(fdp; page : 26 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(24)A
+85 88 :M
+f2_11 sf
+.5(7.2.)A
+120 88 :M
+.095 .01(Problems not solved)J
+85 112 :M
+f0_11 sf
+.332 .033(There are a couple of classical problems involving pitch class computation we did not)J
+85 124 :M
+.569 .057(deal with, such as : computing the scale from a list of notes, or : given an incomplete)J
+85 136 :M
+1.303 .13(list of notes \(of length < 7\), compute the list of plausible scales. We hope that our)J
+85 148 :M
+.149 .015(presentation convinced the reader that these extension are trivial to add to the existing)J
+85 160 :M
+.041(system.)A
+85 202 :M
+f2_11 sf
+.5(7.3.)A
+120 202 :M
+.314 .031(Representing non trivial reasoning)J
+85 226 :M
+f0_11 sf
+.457 .046(The system presented here achieves its goal, which is to represent the basic harmonic)J
+85 238 :M
+2.071 .207(entities necessary to perform sophisticated reasoning. The representation of this)J
+85 250 :M
+-.013(reasoning is the main goal of the higher levels of the MusES system, and is described in)A
+85 262 :M
+1.309 .131(subsequent documents. The central idea of these extensions is to use a specialized)J
+85 274 :M
+2.226 .223(forward-chaining, first-order inference mechanism \(N\216Opus\) with which all the)J
+85 286 :M
+f3_11 sf
+-.04(reasonings)A
+f0_11 sf
+-.041( involving the objects defined here are represented. More on this can be found)A
+85 298 :M
+.991 .099(in [Pachet 91], the expertise is described in [Pachet 87] but represented awkwardly,)J
+85 310 :M
+.79 .079(and a forthcoming report will present a version of the system as an extension to the)J
+85 322 :M
+-.026(present architecture.)A
+85 365 :M
+f2_14 sf
+.5(8.)A
+120 365 :M
+-.23(Conclusion)A
+85 390 :M
+f0_11 sf
+1.533 .153(The first layer of the MusES system sets the foundations for the study of various)J
+85 402 :M
+.861 .086(harmonic analysic mechanisms. The basic entites of harmony notes, intervals, scales)J
+85 414 :M
+1.03 .103(and chords are defined as by set of classes, having a structure and a behavior. Our)J
+85 426 :M
+1.741 .174(approach is validated by the "friendly" feel of the overall system and the almost)J
+85 438 :M
+.765 .076(physical presence of the musical entites, that allow the user to think more naturally,)J
+85 450 :M
+.238 .024(and by the reusability of these entities, and their capacity to support extensions.)J
+85 489 :M
+f2_14 sf
+.5(9.)A
+120 489 :M
+-.108(References)A
+85 514 :M
+f0_11 sf
+1.387 .139([Cointe&Briot 89] Cointe P., Briot J.-P. Programming with ObjVlisp metaclasses in)J
+85 526 :M
+.768 .077(Smalltalk-80, OOPSLA '89, New Orleans, USA.)J
+85 550 :M
+.871 .087([Ebcioglu 92] Ebcioglu K. An expert system for harmonizing chorales in the style of)J
+85 562 :M
+2.381 .238(Bach. In Understanding Music with A.I. AAAI Press/ MIT Press, 1992. Ed. by)J
+85 574 :M
+.302 .03(Balaban M., Ebcioglu K., Laske O.)J
+85 598 :M
+1.174 .117([Goldberg&Robson 89] Goldberg A., Robson D. Smalltalk-80 : the language and its)J
+85 610 :M
+.223 .022(implementation. Addison-Wesley 1989 \(revised edition\).)J
+85 634 :M
+1.139 .114([MacLaughlin 76] J. McLaughlin. John McLaughlin and the Mahavishnu Orchestra.)J
+85 646 :M
+-.055(Warner-Tamerlane publishing, Warner Bros. Publishing, New York,1976.)A
+85 670 :M
+1.095 .109([Pachet 87] F. Pachet. Vers un syst\217me expert de suivi d'improvisation. Rapport de)J
+85 682 :M
+.522 .052(DEA IARFA, IRCAM/Paris 6, September 1987.)J
+85 706 :M
+1.062 .106([Pachet 91] Pachet, F. A meta-level architecture for analysing jazz chord sequences.)J
+85 718 :M
+.665 .067(Proceedings of ICMC, 1991, pp. 266-269, Montr\216al, Canada.)J
+endp
+%%Page: 27 27
+%%BeginPageSetup
+initializepage
+(fdp; page : 27 / 27)setjob
+%%EndPageSetup
+-28 -30 :T
+gS 28 30 538 781 rC
+85 785 :M
+f0_9 sf
+.009 .001(An object-oriented representation of pitch-classes, intervals, scales and chords)J
+507 785 :M
+1(25)A
+85 88 :M
+f0_11 sf
+.407 .041([Pope 91] Pope Steven. The Well-Tempered Object. MIT Press, 1991.)J
+85 112 :M
+1.819 .182([Slonimsky 47] Slonimsky, N. Thesaurus of Scales and Melodic Patterns. Charles)J
+85 124 :M
+.198 .02(Scribner's sons, New York, 1947.)J
+85 148 :M
+.053 .005([Smaill&Wiggins 90] Smaill, Alan. Wiggins, Geraint. Hierarchical music representation)J
+85 160 :M
+2.498 .25(for composition and analysis. In Colloque International "Musique et assistance)J
+85 172 :M
+.733 .073(informatique", pp. 261-279, Marseille, 3-6 oct. 1990.)J
+85 196 :M
+.035 .004([Steedman 84] Steedman M.J. A Generative Grammar for Jazz Chord Sequences. Music)J
+85 208 :M
+.607 .061(Perception, Fall 1984, Vol. n)J
+cF
+f1_11 sf
+.061<B0>A
+sf
+.607 .061( 2, N)J
+cF
+f1_11 sf
+.061<B0>A
+sf
+.607 .061( 1, pp. 52-77.)J
+85 232 :M
+2.878 .288([Winograd 93] T. Winograd. Linguistics and the Computer Analysis of Tonal)J
+85 244 :M
+.169 .017(Harmony. In Machines Models of Music, Edited by S. M. Schwanauer and D.A. Levitt,)J
+85 256 :M
+.736 .074(MIT Press, 1993.)J
+endp
+%%Trailer
+end
+%%EOF

@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				GapSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>GapSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.VirtualSound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Sound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>cutList <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<P>
+<P>
+<P>
+</FONT><I>An instance of GapSound can be used to represent a sound with samples deleted from it (i.e., a gap).<BR>
+It uses its cut list instance variable to maintain sample ranges that have been deleted from the sound that comprises it (the source).<BR>
+It responds to sampleAt: and sampleAt:put: just like other sounds, but stores only its cut list on files unless explicitly told to store samples.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;cutList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SortedCollection of Integers> the list of deleted sections by sample index i.e., pointers denoting sections that have been deleted. For example, having a cutList of (1000 2000) means that samples (1000, 2000] have been virtually cut.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+private<P>
+<P>
+</I></FONT><B>mapSampleIndex: index</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the given sample index according to the cut list (i.e., deleted sections) of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>hasGaps</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver has any gaps.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>allocateData</B><I><BR>
+&nbsp;&nbsp;&nbsp;no-op<P>
+<P>
+</I><B>cutFrom: startSample to: stopSample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Cut the designated section from the receiver.<P>
+<P>
+</I><B>samples</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>GapSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>on: source cutFrom: start to: stop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a CompositeSound derived from the argument missing the given range.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>exampleView</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a sound view on a ramp with a chunk cut out of it.</I></FONT>
+</BODY>
+</HTML>

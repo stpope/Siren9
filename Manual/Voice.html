@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Voice</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Voice<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Model<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-Voices<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>name instrument stream <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DefaultVoiceClass <P>
+<P>
+<P>
+</FONT><I>Subclasses of Voice implement the mappings between symbolic event parameters (like timbre descriptions and pitch names) and concrete output event data.<BR>
+They can be used for generating sound compiler notelists or (real-time output or file dumps of) MIDI data.<P>
+<P>
+The instance variables are:<BR>
+&nbsp;&nbsp;&nbsp;instrument <Symbol, association or device> my instrument<BR>
+&nbsp;&nbsp;&nbsp;name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<String or Symbol> my handle or name<BR>
+&nbsp;&nbsp;&nbsp;stream&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Stream> my (optional) I/O stream<P>
+<P>
+The global object Voices is a dictionary that note events can refer to with integer or symbolic keys.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>instrument</B><I><BR>
+&nbsp;&nbsp;&nbsp;return my instrument.<P>
+<P>
+</I><B>instrument: newValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;set my instrument.<P>
+<P>
+</I><B>stream</B><I><BR>
+&nbsp;&nbsp;&nbsp;answer the stream of the receiver voice<P>
+<P>
+</I><B>stream: someStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;plug in a stream to the receiver voice<P>
+</I><I><FONT SIZE=+1><P>
+events<P>
+<P>
+</I></FONT><B>eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an event list read from the receiver.<P>
+<P>
+</I><B>play: anEventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand the list and play it now.<P>
+<P>
+</I><B>play: anEventOrList at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Expand the list and play it at the given time.<P>
+<P>
+</I><B>playEvent: anEvent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument now.<P>
+<P>
+</I><B>playEvent: anEvent at: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;make sure my subclasses implement this<P>
+<P>
+</I><B>readOnto: eventList</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read events from the receiver into the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receivcer on the argument.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer true<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close the stream, devise, or whatever.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a Voice.<P>
+<P>
+</I><B>initializeNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up a named Voice.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Voice class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+class var accessing<P>
+<P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;set up the shared dictionary for caching voices<P>
+<P>
+</I><B>reset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset all sub-instances of Voice.<P>
+<P>
+</I><B>setDefault: className</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the default class to use for new voices<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a voice.<P>
+<P>
+</I><B>named: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the shared dictionary's voice item at the given name (or the name itself if it's a voice)<P>
+<P>
+</I><B>on: someStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new voice instance on the given stream.</I></FONT>
+</BODY>
+</HTML>

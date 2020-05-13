@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				Pitch</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>Pitch<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Chroma<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Models-Representation<P>
+<P>
+<P>
+</FONT><I>Instances of classes whose species is Pitch are used for the pitch or frequency parameters of musical events.<BR>
+Pitches come in several flavors, as in the classes HertzPitch, RatioPitch, MIDIPitch and SymbolicPitch.<BR>
+The class Pitch is abstract, its class creation method answers an instance of a concrete Pitch class.<P>
+<P>
+Examples:<BR>
+&nbsp;&nbsp;&nbsp;Pitch value: 440.0 &nbsp;&nbsp;&nbsp;"create an instance with units of Hertz"<BR>
+&nbsp;&nbsp;&nbsp;Pitch value: 77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create an instance with units of MIDI key numbers"<BR>
+&nbsp;&nbsp;&nbsp;Pitch value: #e4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create a symbolic instance"<BR>
+&nbsp;&nbsp;&nbsp;Pitch value: 'e4'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"same as using a symbol"<BR>
+&nbsp;&nbsp;&nbsp;Pitch value: 4/3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"create a ratio instance"<P>
+<P>
+Note that new pitch representations such as music11-like pch (4.11 = 11th note in oct 4) or oct (4.1100 = oct4 + 1100 cts) notations can be added by overriding the float-to-Hz or float-to-midi conversions.<P>
+<P>
+See also the class example.<P>
+<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Pitch class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>value: aValue</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a new instance of a member of my species.<P>
+</I><I><FONT SIZE=+1><P>
+class constants<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default color to display instances with.<P>
+<P>
+</I><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>initializeGenerality</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class inst var, a generality table.<P>
+<P>
+</I><B>mostGeneral</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the most general-purpose duration--Hertz<P>
+<P>
+</I><B>propertyName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's default property name.<P>
+<P>
+</I><B>relativeMember</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver class's species member used as a relative magnitude.<P>
+<P>
+</I><B>species</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer Pitch.<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print a simple message to the transcript demonstrating the various types.<P>
+<P>
+</I><B>exampleAdC</B><I><BR>
+&nbsp;&nbsp;&nbsp;Pitch exampleAdC</I></FONT>
+</BODY>
+</HTML>

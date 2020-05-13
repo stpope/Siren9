@@ -1,0 +1,220 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				EventScheduler</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>EventScheduler<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Model<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-Support<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>appointments timers threads running doWait startTime <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay logTime <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class variables:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Schedule <P>
+<P>
+<P>
+</FONT><I>An instance of EventScheduler is a simple driver for real-time message-passing among any classes that can return timed event association values.  One uses Schedules by setting up clients which a master scheduler process continuously evaluates for their next timed activations. Clients can return appointments which are sorted into the scheduler's list of (time -> event) associations that is evaluated continuously when running. Changed messages are sent from the accessor messages to simplify EventScheduler browsers and inspectors.<P>
+<P>
+Instance variables:<BR>
+&nbsp;&nbsp;&nbsp;clients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Collection> client objects<BR>
+&nbsp;&nbsp;&nbsp;appointments <SEventQueue> the schedule<BR>
+&nbsp;&nbsp;&nbsp;running &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Boolean> running schedule?<BR>
+&nbsp;&nbsp;&nbsp;doWait&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Boolean> whether or not the scheduler should do real-time <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scheduling--set to false if there is a lower level of scheduling <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(e.g., primitive-level) or if output need not be real-time<BR>
+&nbsp;&nbsp;&nbsp;startTime <Integer> the clock time I was started at<P>
+<P>
+Class variable:<BR>
+&nbsp;&nbsp;&nbsp;Schedule &nbsp;&nbsp;&nbsp;<EventScheduler> shared instance accessed by the class message masterSchedule<P>
+<P>
+See the class examples.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addClient: theApp</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addClient: theApp at: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addClient: theApp at: start loop: aBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addClient: theApp in: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addClient: theApp in: start loop: loopBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addClient: theApp loop: aBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'appointments'.<P>
+<P>
+</I><B>addTimer: start</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>addTimer: start interval: int</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>clientNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a named client<P>
+<P>
+</I><B>clients</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the instance's clients<P>
+<P>
+</I><B>clock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance's clock (in usec)<P>
+<P>
+</I><B>delay</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the instance's delay<P>
+<P>
+</I><B>delay: aTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the instance's delay<P>
+<P>
+</I><B>dontWait</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the scheduler should NOT do the waiting--i.e., there is a lower level of scheduling going on<P>
+<P>
+</I><B>isRunning</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance variable 'running'.<P>
+<P>
+</I><B>removeClient: aClient</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>removeClientNamed: aClient</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>removeTimer: aTimer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>removeTimerNamed: aTimer</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add the argument, 'theApp', to the instance variable 'timers'.<P>
+<P>
+</I><B>resetClock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the instances clock (in usec)<P>
+<P>
+</I><B>timerNamed: aName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a named timer<P>
+<P>
+</I><B>timers</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance's timers<P>
+<P>
+</I><B>wait</B><I><BR>
+&nbsp;&nbsp;&nbsp;Specify that the scheduler should do the waiting--i.e., Smalltalk-level real-time.<P>
+</I><I><FONT SIZE=+1><P>
+updating<P>
+<P>
+</I></FONT><B>update: anAspect</B><I><BR>
+&nbsp;&nbsp;&nbsp;Check if clients are waiting<P>
+</I><I><FONT SIZE=+1><P>
+running<P>
+<P>
+</I></FONT><B>callNextAppointment</B><I><BR>
+&nbsp;&nbsp;&nbsp;Calls upon the next appointment to be made and then reschedules the next one<P>
+<P>
+</I><B>flush</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the appointment list.<P>
+<P>
+</I><B>interrupt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop a running scheduler.<P>
+<P>
+</I><B>processEvent: entry at: now</B><I><BR>
+&nbsp;&nbsp;&nbsp;Handle an event or timer<P>
+<P>
+</I><B>run</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the first meetings and then run them all till no one wants a meeting anymore.<P>
+<P>
+</I><B>run: theBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Accept the argument, 'theBool', as the instance variable 'running'.<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the default Schedule<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Clean up the schedule.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>EventScheduler class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>scheduleExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play MIDI using the event scheduler.<P>
+<P>
+</I><B>scheduleExample2</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play MIDI using the event scheduler.<P>
+<P>
+</I><B>timerExample</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start some timers in the event scheduler.<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the global Scheduler.<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Clear away the global EventScheduler.<P>
+</I><I><FONT SIZE=+1><P>
+instance control<P>
+<P>
+</I></FONT><B>addClient: aT</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>addClient: aT at: theTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>addClient: aT in: theTime</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>addClient: aT in: theTime loop: loopBool</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>addTimer: aT</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>addTimer: aT interval: int</B><I><BR>
+&nbsp;&nbsp;&nbsp;Add a timer to the instance<P>
+<P>
+</I><B>clients</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the instance's clients<P>
+<P>
+</I><B>clock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance's clock<P>
+<P>
+</I><B>flush</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset all running schedules by brute force.<P>
+<P>
+</I><B>interrupt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop all running schedules by brute force.<P>
+<P>
+</I><B>isRunning</B><I><BR>
+&nbsp;&nbsp;&nbsp;Ask the instance if it's on<P>
+<P>
+</I><B>resetClock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the instance's clock<P>
+<P>
+</I><B>run</B><I><BR>
+&nbsp;&nbsp;&nbsp;Turn the instance on<P>
+<P>
+</I><B>timers</B><I><BR>
+&nbsp;&nbsp;&nbsp;Get the instance's timers<P>
+</I><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;EventScheduler instance<P>
+<P>
+</I><B>instance</B><I><BR>
+&nbsp;&nbsp;&nbsp;EventScheduler instance</I></FONT>
+</BODY>
+</HTML>

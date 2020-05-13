@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OSCPort</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OSCPort<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.PortModel<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-OSC<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>socket address <P>
+<P>
+<P>
+</FONT><I>An OSCPort represents a connection to an OSC client.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;socket <SocketAccessor>  how am I connected?<BR>
+&nbsp;&nbsp;&nbsp;address <IPSocketAddress>  where do I go?<P>
+<P>
+Shared Variables:<BR>
+&nbsp;&nbsp;&nbsp;DefaultIP <ByteArray>  where's my default server?<BR>
+&nbsp;&nbsp;&nbsp;DefaultPort&nbsp;&nbsp;&nbsp; <Integer>  where's my default server?<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>portNumber: newPortNum</B><I><BR>
+&nbsp;&nbsp;&nbsp;Reset the receiver's UDP socket port number<P>
+</I><I><FONT SIZE=+1><P>
+actions<P>
+<P>
+</I></FONT><B>send: aMessage</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send something<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>init: t1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OSCPort class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance-creation<P>
+<P>
+</I></FONT><B>cslHost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default port for CSL<P>
+<P>
+</I><B>default</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default instance<P>
+<P>
+</I><B>localhost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an OSC port on the local host<P>
+<P>
+</I><B>scHost</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default OSC server reference<P>
+<P>
+</I><B>to: t1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a port on the given device<P>
+<P>
+</I><B>to: ip port: port</B><I><BR>
+&nbsp;&nbsp;&nbsp;^an OSCPort with the given attributes<P>
+<P>
+</I><B>toHostName: t1</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance on the given host<P>
+<P>
+</I><B>toHostName: aHostName portNumber: aPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;^an OSCPort <BR>
+&nbsp;&nbsp;&nbsp;Convenience method<P>
+<P>
+</I><B>toLocalhostPortNumber: aPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;^an OSCPort <BR>
+&nbsp;&nbsp;&nbsp;Convenience method<P>
+</I><I><FONT SIZE=+1><P>
+defaults<P>
+<P>
+</I></FONT><B>defaultIP</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class var default<P>
+<P>
+</I><B>defaultIP: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class var default<P>
+<P>
+</I><B>defaultPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the class var default<P>
+<P>
+</I><B>defaultPort: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the class var default<P>
+<P>
+</I><B>defaultSCOSCPort</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the default port for OSC<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>demo</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCPort demo<P>
+<P>
+</I><B>demo2</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCPort demo2<P>
+<P>
+</I><B>sendFreq</B><I><BR>
+&nbsp;&nbsp;&nbsp;PSCPort sendFreq<P>
+<P>
+</I><B>sendStart</B><I><BR>
+&nbsp;&nbsp;&nbsp;OSCPort sendstop<P>
+<P>
+</I><B>sendStop</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send a stop message</I></FONT>
+</BODY>
+</HTML>

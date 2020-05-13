@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				PortMIDIPort</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>PortMIDIPort<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.MIDIPort<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicIO-MIDI<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>driver <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>private MIDICommands.* private MIDIioctls.* <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private GeneralMIDIMap.* private GeneralMIDIDrums.* <P>
+<P>
+<P>
+</FONT><I>An instance of PortMIDIPort is the interface to the external driver that talks to the PortMIDI interface.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;driver&nbsp;&nbsp;&nbsp;<PortMidiInterface>  my I/O interface driver<P>
+<P>
+Shared Variables:<BR>
+&nbsp;&nbsp;&nbsp;Devices&nbsp;&nbsp;&nbsp;<Dictionary>  unised<BR>
+&nbsp;&nbsp;&nbsp;Streams&nbsp;&nbsp;&nbsp;<IdentityDictionary key: Integer value: Integer>  the map between Siren devices and interface ports<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+open/close<P>
+<P>
+</I></FONT><B>close</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close MIDI.<P>
+<P>
+</I><B>close: stream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close MIDI.<P>
+<P>
+</I><B>open</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openInput: dev</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>openOutput: dev</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open the MIDI driver -- start the lower-level driver up.<P>
+<P>
+</I><B>terminate</B><I><BR>
+&nbsp;&nbsp;&nbsp;Close MIDI.<P>
+</I><I><FONT SIZE=+1><P>
+ioctl<P>
+<P>
+</I></FONT><B>readLoop</B><I><BR>
+&nbsp;&nbsp;&nbsp;The MIDI driver input process loop.<P>
+<P>
+</I><B>startControllerCaching</B><I><BR>
+&nbsp;&nbsp;&nbsp;Start caching MIDI controller in the driver.<P>
+<P>
+</I><B>stopControllerCaching</B><I><BR>
+&nbsp;&nbsp;&nbsp;Stop caching MIDI controller in the driver.<P>
+</I><I><FONT SIZE=+1><P>
+initialize release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Setup the receiver's instance variables.<P>
+<P>
+</I><B>release</B><I><BR>
+&nbsp;&nbsp;&nbsp;Release--break and dependencies on the error value.<P>
+</I><I><FONT SIZE=+1><P>
+read/write<P>
+<P>
+</I></FONT><B>playOff: aPitch amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver--no duration-->no note-off.<P>
+<P>
+</I><B>playOff: streamID pitch: pitch amp: amp voice: voice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver.<P>
+<P>
+</I><B>playOn: aPitch amp: anAmp voice: aVoice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver--no duration-->no note-off.<P>
+<P>
+</I><B>playOn: streamID pitch: pitch amp: amp voice: voice</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the argument on the receiver--no duration-->no note-off.<P>
+<P>
+</I><B>put: streamID data: data length: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send the argument (a ByteArray for historical reasons) to the receiver now.<P>
+<P>
+</I><B>put: data length: size</B><I><BR>
+&nbsp;&nbsp;&nbsp;Send the argument (a ByteArray for historical reasons) to the receiver now.<P>
+<P>
+</I><B>readControllersFrom: lo to: hi into: array</B><I><BR>
+&nbsp;&nbsp;&nbsp;Read a range of controllers<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>isActive</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is active.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>PortMIDIPort class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>testANote</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open MIDI, play a note.<P>
+</I><I><FONT SIZE=+1><P>
+class initialization<P>
+<P>
+</I></FONT><B>initializeData</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set up the class defaults.</I></FONT>
+</BODY>
+</HTML>

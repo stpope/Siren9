@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				DisplayItem</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>DisplayItem<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DependentPart<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicUI-DisplayLists<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>offset color <P>
+<P>
+<P>
+</FONT><I>Instances of the subclasses of the abstract class DisplayItem are used as the items in display lists. They can generally display themselves on graphics contexts.<BR>
+These are done this way because I don't think wrappers are right for use in display lists.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;offset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Point> the object's offset relative to its container (display list)<BR>
+&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ColorValue> the object's display color (or nil)<P>
+<P>
+The subclasses add special display-related state and behavior such as an extent point and display method, or a visual item such as a string or image to display.<BR>
+They generally implement displayOn: aGraphicsContext and bounds accessing methods.<P>
+<P>
+This implementation is MODE 1.1, STEIM, Amsterdam, May/June 1990; updated at the Lagoon in Palo Alto, July, 1991-May, 1992.<P>
+<P>
+The entirety of this software is Copyright (c) 1990, Stephen Travis Pope, Nomad Object Design/Nomad Computer Music Research. <BR>
+All Rights Reserved.<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+transforming<P>
+<P>
+</I></FONT><B>asVisualComponent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an encapsulated version of the receiver which understands<BR>
+&nbsp;&nbsp;&nbsp;VisualComponent protocol.<P>
+<P>
+</I><B>scaleBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Translate the receiver's offset by the argument.<P>
+<P>
+</I><B>scaledBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Translate the receiver's offset by the argument.<P>
+<P>
+</I><B>translateBy: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Translate the receiver's offset by the argument.<P>
+</I><I><FONT SIZE=+1><P>
+printing<P>
+<P>
+</I></FONT><B>printCompleteOn: aStream depth: depth</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver in the given Stream.<P>
+<P>
+</I><B>printOn: aStream</B><I><BR>
+&nbsp;&nbsp;&nbsp;Print the receiver in the given Stream.<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>color</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's display color.<P>
+<P>
+</I><B>color: aVal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's display color to the argument.<P>
+<P>
+</I><B>extent</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the extent of the receiver (dummy in this class).<P>
+<P>
+</I><B>extent: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Ignored<P>
+<P>
+</I><B>offset</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's offset.<P>
+<P>
+</I><B>offset: aPoint</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's offset to the argument.<P>
+</I><I><FONT SIZE=+1><P>
+testing<P>
+<P>
+</I></FONT><B>isDisplayItem</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer whether the receiver is a kind of DisplayItem<P>
+</I><I><FONT SIZE=+1><P>
+initialize-release<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Initialize the instance variables of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+displaying<P>
+<P>
+</I></FONT><B>displayOn: aGraphicsContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on the argument.<P>
+<P>
+</I><B>displayPostScriptOn: aPostScriptContext</B><I><BR>
+&nbsp;&nbsp;&nbsp;Display the receiver on the argument in PostScript.<P>
+</I><I><FONT SIZE=+1><P>
+copying<P>
+<P>
+</I></FONT><B>copy</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer a shallow copy of the receiver.<P>
+</I><I><FONT SIZE=+1><P>
+bounds accessing<P>
+<P>
+</I></FONT><B>computePreferredBounds</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's bounds--hack.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>DisplayItem class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>model: aM offset: aPt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.<P>
+<P>
+</I><B>offset: aPt</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer an instance of DisplayItem with the given instance variables.</I></FONT>
+</BODY>
+</HTML>

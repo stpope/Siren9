@@ -1,0 +1,229 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				OctaveDependentChord</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>OctaveDependentChord<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.PitchClassChord<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Music-PitchClasses<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>notesByInterval <P>
+<P>
+<P>
+</FONT><I>notesBytInterval provides a fast access to the chord notes<BR>
+by the names of their intervals with the root. The calculation <BR>
+is done once forever.  On the contrary,  for FPChord the<BR>
+calculation is done all the times a note is required since <BR>
+its rarely required.<BR>
+Note that for all request (e.g. theFifth) the copy of the note is <BR>
+answer). it is necessary in order to avoid some confusions. For instance,<BR>
+the pitches (ODNotes) of  an simple arpeggio on a chord ch may be <BR>
+obtained by: <BR>
+&nbsp;&nbsp;&nbsp;o := OredredCollection new.<BR>
+&nbsp;&nbsp;&nbsp;o add: ch theTonic; add: ch theThird; ch theFifth; theTonic.<BR>
+the first and last must be different objects in the case we will assign <BR>
+them todifferents PlayableNotes.<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+saving<P>
+<P>
+</I></FONT><B>save</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>storeOn: s</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+mutations<P>
+<P>
+</I></FONT><B>asMelody</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>asPlayableObject</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>lapse: l</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>startBeat: s duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>startTime: s duration: d</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>addNote: c</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>notes: value</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>removeNote: c</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+alteration<P>
+<P>
+</I></FONT><B>octave: o</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>octaveFromNote: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;set octave from new root or chord note<P>
+</I><I><FONT SIZE=+1><P>
+copy<P>
+<P>
+</I></FONT><B>copy</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+private-pact<P>
+<P>
+</I></FONT><B>closestDownTriadNoteTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2<P>
+<P>
+</I><B>closestTriadNoteTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2<P>
+<P>
+</I><B>closestUpTriadNoteTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;((PitchClassChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2<P>
+<P>
+</I><B>containsLegalNote: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>downTriadNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;return all triad notes within 2 octaves in a particular order<P>
+<P>
+</I><B>triadDownNoteLeadingTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;for the conflicting cases uses the priority given by  the ordering<BR>
+&nbsp;&nbsp;&nbsp;of upAndDownTriadNotes <P>
+<P>
+</I><B>triadNoteLeadingTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;for the conflicting cases uses two priority criteria: the proximity and <BR>
+&nbsp;&nbsp;&nbsp;the ordering given by triadNotesLeadingTo: <P>
+<P>
+</I><B>triadNotesLeadingTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;answer the chord 'triad' notes  (extend to 7?) within an octave, <BR>
+&nbsp;&nbsp;&nbsp; that are leading notes to the given note n<P>
+<P>
+</I><B>triadUpNoteLeadingTo: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;for the conflicting cases uses the priority given by  the ordering<BR>
+&nbsp;&nbsp;&nbsp;of upAndDownTriadNotes <P>
+<P>
+</I><B>upAndDownTriadNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;return all triad notes within 2 octaves in a particular order<P>
+<P>
+</I><B>upTriadNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;return all triad notes within 2 octaves in a particular order<P>
+</I><I><FONT SIZE=+1><P>
+initialize<P>
+<P>
+</I></FONT><B>initialize</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>resetNotes</B><I><BR>
+&nbsp;&nbsp;&nbsp;extend super class method for notesByIntevals<P>
+</I><I><FONT SIZE=+1><P>
+notes by  intervals<P>
+<P>
+</I></FONT><B>computeNotesByInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;only for triad notes<P>
+<P>
+</I><B>notesByInterval</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheLowFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheLowOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheLowThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;attention: do not cofound with 'root downThird  interval<P>
+<P>
+</I><B>reallyTheOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>reallyTheTonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theLowFifth</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theLowOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theLowThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theOctave</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theThird</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>theTonic</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+As yet unclassified<P>
+<P>
+</I></FONT><B>theLowSeventh</B><I><BR>
+&nbsp;&nbsp;&nbsp;WARN: the calculatin of the seven is done in every request<P>
+</I><I><FONT SIZE=+1><P>
+FP<P>
+<P>
+</I></FONT><B>allPitchClasses</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+transposing<P>
+<P>
+</I></FONT><B>beTransposedOneStepDown</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>beTransposedOneStepUp</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>OctaveDependentChord class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+cation<P>
+<P>
+</I></FONT><B>newWithValues: anArray</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>readFromFile</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>readFromFile: fileName</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>root: r notes: n</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+</I><I><FONT SIZE=+1><P>
+examples<P>
+<P>
+</I></FONT><B>example</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+</I><B>example1</B><I><BR>
+&nbsp;&nbsp;&nbsp;self example1<P>
+<P>
+</I><B>example2</B><I><BR>
+&nbsp;&nbsp;&nbsp;</I></FONT>
+</BODY>
+</HTML>

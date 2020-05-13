@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Stephen Travis Pope">
+   <TITLE>Class:				LorisSound</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFF0F0" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1><B>LorisSound<P>
+<P>
+</FONT></B></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Environment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Superclass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.SampledSound<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>MusicApps-Loris<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Instance variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>partials configuration outputSnd <BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Indexed variables:&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>objects<BR>
+</FONT></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>Imports:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>Siren.Loris.* <P>
+<P>
+<P>
+</FONT><I>A LorisSound represents a sound file and its Loris analysis data. It stores the sound samples in its inherited state.<P>
+<P>
+Instance Variables:<BR>
+&nbsp;&nbsp;&nbsp;partials&nbsp;&nbsp;&nbsp;<Pointer to an external data structure>  my data<BR>
+&nbsp;&nbsp;&nbsp;configuration&nbsp;&nbsp;&nbsp;<LorisAnalysisConfiguration>  my analysis settings<P>
+<P>
+<P>
+</I><I><FONT SIZE=+1><P>
+synthesis<P>
+<P>
+</I></FONT><B>playOriginal</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the source sound<P>
+<P>
+</I><B>playResynthesized</B><I><BR>
+&nbsp;&nbsp;&nbsp;Play the processed sound<P>
+<P>
+</I><B>synthesize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Resynthesize the receiver and answer a sound.<P>
+<P>
+</I><B>synthesize: rat toFile: nam</B><I><BR>
+&nbsp;&nbsp;&nbsp;Resynthesize the receiver and answer a sound.<P>
+</I><I><FONT SIZE=+1><P>
+printing/storing<P>
+<P>
+</I></FONT><B>copyTo: newBase</B><I><BR>
+&nbsp;&nbsp;&nbsp;Copy all the files associated with the receiver to the given basename<P>
+<P>
+</I><B>edit</B><I><BR>
+&nbsp;&nbsp;&nbsp;Open a LorisAnalysisEditor on the receiver.<P>
+<P>
+</I><B>loadConfiguration: confName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load the analysis configuration from a text file.<P>
+<P>
+</I><B>loadEnvelopes: envName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load the ampl/freq envelopes from a text file.<P>
+<P>
+</I><B>saveEnvelopes: envName</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load the ampl/freq envelopes from a text file.<P>
+<P>
+</I><B>saveSDIF: nam</B><I><BR>
+&nbsp;&nbsp;&nbsp;Save the receiver as an SDIF file.<P>
+</I><I><FONT SIZE=+1><P>
+analysis<P>
+<P>
+</I></FONT><B>analyze</B><I><BR>
+&nbsp;&nbsp;&nbsp;Run the Loris analyzer using the receiver's configuration, then coallate and distill;<BR>
+&nbsp;&nbsp;&nbsp;save SDIF and/or AIFF files and play the output, dependng on the configuration<P>
+<P>
+</I><B>harmonify</B><I><BR>
+&nbsp;&nbsp;&nbsp;Justify the receiver's partials to be harmonic overtones<P>
+<P>
+</I><B>loadEnvelopes: analyzer size: dsize</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load the ampl and freq envelopes frmo the analyzer<P>
+</I><I><FONT SIZE=+1><P>
+accessing<P>
+<P>
+</I></FONT><B>breakpointsDo: theBlock</B><I><BR>
+&nbsp;&nbsp;&nbsp;Iterate over all the partials evaluating the given 1-argument block for each breakpoint<P>
+<P>
+</I><B>configuration</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's LorisAnalysisConfiguration.<P>
+<P>
+</I><B>configuration: conf</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's analysis configuration to the given LorisAnalysisConfiguration.<P>
+<P>
+</I><B>maxAmplitude</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's max BP amplitudes.<P>
+<P>
+</I><B>outputSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's resynthesized output sound.<P>
+<P>
+</I><B>outputSound: aSound</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's resynthesized output sound.<P>
+<P>
+</I><B>partials</B><I><BR>
+&nbsp;&nbsp;&nbsp;Answer the receiver's Loris data (partial struct).<P>
+<P>
+</I><B>partials: dat</B><I><BR>
+&nbsp;&nbsp;&nbsp;Set the receiver's Loris data (partial struct).<P>
+</I><I><FONT SIZE=+1><P>
+processing<P>
+<P>
+</I></FONT><B>compressAmp: factor</B><I><BR>
+&nbsp;&nbsp;&nbsp;Compress the receiver's amplitudes by the given factor<P>
+<P>
+</I><B>dilateFrom: startMap to: targetMap</B><I><BR>
+&nbsp;&nbsp;&nbsp;Map the time from the start map to the targetMap.<P>
+<P>
+</I><B>maskAmp: threshold</B><I><BR>
+&nbsp;&nbsp;&nbsp;Apply the given threshold to the receiver's amplitudes<P>
+<P>
+</I><B>scaleAmp: ampEnv</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's amplitudes by the given linear envelope or scalar value<P>
+<P>
+</I><B>scaleBW: noizEnv</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's noise bandwidth by the given linear envelope or scalar value<P>
+<P>
+</I><B>scaleFreq: frqEnv</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's frequencies by the given linear envelope or scalar value<P>
+<P>
+</I><B>shiftPitch: frqEnv</B><I><BR>
+&nbsp;&nbsp;&nbsp;Scale the receiver's freq values by the given linear envelope<P>
+</I><I><FONT SIZE=+1><P>
+morphing<P>
+<P>
+</I></FONT><B>morph: target envelope: env</B><I><BR>
+&nbsp;&nbsp;&nbsp;Morph between the receiver and the target using the given envelope.<P>
+<P>
+</I></FONT>
+<FONT FACE="Times New Roman,Times"><FONT SIZE=+2>MetaClass:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT><FONT FACE="Arial,Helvetica"><FONT SIZE=+1>LorisSound class<P>
+<P>
+<P>
+</FONT><I><FONT SIZE=+1><P>
+instance creation<P>
+<P>
+</I></FONT><B>example: nam resolution: res</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new instance read from the given file; print out the analyzer settings,<BR>
+&nbsp;&nbsp;&nbsp;then coallate and distill; store an SDIF file and a re-syn file; answer the sound obj.<P>
+<P>
+</I><B>fromFile: nam configuration: config</B><I><BR>
+&nbsp;&nbsp;&nbsp;Create and answer a new instance read from the given file; use the default analyzer settings,<BR>
+&nbsp;&nbsp;&nbsp;then coallate and distill; edit or answer the sound obj.<P>
+<P>
+</I><B>fromSDIF: nam</B><I><BR>
+&nbsp;&nbsp;&nbsp;Load a new instance read from the given SDIF file.<P>
+</I><I><FONT SIZE=+1><P>
+credo<P>
+<P>
+</I></FONT><B>examples</B><I><BR>
+&nbsp;&nbsp;&nbsp;<P>
+<P>
+LorisSound fromFile: '1.2a1.aiff' configuration: LorisAnalysisConfiguration new<P>
+<P>
+LorisSound fromFile: '1.1a.aiff' configuration: <BR>
+&nbsp;&nbsp;&nbsp;(LorisAnalysisConfiguration res: 70 drift: 10 floor: -70 minF: 80 maxF: 140)<P>
+<P>
+[LorisSound fromFile: 'horns1c.aiff' configuration: <BR>
+&nbsp;&nbsp;&nbsp;((LorisAnalysisConfiguration res: 70 drift: 10 floor: -36 minF: 80 maxF: 140) bwScale: 6.0) ]<P>
+<P>
+(Sound fromFile: '1.2a1.out.aiff') edit<P>
+<P>
+LorisSound fromSDIF: '1.2a1.sdif' <BR>
+LorisSound fromSDIF: 'horns1c.sdif' <P>
+<P>
+<P>
+</I></FONT>
+</BODY>
+</HTML>
