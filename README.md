@@ -9,19 +9,19 @@ Siren is a programming framework and tool kit; the intended audience is Smalltal
 ## There are several elements to Siren:
 
 * the Smoke music representation language
-		(music magnitudes, events, event lists, generators, functions, and sounds);
+(music magnitudes, events, event lists, generators, functions, and sounds);
     
 * voices, schedulers and I/O drivers
-		(real-time and file-based voices, sound, score file, OSC, and MIDI I/O);
+(real-time and file-based voices, sound, score file, OSC, and MIDI I/O);
     
 * user interface components for musical applications
-		(UI framework, tools, and widgets);
+(UI framework, tools, and widgets);
     
 * several built-in applications 
-		(editors and browsers for Smoke objects); and
+(editors and browsers for Smoke objects); and
     
 * external library interfaces for streaming I/O and DSP math
-		(sound/MIDI I/O, fast FFT, CSL & Loris sound analysis/resynthesis packages )
+(sound/MIDI I/O, fast FFT, CSL & Loris sound analysis/resynthesis packages )
     
 ![Siren components](https://github.com/stpope/Siren9/blob/master/gifs-new/SirenOverview1Page-small.gif)
 
@@ -55,7 +55,7 @@ The read the demo code workbook (this text), go to,
 
 http://FASTLabInc.com/Siren/Siren7.5.Workbook.html
   
-	http://FASTLabInc.com/Siren/Siren7.5.Workbook.pdf
+http://FASTLabInc.com/Siren/Siren7.5.Workbook.pdf
 
 If you like to read manuals, take a look at,
 
