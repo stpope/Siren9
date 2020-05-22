@@ -6,6 +6,13 @@ Siren is a programming framework and tool kit; the intended audience is Smalltal
 
 ![Siren utility](https://github.com/stpope/Siren9/blob/master/gifs-new/SirenUtility.gif)
 
+## For the impatient, watch the videos
+
+Siren demo (2007) (55 minutes): https://vimeo.com/120751122
+
+NEW DEMO (May, 2020) CSL + Siren Integrated (32 min): https://vimeo.com/421319630
+
+
 ## There are several elements to Siren:
 
 * the Smoke music representation language
