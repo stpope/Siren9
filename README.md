@@ -12,7 +12,7 @@ Siren demo (2007) (55 minutes): https://vimeo.com/120751122
 
 NEW DEMO (May, 2020) CSL + Siren Integrated (32 min): https://vimeo.com/421319630
 
-## Or Read these conference papers and book chapter
+## Or read these conference papers and book chapter
 
 A Smalltalk-80-based Music Toolkit (1987): http://heaveneverywhere.com/stp/PostScript/HSTK_ICMC_1987_Paper.pdf
 
@@ -53,7 +53,8 @@ If you can read a bit of Smalltalk and want a quick tour before proceeding, read
 
 ## Where's More Documentation?
 
-Siren and its predecessors and components (ARA, DoubleTalk, HyperScore ToolKit, and MODE) are documented in several extended book chapters and articles:
+Siren and its predecessors and components (ARA, DoubleTalk, HyperScore ToolKit, and MODE) are documented in several extended book chapters and articles 
+(see the basic list of references above):
 
 * "Squeak: Open Personal Computing and Multimedia" (Mark Guzdial and Kim Rose, eds, Prentice-Hall, 2002);
     
