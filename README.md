@@ -12,6 +12,21 @@ Siren demo (2007) (55 minutes): https://vimeo.com/120751122
 
 NEW DEMO (May, 2020) CSL + Siren Integrated (32 min): https://vimeo.com/421319630
 
+## Or Read these conference papers and book chapter
+
+A Smalltalk-80-based Music Toolkit (1987): http://heaveneverywhere.com/stp/PostScript/HSTK_ICMC_1987_Paper.pdf
+
+Modeling Musical Structures as EventGenerators (1989): http://heaveneverywhere.com/stp/PostScript/icmc.89.egens.pdf
+
+The Musical Object Development Environment (MODE)--Ten Years of Music Software in Smalltalk (1994): http://heaveneverywhere.com/stp/PostScript/icmc.94.mode.pdf
+
+Music and Sound Processing in Squeak Using Siren (2002): http://heaveneverywhere.com/stp/PostScript/SirenBookChapter.pdf
+
+Recent Developments in Siren: Modeling, Control, and Interaction for Large-scale Distributed Music Software (2004): http://heaveneverywhere.com/stp/PostScript/Siren_ICMC_2004_Paper.pdf
+
+The Siren 7.5 Package for Music and Sound in Smalltalk (2004): http://heaveneverywhere.com/stp/PostScript/Siren7.5.pdf
+
+![Siren event list editor](https://github.com/stpope/Siren9/blob/master/gifs-new/hsview.gif)
 
 ## There are several elements to Siren:
 
