@@ -6,6 +6,28 @@ Siren is a programming framework and tool kit; the intended audience is Smalltal
 
 ![Siren utility](https://github.com/stpope/Siren9/blob/master/gifs-new/SirenUtility.gif)
 
+## For the impatient, watch the videos
+
+Siren demo (2007) (55 minutes): https://vimeo.com/120751122
+
+NEW DEMO (May, 2020) CSL + Siren Integrated (32 min): https://vimeo.com/421319630
+
+## Or read these conference papers and book chapter
+
+A Smalltalk-80-based Music Toolkit (1987): http://heaveneverywhere.com/stp/PostScript/HSTK_ICMC_1987_Paper.pdf
+
+Modeling Musical Structures as EventGenerators (1989): http://heaveneverywhere.com/stp/PostScript/icmc.89.egens.pdf
+
+The Musical Object Development Environment (MODE)--Ten Years of Music Software in Smalltalk (1994): http://heaveneverywhere.com/stp/PostScript/icmc.94.mode.pdf
+
+Music and Sound Processing in Squeak Using Siren (2002): http://heaveneverywhere.com/stp/PostScript/SirenBookChapter.pdf
+
+Recent Developments in Siren: Modeling, Control, and Interaction for Large-scale Distributed Music Software (2004): http://heaveneverywhere.com/stp/PostScript/Siren_ICMC_2004_Paper.pdf
+
+The Siren 7.5 Package for Music and Sound in Smalltalk (2004): http://heaveneverywhere.com/stp/PostScript/Siren7.5.pdf
+
+![Siren event list editor](https://github.com/stpope/Siren9/blob/master/gifs-new/hsview.gif)
+
 ## There are several elements to Siren:
 
 * the Smoke music representation language
@@ -31,7 +53,8 @@ If you can read a bit of Smalltalk and want a quick tour before proceeding, read
 
 ## Where's More Documentation?
 
-Siren and its predecessors and components (ARA, DoubleTalk, HyperScore ToolKit, and MODE) are documented in several extended book chapters and articles:
+Siren and its predecessors and components (ARA, DoubleTalk, HyperScore ToolKit, and MODE) are documented in several extended book chapters and articles 
+(see the basic list of references above):
 
 * "Squeak: Open Personal Computing and Multimedia" (Mark Guzdial and Kim Rose, eds, Prentice-Hall, 2002);
     
