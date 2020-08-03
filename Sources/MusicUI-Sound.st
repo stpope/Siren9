@@ -1,5 +1,417 @@
 
 
+Smalltalk.Siren defineClass: #SoundEditor
+	superclass: #{Siren.EditorModel}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'sound undoSound markers lastSelection changed '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Sound'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.SoundEditor class methodsFor: 'instance creation'!
+
+new
+	"Answer an initialized instance."
+
+	^super new initialize! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.SoundEditor comment:
+'A SoundEditor is the editor model for sound views.
+
+Instance Variables:
+	copyBuffer <Sound> the selected sound after a copy command
+	sound <Sound> the model sound
+	markers <OrderedCollection of: Integer> the sample indices of the selected points
+	selection1 <Integer> the sample index start of the current selection
+	selection2 <Integer> the stop of the selection
+	lastSelection <Integer> selection1 or 2, whichever was selected last
+	view <Siren.SoundView> my view
+	changed <Boolean> whether the sound has been changed
+'!
+
+!Siren.SoundEditor methodsFor: 'interaction'!
+
+copy
+	"Copy the current selection into the temporary copy buffer."
+
+	| selSnd |
+	selSnd := self selectedSound.
+	selSnd == nil
+		ifFalse: [copyBuffer := selSnd]!
+
+cut
+	"Cut out the current selection."
+
+	undoSound := sound.
+	sound := sound cutFrom: self selectionStart to: self selectionStop.
+	self changed.!
+
+file
+	"Save the receiver's sound to a file."
+
+	| name |
+	name := Dialog
+		request: 'Save copy buffer to:' 
+		initialAnswer: sound name.
+	name = '' ifTrue: [^nil].
+	copyBuffer == nil
+		ifTrue: [(SoundFile named: name) saveSound: self selectedSound]
+		ifFalse: [(SoundFile named: name) saveSound: copyBuffer].!
+
+newCopy
+	"Make a fresh copy of the receiver's model's sound."
+
+	self setModel: sound copy!
+
+play
+	"Play the receiver's sound"
+
+	((self selection1 ~~ nil) and: [self selection2 ~~ nil])
+		ifTrue: [SoundPort default playSamples: sound samples
+				rate: sound rate chans: sound channels 
+				from: (sound mapSampleIndex: self selection1) * sound sampleSize - 1
+				to: (sound mapSampleIndex: self selection2) * sound sampleSize - 1]
+		ifFalse: [changed 
+			ifTrue: [SoundPort default playSamples: sound samples
+					rate: sound rate chans: sound channels 
+					from: 1
+					to: sound samples sizeInBytes]
+			ifFalse: [sound play]]!
+
+playAll
+	"Play the receiver's sound"
+
+	sound play!
+
+playSelection
+	"Play the receiver's sound"
+
+	((self selection1 ~~ nil) and: [self selection2 ~~ nil])
+		ifTrue: [SoundPort default play: sound from: self selection1 to: self selection2]
+		ifFalse: [self playAll]!
+
+spawn
+	"Open a soundfile editor."
+
+	SoundView openOn: sound! !
+
+!Siren.SoundEditor methodsFor: 'accessing'!
+
+clearMarkers
+	"Flush the selection and markers"
+
+	markers := OrderedCollection new.
+	selections := Array new: 2.
+	self changed!
+
+list
+	^nil!
+
+mark: aSampleNumber
+	"Set the receiver's model"
+
+	markers == nil ifTrue: [markers := Dictionary new].
+	markers at: aSampleNumber printString asSymbol put: aSampleNumber!
+
+markChanged: aBoolean
+	"Set the flag to tell the receiver that the model's been changed."
+
+	changed := aBoolean!
+
+markers
+	"Answer the receiver's markers"
+
+	^markers!
+
+markers: aCollection
+	"Set the receiver's marker collection."
+
+	markers := aCollection!
+
+selection1
+	"Answer the receiver's primary selection."
+
+	selections isEmpty ifTrue: [^nil].
+	^selections at: 1!
+
+selection1: anInteger
+	"Set the receiver's primary selection."
+
+	selections at: 1 put: anInteger!
+
+selection2
+	"Answer the receiver's 2nd-ary selection."
+
+	selections isEmpty ifTrue: [^nil].
+	^selections at: 2!
+
+selection2: anInteger
+	"Set the receiver's secondary selection."
+
+	selections at: 2 put: anInteger!
+
+selectionStart
+	^self selection1 min: self selection2!
+
+selectionStop
+	^self selection1 max: self selection2!
+
+setModel: aModel
+	"Set the receiver's model."
+
+	self reinitialize.
+	super setModel: aModel.
+	self changed: #text!
+
+size
+	^sound size!
+
+sound
+	"Answer the receiver's model"
+
+	^sound!
+
+sound: aSound
+	"Set the receiver's model to be the given sound"
+
+	sound == nil ifFalse: [sound release].
+"	self reinitialize."
+	sound := aSound!
+
+view: aView
+	"Set the receiver's view to be the given view"
+
+	view := aView! !
+
+!Siren.SoundEditor methodsFor: 'initialize release'!
+
+initialize
+	"Set up the proper default values for the receiver."
+
+	markers := OrderedCollection new.
+	selections := Array new: 2.
+	changed := false!
+
+reinitialize
+	"Set up the proper default values for the receiver."
+
+	markers := OrderedCollection new.
+	selections := Array new: 2.
+	lastSelection := undoSound := copyBuffer := nil.
+	changed := false.
+	self changed! !
+
+!Siren.SoundEditor methodsFor: 'selection'!
+
+select: cursorX
+	"Take a mouse point and place a marker on the sound sample there."
+
+	|selection |
+	selection := (view sampleForX: cursorX).
+	view showMarkerAt: cursorX.
+"	Transcript show: cursorX printString, ' --> ', selection printString; cr."
+	markers add: selection.
+	self selection1 == nil
+		ifTrue: [selections at: 1 put: selection]
+		ifFalse: [selections at: 2 put: selection]!
+
+selectedSound
+	"Answer a sound from the receiver view's selection."
+
+	| s |
+	((self selection1 == nil) or: [self selection2 == nil])
+		ifTrue: [^nil].
+	Cursor wait showWhile:
+		[s := sound fromSample: self selection1 toSample: self selection2].
+	^s!
+
+setSelection: aMarker
+	"Set the primary selection to be the given marker."
+
+	lastSelection = self selection2
+		ifFalse: [selections at: 2 put: aMarker.
+				lastSelection := aMarker]
+		ifTrue: [selections at: 1 put: aMarker.
+				lastSelection := aMarker].
+	((self selection1 == nil) or: [self selection2 == nil])
+		ifTrue: [^self].
+	self selection1 > self selection2
+		ifTrue: [ | temp |
+			temp := self selection1.
+			selections at: 1 put: self selection2.
+			selections at: 2 put: temp].
+	view invalidate! !
+
+
+
+Smalltalk.Siren defineClass: #SoundFileViewer
+	superclass: #{Tools.FileTools.FileInformationViewer}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Sound'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.SoundFileViewer class methodsFor: 'accessing'!
+
+isInterestedInFile: aFilename
+
+	('*.aiff' match: aFilename tail) ifTrue: [^true].
+	('*.aif' match: aFilename tail) ifTrue: [^true].
+	('*.snd' match: aFilename tail) ifTrue: [^true].
+	('*.au' match: aFilename tail) ifTrue: [^true].
+	('*.wav' match: aFilename tail) ifTrue: [^true].
+	^false!
+
+tabLabel
+
+	^(#FileInformation << #labels >> 'Sound File') asString! !
+
+!Siren.SoundFileViewer class methodsFor: 'interface specs'!
+
+windowSpec
+	"Tools.UIPainter new openOnClass: self andSelector: #windowSpec"
+
+	<resource: #canvas>
+	^#(#{UI.FullSpec} 
+		#window: 
+		#(#{UI.WindowSpec} 
+			#label: 
+			#(#{Kernel.UserMessage} 
+				#key: #UnlabeledCanvas 
+				#defaultString: 'Unlabeled Canvas' 
+				#catalogID: #labels ) 
+			#bounds: #(#{Graphics.Rectangle} 640 427 1120 731 ) ) 
+		#component: 
+		#(#{UI.SpecCollection} 
+			#collection: #(
+				#(#{UI.TextEditorSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 0 0 0 0 0 1 -28 1 ) 
+					#name: #text 
+					#model: #textHolder 
+					#isReadOnly: true 
+					#tabRequiresControl: true ) 
+				#(#{UI.ActionButtonSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 2 0 -24 1 -2 0.2 -2 1 ) 
+					#name: #ActionButton1 
+					#model: #playFile 
+					#label: 'Play' 
+					#style: #systemDefault 
+					#defaultable: true ) 
+				#(#{UI.ActionButtonSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 2 0.2 -24 1 -2 0.4 -2 1 ) 
+					#name: #ActionButton2 
+					#model: #editFile 
+					#label: 'Edit' 
+					#style: #systemDefault 
+					#defaultable: true ) 
+				#(#{UI.ActionButtonSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 2 0.8 -24 1 -2 1 -2 1 ) 
+					#name: #ActionButton3 
+					#model: #deleteFile 
+					#label: 'Delete' 
+					#style: #systemDefault 
+					#defaultable: true ) 
+				#(#{UI.ActionButtonSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 2 0.6 -24 1 -2 0.8 -2 1 ) 
+					#name: #ActionButton4 
+					#model: #makeS7 
+					#label: 'make S7' 
+					#style: #systemDefault 
+					#defaultable: true ) 
+				#(#{UI.ActionButtonSpec} 
+					#layout: #(#{Graphics.LayoutFrame} 2 0.4 -24 1 -2 0.6 -2 1 ) 
+					#name: #ActionButton5 
+					#model: #loadFile 
+					#label: 'Load' 
+					#style: #systemDefault 
+					#defaultable: true ) ) ) )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.SoundFileViewer comment:
+'this is a plug-in for the FileBrowser for handling sound files'!
+
+!Siren.SoundFileViewer methodsFor: 'actions'!
+
+deleteFile
+	"Delete the selected sound file"
+
+	(Dialog confirm: 'Delete file ', self selectedFilename asString, '?') ifFalse: [^self].
+	self selectedFilename delete.
+	self updateForNoSelection.!
+
+editFile
+	"Edit the selected sound file"
+
+	(SampledSound fromFile: self selectedFilename asString) edit!
+
+loadFile
+	"Load the selected file into the SirenSession"
+
+	| nam |
+	nam := self selectedFilename asString.
+	SirenSession sound: nam put: (SampledSound fromFile: nam)!
+
+makeS7
+	"Take the selected file anem make an s7 directory for it"
+
+	| selected name base tail dirName directory |
+	directory := browser selectedDirectory.
+	selected := browser selectedFile.
+	selected isNil ifTrue: [^nil].
+	name := selected asString.
+	base := name asFilename base.
+	tail := name asFilename tail.
+	dirName := base, 's7'.
+	dirName asFilename exists
+		ifTrue: [(Dialog confirm: 'File already exists. Should I overwrite it?')
+			ifFalse: [^self]]
+		ifFalse: [dirName asFilename makeDirectory].
+	name asFilename moveTo: (dirName, Filename separatorString, tail).
+	Transcript show: 'Created s7 file ', dirName; cr.
+	directory refresh.
+	browser directoryTreeHolder list refresh: directory.
+	browser selectDirectory: dirName asFilename!
+
+playFile
+	"Play the selected sound file"
+
+	Sound playFile: self selectedFilename asString! !
+
+!Siren.SoundFileViewer methodsFor: 'accessing'!
+
+printBlurbFor: aFilename on: stream
+
+	| snd |
+	snd := SoundFile openFileNamed: aFilename asString.
+	self
+		print: (#Path << #labels >> 'Path') value: [aFilename asString] on: stream;
+		print: (#Size << #labels >> 'Size') value: [aFilename fileSize printString] on: stream;
+		print: (#LastModified << #labels >> 'Last modified') 
+				value: [self timestampStringAt: #modified in: aFilename dates] on: stream;
+
+		print: (#Created << #labels >> 'Rate') value: [snd rate printString] on: stream;
+		print: (#Created << #labels >> 'Duration') 
+				value: [(snd size / (snd rate * snd channels)) asFloat printString] on: stream;
+		print: (#Created << #labels >> 'Frames') value: [snd size printString] on: stream;
+		print: (#Created << #labels >> 'Channels') value: [snd channels printString] on: stream;
+		print: (#Created << #labels >> 'Format') value: [snd sampleFormat printString] on: stream! !
+
+
+
 Smalltalk.Siren defineClass: #SoundCanvas
 	superclass: #{UI.ApplicationModel}
 	indexedType: #none
@@ -138,6 +550,198 @@ zoomToZero
 	"This stub method was generated by UIDefiner"
 
 	^self! !
+
+
+
+Smalltalk.Siren defineClass: #SoundController
+	superclass: #{UI.ControllerWithMenu}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'selection tracking '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Sound'!
+
+Siren.SoundController comment:
+'Instances of SoundController are used with SoundViews and perform horizontal scrolling and menu operations'!
+
+!Siren.SoundController methodsFor: 'menu messages'!
+
+clearMarkers: ignored
+	"Flush the selection and markers"
+
+	model clearMarkers!
+
+copy
+	"copy the selected sound"
+
+	model copy!
+
+cut
+	"cut the selected segment out of the receiver's model sound"
+
+	model cut!
+
+doInspect
+	"Inspect the view."
+
+	model inspect!
+
+fadeIn
+	"Apply a ramp fade-in envelope to the receiver's sound."
+
+	| time |
+	time := Number readFrom: 
+		(ReadStream on: 
+			(Dialog request: 'Fade-in time' 
+					initialAnswer: '0.1')).
+	(time between: 0.001 and: 2.0) ifFalse: [^nil].
+	Cursor execute showWhile:
+		[model sound fadeInOver: time.
+		view redraw.
+		model markChanged: true]!
+
+fadeOut
+	"Apply a ramp fade-out envelope to the receiver's sound."
+
+	| time |
+	time := Number readFrom: 
+		(ReadStream on: 
+			(Dialog request: 'Fade-out time' 
+					initialAnswer: '0.1')).
+	(time between: 0.001 and: 2.0) ifFalse: [^nil].
+	Cursor execute showWhile:
+		[model sound fadeOutOver: time.
+		view redraw.
+		model markChanged: true]!
+
+file: ignored
+	"Open the file dialog"
+
+	model file!
+
+inspect: ignored
+	"Inspect the view."
+
+	model inspect!
+
+menu
+
+	^Menu
+		labelList: #(('play all' 'play selection') (copy cut paste) (accept cancel) (spawn inspect) 
+				('vertical scale' 'horizontal scale') ('fade in' 'fade out')(reset))
+		values: #(playAll playSelection copy cut paste 
+				accept cancel spawn doInspect
+				setVscale setHscale 
+				fadeIn fadeOut reset)!
+
+newCopy: ignored
+	"Make a fresh copy of the receiver's model's sound."
+
+	model newCopy!
+
+paste
+	"paste the selected sound into the model at the current selected marker"
+
+	model paste!
+
+play: ignored
+	"play the model"
+
+	model play!
+
+playAll
+	"play the model"
+
+	model play!
+
+playSelection
+	"play the model"
+
+	model playSelection!
+
+reset
+	"Clear the model's selections and markers"
+
+	model reinitialize!
+
+save
+	"Save a copy of the model to the disk."
+
+	model save!
+
+setHscale
+	"set the horizontal scale of the view"
+
+	| newStep |
+	newStep := Number readFrom: 
+		(ReadStream on: 
+			(Dialog request: 'New horizontal scale?' 
+					initialAnswer: view step printString)).
+	(newStep between: 1 and: 10000) ifFalse: [^nil].
+	view step: newStep.
+	view redraw!
+
+setVscale
+	"set the vertical scale of the view"
+
+	| newScale |
+	newScale := Number readFrom: 
+		(ReadStream on: 
+			(Dialog request: 'New vertical scale?'
+					initialAnswer: view scale printString)).
+	(newScale between: 1 and: 1000) ifFalse: [^nil].
+	view scale: newScale.
+	view redraw!
+
+spawn
+	"Edit a copy of the model."
+
+	model spawn! !
+
+!Siren.SoundController methodsFor: 'control defaults'!
+
+redButtonActivity
+	"set a marker with the red button"
+
+	| pt |
+	pt := self sensor cursorPoint.
+	self sensor waitNoButton.
+	pt y < 16
+		ifTrue: [^self selectMarkerAt: pt x].
+	model select: pt x!
+
+selectMarkerAt: x
+	"Select the marker at the given x value."
+
+	| markers sel |
+	markers := model markers.
+	sel := markers
+		detect: [ :m | ((view xForSample: m) - x) abs <= 8]
+		ifNone: [^nil].
+	model setSelection: sel! !
+
+!Siren.SoundController methodsFor: 'event driven'!
+
+exitEvent: anEvent 
+	"redraw the view to clear the position display."
+
+	super exitEvent: anEvent.
+	view invalidate!
+
+mouseMovedEvent: aMouseMovedEvent
+
+	view displayPosition: (self sensor cursorPointFor: aMouseMovedEvent)!
+
+redButtonPressedEvent: event
+	"set a marker with the red button"
+
+	| pt |
+	pt := event point.
+	self sensor waitNoButton.
+	pt y < 16
+		ifTrue: [^self selectMarkerAt: pt x].
+	model select: pt x! !
 
 
 
@@ -626,607 +1230,3 @@ displayOnGC: aGC
 			datum :=  ((slice at: bin) - doffset * dscale).		"sqrt to compress a bit"
 			aGC paint: (self colorForValue: datum).
 			aGC displayRectangle: (((counter - 1 * boxW) @ (bottom - (bin - 1 * boxH))) extent: ext)]]! !
-
-
-
-Smalltalk.Siren defineClass: #SoundFileViewer
-	superclass: #{Tools.FileTools.FileInformationViewer}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Sound'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.SoundFileViewer class methodsFor: 'accessing'!
-
-isInterestedInFile: aFilename
-
-	('*.aiff' match: aFilename tail) ifTrue: [^true].
-	('*.aif' match: aFilename tail) ifTrue: [^true].
-	('*.snd' match: aFilename tail) ifTrue: [^true].
-	('*.au' match: aFilename tail) ifTrue: [^true].
-	('*.wav' match: aFilename tail) ifTrue: [^true].
-	^false!
-
-tabLabel
-
-	^(#FileInformation << #labels >> 'Sound File') asString! !
-
-!Siren.SoundFileViewer class methodsFor: 'interface specs'!
-
-windowSpec
-	"Tools.UIPainter new openOnClass: self andSelector: #windowSpec"
-
-	<resource: #canvas>
-	^#(#{UI.FullSpec} 
-		#window: 
-		#(#{UI.WindowSpec} 
-			#label: 
-			#(#{Kernel.UserMessage} 
-				#key: #UnlabeledCanvas 
-				#defaultString: 'Unlabeled Canvas' 
-				#catalogID: #labels ) 
-			#bounds: #(#{Graphics.Rectangle} 640 427 1120 731 ) ) 
-		#component: 
-		#(#{UI.SpecCollection} 
-			#collection: #(
-				#(#{UI.TextEditorSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 0 0 0 0 0 1 -28 1 ) 
-					#name: #text 
-					#model: #textHolder 
-					#isReadOnly: true 
-					#tabRequiresControl: true ) 
-				#(#{UI.ActionButtonSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 2 0 -24 1 -2 0.2 -2 1 ) 
-					#name: #ActionButton1 
-					#model: #playFile 
-					#label: 'Play' 
-					#style: #systemDefault 
-					#defaultable: true ) 
-				#(#{UI.ActionButtonSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 2 0.2 -24 1 -2 0.4 -2 1 ) 
-					#name: #ActionButton2 
-					#model: #editFile 
-					#label: 'Edit' 
-					#style: #systemDefault 
-					#defaultable: true ) 
-				#(#{UI.ActionButtonSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 2 0.8 -24 1 -2 1 -2 1 ) 
-					#name: #ActionButton3 
-					#model: #deleteFile 
-					#label: 'Delete' 
-					#style: #systemDefault 
-					#defaultable: true ) 
-				#(#{UI.ActionButtonSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 2 0.6 -24 1 -2 0.8 -2 1 ) 
-					#name: #ActionButton4 
-					#model: #makeS7 
-					#label: 'make S7' 
-					#style: #systemDefault 
-					#defaultable: true ) 
-				#(#{UI.ActionButtonSpec} 
-					#layout: #(#{Graphics.LayoutFrame} 2 0.4 -24 1 -2 0.6 -2 1 ) 
-					#name: #ActionButton5 
-					#model: #loadFile 
-					#label: 'Load' 
-					#style: #systemDefault 
-					#defaultable: true ) ) ) )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.SoundFileViewer comment:
-'this is a plug-in for the FileBrowser for handling sound files'!
-
-!Siren.SoundFileViewer methodsFor: 'actions'!
-
-deleteFile
-	"Delete the selected sound file"
-
-	(Dialog confirm: 'Delete file ', self selectedFilename asString, '?') ifFalse: [^self].
-	self selectedFilename delete.
-	self updateForNoSelection.!
-
-editFile
-	"Edit the selected sound file"
-
-	(SampledSound fromFile: self selectedFilename asString) edit!
-
-loadFile
-	"Load the selected file into the SirenSession"
-
-	| nam |
-	nam := self selectedFilename asString.
-	SirenSession sound: nam put: (SampledSound fromFile: nam)!
-
-makeS7
-	"Take the selected file anem make an s7 directory for it"
-
-	| selected name base tail dirName directory |
-	directory := browser selectedDirectory.
-	selected := browser selectedFile.
-	selected isNil ifTrue: [^nil].
-	name := selected asString.
-	base := name asFilename base.
-	tail := name asFilename tail.
-	dirName := base, 's7'.
-	dirName asFilename exists
-		ifTrue: [(Dialog confirm: 'File already exists. Should I overwrite it?')
-			ifFalse: [^self]]
-		ifFalse: [dirName asFilename makeDirectory].
-	name asFilename moveTo: (dirName, Filename separatorString, tail).
-	Transcript show: 'Created s7 file ', dirName; cr.
-	directory refresh.
-	browser directoryTreeHolder list refresh: directory.
-	browser selectDirectory: dirName asFilename!
-
-playFile
-	"Play the selected sound file"
-
-	Sound playFile: self selectedFilename asString! !
-
-!Siren.SoundFileViewer methodsFor: 'accessing'!
-
-printBlurbFor: aFilename on: stream
-
-	| snd |
-	snd := SoundFile openFileNamed: aFilename asString.
-	self
-		print: (#Path << #labels >> 'Path') value: [aFilename asString] on: stream;
-		print: (#Size << #labels >> 'Size') value: [aFilename fileSize printString] on: stream;
-		print: (#LastModified << #labels >> 'Last modified') 
-				value: [self timestampStringAt: #modified in: aFilename dates] on: stream;
-
-		print: (#Created << #labels >> 'Rate') value: [snd rate printString] on: stream;
-		print: (#Created << #labels >> 'Duration') 
-				value: [(snd size / (snd rate * snd channels)) asFloat printString] on: stream;
-		print: (#Created << #labels >> 'Frames') value: [snd size printString] on: stream;
-		print: (#Created << #labels >> 'Channels') value: [snd channels printString] on: stream;
-		print: (#Created << #labels >> 'Format') value: [snd sampleFormat printString] on: stream! !
-
-
-
-Smalltalk.Siren defineClass: #SoundEditor
-	superclass: #{Siren.EditorModel}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'sound undoSound markers lastSelection changed '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Sound'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.SoundEditor class methodsFor: 'instance creation'!
-
-new
-	"Answer an initialized instance."
-
-	^super new initialize! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.SoundEditor comment:
-'A SoundEditor is the editor model for sound views.
-
-Instance Variables:
-	copyBuffer <Sound> the selected sound after a copy cmomand
-	sound <Sound> the model sound
-	markers <OrderedCollection of: Integer> the sample indices of the selected points
-	selection1 <Integer> the sample index start of the current selection
-	selection2 <Integer> the stop of the selection
-	lastSelection <Integer> selection1 or 2, whichever was selected last
-	view <Siren.SoundView> my view
-	changed <Boolean> whether the sound has been changed
-'!
-
-!Siren.SoundEditor methodsFor: 'interaction'!
-
-copy
-	"Copy the current selection into the temporary copy buffer."
-
-	| selSnd |
-	selSnd := self selectedSound.
-	selSnd == nil
-		ifFalse: [copyBuffer := selSnd]!
-
-cut
-	"Cut out the current selection."
-
-	undoSound := sound.
-	sound := sound cutFrom: self selectionStart to: self selectionStop.
-	self changed.!
-
-file
-	"Save the receiver's sound to a file."
-
-	| name |
-	name := Dialog
-		request: 'Save copy buffer to:' 
-		initialAnswer: sound name.
-	name = '' ifTrue: [^nil].
-	copyBuffer == nil
-		ifTrue: [(SoundFile named: name) saveSound: self selectedSound]
-		ifFalse: [(SoundFile named: name) saveSound: copyBuffer].!
-
-newCopy
-	"Make a fresh copy of the receiver's model's sound."
-
-	self setModel: sound copy!
-
-play
-	"Play the receiver's sound"
-
-	((self selection1 ~~ nil) and: [self selection2 ~~ nil])
-		ifTrue: [SoundPort default playSamples: sound samples
-				rate: sound rate chans: sound channels 
-				from: (sound mapSampleIndex: self selection1) * sound sampleSize - 1
-				to: (sound mapSampleIndex: self selection2) * sound sampleSize - 1]
-		ifFalse: [changed 
-			ifTrue: [SoundPort default playSamples: sound samples
-					rate: sound rate chans: sound channels 
-					from: 1
-					to: sound samples sizeInBytes]
-			ifFalse: [sound play]]!
-
-playAll
-	"Play the receiver's sound"
-
-	sound play!
-
-playSelection
-	"Play the receiver's sound"
-
-	((self selection1 ~~ nil) and: [self selection2 ~~ nil])
-		ifTrue: [SoundPort default play: sound from: self selection1 to: self selection2]
-		ifFalse: [self playAll]!
-
-spawn
-	"Open a soundfile editor."
-
-	SoundView openOn: sound! !
-
-!Siren.SoundEditor methodsFor: 'accessing'!
-
-clearMarkers
-	"Flush the selection and markers"
-
-	markers := OrderedCollection new.
-	selections := Array new: 2.
-	self changed!
-
-list
-	^nil!
-
-mark: aSampleNumber
-	"Set the receiver's model"
-
-	markers == nil ifTrue: [markers := Dictionary new].
-	markers at: aSampleNumber printString asSymbol put: aSampleNumber!
-
-markChanged: aBoolean
-	"Set the flag to tell the receiver that the model's been changed."
-
-	changed := aBoolean!
-
-markers
-	"Answer the receiver's markers"
-
-	^markers!
-
-markers: aCollection
-	"Set the receiver's marker collection."
-
-	markers := aCollection!
-
-selection1
-	"Answer the receiver's primary selection."
-
-	selections isEmpty ifTrue: [^nil].
-	^selections at: 1!
-
-selection1: anInteger
-	"Set the receiver's primary selection."
-
-	selections at: 1 put: anInteger!
-
-selection2
-	"Answer the receiver's 2nd-ary selection."
-
-	selections isEmpty ifTrue: [^nil].
-	^selections at: 2!
-
-selection2: anInteger
-	"Set the receiver's secondary selection."
-
-	selections at: 2 put: anInteger!
-
-selectionStart
-	^self selection1 min: self selection2!
-
-selectionStop
-	^self selection1 max: self selection2!
-
-setModel: aModel
-	"Set the receiver's model."
-
-	self reinitialize.
-	super setModel: aModel.
-	self changed: #text!
-
-size
-	^sound size!
-
-sound
-	"Answer the receiver's model"
-
-	^sound!
-
-sound: aSound
-	"Set the receiver's model to be the given sound"
-
-	sound == nil ifFalse: [sound release].
-"	self reinitialize."
-	sound := aSound!
-
-view: aView
-	"Set the receiver's view to be the given view"
-
-	view := aView! !
-
-!Siren.SoundEditor methodsFor: 'initialize release'!
-
-initialize
-	"Set up the proper default values for the receiver."
-
-	markers := OrderedCollection new.
-	selections := Array new: 2.
-	changed := false!
-
-reinitialize
-	"Set up the proper default values for the receiver."
-
-	markers := OrderedCollection new.
-	selections := Array new: 2.
-	lastSelection := undoSound := copyBuffer := nil.
-	changed := false.
-	self changed! !
-
-!Siren.SoundEditor methodsFor: 'selection'!
-
-select: cursorX
-	"Take a mouse point and place a marker on the sound sample there."
-
-	|selection |
-	selection := (view sampleForX: cursorX).
-	view showMarkerAt: cursorX.
-"	Transcript show: cursorX printString, ' --> ', selection printString; cr."
-	markers add: selection.
-	self selection1 == nil
-		ifTrue: [selections at: 1 put: selection]
-		ifFalse: [selections at: 2 put: selection]!
-
-selectedSound
-	"Answer a sound from the receiver view's selection."
-
-	| s |
-	((self selection1 == nil) or: [self selection2 == nil])
-		ifTrue: [^nil].
-	Cursor wait showWhile:
-		[s := sound fromSample: self selection1 toSample: self selection2].
-	^s!
-
-setSelection: aMarker
-	"Set the primary selection to be the given marker."
-
-	lastSelection = self selection2
-		ifFalse: [selections at: 2 put: aMarker.
-				lastSelection := aMarker]
-		ifTrue: [selections at: 1 put: aMarker.
-				lastSelection := aMarker].
-	((self selection1 == nil) or: [self selection2 == nil])
-		ifTrue: [^self].
-	self selection1 > self selection2
-		ifTrue: [ | temp |
-			temp := self selection1.
-			selections at: 1 put: self selection2.
-			selections at: 2 put: temp].
-	view invalidate! !
-
-
-
-Smalltalk.Siren defineClass: #SoundController
-	superclass: #{UI.ControllerWithMenu}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'selection tracking '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Sound'!
-
-Siren.SoundController comment:
-'Instances of SoundController are used with SoundViews and perform horizontal scrolling and menu operations'!
-
-!Siren.SoundController methodsFor: 'menu messages'!
-
-clearMarkers: ignored
-	"Flush the selection and markers"
-
-	model clearMarkers!
-
-copy
-	"copy the selected sound"
-
-	model copy!
-
-cut
-	"cut the selected segment out of the receiver's model sound"
-
-	model cut!
-
-doInspect
-	"Inspect the view."
-
-	model inspect!
-
-fadeIn
-	"Apply a ramp fade-in envelope to the receiver's sound."
-
-	| time |
-	time := Number readFrom: 
-		(ReadStream on: 
-			(Dialog request: 'Fade-in time' 
-					initialAnswer: '0.1')).
-	(time between: 0.001 and: 2.0) ifFalse: [^nil].
-	Cursor execute showWhile:
-		[model sound fadeInOver: time.
-		view redraw.
-		model markChanged: true]!
-
-fadeOut
-	"Apply a ramp fade-out envelope to the receiver's sound."
-
-	| time |
-	time := Number readFrom: 
-		(ReadStream on: 
-			(Dialog request: 'Fade-out time' 
-					initialAnswer: '0.1')).
-	(time between: 0.001 and: 2.0) ifFalse: [^nil].
-	Cursor execute showWhile:
-		[model sound fadeOutOver: time.
-		view redraw.
-		model markChanged: true]!
-
-file: ignored
-	"Open the file dialog"
-
-	model file!
-
-inspect: ignored
-	"Inspect the view."
-
-	model inspect!
-
-menu
-
-	^Menu
-		labelList: #(('play all' 'play selection') (copy cut paste) (accept cancel) (spawn inspect) 
-				('vertical scale' 'horizontal scale') ('fade in' 'fade out')(reset))
-		values: #(playAll playSelection copy cut paste 
-				accept cancel spawn doInspect
-				setVscale setHscale 
-				fadeIn fadeOut reset)!
-
-newCopy: ignored
-	"Make a fresh copy of the receiver's model's sound."
-
-	model newCopy!
-
-paste
-	"paste the selected sound into the model at the current selected marker"
-
-	model paste!
-
-play: ignored
-	"play the model"
-
-	model play!
-
-playAll
-	"play the model"
-
-	model play!
-
-playSelection
-	"play the model"
-
-	model playSelection!
-
-reset
-	"Clear the model's selections and markers"
-
-	model reinitialize!
-
-save
-	"Save a copy of the model to the disk."
-
-	model save!
-
-setHscale
-	"set the horizontal scale of the view"
-
-	| newStep |
-	newStep := Number readFrom: 
-		(ReadStream on: 
-			(Dialog request: 'New horizontal scale?' 
-					initialAnswer: view step printString)).
-	(newStep between: 1 and: 10000) ifFalse: [^nil].
-	view step: newStep.
-	view redraw!
-
-setVscale
-	"set the vertical scale of the view"
-
-	| newScale |
-	newScale := Number readFrom: 
-		(ReadStream on: 
-			(Dialog request: 'New vertical scale?'
-					initialAnswer: view scale printString)).
-	(newScale between: 1 and: 1000) ifFalse: [^nil].
-	view scale: newScale.
-	view redraw!
-
-spawn
-	"Edit a copy of the model."
-
-	model spawn! !
-
-!Siren.SoundController methodsFor: 'control defaults'!
-
-redButtonActivity
-	"set a marker with the red button"
-
-	| pt |
-	pt := self sensor cursorPoint.
-	self sensor waitNoButton.
-	pt y < 16
-		ifTrue: [^self selectMarkerAt: pt x].
-	model select: pt x!
-
-selectMarkerAt: x
-	"Select the marker at the given x value."
-
-	| markers sel |
-	markers := model markers.
-	sel := markers
-		detect: [ :m | ((view xForSample: m) - x) abs <= 8]
-		ifNone: [^nil].
-	model setSelection: sel! !
-
-!Siren.SoundController methodsFor: 'event driven'!
-
-exitEvent: anEvent 
-	"redraw the view to clear the position display."
-
-	super exitEvent: anEvent.
-	view invalidate!
-
-mouseMovedEvent: aMouseMovedEvent
-
-	view displayPosition: (self sensor cursorPointFor: aMouseMovedEvent)!
-
-redButtonPressedEvent: event
-	"set a marker with the red button"
-
-	| pt |
-	pt := event point.
-	self sensor waitNoButton.
-	pt y < 16
-		ifTrue: [^self selectMarkerAt: pt x].
-	model select: pt x! !

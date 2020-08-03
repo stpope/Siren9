@@ -1,72 +1,5 @@
 
 
-Smalltalk.Siren defineClass: #SoundEvent
-	superclass: #{Siren.ActionEvent}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: 'sound '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicIO-Sound'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.SoundEvent class methodsFor: 'instance creation'!
-
-sound: theSnd
-	"Create and answer a new sound event for the given sound"
-
-	| inst |
-	inst := self new initialize.
-	inst sound: theSnd.
-	^inst! !
-
-!Siren.SoundEvent class methodsFor: 'examples'!
-
-example
-	"Create and play an event list that plays the same file a few times."
-	"SoundEvent example"
-
-	| snd list |
-	snd := Sound fromFile: 'wet.snd'.
-	list := EventList newNamed: 'SndTest'.
-	0 to: 5 do:
-		[ :start |
-		list add: (SoundEvent sound: snd) at: start].
-	list play!
-
-exampleLoops
-	"Create and play an event list that loops 2 samples, with one of the loops starting with a rest."
-	"SoundEvent exampleLoops"
-
-	| list1 drum bass list2 |
-	drum := Sound fromFile: 'JAZZ02.AIF'.
-	list1 := EventList newNamed: 'Drums'.
-	list1 add: (SoundEvent sound: drum) at: 0.
-	list1 loop.
-
-	bass := Sound fromFile: 'JAZZ01.AIF'.
-	list2 := EventList newNamed: 'Bass'.
-	list2 add: (DurationEvent new duration: 2.99 sec).	"rest"
-	list2 add: (SoundEvent sound: bass).
-	list2 loop.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.SoundEvent methodsFor: 'accessing'!
-
-sound
-	^sound!
-
-sound: aSnd
-	sound := aSnd.
-	self duration: aSnd duration.
-	self action: [sound play]! !
-
-
-
 Smalltalk.Siren defineClass: #SoundFile
 	superclass: #{Siren.AbstractEvent}
 	indexedType: #objects
@@ -82,13 +15,13 @@ Siren.SoundFile defineSharedVariable: #SampleFormats
 	category: 'As yet unclassified'
 	initializer: nil!
 
-Siren.SoundFile defineSharedVariable: #FileFormats
+Siren.SoundFile defineSharedVariable: #Interface
 	private: false
 	constant: false
 	category: 'As yet unclassified'
 	initializer: nil!
 
-Siren.SoundFile defineSharedVariable: #Interface
+Siren.SoundFile defineSharedVariable: #FileFormats
 	private: false
 	constant: false
 	category: 'As yet unclassified'
@@ -1001,5 +934,72 @@ open
 	SirenUtility log: 'SmartAudio open returned: ', val printString level: 1.
 	isOpen := true.
 	self class instance: self! !
+
+
+
+Smalltalk.Siren defineClass: #SoundEvent
+	superclass: #{Siren.ActionEvent}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'sound '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicIO-Sound'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.SoundEvent class methodsFor: 'instance creation'!
+
+sound: theSnd
+	"Create and answer a new sound event for the given sound"
+
+	| inst |
+	inst := self new initialize.
+	inst sound: theSnd.
+	^inst! !
+
+!Siren.SoundEvent class methodsFor: 'examples'!
+
+example
+	"Create and play an event list that plays the same file a few times."
+	"SoundEvent example"
+
+	| snd list |
+	snd := Sound fromFile: 'wet.snd'.
+	list := EventList newNamed: 'SndTest'.
+	0 to: 5 do:
+		[ :start |
+		list add: (SoundEvent sound: snd) at: start].
+	list play!
+
+exampleLoops
+	"Create and play an event list that loops 2 samples, with one of the loops starting with a rest."
+	"SoundEvent exampleLoops"
+
+	| list1 drum bass list2 |
+	drum := Sound fromFile: 'JAZZ02.AIF'.
+	list1 := EventList newNamed: 'Drums'.
+	list1 add: (SoundEvent sound: drum) at: 0.
+	list1 loop.
+
+	bass := Sound fromFile: 'JAZZ01.AIF'.
+	list2 := EventList newNamed: 'Bass'.
+	list2 add: (DurationEvent new duration: 2.99 sec).	"rest"
+	list2 add: (SoundEvent sound: bass).
+	list2 loop.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.SoundEvent methodsFor: 'accessing'!
+
+sound
+	^sound!
+
+sound: aSnd
+	sound := aSnd.
+	self duration: aSnd duration.
+	self action: [sound play]! !
 
 #{Siren.SoundFile} initialize!

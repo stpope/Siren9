@@ -31,22 +31,12 @@ Siren.EventModifier comment:
 'EventModifier is the abstract superclass of the classes whose instances operate on event lists. There are operations that can be done eagerly (at definition time) or lazily (at run time)
 Instance Variables:
 	selector	<Symbol>  What aspect of the event list do I modify
-	function	<Function>  What function do I aply to the aspect
+	function	<Function>  What function do I apply to the aspect
 	scale	<Number>  Do I apply a scalar scale?
 	start	<Number>  When do I start in the event list?
 	stop	<Number>  When do I stop in the event list?
 	index	<Number>  Used internally to count through events
 '!
-
-!Siren.EventModifier methodsFor: 'application'!
-
-applyTo: evtList
-
-	evtList applyFunction: function to: selector startingAt: 0!
-
-valueIn: evtList at: time
-
-	^function at: (time / evtList dur)! !
 
 !Siren.EventModifier methodsFor: 'accessing'!
 
@@ -109,6 +99,16 @@ stop: anObject
 	"Set the receiver's instance variable 'stop' to be anObject."
 
 	stop := anObject! !
+
+!Siren.EventModifier methodsFor: 'application'!
+
+applyTo: evtList
+
+	evtList applyFunction: function to: selector startingAt: 0!
+
+valueIn: evtList at: time
+
+	^function at: (time / evtList dur)! !
 
 
 
@@ -139,7 +139,7 @@ example
 
 
 Siren.Swell comment:
-'A swell applies a fnuction to the amplitudes of events in an event list.'!
+'A swell applies a function to the amplitudes of events in an event list.'!
 
 !Siren.Swell methodsFor: 'initialize-release'!
 

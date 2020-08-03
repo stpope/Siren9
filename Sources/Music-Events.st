@@ -38,14 +38,22 @@ Instance variables:
 The global dictionary called Events can be used for sharing event instances.
 '!
 
-!Siren.AbstractEvent methodsFor: 'comparing'!
+!Siren.AbstractEvent methodsFor: 'initialize-release'!
 
-= anObject 
-	"Answer whether the receiver and the argument represent the same values."
+initialize
+	"Set up the default state of the receiver--add props. dict."
 
-	^anObject isEvent
-		ifFalse: [false]
-		ifTrue: [self properties = anObject properties]! !
+	properties := IdentityDictionary new.!
+
+release
+	"Flush the receiver."
+
+	properties == nil
+		ifFalse: [properties associationsDo: 
+			[ :a |
+			a key release.
+			a value release]].
+	properties  := nil! !
 
 !Siren.AbstractEvent methodsFor: 'accessing'!
 
@@ -114,109 +122,6 @@ version: obj
 	self propCheck.
 	^properties at: #version put: obj! !
 
-!Siren.AbstractEvent methodsFor: 'testing'!
-
-isEvent
-	"Answer true."
-
-	^true!
-
-isSound
-	"Answer false."
-
-	^false! !
-
-!Siren.AbstractEvent methodsFor: 'private'!
-
-propCheck
-	"Make sure the receiver has a property list dictionary."
-
-	properties == nil
-		ifTrue: [properties := IdentityDictionary new].! !
-
-!Siren.AbstractEvent methodsFor: 'initialize-release'!
-
-initialize
-	"Set up the default state of the receiver--add props. dict."
-
-	properties := IdentityDictionary new.!
-
-release
-	"Flush the receiver."
-
-	properties == nil
-		ifFalse: [properties associationsDo: 
-			[ :a |
-			a key release.
-			a value release]].
-	properties  := nil! !
-
-!Siren.AbstractEvent methodsFor: 'scheduling'!
-
-scheduleOn: aChannel
-	"Perform or interpret the receiver on the argument; override in subclasses."
-
-	aChannel schedule: self at: 0! !
-
-!Siren.AbstractEvent methodsFor: 'printing'!
-
-display: showHide field: filter on: stream
-
-	| obj |
-	(showHide includes: filter)
-		ifTrue: [obj := self at: filter ifAbsent: [''].
-			obj isString ifFalse: [obj := obj printString].
-			obj isEmpty
-				ifFalse: [stream isEmpty 
-						ifFalse: [stream nextPutAll: ': '].
-					stream nextPutAll: obj]]!
-
-displayField: filter on: stream
-
-	| obj |
-	stream isEmpty ifFalse: [stream nextPutAll: ': '].
-	obj := self at: filter ifAbsent: [''].
-	obj isString ifFalse: [obj := obj printString].
-	stream nextPutAll: obj!
-
-printOn: aStream 
-	"Format and print the receiver on the argument."
-
-	aStream nextPut: $(.
-	super printOn: aStream.
-	aStream space.
-	properties == nil
-		ifFalse: [properties associationsDo:
-				[ :ass |
-				aStream nextPutAll: ' (', ass key, ': ', ass value printString, ')']].
-	aStream nextPut: $); cr!
-
-storeOn: aStream 
-	"Format and store the source the receiver on the argument."
-
-	aStream nextPutAll: (properties == nil
-			ifTrue: ['(', self class name, '']
-			ifFalse: ['((', self class name, '']).
-	properties == nil
-		ifFalse: [aStream nextPutAll: ')'.
-			properties associationsDo: [ :ass |
-					aStream nextPutAll: ' at: '.
-					ass key storeOn: aStream.
-					aStream nextPutAll: ' put: '.
-					ass value storeOn: aStream.
-					aStream nextPut: $;; cr.]].
-	aStream nextPutAll: ')'!
-
-templateFields
-	"Answer the field names for the instances of the receiver class."
-
-	| coll |
-	coll := self class templateFields asOrderedCollection.
-	coll remove: #properties.
-	properties ifNotNil:
-		[coll addAll: properties keys].
-	^coll! !
-
 !Siren.AbstractEvent methodsFor: 'properties'!
 
 at: aProp
@@ -257,10 +162,10 @@ doesNotUnderstand: aMessage
 	(sel includes: $:)									"access property"
 		ifFalse: [(properties ~~ nil and: [properties includesKey: sel])
 			ifTrue: [^properties at: sel]]
-		ifTrue: [((sel occurrencesOf: $:) = 1)		"set property"
+		ifTrue: [((sel occurrencesOf: $:) = 1)			"set property"
 			ifTrue: [^self at: (sel copyUpTo: $:) asSymbol
 					put: (aMessage arguments at: 1)]].
-	^super doesNotUnderstand: aMessage					"otherwise"!
+	^super doesNotUnderstand: aMessage			"otherwise"!
 
 hasProperty: aSymbol
 	"Answer whether or not the receiver's property list dictionary includes the symbol as a key."
@@ -283,6 +188,101 @@ respondsTo: aSymbol
 		ifTrue: [^true].
 	(aSymbol occurrencesOf: $:) = 1 ifTrue: [^true].
 "	^false! !
+
+!Siren.AbstractEvent methodsFor: 'comparing'!
+
+= anObject 
+	"Answer whether the receiver and the argument represent the same values."
+
+	^anObject isEvent
+		ifFalse: [false]
+		ifTrue: [self properties = anObject properties]! !
+
+!Siren.AbstractEvent methodsFor: 'testing'!
+
+isEvent
+	"Answer true."
+
+	^true!
+
+isSound
+	"Answer false."
+
+	^false! !
+
+!Siren.AbstractEvent methodsFor: 'printing'!
+
+display: showHide field: filter on: stream
+
+	| obj |
+	(showHide includes: filter)
+		ifTrue: [obj := self at: filter ifAbsent: [''].
+			obj isString ifFalse: [obj := obj printString].
+			obj isEmpty
+				ifFalse: [stream isEmpty 
+						ifFalse: [stream nextPutAll: ': '].
+					stream nextPutAll: obj]]!
+
+displayField: filter on: stream
+
+	| obj |
+	stream isEmpty ifFalse: [stream nextPutAll: ': '].
+	obj := self at: filter ifAbsent: [''].
+	obj isString ifFalse: [obj := obj printString].
+	stream nextPutAll: obj!
+
+printOn: aStream 
+	"Format and print the receiver on the argument."
+
+	aStream nextPut: $(.
+	super printOn: aStream.
+	aStream space.
+	properties == nil
+		ifFalse: [properties associations asSortedCollection do:
+				[ :ass |
+				aStream nextPutAll: ' (', ass key, ': ', ass value printString, ')']].
+	aStream nextPut: $); cr!
+
+storeOn: aStream 
+	"Format and store the source the receiver on the argument."
+
+	aStream nextPutAll: (properties == nil
+			ifTrue: ['(', self class name, '']
+			ifFalse: ['((', self class name, '']).
+	properties == nil
+		ifFalse: [aStream nextPutAll: ')'.
+			properties associationsDo: [ :ass |
+					aStream nextPutAll: ' at: '.
+					ass key storeOn: aStream.
+					aStream nextPutAll: ' put: '.
+					ass value storeOn: aStream.
+					aStream nextPut: $;; cr.]].
+	aStream nextPutAll: ')'!
+
+templateFields
+	"Answer the field names for the instances of the receiver class."
+
+	| coll |
+	coll := self class templateFields asOrderedCollection.
+	coll remove: #properties.
+	properties ifNotNil:
+		[coll addAll: properties keys].
+	^coll! !
+
+!Siren.AbstractEvent methodsFor: 'scheduling'!
+
+scheduleOn: aChannel
+	"Perform or interpret the receiver on the argument; override in subclasses."
+
+	aChannel schedule: self at: 0! !
+
+!Siren.AbstractEvent methodsFor: 'private'!
+
+propCheck
+	"Make sure the receiver has a property list dictionary."
+
+	properties == nil
+		ifTrue: [properties := IdentityDictionary new].! !
 
 
 
@@ -314,6 +314,11 @@ example
 
 !Siren.DurationEvent class methodsFor: 'instance creation'!
 
+dur: aD
+	"Answer a DurationEvent instance initialized with the arguments."
+
+	^self new duration: aD!
+
 dur: aD voice: aVoice
 	"Answer a DurationEvent instance initialized with the arguments."
 
@@ -328,16 +333,6 @@ Siren.DurationEvent comment:
 Instance variables:
 	duration <Duration species or nil> duration--a relative time
 '!
-
-!Siren.DurationEvent methodsFor: 'comparing'!
-
-= anObject 
-	"Answer whether the receiver and the argument represent the same values."
-
-	^anObject isEvent
-		ifFalse: [false]
-		ifTrue: [((self duration = anObject duration) and:
-				[super = anObject])]! !
 
 !Siren.DurationEvent methodsFor: 'accessing'!
 
@@ -388,6 +383,16 @@ pitch
 
 	^nil!
 
+scaleDuration: newValue
+	"Scale the receiver's duration."
+
+	duration := duration * newValue!
+
+scaleDurationBy: newValue
+	"Scale the receiver's duration."
+
+	duration := duration * newValue!
+
 voice
 	"Answer the receiver's voice or some reasonable default."
 
@@ -398,6 +403,26 @@ voice: aValue
 	"Set the receiver's voice to the argument."
 
 	properties at: #voice put: aValue! !
+
+!Siren.DurationEvent methodsFor: 'initialize-release'!
+
+initialize
+	"Set up the default state of the receiver--add props. dict."
+
+	super initialize.
+	index := nil.
+	startedAt := nil.
+	realTime :=  true! !
+
+!Siren.DurationEvent methodsFor: 'comparing'!
+
+= anObject 
+	"Answer whether the receiver and the argument represent the same values."
+
+	^anObject isEvent
+		ifFalse: [false]
+		ifTrue: [((self duration = anObject duration) and:
+				[super = anObject])]! !
 
 !Siren.DurationEvent methodsFor: 'scheduling'!
 
@@ -469,16 +494,110 @@ storeOn: aStream
 					ass value storeOn: aStream.
 					aStream nextPut: $;; cr.]].
 	aStream nextPutAll: ')'! !
+
 
-!Siren.DurationEvent methodsFor: 'initialize-release'!
 
-initialize
-	"Set up the default state of the receiver--add props. dict."
+Smalltalk.Siren defineClass: #ActionEvent
+	superclass: #{Siren.DurationEvent}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'action '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Events'!
 
-	super initialize.
-	index := nil.
-	startedAt := nil.
-	realTime :=  true! !
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.ActionEvent class methodsFor: 'examples'!
+
+eventExample
+	"Demonstrate the creation of an ActionEvent."
+	"ActionEvent eventExample play"
+
+	^ActionEvent dur: 250 msec action: 
+		[ | gc |
+		gc := Window currentWindow graphicsContext.
+	 	gc paint: ColorValue red.
+		gc displayRectangle: ((20@20) extent: (20@20)).
+		(Delay forSeconds: 1) wait.
+		Window currentWindow refresh]!
+
+listExample
+	"Demonstrate the creation of an ActionEvent by making a list of events that draw rectangles on the top window."
+	"ActionEvent listExample"
+	"ActionEvent playExample"
+	"EventScheduler addClient: ActionEvent listExample; run"
+	"Window currentWindow refresh"
+
+	| list gc bounds rand |
+	list := EventList newAnonymous.
+	rand := Random new.
+	gc := Window currentWindow graphicsContext.
+	bounds := gc clippingBounds.
+	100 timesRepeat:
+		[list add: (ActionEvent dur: 50 msec action: 
+			[gc paint: ColorValue random.
+			gc displayRectangle: (((rand next * bounds width) truncated
+							@ (rand next * bounds height) truncated)
+				extent: ((rand next * 60) truncated)
+							@ (rand next * 60) truncated)])].
+	^list!
+
+playExample
+	"Demonstrate the performance of a list of ActionEvents."
+	"ActionEvent playExample"
+
+	EventScheduler instance addClient: self listExample in: (100 msec).
+	EventScheduler instance run.
+	(Delay forSeconds: 6) wait.
+	Window currentWindow refresh! !
+
+!Siren.ActionEvent class methodsFor: 'instance creation'!
+
+dur: aD action: actionBlock
+	"Answer an ActionEvent instance initialized with the arguments."
+
+	^self new duration: aD; action: actionBlock!
+
+dur: aD block: actionBlock
+	"Answer an ActionEvent instance initialized with the arguments."
+
+	^self new duration: aD; action: actionBlock! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.ActionEvent comment:
+'An instance of ActionEvent evaluates a Smalltalk block when scheduled.
+
+Instance variables:
+	action  <Block or Value> Something to do
+'!
+
+!Siren.ActionEvent methodsFor: 'accessing'!
+
+action
+	"Answer the receiver's 'action'."
+
+	^action!
+
+action: anObject
+	"Set the receiver's instance variable 'action' to be anObject."
+
+	action := anObject! !
+
+!Siren.ActionEvent methodsFor: 'scheduling'!
+
+play
+	"Play the receiver by executing its action block."
+	
+	^action value!
+
+playAt: aTime
+	"Play the receiver by executing its action block."
+	
+	^action value! !
 
 
 
@@ -624,17 +743,6 @@ Instance variables:
 	voice <Voice, Symbol or Number> voice--a voice or key
 '!
 
-!Siren.MusicEvent methodsFor: 'comparing'!
-
-= anObject 
-	"Answer whether the receiver and the argument represent the same values."
-
-	^anObject isEvent
-		ifFalse: [false]
-		ifTrue: [(self pitch = anObject pitch) and: 
-			[(self loudness = anObject loudness) and: 
-				[super = anObject]]]! !
-
 !Siren.MusicEvent methodsFor: 'accessing'!
 
 ampl
@@ -693,6 +801,17 @@ voice: aValue
 
 	voice := aValue! !
 
+!Siren.MusicEvent methodsFor: 'comparing'!
+
+= anObject 
+	"Answer whether the receiver and the argument represent the same values."
+
+	^anObject isEvent
+		ifFalse: [false]
+		ifTrue: [(self pitch = anObject pitch) and: 
+			[(self loudness = anObject loudness) and: 
+				[super = anObject]]]! !
+
 !Siren.MusicEvent methodsFor: 'scheduling'!
 
 playOn: aVoice at: aTime
@@ -721,16 +840,19 @@ printTerseOn: aStream
 	duration == nil
 		ifFalse: [aStream nextPutAll: duration printString]. 
 	pitch == nil
-		ifFalse: [aStream nextPutAll: ' ', pitch printString].
+		ifFalse: [aStream nextPutAll: '	', pitch printString].
 	loudness == nil
-"		ifFalse: [aStream nextPutAll: ' (l: ', loudness value printString,')']."
 		ifFalse: [aStream nextPutAll: ' ', loudness printString].
 	voice == nil
-		ifFalse: [aStream nextPutAll: ' (v: ', voice printString, ')'].
+		ifFalse: [aStream nextPutAll: '	(v: ', voice printString, ')'].
 	properties == nil
-		ifFalse: [properties associationsDo:
+		ifFalse: [properties associations asSortedCollection do:
 				[ :ass |
-				aStream nextPutAll: ' (', ass key, ': ', ass value printString, ')']].
+				ass value isLPReal
+					ifTrue: [aStream nextPutAll: '	(', ass key, ': '.
+						ass value printOn: aStream digits: 4.
+						 aStream nextPutAll: ')']
+					ifFalse: [aStream nextPutAll: '	(', ass key, ': ', ass value printString, ')']]].
 	aStream "nextPutAll: ')';" cr!
 
 printVerboseOn: aStream 
@@ -830,6 +952,140 @@ Smalltalk.Siren defineClass: #EventList
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
+
+!Siren.EventList class methodsFor: 'class initialization'!
+
+flush
+	"Erase the shared EventList dictionary and try to clean up all events."
+	"EventList flush."
+
+	SirenSession initializeEventLists.
+	EventList allInstancesDo: [ :el | el release].
+	ObjectMemory garbageCollect.
+	Transcript cr; show: EventList instanceCount printString, ' event lists  	',
+			MusicEvent instanceCount printString, ' events  	',
+			Duration instanceCount printString, ' durations'; cr.!
+
+initialize
+	"Initialize the shared EventList dictionary."
+	"EventList initialize."
+	"EventList someInstance"
+
+	SirenSession initializeEventLists!
+
+storeAll
+	"Write out all event lists."
+	"EventList storeAll"
+
+	| fname fstream |
+	fname := Dialog request: 'File name for storing event lists'
+			initialAnswer: 'events.st'.
+	fname isEmpty ifTrue: [^self].
+	fstream := (Filename named: fname) writeStream.
+	fstream ifNil: [^self].
+	Cursor write showWhile:
+		[SirenSession eventLists do:
+			[ :list |
+			list storeOn: fstream.
+			fstream cr; cr]].
+	fstream close.! !
+
+!Siren.EventList class methodsFor: 'instance creation'!
+
+basicNew: ignored
+	"Create and answer a new default-named instance of me"
+
+	^self basicNew!
+
+fromFile: theName
+	"Create and answer a new default un-named (and therefore un-persistent) instance of me"
+	"EventList fromFile: (SirenUtility findFile: 'CALYPSO.MID')"
+
+	| tail fName |
+	tail := theName asFilename tail.
+	fName := SirenUtility findFile: theName.
+	[(('*.mid' match: tail) or: ['*.midi' match: tail])
+		ifTrue: [ | el mv |
+			el := EventList newAnonymous.
+			mv := MIDIFileVoice newOn: fName.
+			mv readOnto: el.
+			mv close.
+			^el].
+	(('*.ev' match: tail) or: ['*.sm' match: tail])
+		 ifTrue: [ | fn | 
+			fn := (Filename named: fName).
+			fn fileIn.
+			^EventList named: fn base]]
+	on: Error
+	do: [ :ex | ex pass. Transcript show: 'Error reading score file ', theName; cr. ^nil]!
+
+named: myName fromPitches: pitchCollection
+	"Answer an event list made with the given collection of pitches."
+	"EventList named: (EventList nextName) fromPitches: #(36 38 40 43 45)"
+
+	| me |
+	me := self newNamed: (myName asSymbol).
+	pitchCollection do:
+		[ :item |
+		me add: (me defaultEventClass pitch: item)
+			at: 0].
+	^me!
+
+named: myName fromSelectors: selArray values: valueArrayArray
+	"Answer an event list made with the given collection of values applied to the given array of selectors."
+	"EventList named: 'phrase1'  
+		fromSelectors: #(duration: loudness: phoneme:) 
+		values: (Array with: #(595 545 545 540 570 800 540) 
+				with: #(0.8 0.6 0.4 0.3 0.4 0.5 0.2) 
+				with: #(dun kel kam mer ge sprae che))"
+
+	| me size evt start selector data|
+	me := self newNamed: (myName asSymbol).
+	size := (valueArrayArray detect: [ :d | d hasItems]) size.
+	1 to: size do:
+		[ :evtIndex |
+		evt := me defaultEventClass new.
+		start := nil.
+		1 to: (selArray size) do:
+			[ :selIndex |
+			selector := selArray at: selIndex.
+			data := valueArrayArray at: selIndex.
+			selector == #start: 
+				ifTrue: [start := (Duration value: (data at: evtIndex))]
+				ifFalse: [data hasItems
+					ifTrue: [evt perform: selector with: (data at: (evtIndex - 1 \\ data size + 1))]
+					ifFalse: [evt perform: selector with: data]]].
+		start == nil
+			ifTrue: [me add: evt]
+			ifFalse: [me add: evt at: start]].
+	^me!
+
+named: myName fromStartTimes: timeCollection
+	"Answer an event list with the given collection of relative start times."
+	"EventList named: (EventList nextName) fromStartTimes: #(0 500 1000 1500 2000 2500 3000)"
+
+	| me |
+	me := self newNamed: (myName asSymbol).
+	timeCollection do:
+		[ :item |
+		me add: (me defaultEventClass new)
+			at: item].
+	^me!
+
+new
+	"Create and answer a new default-named instance of me"
+
+	^self newAnonymous!
+
+new: ignored
+	"Create and answer a new default-named instance of me"
+
+	^self newAnonymous!
+
+newAnonymous
+	"Create and answer a new default un-named (and therefore un-persistent) instance of me"
+
+	^super new initializeAnonymous! !
 
 !Siren.EventList class methodsFor: 'examples'!
 
@@ -1026,7 +1282,7 @@ scaleFrom: start to: stop in: dur
 		ifFalse: [0 to: size do: [ :i | arr4 at: i+1 put: (start + i)]].
 	^EventList named: EventList nextName  
 		fromSelectors: #(duration: loudness: pitch:) 
-		values: (Array with: ndur with: 127 with: arr4)!
+		values: (Array with: ndur with: 120 with: arr4)!
 
 sentenceExample
 	"Create an event list for a beautiful sentence."
@@ -1073,43 +1329,6 @@ wordExample
 				with: #(0.8 0.4 0.5 0.3 0.2 0.7 0.1) 
 				with: #(#dun #kel #kam #mer #ge #sprae #che)).
 	(EventList named: 'phrase1') inspect! !
-
-!Siren.EventList class methodsFor: 'class initialization'!
-
-flush
-	"Erase the shared EventList dictionary and try to clean up all events."
-	"EventList flush."
-
-	SirenSession initializeEventLists.
-	EventList allInstancesDo: [ :el | el release].
-	ObjectMemory garbageCollect.
-	Transcript cr; show: EventList instanceCount printString, ' event lists  	',
-			MusicEvent instanceCount printString, ' events  	',
-			Duration instanceCount printString, ' durations'; cr.!
-
-initialize
-	"Initialize the shared EventList dictionary."
-	"EventList initialize."
-	"EventList someInstance"
-
-	SirenSession initializeEventLists!
-
-storeAll
-	"Write out all event lists."
-	"EventList storeAll"
-
-	| fname fstream |
-	fname := Dialog request: 'File name for storing event lists'
-			initialAnswer: 'events.st'.
-	fname isEmpty ifTrue: [^self].
-	fstream := (Filename named: fname) writeStream.
-	fstream ifNil: [^self].
-	Cursor write showWhile:
-		[SirenSession eventLists do:
-			[ :list |
-			list storeOn: fstream.
-			fstream cr; cr]].
-	fstream close.! !
 
 !Siren.EventList class methodsFor: 'named constants'!
 
@@ -1158,121 +1377,453 @@ nextName
 			whileTrue: [temp := temp + 1].
 	^'te', temp printString asSymbol! !
 
-!Siren.EventList class methodsFor: 'instance creation'!
-
-basicNew: ignored
-	"Create and answer a new default-named instance of me"
-
-	^self basicNew!
-
-fromFile: theName
-	"Create and answer a new default un-named (and therefore un-persistent) instance of me"
-	"EventList fromFile: (SirenUtility findFile: 'CALYPSO.MID')"
-
-	| tail fName |
-	tail := theName asFilename tail.
-	fName := SirenUtility findFile: theName.
-	[(('*.mid' match: tail) or: ['*.midi' match: tail])
-		ifTrue: [ | el mv |
-			el := EventList newAnonymous.
-			mv := MIDIFileVoice newOn: fName.
-			mv readOnto: el.
-			mv close.
-			^el].
-	(('*.ev' match: tail) or: ['*.sm' match: tail])
-		 ifTrue: [ | fn | 
-			fn := (Filename named: fName).
-			fn fileIn.
-			^EventList named: fn base]]
-	on: Error
-	do: [ :ex | ex pass. Transcript show: 'Error reading score file ', theName; cr. ^nil]!
-
-named: myName fromPitches: pitchCollection
-	"Answer an event list made with the given collection of pitches."
-	"EventList named: (EventList nextName) fromPitches: #(36 38 40 43 45)"
-
-	| me |
-	me := self newNamed: (myName asSymbol).
-	pitchCollection do:
-		[ :item |
-		me add: (me defaultEventClass pitch: item)
-			at: 0].
-	^me!
-
-named: myName fromSelectors: selArray values: valueArrayArray
-	"Answer an event list made with the given collection of values applied to the given array of selectors."
-	"EventList named: 'phrase1'  
-		fromSelectors: #(duration: loudness: phoneme:) 
-		values: (Array with: #(595 545 545 540 570 800 540) 
-				with: #(0.8 0.6 0.4 0.3 0.4 0.5 0.2) 
-				with: #(dun kel kam mer ge sprae che))"
-
-	| me size evt start selector data|
-	me := self newNamed: (myName asSymbol).
-	size := (valueArrayArray detect: [ :d | d hasItems]) size.
-	1 to: size do:
-		[ :evtIndex |
-		evt := me defaultEventClass new.
-		start := nil.
-		1 to: (selArray size) do:
-			[ :selIndex |
-			selector := selArray at: selIndex.
-			data := valueArrayArray at: selIndex.
-			selector == #start: 
-				ifTrue: [start := (Duration value: (data at: evtIndex))]
-				ifFalse: [data hasItems
-					ifTrue: [evt perform: selector with: (data at: (evtIndex - 1 \\ data size + 1))]
-					ifFalse: [evt perform: selector with: data]]].
-		start == nil
-			ifTrue: [me add: evt]
-			ifFalse: [me add: evt at: start]].
-	^me!
-
-named: myName fromStartTimes: timeCollection
-	"Answer an event list with the given collection of relative start times."
-	"EventList named: (EventList nextName) fromStartTimes: #(0 500 1000 1500 2000 2500 3000)"
-
-	| me |
-	me := self newNamed: (myName asSymbol).
-	timeCollection do:
-		[ :item |
-		me add: (me defaultEventClass new)
-			at: item].
-	^me!
-
-new
-	"Create and answer a new default-named instance of me"
-
-	^self newAnonymous!
-
-new: ignored
-	"Create and answer a new default-named instance of me"
-
-	^self newAnonymous!
-
-newAnonymous
-	"Create and answer a new default un-named (and therefore un-persistent) instance of me"
-
-	^super new initializeAnonymous! !
-
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
 Siren.EventList comment:
 'Instances of class EventList (subclass of DurationEvent), are used for holding onto multiple timed events. EventLists are events themselves and can have arbitrary properties as well as a collection of (relative start time -> event) associations.
 
-Class EventList implements much collection-style protocol for event processing, as well as having special block application methods. All EventList algorithms are recurrsive in order to handle arbitrarily-deep hierarchical EventLists (possible because EventList is a subclass of DurationEvent). The class also has numerous powerful and flexible instance creation methods.
+Class EventList implements much collection-style protocol for event processing, as well as having special block application methods. All EventList algorithms are recursive in order to handle arbitrarily-deep hierarchical EventLists (possible because EventList is a subclass of DurationEvent). The class also has numerous powerful and flexible instance creation methods.
 
 Instance Variables:
 	events <SortedCollection of EventAssociations (Duration => MEvent)> 
 				the list''s events, time/event associations sorted by relative start times
 	index <Integer> the current position (used in scheduling)
-	startedAt <Integer> the clock value when I sterted
+	startedAt <Integer> the clock value when I started
 
 Standard properties are #tempoScale for the tempo scaling factor (used by the CMN editors as the MS/whole note scale), and #code (#duration, #delta, or #startStop) to support different event coding schemes. The class also supports typed links to other event lists, e.g., "eList1 isTonicAnswerOf: eList2" or "eList1 hasPreviousVersion: eList2", which can be very useful properties in editors and browsers.
 
 The global dictionary EventLists holds onto instances that can be referenced with their name symbols; these can have gensym-like names such as #temp.23. Creating a named EventList automatically adds it to the global dictionary. There are tools for browsing and maintaining this dictionary.
 '!
+
+!Siren.EventList methodsFor: 'initialize-release'!
+
+empty
+	"Throw away the receiver's events."
+
+	self duration: 0.
+	self index: 1.
+	self events: SortedCollection new.!
+
+initializeAnonymous
+	"Initialize an un-named instance with default state."
+
+	self initialize.
+	self propCheck.
+	duration := Duration value: 0.
+	self name: #anonymous.
+	self events: SortedCollection new.
+	index := nil.!
+
+initializeNamed: aName
+	"Initialize a named instance with default state."
+
+	self initializeAnonymous.
+	self name: aName asSymbol.
+	SirenSession eventList: aName asSymbol put: self!
+
+release
+	"Flush the receiver."
+
+	super release.
+	events == nil
+		ifFalse: [events do: [ :e | e release]].
+	events := nil.
+	index := nil! !
+
+!Siren.EventList methodsFor: 'accessing'!
+
+addModifier: aModifier
+	"Add the given event modifier to the receiver's special modifier collection"
+
+	properties == nil
+		ifTrue: [properties := Dictionary new].
+	(properties includesKey: #modifiers)
+		ifFalse: [properties at: #modifiers put: OrderedCollection new].
+	(properties at: #modifiers) add: aModifier!
+
+code
+	"Answer a symbol about the receiver's events' coding, usually #durations or #noteOnOff"
+
+	^properties at: #code ifAbsent: [nil]!
+
+code: aSymbol
+	"Set the code about the receiver's events, usually #durations or #noteOnOff"
+
+	self propCheck.
+	properties at: #code put: aSymbol!
+
+computeDuration
+	"Compute and answer the receiver's duration."
+
+	| du |
+	du := events first key + events first value duration.
+	events do:
+		[ :assoc | | eDu |
+			eDu := assoc key + assoc value duration.
+			du := du max: eDu].
+	self duration: du.
+	^self duration!
+
+deepCopy
+	"Answer a careful deep copy."
+
+	| newEL |
+	newEL := EventList newAnonymous.
+	self name == nil
+		ifFalse: [newEL name: self name deepCopy asSymbol].	
+	properties == nil ifFalse:
+		[properties associationsDo: [ :anAssociation |
+			newEL at: anAssociation key copy put: anAssociation value copy]].
+	self events do: [ :anAssociation |
+		newEL add: ((anAssociation key copy) => (anAssociation value copy)) ].
+	^newEL!
+
+defaultEventClass
+	"Answer the default note event class."
+
+	^MusicEvent!
+
+duration
+	"Answer the receiver's duration."
+
+	| du |
+	du := events first key + events first value duration.
+	events do:
+		[ :assoc | | eDu |
+			eDu := assoc key + assoc value duration.
+			du := du max: eDu].
+	^du!
+
+flushVoices
+	"Set all the events voices to nil"
+
+	self eventsDo: [ :ev | ev voice: nil]!
+
+name
+	"Answer the receiver's name."
+
+	self propCheck.
+	^properties at: #name ifAbsent: ['']!
+
+name: aName
+	"Set the receiver's name."
+
+	properties at: #name put: aName asSymbol!
+
+next
+	"Answer the next event in the list."
+
+	index ifNil: [index := 0].
+	^self events at: (index := index + 1)!
+
+removeModifier: aModifier
+	"Remove the given event modifier from the receiver's collection."
+
+	^(properties == nil or: [(properties includesKey: #modifiers) not])
+		ifTrue: [nil]
+		ifFalse: [(properties at: #modifiers) remove: aModifier ifAbsent: [nil]]!
+
+shallowCopy
+	"Answer a shallow copy of the receiver's events."
+
+	| newEL |
+	newEL := super shallowCopy.
+	newEL events: SortedCollection new.
+	self events do: 
+		[ :anAssociation |
+		newEL add: ((anAssociation key copy) => (anAssociation value copy))].
+	^newEL!
+
+size
+	"Answer the number of events in the receiver."
+
+	events ifNil: [^0].
+	^events size!
+
+tempo: someValue
+	"Set the tempo to scale the events by."
+
+	self propCheck.
+	properties at: #tempoScale put: someValue!
+
+voices
+	"Answer the collection of voices used by thereceiver  event list."
+	"EventList randomExample voices"
+
+	| coll ev |
+	coll := OrderedCollection new.
+	events do:
+		[ :ass |
+		ev := ass event.
+		ev voice ifNotNil:
+			[(coll includes: ev voice)
+				ifFalse: [coll add: ev voice]]].
+	^coll! !
+
+!Siren.EventList methodsFor: 'event accessing'!
+
+, anEorA
+	"Add a new event or association to the receiver."
+
+	^self add: anEorA!
+
+add: anEorA
+	"Add a new event or association to the receiver."
+
+	| newAss val |
+	anEorA isAssociation
+		ifTrue: [newAss := anEorA key copy => anEorA value.
+			val := anEorA value.
+			newAss key species == Duration
+				ifFalse: [newAss key: (Duration value: newAss key)].
+			val isEvent
+				ifFalse: [val isMusicMagnitude
+					ifTrue: [val := (self defaultEventClass new)
+							perform: val species propertyName with: val]
+					ifFalse: [self error: 'Unknown EventAssociation value']].
+			self events add: newAss.
+			val duration == nil
+				ifTrue: [self duration: (duration max: newAss key)]
+				ifFalse: [self duration: (duration max: (newAss key + val duration))]]
+		ifFalse: [self events add: (duration => anEorA).
+			anEorA duration ifNotNil: [self duration: duration + anEorA duration]].
+	self changed: #added!
+
+add: anEvent at: aTime
+	"Add a new event to the receiver at the given relative start time."
+
+	| t |
+	t := Duration value: aTime.
+	self events add: (t => anEvent).
+	anEvent duration == nil
+		ifFalse: [duration := duration max: (t + anEvent duration)].
+	self changed: #added!
+
+addAll: anEventList
+	"Add the given event list's events to the receiver."
+
+	anEventList events do:
+		[ :assoc |
+			self events add: (assoc key copy => assoc value copy).
+			assoc value duration == nil 
+				ifTrue: [duration := duration max: assoc key]
+				ifFalse: [duration := duration 
+							max: (assoc key + assoc value duration)]].
+	self changed: #added!
+
+addAll: anEventList at: aTime
+	"Add the given event list's events to the receiver."
+
+	anEventList events do:
+		[ :assoc |
+			self events add: (assoc key + aTime => assoc value).		"need to make copies?"
+			assoc value duration == nil 
+				ifTrue: [duration := duration max: assoc key]
+				ifFalse: [duration := duration 
+							max: (assoc key + assoc value duration)]].
+	self changed: #added!
+
+addAllAtEnd: anEventList
+	"Add the given event list's events to the receiver."
+
+	| aTime |
+	aTime := self duration.
+	anEventList events do:
+		[ :assoc |
+			self events add: (assoc key copy + aTime => assoc value copy).
+			assoc value duration == nil 
+				ifTrue: [duration := duration max: assoc key]
+				ifFalse: [duration := duration 
+							max: (assoc key + assoc value duration)]].
+	self changed: #added!
+
+atRandom
+	"Answer a random event value"
+
+	^events atRandom value!
+
+eventKeys
+	"Answer the keys (durations) of the receiver's eventDictionary."
+
+	^events keys!
+
+eventNear: aPoint
+	"Answer an event within a reasonable distance (100 msec.) of the given point's x."
+
+	| margin oldAss |
+	(events includesKey: aPoint x)
+		ifTrue: [^events at: aPoint x].
+	margin := 100. "ms"
+	oldAss := nil.
+	events do:
+		[ :anAss |
+		anAss key > aPoint x
+			ifTrue: [oldAss == nil
+				ifTrue: [(anAss key - aPoint x) abs < margin
+					ifTrue: [^anAss]
+					ifFalse: [^nil]]
+				ifFalse: [(anAss key - aPoint x) abs < margin
+						ifTrue: [^anAss].
+					(oldAss key - aPoint x) abs < margin
+						ifTrue: [^oldAss].
+					^nil]].
+		oldAss := anAss].
+	^nil!
+
+eventNearTime: aTime
+	"Answer an event within a reasonable distance (32 msec.) of the given point."
+
+	| margin oldAss t |
+	margin := 32. "ms"
+	oldAss := events first.
+	events do:
+		[ :anAss | 
+		t := anAss key value.
+		t > aTime
+			ifTrue: [oldAss == nil
+				ifTrue: [(t - aTime) abs < margin
+					ifTrue: [^anAss]
+					ifFalse: [^nil]]
+				ifFalse: [(t - aTime) abs < margin
+						ifTrue: [^anAss].
+					(oldAss key - aTime) abs < margin
+						ifTrue: [^oldAss].
+					^nil]].
+		oldAss := anAss].
+	^nil!
+
+eventNearestTime: aTime
+	"Answer an event within a reasonable distance (32 msec.) of the given point."
+
+	| margin ass d |
+	ass := events first.
+	margin := ass key value - aTime abs.
+	events do:
+		[ :anAss | 
+		d := (anAss key value - aTime) abs.
+		d < margin ifTrue: 
+			[margin := d.
+			ass := anAss]].
+	^ass!
+
+eventValues
+	"Answer the values (events) of the receiver's eventDictionary."
+
+	^events values!
+
+events
+	"Answer the receiver's eventDictionary."
+
+	^events!
+
+events: anEL
+	"Set the receiver's eventDictionary."
+
+	events := anEL.
+	self changed: #added!
+
+recomputeDuration
+	"Recompute the total duration of the receiver."
+
+	| tDur t d |
+	tDur := 0 msec.
+	events do:
+		[ :ass |
+		t := ass key.
+		d := ass event duration.
+		tDur := tDur max: (t +d)].
+	duration := tDur.
+	self changed: #duration!
+
+remove: anEv
+	"Remove the given event or association from the receiver."
+
+	| which |
+	anEv isAssociation ifTrue: [^events remove: anEv].
+	which := events detect: [ :ev | ev event == anEv] ifNone: [nil].
+	which ifNotNil: [events remove: which].
+	self changed: #events! !
+
+!Siren.EventList methodsFor: 'code conversion'!
+
+continueProperties
+	"Fill in missing properties with values that are continued from previous ones."
+	"((440 Hz, (1/4 beat), (#voice -> #flute)), (1/4 => 460 Hz), (1/2 => 500 Hz), (3/4 => 320 Hz), (4/4 => 440 Hz)) continueProperties"
+
+	| opitch oduration oloudness ovoice ev |
+	ev := events first value.
+	ev pitch == nil ifFalse: [opitch := ev pitch].
+	ev duration == nil ifFalse: [oduration := ev duration].
+	ev loudness == nil ifFalse: [oloudness := ev loudness].
+	ev voice == nil ifFalse: [ovoice := ev voice].
+	events do: [ :evt |
+		evt pitch == nil ifTrue: [evt pitch: opitch]
+					ifFalse: [opitch := evt pitch].
+		evt duration == nil ifTrue: [evt duration: oduration]
+					ifFalse: [oduration := evt duration].
+		evt loudness == nil ifTrue: [evt loudness: oloudness]
+					ifFalse: [oloudness := evt loudness].
+		evt voice == nil ifTrue: [evt voice: ovoice]
+					ifFalse: [ovoice := evt voice]]!
+
+findNoteOff: anAssociation
+	"Locate the noteOff event that corresponds to anAssociation; answer the sum of the delta times between (the duration)"
+
+	| instrument time assoc1 assoc2 event2 event1 |
+	instrument := anAssociation value voice.
+	time := 0.
+	event1 := anAssociation value.
+	assoc1 := anAssociation.
+	[true] whileTrue:
+		[[assoc2 := events after: assoc1]  		"check next"
+			on: Error
+			do: [ :ex | assoc2 := nil].
+		assoc2 isNil ifTrue: [^time].			"if missing."
+		time := time + (assoc2 key value).			"sum delta times"
+		event2 := assoc2 value.
+		event2 voice = instrument						"if same instrument"
+			ifTrue: [event2 ampl asMIDI = 0				"if ampl = 0"
+				ifTrue: [event2 pitch = event1 pitch		"if same note"
+					ifTrue: [^assoc2 key - anAssociation key]]]. "^time"
+		event1 := event2.
+		assoc1 := assoc2].						"next event"!
+
+setDurations
+	"Take a delta-time encoded event list and determine the durations."
+
+	| time sTime event newEventList anAss ind |
+	(self code == #noteOnOff)				"if i'm delta not coded"
+		ifFalse: [^nil ].
+	newEventList := SortedCollection new.
+	ind := 1.
+	[ind <= events size] whileTrue:			"for all note on events"
+		[ | am |
+		anAss := events at: ind.
+		sTime := anAss key.
+		event := anAss value copy.
+		am := event ampl value.
+		(am notNil and: [am > 0])			"until note off found"
+			ifTrue: [((event command) bitAnd: 16rF0) = 16r90
+				ifTrue: [time := self findNoteOff: anAss.
+					time isNil
+						ifTrue: [self error: 'no note off found...' ].
+					event duration: (Duration value: time).
+									"strip the Midi command"
+					event voice: (event voice bitAnd: 16r0F).
+					newEventList add: (sTime => event).
+					Transcript show: ind printString, ' ']
+								"meta or control event"
+				ifFalse: ["Transcript show: 'meta event'; cr."
+					newEventList add: (sTime => event)]].
+		ind := ind + 1].
+	self code: #durations.
+						"now remove noteOffs"
+	newEventList isEmpty
+		ifFalse: [self events: newEventList.
+			self start: newEventList first key].
+	self at: #events put: (events size).
+	self changed! !
 
 !Siren.EventList methodsFor: 'processing'!
 
@@ -1299,6 +1850,22 @@ applyBlock: theBlock toProp: theSelector
 				anEvent perform: ((theSelector, ':') asSymbol)
 						with: (theBlock value: val)]]!
 
+applyBlock: theBlock toProp: theSelector from: t0 to: tN
+	"Apply the given block to the aspect refered to by theSelector of all events."
+	"someEList applyBlock: [ :d | (MSecondDuration value: (d asMS value * 10))] 
+			toProp: #duration"
+
+	self events do: 
+		[ :anAssociation | | stTime anEvent val |
+		stTime := anAssociation key value.
+		anEvent := anAssociation value.
+		anEvent isEventList
+			ifTrue: [anEvent applyBlock: theBlock toProp: theSelector from: t0 + stTime to: tN + stTime]
+			ifFalse: [(stTime >= t0 and: [stTime <= tN])
+				ifTrue:[val := anEvent perform: theSelector.
+					anEvent perform: ((theSelector, ':') asSymbol)
+						with: (theBlock value: val)]]]!
+
 applyFunction: aFunction to: aSelector
 	"Apply the given function to the range of the given selector"
 
@@ -1322,6 +1889,14 @@ applyFunction: aFunction to: aSelector startingAt: sTime
 					oldVal := anEvent perform: aSelector.
 					anEvent perform: ((aSelector, ':') asSymbol) 
 							with: (oldVal class value: (oldVal value * (aFunction at: (aTime / tDur))))]]]!
+
+assignInstruments: instBlock
+	"Assign the instruments based on the index using the given block"
+
+	1 to: events size do: 							"plug in instruments"
+		[ :ind | | ev |			
+		ev := (events at: ind) event.
+		ev inst: (instBlock value: ind)].!
 
 chooseRange: theRange toProp: theSelector
 	"Select a value from the given range for the aspect refered to by theSelector of all events."
@@ -1354,10 +1929,16 @@ scale: theSelector by: theValue
 	self applyBlock: [ :v | (v class new value: (v value * theValue))] 
 			toProp: theSelector!
 
+scaleDurationsBy: theValue
+	"Multiply the start times all events by theValue."
+
+	self events do: [ :assoc | assoc event scaleDurationBy: theValue].
+	self recomputeDuration!
+
 scaleStartTimesBy: theValue
 	"Multiply the start times all events by theValue."
 
-	self events do: [ :assoc | assoc key: (assoc key * theValue) ].
+	self events do: [ :assoc | assoc key: (assoc key * theValue)].
 	self recomputeDuration!
 
 scaleValue: theValue toProp: theSelector
@@ -1505,20 +2086,6 @@ keysAndValuesDo: aBlock
 		[ :assoc |
 		aBlock value: assoc key value: assoc value].!
 
-remove: anA
-	"Remove the given event from the receiver's  collection"
-
-	| victims |
-	victims := self events removeAllSuchThat:
-		[ :item |
-		(item key = anA key) and: [item value = anA value]].
-	victims isEmpty
-		ifTrue: [^self error: 'no such event in list...'].
-	self changed: #deleted.
-	^victims size = 1
-		ifTrue: [victims first]
-		ifFalse: [victims]!
-
 select: aBlock
 	"Iterate over the receiver's events with the given block"
 
@@ -1587,199 +2154,6 @@ timesDo: aBlock
 		ifTrue: [((self duration = anObject duration) and:
 				[self events = anObject events])]! !
 
-!Siren.EventList methodsFor: 'accessing'!
-
-addModifier: aModifier
-	"Add the given event modifier to the receiver's special modifier collection"
-
-	properties == nil
-		ifTrue: [properties := Dictionary new].
-	(properties includesKey: #modifiers)
-		ifFalse: [properties at: #modifiers put: OrderedCollection new].
-	(properties at: #modifiers) add: aModifier!
-
-code
-	"Answer a symbol about the receiver's events' coding, usually #durations or #noteOnOff"
-
-	^properties at: #code ifAbsent: [nil]!
-
-code: aSymbol
-	"Set the code about the receiver's events, usually #durations or #noteOnOff"
-
-	self propCheck.
-	properties at: #code put: aSymbol!
-
-deepCopy
-	"Answer a careful deep copy."
-
-	| newEL |
-	newEL := EventList newAnonymous.
-	self name == nil
-		ifFalse: [newEL name: self name deepCopy asSymbol].	
-	properties == nil ifFalse:
-		[properties associationsDo: [ :anAssociation |
-			newEL at: anAssociation key copy put: anAssociation value copy]].
-	self events do: [ :anAssociation |
-		newEL add: ((anAssociation key copy) => (anAssociation value copy)) ].
-	^newEL!
-
-defaultEventClass
-	"Answer the default note event class."
-
-	^MusicEvent!
-
-duration
-	"Answer the receiver's duration."
-
-	| du |
-	du := events first key + events first value duration.
-	events do:
-		[ :assoc | | eDu |
-			eDu := assoc key + assoc value duration.
-			du := du max: eDu].
-	^du!
-
-name
-	"Answer the receiver's name."
-
-	self propCheck.
-	^properties at: #name ifAbsent: ['']!
-
-name: aName
-	"Set the receiver's name."
-
-	properties at: #name put: aName asSymbol!
-
-next
-	"Answer the next event in the list."
-
-	index ifNil: [index := 0].
-	^self events at: (index := index + 1)!
-
-removeModifier: aModifier
-	"Remove the given event modifier from the receiver's collection."
-
-	^(properties == nil or: [(properties includesKey: #modifiers) not])
-		ifTrue: [nil]
-		ifFalse: [(properties at: #modifiers) remove: aModifier ifAbsent: [nil]]!
-
-shallowCopy
-	"Answer a shallow copy of the receiver's events."
-
-	| newEL |
-	newEL := super shallowCopy.
-	newEL events: SortedCollection new.
-	self events do: 
-		[ :anAssociation |
-		newEL add: ((anAssociation key copy) => (anAssociation value copy))].
-	^newEL!
-
-size
-	"Answer the number of events in the receiver."
-
-	events ifNil: [^0].
-	^events size!
-
-tempo: someValue
-	"Set the tempo to scale the events by."
-
-	self propCheck.
-	properties at: #tempoScale put: someValue!
-
-voices
-	"Answer the collection of voices used by thereceiver  event list."
-	"EventList randomExample voices"
-
-	| coll ev |
-	coll := OrderedCollection new.
-	events do:
-		[ :ass |
-		ev := ass event.
-		ev voice ifNotNil:
-			[(coll includes: ev voice)
-				ifFalse: [coll add: ev voice]]].
-	^coll! !
-
-!Siren.EventList methodsFor: 'code conversion'!
-
-continueProperties
-	"Fill in missing properties with values that are continued from previous ones."
-	"((440 Hz, (1/4 beat), (#voice -> #flute)), (1/4 => 460 Hz), (1/2 => 500 Hz), (3/4 => 320 Hz), (4/4 => 440 Hz)) continueProperties"
-
-	| opitch oduration oloudness ovoice ev |
-	ev := events first value.
-	ev pitch == nil ifFalse: [opitch := ev pitch].
-	ev duration == nil ifFalse: [oduration := ev duration].
-	ev loudness == nil ifFalse: [oloudness := ev loudness].
-	ev voice == nil ifFalse: [ovoice := ev voice].
-	events do: [ :evt |
-		evt pitch == nil ifTrue: [evt pitch: opitch]
-					ifFalse: [opitch := evt pitch].
-		evt duration == nil ifTrue: [evt duration: oduration]
-					ifFalse: [oduration := evt duration].
-		evt loudness == nil ifTrue: [evt loudness: oloudness]
-					ifFalse: [oloudness := evt loudness].
-		evt voice == nil ifTrue: [evt voice: ovoice]
-					ifFalse: [ovoice := evt voice]]!
-
-findNoteOff: anAssociation
-	"Locate the noteOff event that corresponds to anAssociation; answer the sum of the delta times between (the duration)"
-
-	| instrument time assoc1 assoc2 event2 event1 |
-	instrument := anAssociation value voice.
-	time := 0.
-	event1 := anAssociation value.
-	assoc1 := anAssociation.
-	[true] whileTrue:
-		[[assoc2 := events after: assoc1]  		"check next"
-			on: Error
-			do: [ :ex | assoc2 := nil].
-		assoc2 isNil ifTrue: [^time].			"if missing."
-		time := time + (assoc2 key value).			"sum delta times"
-		event2 := assoc2 value.
-		event2 voice = instrument						"if same instrument"
-			ifTrue: [event2 ampl asMIDI = 0				"if ampl = 0"
-				ifTrue: [event2 pitch = event1 pitch		"if same note"
-					ifTrue: [^assoc2 key - anAssociation key]]]. "^time"
-		event1 := event2.
-		assoc1 := assoc2].						"next event"!
-
-setDurations
-	"Take a delta-time encoded event list and determine the durations."
-
-	| time sTime event newEventList anAss ind |
-	(self code == #noteOnOff)				"if i'm delta not coded"
-		ifFalse: [^nil ].
-	newEventList := SortedCollection new.
-	ind := 1.
-	[ind <= events size] whileTrue:			"for all note on events"
-		[ | am |
-		anAss := events at: ind.
-		sTime := anAss key.
-		event := anAss value copy.
-		am := event ampl value.
-		(am notNil and: [am > 0])			"until note off found"
-			ifTrue: [((event command) bitAnd: 16rF0) = 16r90
-				ifTrue: [time := self findNoteOff: anAss.
-					time isNil
-						ifTrue: [self error: 'no note off found...' ].
-					event duration: (Duration value: time).
-									"strip the Midi command"
-					event voice: (event voice bitAnd: 16r0F).
-					newEventList add: (sTime => event).
-					Transcript show: ind printString, ' ']
-								"meta or control event"
-				ifFalse: ["Transcript show: 'meta event'; cr."
-					newEventList add: (sTime => event)]].
-		ind := ind + 1].
-	self code: #durations.
-						"now remove noteOffs"
-	newEventList isEmpty
-		ifFalse: [self events: newEventList.
-			self start: newEventList first key].
-	self at: #events put: (events size).
-	self changed! !
-
 !Siren.EventList methodsFor: 'testing'!
 
 hasItems
@@ -1802,245 +2176,76 @@ species
 
 	^EventList! !
 
-!Siren.EventList methodsFor: 'private'!
+!Siren.EventList methodsFor: 'scheduling'!
 
-map: anAssociation
-	"Map the receiver's special properties and/or eventModifiers onto the given event."
+loop
+	"Play the event list by passing it off to the event scheduler."
 
-	| aTime anE |
-	aTime := anAssociation key.
-	anE := anAssociation value.
-	self pitch == nil 			"if i'm transposed"
-		ifFalse: [anE pitch: (Pitch value: (anE pitch + self pitch))].
-	self loudness == nil 		"or scaled"
-		ifFalse: [anE loudness: (anE loudness + self loudness)].
-	(properties == nil) 		"or have props"
-		ifFalse: [properties associationsDo: [ :ass |
-			ass key == #tempo
-				ifTrue: [aTime := aTime * ass value.
-						anE duration: anE duration * ass value]
-				ifFalse: [anE at: ass key put: ass value]]].
-	^anAssociation!
+	EventScheduler addClient: self in: 1 msec loop: true.
+	EventScheduler run!
 
-map: anAssociation at: startTime
-	"Map the receiver's special properties and/or eventModifiers onto the given event."
+nextTime: now
+	"Answer the time of the next appointment"
 
-	| aTime anE |
-	aTime := anAssociation key.
-	anE := anAssociation value copy.
-	(self at: #pitch) == nil 			"if i'm transposed"
-		ifFalse: [anE pitch: (anE pitch + (self pitch))].
-	(self at: #loudness) == nil 			"or scaled"
-		ifFalse: [anE loudness: (anE loudness + (self at: #loudness))].
-	(self at: #tempo) == nil 			"or have a tempo map"
-		ifFalse: [aTime := aTime * ((self at: #tempo) at: aTime).
-			anE duration: anE duration * ((self at: #tempo) at: anE duration)].
-	^anE! !
+"	startedAt ifNil: [startedAt := Time microsecondClock]."
+"	Transcript show: ((self events at: index) key asMsec value) printString; cr."
+	^(self events at: index) key asUsec value + startedAt!
 
-!Siren.EventList methodsFor: 'initialize-release'!
+nextTimeFor: ass
+	"Answer the time delay between the given event association and the one that follows it."
 
-empty
-	"Throw away the receiver's events."
+	| ind next |
+	ind := events indexOf: ass ifAbsent: [0].
+	ind = 0 ifTrue: [^0 sec].
+	ind = events size ifTrue: [^0 sec].
+	next := events at: ind + 1.
+	^(next start - ass start)!
 
-	self duration: 0.
-	self index: 1.
-	self events: SortedCollection new.!
+play
+	"Play the event list by passing it off to the event scheduler."
 
-initializeAnonymous
-	"Initialize an un-named instance with default state."
+	EventScheduler addClient: self in: 1 msec.
+	EventScheduler run!
 
-	self initialize.
-	self propCheck.
-	duration := Duration value: 0.
-	self name: #anonymous.
-	self events: SortedCollection new.
-	index := nil.!
+playOn: aVoice
+	"Play the event list on the voice by expanding its events"
 
-initializeNamed: aName
-	"Initialize a named instance with default state."
+	voice := aVoice.
+	self play
 
-	self initializeAnonymous.
-	self name: aName asSymbol.
-	SirenSession eventList: aName asSymbol put: self!
+"	self playOn: aVoice at: Time microsecondClock"!
 
-release
-	"Flush the receiver."
+playOn: aVoice at: startTime
+	"Play the event list on the voice by expanding its events"
 
-	super release.
-	events == nil
-		ifFalse: [events do: [ :e | e release]].
-	events := nil.
-	index := nil! !
+	aVoice play: self at: startTime.!
 
-!Siren.EventList methodsFor: 'event accessing'!
+scheduleAt: aTime 
+	"Expand an eventList for the appointment scheduler."
 
-, anEorA
-	"Add a new event or association to the receiver."
+	| theEvent |
+	self events isEmpty ifTrue: [^nil].
+	index ifNil: 
+		[index := 1.
+		startedAt := Time microsecondClock].
+	index > self events size
+		ifTrue: [index := nil. ^nil].
+	theEvent := self events at: index.
+	theEvent := self map: theEvent at: aTime.
+	theEvent voice ifNil:
+		[theEvent voice: voice].
+	theEvent play.			"play the next event"
+	index := index + 1.
+	index > self events size
+		ifTrue: [^theEvent duration isNil
+			ifTrue: [startedAt + duration asUsec value]
+			ifFalse: [aTime + theEvent duration asUsec value]].
+	^self nextTime: aTime!
 
-	^self add: anEorA!
+stop
+	"Play the event list by passing it off to the event scheduler."
 
-add: anEorA
-	"Add a new event or association to the receiver."
-
-	| newAss val |
-	anEorA isAssociation
-		ifTrue: [newAss := anEorA key copy => anEorA value.
-			val := anEorA value.
-			newAss key species == Duration
-				ifFalse: [newAss key: (Duration value: newAss key)].
-			val isEvent
-				ifFalse: [val isMusicMagnitude
-					ifTrue: [val := (self defaultEventClass new)
-							perform: val species propertyName with: val]
-					ifFalse: [self error: 'Unknown EventAssociation value']].
-			self events add: newAss.
-			val duration == nil
-				ifTrue: [self duration: (duration max: newAss key)]
-				ifFalse: [self duration: (duration max: (newAss key + val duration))]]
-		ifFalse: [self events add: (duration => anEorA).
-			anEorA duration ifNotNil: [self duration: duration + anEorA duration]].
-	self changed: #added!
-
-add: anEvent at: aTime
-	"Add a new event to the receiver at the given relative start time."
-
-	| t |
-	t := Duration value: aTime.
-	self events add: (t => anEvent).
-	anEvent duration == nil
-		ifFalse: [duration := duration max: (t + anEvent duration)].
-	self changed: #added!
-
-addAll: anEventList
-	"Add the given event list's events to the receiver."
-
-	anEventList events do:
-		[ :assoc |
-			self events add: (assoc key copy => assoc value copy).
-			assoc value duration == nil 
-				ifTrue: [duration := duration max: assoc key]
-				ifFalse: [duration := duration 
-							max: (assoc key + assoc value duration)]].
-	self changed: #added!
-
-addAll: anEventList at: aTime
-	"Add the given event list's events to the receiver."
-
-	anEventList events do:
-		[ :assoc |
-			self events add: (assoc key copy * aTime => assoc value copy).
-			assoc value duration == nil 
-				ifTrue: [duration := duration max: assoc key]
-				ifFalse: [duration := duration 
-							max: (assoc key + assoc value duration)]].
-	self changed: #added!
-
-addAllAtEnd: anEventList
-	"Add the given event list's events to the receiver."
-
-	| aTime |
-	aTime := self duration.
-	anEventList events do:
-		[ :assoc |
-			self events add: (assoc key copy + aTime => assoc value copy).
-			assoc value duration == nil 
-				ifTrue: [duration := duration max: assoc key]
-				ifFalse: [duration := duration 
-							max: (assoc key + assoc value duration)]].
-	self changed: #added!
-
-eventKeys
-	"Answer the keys (durations) of the receiver's eventDictionary."
-
-	^events keys!
-
-eventNear: aPoint
-	"Answer an event within a reasonable distance (100 msec.) of the given point's x."
-
-	| margin oldAss |
-	(events includesKey: aPoint x)
-		ifTrue: [^events at: aPoint x].
-	margin := 100. "ms"
-	oldAss := nil.
-	events do:
-		[ :anAss |
-		anAss key > aPoint x
-			ifTrue: [oldAss == nil
-				ifTrue: [(anAss key - aPoint x) abs < margin
-					ifTrue: [^anAss]
-					ifFalse: [^nil]]
-				ifFalse: [(anAss key - aPoint x) abs < margin
-						ifTrue: [^anAss].
-					(oldAss key - aPoint x) abs < margin
-						ifTrue: [^oldAss].
-					^nil]].
-		oldAss := anAss].
-	^nil!
-
-eventNearTime: aTime
-	"Answer an event within a reasonable distance (32 msec.) of the given point."
-
-	| margin oldAss t |
-	margin := 32. "ms"
-	oldAss := events first.
-	events do:
-		[ :anAss | 
-		t := anAss key value.
-		t > aTime
-			ifTrue: [oldAss == nil
-				ifTrue: [(t - aTime) abs < margin
-					ifTrue: [^anAss]
-					ifFalse: [^nil]]
-				ifFalse: [(t - aTime) abs < margin
-						ifTrue: [^anAss].
-					(oldAss key - aTime) abs < margin
-						ifTrue: [^oldAss].
-					^nil]].
-		oldAss := anAss].
-	^nil!
-
-eventNearestTime: aTime
-	"Answer an event within a reasonable distance (32 msec.) of the given point."
-
-	| margin ass d |
-	ass := events first.
-	margin := ass key value - aTime abs.
-	events do:
-		[ :anAss | 
-		d := (anAss key value - aTime) abs.
-		d < margin ifTrue: 
-			[margin := d.
-			ass := anAss]].
-	^ass!
-
-eventValues
-	"Answer the values (events) of the receiver's eventDictionary."
-
-	^events values!
-
-events
-	"Answer the receiver's eventDictionary."
-
-	^events!
-
-events: anEL
-	"Set the receiver's eventDictionary."
-
-	events := anEL.
-	self changed: #added!
-
-recomputeDuration
-	"Recompute the total duration of the receiver."
-
-	| tDur t d |
-	tDur := 0 msec.
-	events do:
-		[ :ass |
-		t := ass key.
-		d := ass event duration.
-		tDur := tDur max: (t +d)].
-	duration := tDur.
-	self changed: #duration! !
+	EventScheduler instance removeClientNamed: self name! !
 
 !Siren.EventList methodsFor: 'printing'!
 
@@ -2169,84 +2374,53 @@ templateFields
 	coll remove: #startedAt.
 	^coll! !
 
-!Siren.EventList methodsFor: 'scheduling'!
+!Siren.EventList methodsFor: 'private'!
 
-loop
-	"Play the event list by passing it off to the event scheduler."
+map: anAssociation
+	"Map the receiver's special properties and/or eventModifiers onto the given event."
 
-	EventScheduler addClient: self in: 1 msec loop: true.
-	EventScheduler run!
+	| aTime anE |
+	aTime := anAssociation key.
+	anE := anAssociation value.
+	self pitch == nil 			"if i'm transposed"
+		ifFalse: [anE pitch: (Pitch value: (anE pitch + self pitch))].
+	self loudness == nil 		"or scaled"
+		ifFalse: [anE loudness: (anE loudness + self loudness)].
+	(properties == nil) 		"or have props"
+		ifFalse: [properties associationsDo: [ :ass |
+			ass key == #tempo
+				ifTrue: [aTime := aTime * ass value.
+						anE duration: anE duration * ass value]
+				ifFalse: [anE at: ass key put: ass value]]].
+	^anAssociation!
 
-nextTime: now
-	"Answer the time of the next appointment"
+map: anAssociation at: startTime
+	"Map the receiver's special properties and/or eventModifiers onto the given event."
 
-"	startedAt ifNil: [startedAt := Time microsecondClock]."
-"	Transcript show: ((self events at: index) key asMsec value) printString; cr."
-	^(self events at: index) key asUsec value + startedAt!
+	| aTime anE |
+	aTime := anAssociation key.
+	anE := anAssociation value copy.
+	(self at: #pitch) == nil 			"if i'm transposed"
+		ifFalse: [anE pitch: (anE pitch + (self at: #pitch))]
+		ifTrue: [(self pitch) == nil
+			ifFalse: [anE pitch: (anE pitch + (self pitch))]].
+	(self at: #loudness) == nil 		"or scaled"
+		ifFalse: [anE loudness: (anE loudness + (self at: #loudness))]
+		ifTrue: [(self loudness) == nil 
+			ifFalse: [anE loudness: (anE loudness + (self loudness))]].
+	(self at: #tempo) == nil 			"or have a tempo map"
+		ifFalse: [aTime := aTime * ((self at: #tempo) at: aTime).
+			anE duration: anE duration * ((self at: #tempo) at: anE duration)]. 
 
-nextTimeFor: ass
-	"Answer the time delay between the given event association and the one that follows it."
-
-	| ind next |
-	ind := events indexOf: ass ifAbsent: [0].
-	ind = 0 ifTrue: [^0 sec].
-	ind = events size ifTrue: [^0 sec].
-	next := events at: ind + 1.
-	^(next start - ass start)!
-
-play
-	"Play the event list by passing it off to the event scheduler."
-
-	EventScheduler addClient: self in: 1 msec.
-	EventScheduler run!
-
-playOn: aVoice
-	"Play the event list on the voice by expanding its events"
-
-	voice := aVoice.
-	self play
-
-"	self playOn: aVoice at: Time microsecondClock"!
-
-playOn: aVoice at: startTime
-	"Play the event list on the voice by expanding its events"
-
-	aVoice play: self at: startTime.!
-
-scheduleAt: aTime 
-	"Expand an eventList for the appointment scheduler."
-
-	| theEvent |
-	self events isEmpty ifTrue: [^nil].
-	index ifNil: 
-		[index := 1.
-		startedAt := Time microsecondClock].
-	index > self events size
-		ifTrue: [index := nil. ^nil].
-	theEvent := self events at: index.
-	theEvent := self map: theEvent at: aTime.
-	theEvent voice ifNil:
-		[theEvent voice: voice].
-	theEvent play.			"play the next event"
-	index := index + 1.
-	index > self events size
-		ifTrue: [^theEvent duration isNil
-			ifTrue: [startedAt + duration asUsec value]
-			ifFalse: [aTime + theEvent duration asUsec value]].
-	^self nextTime: aTime!
-
-stop
-	"Play the event list by passing it off to the event scheduler."
-
-	EventScheduler instance removeClientNamed: self name! !
+	^anE! !
 
 
 
-Smalltalk.Siren defineClass: #ActionEvent
+Smalltalk.Siren defineClass: #RestEvent
 	superclass: #{Siren.DurationEvent}
-	indexedType: #objects
+	indexedType: #none
 	private: false
-	instanceVariableNames: 'action '
+	instanceVariableNames: ''
 	classInstanceVariableNames: ''
 	imports: ''
 	category: 'Music-Events'!
@@ -2254,95 +2428,35 @@ Smalltalk.Siren defineClass: #ActionEvent
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
-!Siren.ActionEvent class methodsFor: 'examples'!
+!Siren.RestEvent class methodsFor: 'instance creation'!
 
-eventExample
-	"Demonstrate the creation of an ActionEvent."
-	"ActionEvent eventExample play"
+dur: aD
+	"Answer a RestEvent instance initialized with the arguments."
 
-	^ActionEvent dur: 250 msec action: 
-		[ | gc |
-		gc := Window currentWindow graphicsContext.
-	 	gc paint: ColorValue red.
-		gc displayRectangle: ((20@20) extent: (20@20)).
-		(Delay forSeconds: 1) wait.
-		Window currentWindow refresh]!
-
-listExample
-	"Demonstrate the creation of an ActionEvent by making a list of events that draw rectangles on the top window."
-	"ActionEvent listExample"
-	"ActionEvent playExample"
-	"EventScheduler addClient: ActionEvent listExample; run"
-	"Window currentWindow refresh"
-
-	| list gc bounds rand |
-	list := EventList newAnonymous.
-	rand := Random new.
-	gc := Window currentWindow graphicsContext.
-	bounds := gc clippingBounds.
-	100 timesRepeat:
-		[list add: (ActionEvent dur: 50 msec action: 
-			[gc paint: ColorValue random.
-			gc displayRectangle: (((rand next * bounds width) truncated
-							@ (rand next * bounds height) truncated)
-				extent: ((rand next * 60) truncated)
-							@ (rand next * 60) truncated)])].
-	^list!
-
-playExample
-	"Demonstrate the performance of a list of ActionEvents."
-	"ActionEvent playExample"
-
-	EventScheduler instance addClient: self listExample in: (100 msec).
-	EventScheduler instance run.
-	(Delay forSeconds: 6) wait.
-	Window currentWindow refresh! !
-
-!Siren.ActionEvent class methodsFor: 'instance creation'!
-
-dur: aD action: actionBlock
-	"Answer an ActionEvent instance initialized with the arguments."
-
-	^self new duration: aD; action: actionBlock!
-
-dur: aD block: actionBlock
-	"Answer an ActionEvent instance initialized with the arguments."
-
-	^self new duration: aD; action: actionBlock! !
+	^self new duration: aD! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
-Siren.ActionEvent comment:
-'An instance of ActionEvent evaluates a Smalltalk block when scheduled.
+Siren.RestEvent comment:
+'RestEvents are rarely used. They represent regular DurationEvents but never play themselves.'!
 
-Instance variables:
-	action  <Block or Value> Something to do
-'!
-
-!Siren.ActionEvent methodsFor: 'scheduling'!
+!Siren.RestEvent methodsFor: 'scheduling'!
 
 play
-	"Play the receiver by executing its action block."
-	
-	^action value!
+	"Play the receiver by ignoring it."
+
+	^nil!
 
 playAt: aTime
-	"Play the receiver by executing its action block."
+	"Play the receiver on its voice then."
 	
-	^action value! !
+	^nil!
 
-!Siren.ActionEvent methodsFor: 'accessing'!
+scheduleAt: aTime
+	"Play the receiver on its voice then."
 
-action
-	"Answer the receiver's 'action'."
-
-	^action!
-
-action: anObject
-	"Set the receiver's instance variable 'action' to be anObject."
-
-	action := anObject! !
+	^self! !
 
 #{Siren.MusicEvent} initialize!
 

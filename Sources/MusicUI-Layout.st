@@ -68,113 +68,6 @@ view: aView
 
 
 
-Smalltalk.Siren defineClass: #TimeSequenceLayoutManager
-	superclass: #{Siren.LayoutManager}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'timeScale timeOffset '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Layout'!
-
-Siren.TimeSequenceLayoutManager comment:
-'Instances of the SequenceLayoutManager classes are used to generate display lists with "x = time" from event lists.
-
-Instance Variables:
-	timeScale		<Integer> the msec./pixel scale
-	timeOffset		<Integer> the start of the layout in msec.
-'!
-
-!Siren.TimeSequenceLayoutManager methodsFor: 'generating'!
-
-addItem: anAss atNode: aPath in: aDisplayList 
-	"Add the given item to the display list."
-
-	| path2 anE displayPoint item |
-	anE := anAss value.
-	anE hasItems
-		ifTrue: [^anE do:  
-			[ :i | 
-			path2 := aPath copy.
-			path2 addLast: anE.
-			self addItem: anAss key + i key => i value
-					atNode: path2
-					in: aDisplayList]].
-	displayPoint := self displayPointFor: anAss.
-	item := view itemFor: anAss.
-	item offset: displayPoint.
-	aDisplayList add: item atPath: aPath!
-
-displayPointFor: anAss 
-	"Answer the display point for the argument."
-
-	| dPoint |
-	dPoint := (anAss key asMS value - timeOffset / timeScale) asInteger.
-	(orientation == nil or: [orientation == #left])
-		ifTrue: [dPoint := dPoint @ 0]
-		ifFalse: [orientation == #top
-			ifTrue: [dPoint := 0 @ dPoint]].
-	^dPoint! !
-
-!Siren.TimeSequenceLayoutManager methodsFor: 'accessing'!
-
-timeOffset: aNumber
-	"Set the receiver's time offset."
-
-	timeOffset := aNumber!
-
-timeScale: aNumber
-	"Set the receiver's time scale."
-
-	timeScale := aNumber! !
-
-
-
-Smalltalk.Siren defineClass: #PitchTimeLayoutManager
-	superclass: #{Siren.TimeSequenceLayoutManager}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'pitchScale pitchOffset '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Layout'!
-
-Siren.PitchTimeLayoutManager comment:
-'Instances of the PitchTimeLayoutManager classes are used to generate display lists with "x = time" and "y = pitch" from event lists.
-The default layout is linear pitch-to-y, like piano-roll or Hauer-Steffens notation.
-
-Instance Variables:
-	pitchScale		<Integer> the key#/pixel scale
-	pitchOffset		<Integer> the bottom of the layout as a key#
-'!
-
-!Siren.PitchTimeLayoutManager methodsFor: 'generating'!
-
-displayPointFor: anAss
-	"Answer the display point for the argument."
-
-	| pch |
-	pch := anAss event pitch.
-	pch ifNil: [^((anAss key asMS value - timeOffset / timeScale) asInteger)
-		@ (60*pitchScale)].
-	^((anAss key asMS value - timeOffset / timeScale) asInteger)
-		@ ((60*pitchScale) 
-			- ((pch asMIDI value - pitchOffset) * pitchScale))! !
-
-!Siren.PitchTimeLayoutManager methodsFor: 'accessing'!
-
-pitchOffset: aNumber
-	"Set the receiver's pitch offset."
-
-	pitchOffset := aNumber!
-
-pitchScale: aNumber
-	"Set the receiver's pitch scale."
-
-	pitchScale := aNumber! !
-
-
-
 Smalltalk.Siren defineClass: #HierarchyLayoutManager
 	superclass: #{Siren.LayoutManager}
 	indexedType: #none
@@ -346,111 +239,6 @@ displayPositionFor: aPath
 
 
 
-Smalltalk.Siren defineClass: #IndentedTreeLayoutManager
-	superclass: #{Siren.IndentedListLayoutManager}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'list '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Layout'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.IndentedTreeLayoutManager class methodsFor: 'examples'!
-
-listExample
-	"IndentedTreeLayoutManager listExample display"
-	"DisplayListView classTreeExample"
-
-	| acc me |
-	acc := STreeAccessor subject: "View" Magnitude
-			terminalQuery: [ :c | c subclasses size = 0]
-			childAccessor: #sortedSubclasses
-			itemGenerator: [ :c | (DisplayString new)
-							model: c; 
-							string: c name; 
-							color: ColorValue black].
-	me := (self new) accessor: acc; xStep: 4; yStep: 12.
-	^me displayList! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.IndentedTreeLayoutManager comment:
-'Instances of IndentedTreeLayoutManager are used to generate display lists which mirror the hierarchy of their models (accessed using a TreeAccessor) in the indentation of a list-like tree.'!
-
-!Siren.IndentedTreeLayoutManager methodsFor: 'generating'!
-
-addItem: aModelNode atNode: aPath under: parentPoint in: aDisplayList
-	"Add the given item to the display list."
-
-	|  displayPoint item path2 displayList2 |
-	displayPoint := (self displayPositionFor: aPath) + (parentPoint x@0).
-	length := length + 1.
-	item := treeAccessor itemFor: aModelNode.
-	item offset: displayPoint.
-	(treeAccessor isTerminal: aModelNode)
-		ifFalse: [displayList2 := DisplayList new.
-			displayList2 model: aModelNode.
-			(treeAccessor childrenOf: aModelNode) do: [ :i | 
-				path2 := aPath copy.
-				path2 addLast: aModelNode.
-				self addItem: i
-					atNode: path2
-					under: item bounds rightCenter
-					in: displayList2].
-			displayList2 add: item.
-			aDisplayList add: displayList2 atPath: aPath.
-			parentPoint = (0@0)
-				ifFalse: [aDisplayList add:
-						((DisplayLine new)
-							offset: item bounds leftCenter + (-2@4);
-							corner: parentPoint + (2@4); color: ColorValue black)
-					atPath: aPath]]
-				ifTrue: [aDisplayList add: item atPath: aPath.
-					aDisplayList add:
-							((DisplayLine new)
-								offset: item bounds leftCenter + (-2@4);
-								corner: parentPoint + (2@4); color: ColorValue black)
-						atPath: aPath]!
-
-generateDisplayList
-	"Generate and answer the receiver's display list."
-
-	list := DisplayList new.
-	self addItem: treeAccessor subject
-			atNode: (OrderedCollection new)
-			under: 0@0
-			in: list.
-	^list! !
-
-
-
-Smalltalk.Siren defineClass: #PositionTimeLayoutManager
-	superclass: #{Siren.PitchTimeLayoutManager}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicUI-Layout'!
-
-Siren.PositionTimeLayoutManager comment:
-'Instances of PositionTimeLayoutManager are used to generate display lists with "x = time" and "y = position" from event lists.
-'!
-
-!Siren.PositionTimeLayoutManager methodsFor: 'generating'!
-
-displayPointFor: anAss
-	"Answer the display point for the argument."
-
-	^((anAss key asMS value - timeOffset / timeScale) asInteger)
-		@ ((anAss event position - pitchOffset) * pitchScale)! !
-
-
-
 Smalltalk.Siren defineClass: #StructureAccessor
 	superclass: #{Core.Object}
 	indexedType: #none
@@ -601,3 +389,215 @@ leavesOf: aRoot
 				ifTrue: [leaves add: aChild]
 				ifFalse: [leaves addAll: (self leavesOf: aChild)]]].
 	^leaves! !
+
+
+
+Smalltalk.Siren defineClass: #IndentedTreeLayoutManager
+	superclass: #{Siren.IndentedListLayoutManager}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'list '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Layout'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.IndentedTreeLayoutManager class methodsFor: 'examples'!
+
+listExample
+	"IndentedTreeLayoutManager listExample display"
+	"DisplayListView classTreeExample"
+
+	| acc me |
+	acc := STreeAccessor subject: "View" Magnitude
+			terminalQuery: [ :c | c subclasses size = 0]
+			childAccessor: #sortedSubclasses
+			itemGenerator: [ :c | (DisplayString new)
+							model: c; 
+							string: c name; 
+							color: ColorValue black].
+	me := (self new) accessor: acc; xStep: 4; yStep: 12.
+	^me displayList! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.IndentedTreeLayoutManager comment:
+'Instances of IndentedTreeLayoutManager are used to generate display lists which mirror the hierarchy of their models (accessed using a TreeAccessor) in the indentation of a list-like tree.'!
+
+!Siren.IndentedTreeLayoutManager methodsFor: 'generating'!
+
+addItem: aModelNode atNode: aPath under: parentPoint in: aDisplayList
+	"Add the given item to the display list."
+
+	|  displayPoint item path2 displayList2 |
+	displayPoint := (self displayPositionFor: aPath) + (parentPoint x@0).
+	length := length + 1.
+	item := treeAccessor itemFor: aModelNode.
+	item offset: displayPoint.
+	(treeAccessor isTerminal: aModelNode)
+		ifFalse: [displayList2 := DisplayList new.
+			displayList2 model: aModelNode.
+			(treeAccessor childrenOf: aModelNode) do: [ :i | 
+				path2 := aPath copy.
+				path2 addLast: aModelNode.
+				self addItem: i
+					atNode: path2
+					under: item bounds rightCenter
+					in: displayList2].
+			displayList2 add: item.
+			aDisplayList add: displayList2 atPath: aPath.
+			parentPoint = (0@0)
+				ifFalse: [aDisplayList add:
+						((DisplayLine new)
+							offset: item bounds leftCenter + (-2@4);
+							corner: parentPoint + (2@4); color: ColorValue black)
+					atPath: aPath]]
+				ifTrue: [aDisplayList add: item atPath: aPath.
+					aDisplayList add:
+							((DisplayLine new)
+								offset: item bounds leftCenter + (-2@4);
+								corner: parentPoint + (2@4); color: ColorValue black)
+						atPath: aPath]!
+
+generateDisplayList
+	"Generate and answer the receiver's display list."
+
+	list := DisplayList new.
+	self addItem: treeAccessor subject
+			atNode: (OrderedCollection new)
+			under: 0@0
+			in: list.
+	^list! !
+
+
+
+Smalltalk.Siren defineClass: #TimeSequenceLayoutManager
+	superclass: #{Siren.LayoutManager}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'timeScale timeOffset '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Layout'!
+
+Siren.TimeSequenceLayoutManager comment:
+'Instances of the SequenceLayoutManager classes are used to generate display lists with "x = time" from event lists.
+
+Instance Variables:
+	timeScale		<Integer> the msec./pixel scale
+	timeOffset		<Integer> the start of the layout in msec.
+'!
+
+!Siren.TimeSequenceLayoutManager methodsFor: 'generating'!
+
+addItem: anAss atNode: aPath in: aDisplayList 
+	"Add the given item to the display list."
+
+	| path2 anE displayPoint item |
+	anE := anAss value.
+	anE hasItems
+		ifTrue: [^anE do:  
+			[ :i | 
+			path2 := aPath copy.
+			path2 addLast: anE.
+			self addItem: anAss key + i key => i value
+					atNode: path2
+					in: aDisplayList]].
+	displayPoint := self displayPointFor: anAss.
+	item := view itemFor: anAss.
+	item offset: displayPoint.
+	aDisplayList add: item atPath: aPath!
+
+displayPointFor: anAss 
+	"Answer the display point for the argument."
+
+	| dPoint |
+	dPoint := (anAss key asMS value - timeOffset / timeScale) asInteger.
+	(orientation == nil or: [orientation == #left])
+		ifTrue: [dPoint := dPoint @ 0]
+		ifFalse: [orientation == #top
+			ifTrue: [dPoint := 0 @ dPoint]].
+	^dPoint! !
+
+!Siren.TimeSequenceLayoutManager methodsFor: 'accessing'!
+
+timeOffset: aNumber
+	"Set the receiver's time offset."
+
+	timeOffset := aNumber!
+
+timeScale: aNumber
+	"Set the receiver's time scale."
+
+	timeScale := aNumber! !
+
+
+
+Smalltalk.Siren defineClass: #PitchTimeLayoutManager
+	superclass: #{Siren.TimeSequenceLayoutManager}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'pitchScale pitchOffset '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Layout'!
+
+Siren.PitchTimeLayoutManager comment:
+'Instances of the PitchTimeLayoutManager classes are used to generate display lists with "x = time" and "y = pitch" from event lists.
+The default layout is linear pitch-to-y, like piano-roll or Hauer-Steffens notation.
+
+Instance Variables:
+	pitchScale		<Integer> the key#/pixel scale
+	pitchOffset		<Integer> the bottom of the layout as a key#
+'!
+
+!Siren.PitchTimeLayoutManager methodsFor: 'generating'!
+
+displayPointFor: anAss
+	"Answer the display point for the argument."
+
+	| pch |
+	pch := anAss event pitch.
+	pch ifNil: [^((anAss key asMS value - timeOffset / timeScale) asInteger)
+		@ (60*pitchScale)].
+	^((anAss key asMS value - timeOffset / timeScale) asInteger)
+		@ ((60*pitchScale) 
+			- ((pch asMIDI value - pitchOffset) * pitchScale))! !
+
+!Siren.PitchTimeLayoutManager methodsFor: 'accessing'!
+
+pitchOffset: aNumber
+	"Set the receiver's pitch offset."
+
+	pitchOffset := aNumber!
+
+pitchScale: aNumber
+	"Set the receiver's pitch scale."
+
+	pitchScale := aNumber! !
+
+
+
+Smalltalk.Siren defineClass: #PositionTimeLayoutManager
+	superclass: #{Siren.PitchTimeLayoutManager}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicUI-Layout'!
+
+Siren.PositionTimeLayoutManager comment:
+'Instances of PositionTimeLayoutManager are used to generate display lists with "x = time" and "y = position" from event lists.
+'!
+
+!Siren.PositionTimeLayoutManager methodsFor: 'generating'!
+
+displayPointFor: anAss
+	"Answer the display point for the argument."
+
+	^((anAss key asMS value - timeOffset / timeScale) asInteger)
+		@ ((anAss event position - pitchOffset) * pitchScale)! !

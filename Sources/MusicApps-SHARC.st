@@ -9,6 +9,12 @@ Smalltalk.Siren defineClass: #SHARCInstrument
 	imports: ''
 	category: 'MusicApps-SHARC'!
 
+Siren.SHARCInstrument defineSharedVariable: #SHARCHome
+	private: false
+	constant: false
+	category: 'As yet unclassified'
+	initializer: ''!
+
 Siren.SHARCInstrument defineSharedVariable: #SHARCOrchestra
 	private: false
 	constant: false
@@ -53,11 +59,14 @@ fromDir: dirName
 		c2  24 152  2099   65.406   65.430  2 25  1  5.440  1.353  314.345 "
 
 	| inst strm pitches nam basename |
-	nam := SirenUtility findFile: dirName.
+"	nam := SirenUtility findFile: dirName."
+	SHARCHome ifNil: [SHARCHome := (CEnvironment getenv: 'HOME'), '/Code/CSL6/Data/SHARC/'].
+	nam := SHARCHome.
 	nam ifNil: [self error: 'Cannot find SHARC database'].
 	basename := dirName asFilename tail asString.
+	nam := nam, basename.
 	Transcript show: 'Load instrument ' , basename , ':  '.
-	strm := (nam , Filename separatorString , 'CONTENTS') asFilename readStream.
+	strm := (nam, '/CONTENTS') asFilename readStream.
 	inst := self new initialize.
 	inst directory: dirName.
 	inst name: basename asSymbol.
@@ -68,7 +77,7 @@ fromDir: dirName
 			samp ifNotNil: [inst samples at: samp pitch put: samp]].
 	strm close.
 	pitches := inst samples collect: [ :sa | sa key].
-	inst range: (pitches min to: pitches max).
+	inst range: (pitches values min to: pitches values max).
 	Transcript show: inst samples size printString , ' samples.'; cr.
 	^inst! !
 
@@ -366,3 +375,5 @@ initialize
 	"Initialize the receiver for the given size."
 
 	self initialize: 64! !
+
+#{Siren.SHARCInstrument.SHARCHome} initialize!

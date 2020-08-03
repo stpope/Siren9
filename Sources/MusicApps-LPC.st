@@ -100,95 +100,6 @@ draw: data into: list color: co scale: yScale dots: showD
 
 
 
-Smalltalk.Siren defineClass: #LPCFrame
-	superclass: #{Siren.MusicEvent}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'srate npoles rmsO rmsR err coefficients '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicApps-LPC'!
-
-Siren.LPCFrame comment:
-'An LPCFrame represents a single frame of an LPC file.
-
-Instance Variables:
-	srate	<Number>  the sound''s sample rate
-	npoles	<Number>  the number of poles
-	rmsO	<Number>  the original RMS
-	rmsR	<Number>  the residual RMS
-	err	<Number>  the error value
-	coefficients	 <Array of Number>  the raw reflection coefficients
-'!
-
-!Siren.LPCFrame methodsFor: 'accessing'!
-
-coefficients
-
-	^coefficients!
-
-coefficients: aValue
-
-	coefficients := aValue!
-
-err
-
-	^err!
-
-err: aValue
-
-	err := aValue!
-
-npoles
-
-	^npoles!
-
-npoles: aValue
-
-	npoles := aValue!
-
-pitch
-
-	^pitch!
-
-pitch: aValue
-
-	pitch := aValue!
-
-rmsO
-
-	^rmsO!
-
-rmsO: aValue
-
-	rmsO := aValue!
-
-rmsR
-
-	^rmsR!
-
-rmsR: aValue
-
-	rmsR := aValue!
-
-srate
-
-	^srate!
-
-srate: aValue
-
-	srate := aValue! !
-
-!Siren.LPCFrame methodsFor: 'printing'!
-
-printOn: aStream 
-	"Format and print the receiver on the argument."
-
-	aStream nextPutAll: ' LPC Frame ', (rmsR printString: 3), '  	', (rmsO printString: 3), '  	', 
-			(err printString: 4), '  	', (pitch printString: 4); cr! !
-
-
-
 Smalltalk.Siren defineClass: #LPCEditor
 	superclass: #{UI.ApplicationModel}
 	indexedType: #none
@@ -413,6 +324,95 @@ sound: aSound
 
 theLPCView
 	^LPCView new editor: self! !
+
+
+
+Smalltalk.Siren defineClass: #LPCFrame
+	superclass: #{Siren.MusicEvent}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'srate npoles rmsO rmsR err coefficients '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicApps-LPC'!
+
+Siren.LPCFrame comment:
+'An LPCFrame represents a single frame of an LPC file.
+
+Instance Variables:
+	srate	<Number>  the sound''s sample rate
+	npoles	<Number>  the number of poles
+	rmsO	<Number>  the original RMS
+	rmsR	<Number>  the residual RMS
+	err	<Number>  the error value
+	coefficients	 <Array of Number>  the raw reflection coefficients
+'!
+
+!Siren.LPCFrame methodsFor: 'accessing'!
+
+coefficients
+
+	^coefficients!
+
+coefficients: aValue
+
+	coefficients := aValue!
+
+err
+
+	^err!
+
+err: aValue
+
+	err := aValue!
+
+npoles
+
+	^npoles!
+
+npoles: aValue
+
+	npoles := aValue!
+
+pitch
+
+	^pitch!
+
+pitch: aValue
+
+	pitch := aValue!
+
+rmsO
+
+	^rmsO!
+
+rmsO: aValue
+
+	rmsO := aValue!
+
+rmsR
+
+	^rmsR!
+
+rmsR: aValue
+
+	rmsR := aValue!
+
+srate
+
+	^srate!
+
+srate: aValue
+
+	srate := aValue! !
+
+!Siren.LPCFrame methodsFor: 'printing'!
+
+printOn: aStream 
+	"Format and print the receiver on the argument."
+
+	aStream nextPutAll: ' LPC Frame ', (rmsR printString: 3), '  	', (rmsO printString: 3), '  	', 
+			(err printString: 4), '  	', (pitch printString: 4); cr! !
 
 
 

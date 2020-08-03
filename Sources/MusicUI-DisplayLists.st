@@ -175,6 +175,203 @@ printOn: aStream
 
 
 
+Smalltalk.Siren defineClass: #DisplayVisual
+	superclass: #{Siren.DisplayItem}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'visual '
+	classInstanceVariableNames: ''
+	imports: '
+			MusicConstants
+			'
+	category: 'MusicUI-DisplayLists'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.DisplayVisual class methodsFor: 'instance creation'!
+
+model: aM visual: aV offset: aPt
+	"Answer an instance of DisplayItem with the given instance variables."
+
+	^self new model: aM; visual: aV; offset: aPt!
+
+visual: aV
+	"Answer an instance of DisplayItem with the given instance variables."
+
+	^(super new initialize) visual: aV!
+
+visual: aV offset: aPt
+	"Answer an instance of DisplayItem with the given instance variables."
+
+	^(super new initialize) visual: aV; offset: aPt!
+
+visual: aV origin: aPt
+	"Answer an instance of DisplayItem with the given instance variables."
+
+	^(super new initialize) visual: aV; offset: aPt! !
+
+!Siren.DisplayVisual class methodsFor: 'examples'!
+
+convertMusicConstants
+	"Convert all the forms to opaque forms"
+	"DisplayVisual convertMusicConstants. DisplayVisual displayMusicConstants"
+
+	| all |
+	all := DisplayListView constants.
+	all keysAndValuesDo: [ :key :group |
+		Transcript show: key printString; cr.
+		(group isMemberOf: Dictionary)
+			ifTrue: [group keysAndValuesDo:
+				[ :str :item | | newI |
+				(item isKindOf: DisplayVisual)
+					ifTrue: [newI := item.
+						item visual: (OpaqueImage figure: item visual 
+							shape: (item visual convertToCoverageWithOpaquePixel: 1))]
+					ifFalse: [(item isMemberOf: Depth1Image)
+							ifTrue: [newI := OpaqueImage figure: item 
+												shape: (item convertToCoverageWithOpaquePixel: 1)]].
+				group at: str put: newI]].
+		((group isMemberOf: Array) or: [(group isMemberOf: OrderedCollection)])
+			ifTrue: [group do:
+					[ :item |
+					(item isMemberOf: OpaqueImage)
+						ifFalse: [item visual: (OpaqueImage figure: item visual 
+								shape: (item visual convertToCoverageWithOpaquePixel: 1))]]]]!
+
+displayMusicConstants
+	"Draw a nice table of the hierarchical image dictionary."
+	"DisplayVisual displayMusicConstants"
+
+	| win xstep y i ystep comp |
+	win := ScheduledWindow model: nil label: 'MusicConstants' 
+			minimumSize: 700@750.
+	comp := CompositePart new.
+	xstep := 64.
+	ystep := 48.
+	y := 0.
+	DisplayListView constants keysAndValuesDo: [ :title :dict |
+		i := 0.
+		comp add: (DisplayString string: title) at: (xstep@y).
+		y := y + (ystep/2).
+		dict keysAndValuesDo:
+			[ :str :item |
+			comp add: (DisplayString string: (str respondsToArithmetic 
+					ifTrue: [str printString] ifFalse: [str "clipTo: 6"]))
+			 at: ((i*xstep+8)@y).
+			comp add: item at: ((i*xstep+8)@(y+(ystep/2))).
+			i := i + 1.
+			i = 14 ifTrue: [i := 0. y := y + (ystep * 1.5)]].
+		y := y + ystep + 24].
+	win component: (BoundedWrapper on: comp).
+	win open!
+
+storeMusicConstants
+	"Write out all the forms to opaque forms"
+	"DisplayVisual storeMusicConstants"
+
+	| fil all |
+	fil := 'MusicConstants.st' asFilename writeStream.
+	all := DisplayListView constants.
+	all keysAndValuesDo: [ :key :group |
+		Transcript show: key printString; cr.
+		(group isMemberOf: Dictionary)
+			ifTrue: [fil cr; nextPutAll: 'Siren.DisplayListView constants at: ', key printString,
+						 ' put: IdentityDictionary new.'; cr.
+					group keysAndValuesDo:
+					[ :str :item | 
+					fil cr; nextPutAll: '(Siren.DisplayListView constants at: ', key printString, 
+						') at: ''', str, ''' asSymbol put: '.
+					item storeOn: fil.
+					fil nextPut: $!! ]].
+		((group isMemberOf: Array) or: [(group isMemberOf: OrderedCollection)])
+			ifTrue: [fil cr; nextPutAll: 'Siren.DisplayListView constants at: ', key printString,
+						 ' put: OrderedCollection new.'; cr.
+				group do:
+					[ :item |
+					fil cr; nextPutAll: '(Siren.DisplayListView constants at: ', key printString, ') add: '.
+					item storeOn: fil.
+					fil nextPut: $!! ]]].
+	fil close!
+
+visualExample
+	"Open a display list view with randomly-placed random-color visuals over the given extent."
+	"DisplayVisual visualExample"
+
+	(DisplayList visualsX: 600 byY: 600) display! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.DisplayVisual comment:
+'Instances of DisplayVisual are used for displaying arbitrary visual objects (e.g., cached images) in display lists.
+
+Instance Variables:
+	visual		<VisualComponent> the object''s visual object, typically an image'!
+
+!Siren.DisplayVisual methodsFor: 'accessing'!
+
+bounds
+	"Answer the visual's bounds translated by the receiver's translation."
+
+	^offset == nil
+		ifTrue: [visual bounds]
+		ifFalse: [visual bounds translatedBy: offset]!
+
+visual
+	"Answer the receiver's visual."
+
+	^visual!
+
+visual: aVisual
+	"Set the receiver's visual."
+
+	visual := aVisual.
+"	aVisual palette == nil
+		ifTrue: [aVisual palette: MappedPalette colorDefault]
+"! !
+
+!Siren.DisplayVisual methodsFor: 'printing'!
+
+printOn: aStream
+	"Print the receiver in the given Stream."
+
+	aStream nextPutAll: '(a ', self class name. 
+	model == nil ifFalse: [aStream nextPutAll: ' model: '. model printOn: aStream].
+	visual == nil ifFalse: [aStream nextPutAll: ' visual: '. visual printOn: aStream].
+	offset == nil ifFalse: [aStream nextPutAll: ' offset: '. offset printOn: aStream].
+	aStream nextPut: $); cr.!
+
+storeOn: aStream
+	"Print the receiver in the given Stream."
+
+	aStream nextPutAll: '('; store: self class. 
+	visual == nil ifFalse: [aStream nextPutAll: ' visual: '. visual storeOn: aStream].
+	offset == nil ifFalse: [aStream nextPutAll: ' offset: '. offset printOn: aStream].
+	aStream nextPut: $)! !
+
+!Siren.DisplayVisual methodsFor: 'displaying'!
+
+displayOn: aGraphicsContext
+	"Display the receiver's visual on the given graphics context."
+
+	color == nil
+		ifFalse: [aGraphicsContext paint: color].
+	aGraphicsContext translateBy: offset.
+	visual displayOn: aGraphicsContext.
+	aGraphicsContext translateBy: offset negated.!
+
+displayPostScriptOn: aPostscriptContext
+	"Display the receiver on the argument as a PostScript item."
+
+	aPostscriptContext translate: offset.
+	aPostscriptContext imageWidth: visual width 
+			height: visual height 
+			bits: visual bits.
+	aPostscriptContext translate: offset negated! !
+
+
+
 Smalltalk.Siren defineClass: #DisplayLine
 	superclass: #{Siren.DisplayItem}
 	indexedType: #none
@@ -303,7 +500,7 @@ rectangleExample
 Siren.DisplayRectangle comment:
 'Instances of DisplayRectangle can be used to display bordered or filled rectangles in display lists. This is a subclass of DisplayLine for reasons of practicality. a "purist" (e.g., David Liebs), would create an intermediate abstract class (e.g., BoundedDisplayItem) for both DisplayLine and DisplayRectangle.
 
-Instanve Variables:
+Instance Variables:
 	fill		<Boolean or nil> whether or not to fill the receiver on display (no by default)'!
 
 !Siren.DisplayRectangle methodsFor: 'displaying'!
@@ -1120,203 +1317,6 @@ addWrapper: aVisualWrapper
 	"Raise an error."
 
 	self error: 'I don''t use Wrappers!!'! !
-
-
-
-Smalltalk.Siren defineClass: #DisplayVisual
-	superclass: #{Siren.DisplayItem}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'visual '
-	classInstanceVariableNames: ''
-	imports: '
-			MusicConstants
-			'
-	category: 'MusicUI-DisplayLists'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.DisplayVisual class methodsFor: 'instance creation'!
-
-model: aM visual: aV offset: aPt
-	"Answer an instance of DisplayItem with the given instance variables."
-
-	^self new model: aM; visual: aV; offset: aPt!
-
-visual: aV
-	"Answer an instance of DisplayItem with the given instance variables."
-
-	^(super new initialize) visual: aV!
-
-visual: aV offset: aPt
-	"Answer an instance of DisplayItem with the given instance variables."
-
-	^(super new initialize) visual: aV; offset: aPt!
-
-visual: aV origin: aPt
-	"Answer an instance of DisplayItem with the given instance variables."
-
-	^(super new initialize) visual: aV; offset: aPt! !
-
-!Siren.DisplayVisual class methodsFor: 'examples'!
-
-convertMusicConstants
-	"Convert all the forms to opaque forms"
-	"DisplayVisual convertMusicConstants. DisplayVisual displayMusicConstants"
-
-	| all |
-	all := DisplayListView constants.
-	all keysAndValuesDo: [ :key :group |
-		Transcript show: key printString; cr.
-		(group isMemberOf: Dictionary)
-			ifTrue: [group keysAndValuesDo:
-				[ :str :item | | newI |
-				(item isKindOf: DisplayVisual)
-					ifTrue: [newI := item.
-						item visual: (OpaqueImage figure: item visual 
-							shape: (item visual convertToCoverageWithOpaquePixel: 1))]
-					ifFalse: [(item isMemberOf: Depth1Image)
-							ifTrue: [newI := OpaqueImage figure: item 
-												shape: (item convertToCoverageWithOpaquePixel: 1)]].
-				group at: str put: newI]].
-		((group isMemberOf: Array) or: [(group isMemberOf: OrderedCollection)])
-			ifTrue: [group do:
-					[ :item |
-					(item isMemberOf: OpaqueImage)
-						ifFalse: [item visual: (OpaqueImage figure: item visual 
-								shape: (item visual convertToCoverageWithOpaquePixel: 1))]]]]!
-
-displayMusicConstants
-	"Draw a nice table of the hierarchical image dictionary."
-	"DisplayVisual displayMusicConstants"
-
-	| win xstep y i ystep comp |
-	win := ScheduledWindow model: nil label: 'MusicConstants' 
-			minimumSize: 700@750.
-	comp := CompositePart new.
-	xstep := 64.
-	ystep := 48.
-	y := 0.
-	DisplayListView constants keysAndValuesDo: [ :title :dict |
-		i := 0.
-		comp add: (DisplayString string: title) at: (xstep@y).
-		y := y + (ystep/2).
-		dict keysAndValuesDo:
-			[ :str :item |
-			comp add: (DisplayString string: (str respondsToArithmetic 
-					ifTrue: [str printString] ifFalse: [str "clipTo: 6"]))
-			 at: ((i*xstep+8)@y).
-			comp add: item at: ((i*xstep+8)@(y+(ystep/2))).
-			i := i + 1.
-			i = 14 ifTrue: [i := 0. y := y + (ystep * 1.5)]].
-		y := y + ystep + 24].
-	win component: (BoundedWrapper on: comp).
-	win open!
-
-storeMusicConstants
-	"Write out all the forms to opaque forms"
-	"DisplayVisual storeMusicConstants"
-
-	| fil all |
-	fil := 'MusicConstants.st' asFilename writeStream.
-	all := DisplayListView constants.
-	all keysAndValuesDo: [ :key :group |
-		Transcript show: key printString; cr.
-		(group isMemberOf: Dictionary)
-			ifTrue: [fil cr; nextPutAll: 'Siren.DisplayListView constants at: ', key printString,
-						 ' put: IdentityDictionary new.'; cr.
-					group keysAndValuesDo:
-					[ :str :item | 
-					fil cr; nextPutAll: '(Siren.DisplayListView constants at: ', key printString, 
-						') at: ''', str, ''' asSymbol put: '.
-					item storeOn: fil.
-					fil nextPut: $!! ]].
-		((group isMemberOf: Array) or: [(group isMemberOf: OrderedCollection)])
-			ifTrue: [fil cr; nextPutAll: 'Siren.DisplayListView constants at: ', key printString,
-						 ' put: OrderedCollection new.'; cr.
-				group do:
-					[ :item |
-					fil cr; nextPutAll: '(Siren.DisplayListView constants at: ', key printString, ') add: '.
-					item storeOn: fil.
-					fil nextPut: $!! ]]].
-	fil close!
-
-visualExample
-	"Open a display list view with randomly-placed random-color visuals over the given extent."
-	"DisplayVisual visualExample"
-
-	(DisplayList visualsX: 600 byY: 600) display! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.DisplayVisual comment:
-'Instances of DisplayVisual are used for displaying arbitrary visual objects (e.g., cached images) in display lists.
-
-Instance Variables:
-	visual		<VisualComponent> the object''s visual object, typically an image'!
-
-!Siren.DisplayVisual methodsFor: 'accessing'!
-
-bounds
-	"Answer the visual's bounds translated by the receiver's translation."
-
-	^offset == nil
-		ifTrue: [visual bounds]
-		ifFalse: [visual bounds translatedBy: offset]!
-
-visual
-	"Answer the receiver's visual."
-
-	^visual!
-
-visual: aVisual
-	"Set the receiver's visual."
-
-	visual := aVisual.
-"	aVisual palette == nil
-		ifTrue: [aVisual palette: MappedPalette colorDefault]
-"! !
-
-!Siren.DisplayVisual methodsFor: 'printing'!
-
-printOn: aStream
-	"Print the receiver in the given Stream."
-
-	aStream nextPutAll: '(a ', self class name. 
-	model == nil ifFalse: [aStream nextPutAll: ' model: '. model printOn: aStream].
-	visual == nil ifFalse: [aStream nextPutAll: ' visual: '. visual printOn: aStream].
-	offset == nil ifFalse: [aStream nextPutAll: ' offset: '. offset printOn: aStream].
-	aStream nextPut: $); cr.!
-
-storeOn: aStream
-	"Print the receiver in the given Stream."
-
-	aStream nextPutAll: '('; store: self class. 
-	visual == nil ifFalse: [aStream nextPutAll: ' visual: '. visual storeOn: aStream].
-	offset == nil ifFalse: [aStream nextPutAll: ' offset: '. offset printOn: aStream].
-	aStream nextPut: $)! !
-
-!Siren.DisplayVisual methodsFor: 'displaying'!
-
-displayOn: aGraphicsContext
-	"Display the receiver's visual on the given graphics context."
-
-	color == nil
-		ifFalse: [aGraphicsContext paint: color].
-	aGraphicsContext translateBy: offset.
-	visual displayOn: aGraphicsContext.
-	aGraphicsContext translateBy: offset negated.!
-
-displayPostScriptOn: aPostscriptContext
-	"Display the receiver on the argument as a PostScript item."
-
-	aPostscriptContext translate: offset.
-	aPostscriptContext imageWidth: visual width 
-			height: visual height 
-			bits: visual bits.
-	aPostscriptContext translate: offset negated! !
 
 
 

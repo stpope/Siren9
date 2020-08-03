@@ -1,4 +1,4 @@
-'From VisualWorks® Personal Use Edition, 8.3 of July 28, 2017 on May 9, 2020 at 10:44:32 AM'!
+'From VisualWorks® Personal Use Edition, 8.3 of July 28, 2017 on May 25, 2020 at 1:28:09 PM'!
 
 
 !UI.WidgetPolicy class methodsFor: 'private-initializing'!
@@ -19,21 +19,17 @@ initializeDefaultGenericColors
 			matchAt: SymbolicPaint background put: background;
 			matchAt: SymbolicPaint selectionForeground put: ColorValue black;
 			matchAt: SymbolicPaint selectionBackground put: (background blendWith: ColorValue gray);
-			matchAt: SymbolicPaint inactiveBackground put: ColorValue white;
+			matchAt: SymbolicPaint inactiveBackground put: ColorValue red;
 			matchAt: SymbolicPaint inactiveForeground put: ColorValue gray;
 			matchAt: SymbolicPaint inactiveSelectionBackground put: ColorValue lightGray;
 			matchAt: SymbolicPaint hilite put: preferences backgroundColor asHiliteColor;
 			matchAt: SymbolicPaint shadow put: preferences backgroundColor asShadowColor;
 			matchAt: SymbolicPaint separator put: ColorValue gray;
-			matchAt: SymbolicPaint traversalHilite put: ColorValue gray
-	].
+			matchAt: SymbolicPaint traversalHilite put: ColorValue gray].
+	
 	self defaultGrayWidgetColors
 		matchAt: SymbolicPaint selectionBackground put: ColorValue lightGray.
+		
 	self defaultMonochromeWidgetColors
 		matchAt: SymbolicPaint selectionForeground put: ColorValue white;
 		matchAt: SymbolicPaint selectionBackground put: ColorValue black! !
-
-WidgetPolicy initialize.
-	WidgetPolicy subclasses do: [ :class | class initialize].
-	Screen default flushPaintPreferencesCache.
-	ScheduledControllers restore!

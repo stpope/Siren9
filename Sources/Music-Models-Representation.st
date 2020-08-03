@@ -223,7 +223,7 @@ printString
 
 	| aStream |
 	aStream := WriteStream on: (String new: 16).
-	self printOn: aStream  parens: true.
+	self printOn: aStream parens: true.
 	^aStream contents!
 
 printStringParens: bool
@@ -237,8 +237,8 @@ printStringParens: bool
 printValue
 
 	value isString ifTrue: [^value].
-"	value isFloat ifTrue: [^value printPlaces: 4].
-"	^value printString!
+	value isLPReal ifTrue: [^value printString: 4].
+	^value printString!
 
 storeOn: aStream
 	"Store the receiver on the argument as a MM declaration."
@@ -333,131 +333,6 @@ Class inst Vars:
 
 
 
-Smalltalk.Siren defineClass: #Ergon
-	superclass: #{Siren.MusicModel}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Models-Representation'!
-
-Siren.Ergon comment:
-'Class Ergon is the abstract representational class for the amplitude/loudness/dynamic species.
-Instances of its subclass species are used to model loudness values.'!
-
-
-
-Smalltalk.Siren defineClass: #Amplitude
-	superclass: #{Siren.Ergon}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Models-Representation'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.Amplitude class methodsFor: 'class constants'!
-
-color
-	"Answer the default color to display instances with."
-
-	^ColorValue blue!
-
-initialize
-	"Set up the class inst var, a generality table."
-	"Amplitude initialize"
-	"Amplitude generalize: (21 dB) and: (88 velocity)"
-	"Amplitude generalize: (#ff ampl) and: (127 velocity)"
-
-	generalityTable :=
-		((DBLoudness -> 80),
-		(RatioLoudness -> 80),
-		(MIDIVelocity -> 40),
-		(SymbolicLoudness -> 20))!
-
-initializeGenerality
-	"Set up the class inst var, a generality table."
-	"Amplitude initialize"
-	"Amplitude generalize: (21 dB) and: (88 velocity)"
-	"Amplitude generalize: (#ff ampl) and: (127 velocity)"
-
-	generalityTable :=
-		((DBLoudness -> 80),
-		(RatioLoudness -> 80),
-		(MIDIVelocity -> 40),
-		(SymbolicLoudness -> 20))!
-
-mostGeneral
-	"Answer the most general-purpose duration--relative"
-
-	^#asRatio!
-
-propertyName
-	"Answer the receiver class's default property name."
-
-	^#loudness:!
-
-relativeMember
-	"Answer the receiver class's species member used as a relative magnitude."
-
-	^RatioLoudness!
-
-species
-	"Answer Amplitude."
-
-	^Amplitude! !
-
-!Siren.Amplitude class methodsFor: 'examples'!
-
-example
-	"Print a simple message to the transcript demonstrating the various types."
-	"SymbolicLoudness nameMap inspect"
-	"Amplitude example"
-
-	| me |
-	me := Amplitude value: #mf.
-	Transcript show: me printString; cr;
-		show: me asRatio printString; cr;
-		show: me asMIDI printString; cr.
-	me inspect! !
-
-!Siren.Amplitude class methodsFor: 'instance creation'!
-
-value: aValue
-	"Answer a new instance of a member of my species."
-
-	aValue species == Amplitude ifTrue: [^aValue].
-	(aValue isMemberOf: SmallInteger)
-			ifTrue: [^MIDIVelocity new value: aValue].
-	(aValue isKindOf: LimitedPrecisionReal)
-			ifTrue: [^RatioLoudness new value: aValue].
-	(aValue isMemberOf: Fraction)
-			ifTrue: [^RatioLoudness new value: aValue].
-	(aValue isKindOf: String)
-			ifTrue: [^SymbolicLoudness new value: aValue asSymbol].
-	^self new value: aValue! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.Amplitude comment:
-'Instances of classes whose species is Amplitude are used for the loudness parameters of musical events.
-Amplitudes come in several flavors, as in the classes RatioMagnitude, MIDIVelocity and SymbolicLoudness.
-The class Amplitude is abstract, its class creation method answers an instance of a concrete Amplitude/Loudness class.
-
-Examples:
-	Amplitude value: 0.77		"create a ratio instance - range 0.0 to 1.0 (cmusic)"
-	Amplitude value: 77		"create an MIDI instance - range 0 to 127"
-	Amplitude value: #mp		"create a symbolic instance - range #ppp to #fff"
-
-See also the class example.'!
-
-
-
 Smalltalk.Siren defineClass: #Positus
 	superclass: #{Siren.MusicModel}
 	indexedType: #none
@@ -473,7 +348,7 @@ Instances of its subclass species are used to model spatial and positional value
 
 
 
-Smalltalk.Siren defineClass: #Position
+Smalltalk.Siren defineClass: #Spatialization
 	superclass: #{Siren.Positus}
 	indexedType: #none
 	private: false
@@ -482,10 +357,10 @@ Smalltalk.Siren defineClass: #Position
 	imports: ''
 	category: 'Music-Models-Representation'!
 
-Siren.Position comment:
-'Instances of the Position species model the position of sound sources in room simulations or scores.
+Siren.Spatialization comment:
+'Instances of the Spatialization species model the characteristics and configuration of room simulations in scores.
 This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
-In the later case, the value instance variable could hold a number or point.'!
+In the later case, the value instance variable would hold a record with the geometry or the room, the positions of default sources, and the listener''s position and features.'!
 
 
 
@@ -520,6 +395,21 @@ In the later case, the value instance variable could hold a number, process or b
 
 
 
+Smalltalk.Siren defineClass: #Ergon
+	superclass: #{Siren.MusicModel}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Models-Representation'!
+
+Siren.Ergon comment:
+'Class Ergon is the abstract representational class for the amplitude/loudness/dynamic species.
+Instances of its subclass species are used to model loudness values.'!
+
+
+
 Smalltalk.Siren defineClass: #Chroma
 	superclass: #{Siren.MusicModel}
 	indexedType: #none
@@ -548,6 +438,22 @@ Siren.ModeMember comment:
 'Instances of the ModeMember species model pitches as elements of a mode (e.g., minor) or gamut (e.g., pentatonic on F).
 This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
 In the later case, the value instance variable could hold a number or pitch, and the mode or gamut could be shared.'!
+
+
+
+Smalltalk.Siren defineClass: #Directionality
+	superclass: #{Siren.Positus}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Models-Representation'!
+
+Siren.Directionality comment:
+'Instances of the Directionality species model the radiation characteristics of sound sources in room simulations.
+This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
+In the later case, the value instance variable would hold a 1- or 2-dimensional position as a number or point.'!
 
 
 
@@ -687,6 +593,132 @@ See also the class example.'!
 
 
 
+Smalltalk.Siren defineClass: #Position
+	superclass: #{Siren.Positus}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Models-Representation'!
+
+Siren.Position comment:
+'Instances of the Position species model the position of sound sources in room simulations or scores.
+This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
+In the later case, the value instance variable could hold a number or point.'!
+
+
+
+Smalltalk.Siren defineClass: #Amplitude
+	superclass: #{Siren.Ergon}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Models-Representation'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.Amplitude class methodsFor: 'class constants'!
+
+color
+	"Answer the default color to display instances with."
+
+	^ColorValue blue!
+
+initialize
+	"Set up the class inst var, a generality table."
+	"Amplitude initialize"
+	"Amplitude generalize: (21 dB) and: (88 velocity)"
+	"Amplitude generalize: (#ff ampl) and: (127 velocity)"
+
+	generalityTable :=
+		((DBLoudness -> 80),
+		(RatioLoudness -> 80),
+		(MIDIVelocity -> 40),
+		(SymbolicLoudness -> 20))!
+
+initializeGenerality
+	"Set up the class inst var, a generality table."
+	"Amplitude initialize"
+	"Amplitude generalize: (21 dB) and: (88 velocity)"
+	"Amplitude generalize: (#ff ampl) and: (127 velocity)"
+
+	generalityTable :=
+		((DBLoudness -> 80),
+		(RatioLoudness -> 80),
+		(MIDIVelocity -> 40),
+		(SymbolicLoudness -> 20))!
+
+mostGeneral
+	"Answer the most general-purpose duration--relative"
+
+	^#asRatio!
+
+propertyName
+	"Answer the receiver class's default property name."
+
+	^#loudness:!
+
+relativeMember
+	"Answer the receiver class's species member used as a relative magnitude."
+
+	^RatioLoudness!
+
+species
+	"Answer Amplitude."
+
+	^Amplitude! !
+
+!Siren.Amplitude class methodsFor: 'examples'!
+
+example
+	"Print a simple message to the transcript demonstrating the various types."
+	"SymbolicLoudness nameMap inspect"
+	"Amplitude example"
+
+	| me |
+	me := Amplitude value: #pp.
+	Transcript show: me printString; cr;
+		show: me asRatio printString; cr;
+		show: me asMIDI printString; cr.
+	me inspect! !
+
+!Siren.Amplitude class methodsFor: 'instance creation'!
+
+value: aValue
+	"Answer a new instance of a member of my species."
+
+	aValue species == Amplitude ifTrue: [^aValue].
+	(aValue isMemberOf: SmallInteger)
+			ifTrue: [^MIDIVelocity new value: aValue].
+	(aValue isKindOf: LimitedPrecisionReal)
+			ifTrue: [^RatioLoudness new value: aValue].
+	(aValue isMemberOf: Fraction)
+			ifTrue: [^RatioLoudness new value: aValue].
+	(aValue isKindOf: String)
+			ifTrue: [^SymbolicLoudness new value: aValue asSymbol].
+	^self new value: aValue! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.Amplitude comment:
+'Instances of classes whose species is Amplitude are used for the loudness parameters of musical events.
+Amplitudes come in several flavors, as in the classes RatioMagnitude, MIDIVelocity and SymbolicLoudness.
+The class Amplitude is abstract, its class creation method answers an instance of a concrete Amplitude/Loudness class.
+
+Examples:
+	Amplitude value: 0.77		"create a ratio instance - range 0.0 to 1.0 (cmusic)"
+	Amplitude value: 77		"create an MIDI instance - range 0 to 127"
+	Amplitude value: #mp		"create a symbolic instance - range #ppp to #fff"
+
+See also the class example.'!
+
+
+
 Smalltalk.Siren defineClass: #Duration
 	superclass: #{Siren.Chronos}
 	indexedType: #none
@@ -711,11 +743,13 @@ initialize
 	"Duration initialize"
 	"Duration generalize: (100 msec) and: ((1/4) beat)"
 	"Duration generalize: (100 msec) and: (0.3 sec)"
+	"(0 msec) + (3767282984535741 usec)"
 
 	generalityTable :=
-		((SecondDuration -> 80),
+		((SecondDuration -> 40),
 		(RatioDuration -> 60),
-		(MSecondDuration -> 40),
+		(USecondDuration -> 50),
+		(MSecondDuration -> 50),
 		(ConditionalDuration -> 0))!
 
 initializeGeneralities
@@ -770,7 +804,7 @@ value: aValue
 	| number |
 	aValue species == Duration ifTrue: [^aValue].
 	(aValue isMemberOf: SmallInteger)
-		ifTrue: [aValue < 10
+		ifTrue: [aValue < 100
 			ifTrue: [^SecondDuration new value: aValue]
 			ifFalse: [^MSecondDuration new value: aValue]].
 	(aValue isKindOf: LimitedPrecisionReal)
@@ -864,41 +898,9 @@ name: theName
 	"Accept the argument, 'theName', as the new instance nariable 'name'."
 
 	name := theName! !
-
-
-
-Smalltalk.Siren defineClass: #Spatialization
-	superclass: #{Siren.Positus}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Models-Representation'!
-
-Siren.Spatialization comment:
-'Instances of the Spatialization species model the characteristics and configuration of room simulations in scores.
-This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
-In the later case, the value instance variable would hold a record with the geometry or the room, the positions of default sources, and the listener''s position and features.'!
-
-
-
-Smalltalk.Siren defineClass: #Directionality
-	superclass: #{Siren.Positus}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Models-Representation'!
-
-Siren.Directionality comment:
-'Instances of the Directionality species model the radiation characteristics of sound sources in room simulations.
-This class can be used as a concrete one (adding a few methods to fill it out), or like the other representational classes (making concrete classes of this species).
-In the later case, the value instance variable would hold a 1- or 2-dimensional position as a number or point.'!
-
-#{Siren.Amplitude} initialize!
 
 #{Siren.Pitch} initialize!
+
+#{Siren.Amplitude} initialize!
 
 #{Siren.Duration} initialize!

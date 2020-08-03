@@ -225,7 +225,7 @@ Siren.Function comment:
 'Instances of of Function and its subclasses represent abstractions of 1- or n-dimensional functions of 1 variable (e.g., time). 
 Class Function is concrete and represents functions that are described by a array of data points assumed to lie equally-spaced in the unit interval.
 Functions are normally created from an array of values over the unit interval; x varies from 0.0 to 1.0 and y is free over that range.
-One can address them within the unit interval with atX: or one can address them with integer indeces up to the data set''s size with atIndex: (can be dangerous).
+One can address them within the unit interval with atX: or one can address them with integer indices up to the data set''s size with atIndex: (can be dangerous).
 
 Examples are a ramp from 0 to 1 such as:
 	[(LinearFunction from: #((0 0) (1 2))) at: 0.33]
@@ -845,6 +845,211 @@ size
 
 
 
+Smalltalk.Siren defineClass: #SplineFunction
+	superclass: #{Siren.LinearFunction}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'linSeg '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Functions'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.SplineFunction class methodsFor: 'examples'!
+
+splineExample
+	"Make a SplineSeg."
+	"SplineFunction splineExample"
+
+	| fcn |
+	fcn := SplineFunction from: #((0 1) (0.35 1.3) (0.65 0.7) (1 1)).
+	fcn inspect.
+"	^fcn at: 0.14 
+"!
+
+splineViewExample
+	"Make a SplineSeg and open a view on its form."
+	"SplineFunction splineSegViewExample"
+
+	FunctionView onFunction: 
+		(SplineFunction from: #((0 0.5) (0.35 0.7) (0.65 0.2) (1 0.5)))! !
+
+!Siren.SplineFunction class methodsFor: 'instance creation'!
+
+default
+	"Answer a default instance of the receiver class."
+
+	^SplineFunction from: #((0 0.5) (0.35 0.7) (0.65 0.35) (1 0.5))! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.SplineFunction comment:
+'Instances of SplineSeg are cubic splines between their points.
+
+Instance Variable:
+	linSeg		<LinearFunction> my linear twin'!
+
+!Siren.SplineFunction methodsFor: 'accessing'!
+
+at: anIndex
+	"Answer the value at the given index in my range--take it out of my computed form."
+
+	| val |
+	linSeg == nil
+		ifTrue: [self computeCurve].
+	val := linSeg at: anIndex.
+	^(val * scale) + offset! !
+
+!Siren.SplineFunction methodsFor: 'computing'!
+
+computeCurve
+	"Compute the receiver by cubic interpolation; use the Geometric spline."
+
+	| points spline |
+	points := OrderedCollection new: data size.
+	data do: [ :pt |
+			points add: (pt * 100)].
+	spline := Spline controlPoints: points.
+	points := spline computeCurve; computePoints.
+	1 to: points size do: [ :i |
+			points at: i put: ((points at: i) / 100)].
+	linSeg := LinearFunction from: points! !
+
+
+
+Smalltalk.Siren defineClass: #FourierSummation
+	superclass: #{Siren.Function}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'myForm myArray lazy '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Functions'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.FourierSummation class methodsFor: 'examples'!
+
+fourierExample
+	"Make a Sine summation that approaches a square wave"
+	"FourierSummation fourierExample"
+
+	| fcn |
+	fcn := FourierSummation from: #((1 1 0) (3 0.3 0) (5 0.2 0) 
+							(7 0.15 0) (9 0.11 0) (11 0.09 0)).
+	Transcript show: (fcn at: 0.14) printString; cr.
+	fcn inspect!
+
+fourierViewExample
+	"Make a Sine summation that approaches a square wave and open a view on it."
+	"FourierSummation fourierViewExample"
+
+	FunctionView onFunction: (FourierSummation from: #((1 0.5 0) (3 0.3 0) (5 0.2 0) 
+							(7 0.17 0) (9 0.15 0) (11 0.1 0)))! !
+
+!Siren.FourierSummation class methodsFor: 'instance creation'!
+
+default
+	"Answer a default instance of the receiver class."
+
+	^FourierSummation from: #((1 0.5 0) (3 0.3 0) (5 0.2 0) 
+							(7 0.17 0) (9 0.15 0) (11 0.1 0))!
+
+from: anArrayOfZPoints
+	"Answer a sum-of-sines function with the given points."
+
+	| me |
+	me := self ofSize: anArrayOfZPoints size.
+	anArrayOfZPoints do: 
+			[ :anArray | 
+			me add: (anArray first @ (anArray at: 2) @ anArray last)].
+	^me! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.FourierSummation comment:
+'Instances of FourierSummation are functions that interpret their points as 3-element arrays (harmonic, amplitude, phase), and sum sine waves into their data array based on the Fourier summation of these components.
+
+Instance variables:
+	myForm		<Form> my function plot--default size = 1024@180
+	myArray		<Array of Floats> my value array--default length = 1024
+	lazy <Boolean> do I cache my values (eager) or compute them on the fly (lazy)?
+
+Example:
+	| fcn |
+	fcn := FourierSummation from: #((1 1 0) (3 0.3 0) (5 0.2 0) 
+							(7 0.15 0) (9 0.11 0) (11 0.09 0)).
+	Transcript show: (fcn at: 0.14) printString; cr.
+'!
+
+!Siren.FourierSummation methodsFor: 'computing'!
+
+computeCurve
+	"Compute the block by sine summation--set the values in the cached array."
+
+	| width twoPi scale |
+	width := self class defaultSize.
+	myArray := Array new: width.
+	twoPi := 2.0 * Float pi.
+	scale := twoPi / width.
+	1 to: width do:
+		[ :x |
+		myArray at: x put: (self computeValueAt: (x * scale))].!
+
+computeValueAt: anIndex
+	"Compute the answer by sine summation."
+	"(Fourier from: #((1 1 0))) computeValueAt: (Float pi / 4)"
+
+	| value twoPi |
+	twoPi := 2.0 * Float pi.
+	value := 0.
+	data do:
+		[ :aZPoint |		"each point is (number @ amplitude @ phase)"
+		value := value + (((anIndex * aZPoint x) asFloat
+						+ (aZPoint z asFloat / 360.0 * twoPi)) sin
+					* aZPoint y asFloat)].
+	^value! !
+
+!Siren.FourierSummation methodsFor: 'accessing'!
+
+add: a3DPoint
+	"Add the argument to the receiver's point collection."
+
+"	| y |"
+	data add: a3DPoint.
+"	y := a3DPoint y.
+	y < domain first
+		ifTrue: [self domain: (y to: domain last)].
+	y > domain last
+		ifTrue: [self domain: (domain first to: y)]."!
+
+at: theIndex
+	"Answer the value from my array--assume an index in the range 0 to 1"
+
+	| val |
+	lazy
+		ifTrue: [val := self computeValueAt: theIndex]
+		ifFalse: [myArray ifNil: [self computeCurve].
+				val := myArray at: ((theIndex * myArray size) truncated max: 1)].
+	^(val * scale) + offset! !
+
+!Siren.FourierSummation methodsFor: 'initialize-release'!
+
+initialize: size
+	"Initialize the receiver for the given size."
+
+	super initialize: size.
+	domain := 0 to: 1.
+	range := -1 to: 1.
+	lazy := false		"i.e., pre-compute the curve"! !
+
+
+
 Smalltalk.Siren defineClass: #ExponentialFunction
 	superclass: #{Siren.LinearFunction}
 	indexedType: #objects
@@ -989,281 +1194,6 @@ printOn: aStream
 				ifTrue: [pt z printOn: aStream].
 			aStream nextPut: $); space].
 			aStream nextPut: $)! !
-
-
-
-Smalltalk.Siren defineClass: #FourierSummation
-	superclass: #{Siren.Function}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: 'myForm myArray lazy '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Functions'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.FourierSummation class methodsFor: 'examples'!
-
-fourierExample
-	"Make a Sine summation that approaches a square wave"
-	"FourierSummation fourierExample"
-
-	| fcn |
-	fcn := FourierSummation from: #((1 1 0) (3 0.3 0) (5 0.2 0) 
-							(7 0.15 0) (9 0.11 0) (11 0.09 0)).
-	Transcript show: (fcn at: 0.14) printString; cr.
-	fcn inspect!
-
-fourierViewExample
-	"Make a Sine summation that approaches a square wave and open a view on it."
-	"FourierSummation fourierViewExample"
-
-	FunctionView onFunction: (FourierSummation from: #((1 0.5 0) (3 0.3 0) (5 0.2 0) 
-							(7 0.17 0) (9 0.15 0) (11 0.1 0)))! !
-
-!Siren.FourierSummation class methodsFor: 'instance creation'!
-
-default
-	"Answer a default instance of the receiver class."
-
-	^FourierSummation from: #((1 0.5 0) (3 0.3 0) (5 0.2 0) 
-							(7 0.17 0) (9 0.15 0) (11 0.1 0))!
-
-from: anArrayOfZPoints
-	"Answer a sum-of-sines function with the given points."
-
-	| me |
-	me := self ofSize: anArrayOfZPoints size.
-	anArrayOfZPoints do: 
-			[ :anArray | 
-			me add: (anArray first @ (anArray at: 2) @ anArray last)].
-	^me! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.FourierSummation comment:
-'Instances of FourierSummation are functions that interpret their points as 3-element arrays (harmonic, amplitude, phase), and sum sine waves into their data array based on the fourier summation of these components.
-
-Instance variables:
-	myForm		<Form> my function plot--default size = 1024@180
-	myArray		<Array of Floats> my value array--default length = 1024
-	lazy <Boolean> do I cache my values (eager) or cmopute them on the fly (lazy)?
-
-Example:
-	| fcn |
-	fcn := FourierSummation from: #((1 1 0) (3 0.3 0) (5 0.2 0) 
-							(7 0.15 0) (9 0.11 0) (11 0.09 0)).
-	Transcript show: (fcn at: 0.14) printString; cr.
-'!
-
-!Siren.FourierSummation methodsFor: 'computing'!
-
-computeCurve
-	"Compute the block by sine summation--set the values in the cached array."
-
-	| width twoPi scale |
-	width := self class defaultSize.
-	myArray := Array new: width.
-	twoPi := 2.0 * Float pi.
-	scale := twoPi / width.
-	1 to: width do:
-		[ :x |
-		myArray at: x put: (self computeValueAt: (x * scale))].!
-
-computeValueAt: anIndex
-	"Compute the answer by sine summation."
-	"(Fourier from: #((1 1 0))) computeValueAt: (Float pi / 4)"
-
-	| value twoPi |
-	twoPi := 2.0 * Float pi.
-	value := 0.
-	data do:
-		[ :aZPoint |		"each point is (number @ amplitude @ phase)"
-		value := value + (((anIndex * aZPoint x) asFloat
-						+ (aZPoint z asFloat / 360.0 * twoPi)) sin
-					* aZPoint y asFloat)].
-	^value! !
-
-!Siren.FourierSummation methodsFor: 'accessing'!
-
-add: a3DPoint
-	"Add the argument to the receiver's point collection."
-
-"	| y |"
-	data add: a3DPoint.
-"	y := a3DPoint y.
-	y < domain first
-		ifTrue: [self domain: (y to: domain last)].
-	y > domain last
-		ifTrue: [self domain: (domain first to: y)]."!
-
-at: theIndex
-	"Answer the value from my array--assume an index in the range 0 to 1"
-
-	| val |
-	lazy
-		ifTrue: [val := self computeValueAt: theIndex]
-		ifFalse: [myArray ifNil: [self computeCurve].
-				val := myArray at: ((theIndex * myArray size) truncated max: 1)].
-	^(val * scale) + offset! !
-
-!Siren.FourierSummation methodsFor: 'initialize-release'!
-
-initialize: size
-	"Initialize the receiver for the given size."
-
-	super initialize: size.
-	domain := 0 to: 1.
-	range := -1 to: 1.
-	lazy := false		"i.e., pre-compute the curve"! !
-
-
-
-Smalltalk.Siren defineClass: #FunctionGraph
-	superclass: #{Siren.Function}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: 'operandL operandR operation '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Functions'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.FunctionGraph class methodsFor: 'instance creation'!
-
-opL: opL opR: opR operation: op
-	"Answer a new function graph"
-
-	^self new operandL: opL; operandR: opR; operation: op! !
-
-!Siren.FunctionGraph class methodsFor: 'examples'!
-
-example
-	"Open the sum of a triangle and a sine"
-	"FunctionGraph example"
-
-	| fcn1 fcn2 |
-	fcn1 := LinearFunction from: #((0 0) (0.5 0.9) (1 0)).
-	fcn2 := FourierSummation from: #((17 0.05 0)).
-"	(FunctionGraph opL: fcn1 opR: fcn2 operation: #+) open"
-	(fcn1 + fcn2) open.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.FunctionGraph methodsFor: 'accessing'!
-
-at: anIndex 
-	"Answer the value at the given index (between 0 and 1 -or- 1 and data size)."
-
-	| op1 op2 |
-	anIndex isSymbol
-		ifTrue: [^operandL at: anIndex].
-	operandL isEvent
-		ifFalse: [op1 := operandL]
-		ifTrue: [op1 := operandL at: anIndex].
-	operandR isEvent
-		ifFalse: [op2 := operandR]
-		ifTrue: [op2 := operandR at: anIndex].
-	^op1 perform: operation with: op2!
-
-operandL: aFcn
-
-	operandL := aFcn.
-	range := aFcn range.
-	domain := aFcn domain.!
-
-operandR: aValue
-
-	operandR := aValue!
-
-operation
-
-	^operation!
-
-operation: aValue
-
-	operation := aValue! !
-
-
-
-Smalltalk.Siren defineClass: #SplineFunction
-	superclass: #{Siren.LinearFunction}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: 'linSeg '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Functions'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.SplineFunction class methodsFor: 'examples'!
-
-splineExample
-	"Make a SplineSeg."
-	"SplineFunction splineExample"
-
-	| fcn |
-	fcn := SplineFunction from: #((0 1) (0.35 1.3) (0.65 0.7) (1 1)).
-	fcn inspect.
-"	^fcn at: 0.14 
-"!
-
-splineViewExample
-	"Make a SplineSeg and open a view on its form."
-	"SplineFunction splineSegViewExample"
-
-	FunctionView onFunction: 
-		(SplineFunction from: #((0 0.5) (0.35 0.7) (0.65 0.2) (1 0.5)))! !
-
-!Siren.SplineFunction class methodsFor: 'instance creation'!
-
-default
-	"Answer a default instance of the receiver class."
-
-	^SplineFunction from: #((0 0.5) (0.35 0.7) (0.65 0.35) (1 0.5))! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.SplineFunction comment:
-'Instances of SplineSeg are cubic splines betwen their points.
-
-Instance Variable:
-	linSeg		<LinearFunction> my linear twin'!
-
-!Siren.SplineFunction methodsFor: 'accessing'!
-
-at: anIndex
-	"Answer the value at the given index in my range--take it out of my computed form."
-
-	| val |
-	linSeg == nil
-		ifTrue: [self computeCurve].
-	val := linSeg at: anIndex.
-	^(val * scale) + offset! !
-
-!Siren.SplineFunction methodsFor: 'computing'!
-
-computeCurve
-	"Compute the receiver by cubic interpolation; use the Geometric spline."
-
-	| points spline |
-	points := OrderedCollection new: data size.
-	data do: [ :pt |
-			points add: (pt * 100)].
-	spline := Spline controlPoints: points.
-	points := spline computeCurve; computePoints.
-	1 to: points size do: [ :i |
-			points at: i put: ((points at: i) / 100)].
-	linSeg := LinearFunction from: points! !
 
 
 
@@ -1626,6 +1556,76 @@ timewarpBy: fact
 		data := newD.
 		^self]
 				"else fact is a function"! !
+
+
+
+Smalltalk.Siren defineClass: #FunctionGraph
+	superclass: #{Siren.Function}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'operandL operandR operation '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Functions'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.FunctionGraph class methodsFor: 'instance creation'!
+
+opL: opL opR: opR operation: op
+	"Answer a new function graph"
+
+	^self new operandL: opL; operandR: opR; operation: op! !
+
+!Siren.FunctionGraph class methodsFor: 'examples'!
+
+example
+	"Open the sum of a triangle and a sine"
+	"FunctionGraph example"
+
+	| fcn1 fcn2 |
+	fcn1 := LinearFunction from: #((0 0) (0.5 0.9) (1 0)).
+	fcn2 := FourierSummation from: #((17 0.05 0)).
+"	(FunctionGraph opL: fcn1 opR: fcn2 operation: #+) open"
+	(fcn1 + fcn2) open.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.FunctionGraph methodsFor: 'accessing'!
+
+at: anIndex 
+	"Answer the value at the given index (between 0 and 1 -or- 1 and data size)."
+
+	| op1 op2 |
+	anIndex isSymbol
+		ifTrue: [^operandL at: anIndex].
+	operandL isEvent
+		ifFalse: [op1 := operandL]
+		ifTrue: [op1 := operandL at: anIndex].
+	operandR isEvent
+		ifFalse: [op2 := operandR]
+		ifTrue: [op2 := operandR at: anIndex].
+	^op1 perform: operation with: op2!
+
+operandL: aFcn
+
+	operandL := aFcn.
+	range := aFcn range.
+	domain := aFcn domain.!
+
+operandR: aValue
+
+	operandR := aValue!
+
+operation
+
+	^operation!
+
+operation: aValue
+
+	operation := aValue! !
 
 
 

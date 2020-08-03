@@ -18,36 +18,12 @@ Siren.Scale defineSharedVariable: #AllNotes
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
-!Siren.Scale class methodsFor: 'examples'!
-
-example
-"
-	N la flat majorScale notes ->  #(Lab Sib Do Reb Mib Fa Sol )
-	N do harmonicMinorScale notes ->  #(Do Re Mib Fa Sol Lab Si )
-	
-	N re majorScale numberOfSharps -> 2
-
-	N do majorScale generateChordsPoly: 4 ->
-OrderedCollection ([Do #maj7 ] [Re #min 7 ] [Mi #min 7 ] [Fa #maj7 ] [Sol 7 ] [La #min 7 ] [Si #halfDim7 ] ) 
-
-	N do majorScale generateChordsPoly: 6
--> OrderedCollection (Do #maj7 9 11  Re #min 7 9 11  Mi #min 7 #dim9 11  Fa #maj7 9 #aug11  Sol 7 9 11  La #min 7 9 11  Si #min #dim5 7 #dim9 11  )
-
-	N do majorScale generateChordsPoly: 7
--> OrderedCollection (Do #maj7 9 11 13  Re #min 7 9 11 13  Mi #min 7 #dim9 11 #dim13  Fa #maj7 9 #aug11 13  Sol 7 9 11 13  La #min 7 9 11 #dim13  Si #min #dim5 7 #dim9 11 #dim13  )
-
-N re  HarmonicMinorScale generateChordsPoly: 3
-
-	N do majorScale degreDeAccord: (FPChord new fromString: 'Fa min 7')
--> 4
-"! !
-
-!Siren.Scale class methodsFor: 'Paleo class initialize'!
+!Siren.Scale class methodsFor: 'class initialize'!
 
 initialize
 	AllNotes := Dictionary new! !
 
-!Siren.Scale class methodsFor: 'creation'!
+!Siren.Scale class methodsFor: 'instance creation'!
 
 askScale
 	"self askScale"
@@ -80,6 +56,30 @@ warn: s
 
 intervalList
 	^self subclassResponsibility! !
+
+!Siren.Scale class methodsFor: 'examples'!
+
+example
+"
+	N la flat majorScale notes ->  #(Lab Sib Do Reb Mib Fa Sol )
+	N do harmonicMinorScale notes ->  #(Do Re Mib Fa Sol Lab Si )
+	
+	N re majorScale numberOfSharps -> 2
+
+	N do majorScale generateChordsPoly: 4 ->
+OrderedCollection ([Do #maj7 ] [Re #min 7 ] [Mi #min 7 ] [Fa #maj7 ] [Sol 7 ] [La #min 7 ] [Si #halfDim7 ] ) 
+
+	N do majorScale generateChordsPoly: 6
+-> OrderedCollection (Do #maj7 9 11  Re #min 7 9 11  Mi #min 7 #dim9 11  Fa #maj7 9 #aug11  Sol 7 9 11  La #min 7 9 11  Si #min #dim5 7 #dim9 11  )
+
+	N do majorScale generateChordsPoly: 7
+-> OrderedCollection (Do #maj7 9 11 13  Re #min 7 9 11 13  Mi #min 7 #dim9 11 #dim13  Fa #maj7 9 #aug11 13  Sol 7 9 11 13  La #min 7 9 11 #dim13  Si #min #dim5 7 #dim9 11 #dim13  )
+
+N re  HarmonicMinorScale generateChordsPoly: 3
+
+	N do majorScale degreDeAccord: (FPChord new fromString: 'Fa min 7')
+-> 4
+"! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -307,8 +307,7 @@ octave: o
 !Siren.Scale methodsFor: 'computing notes'!
 
 computeNotes
-	"intervalList depends on the type of the scale. It is redefined in each 
-	subclass of Scale"
+	"intervalList depends on the type of the scale. It is redefined in each subclass of Scale"
 
 	notes := self class intervalList collect: [:s | root perform: s]!
 
@@ -321,6 +320,44 @@ leadingNote
 	"N la minorScale leadingNote"
 
 	^self notes last!
+
+nearestNoteTo: aHzPitch
+	"Answer the frequency of the scale degree closest to the given pitch in Hz."
+	"(PentatonicScale root: N re) nearestNoteTo: 450"
+
+	| oct nNum bNote |
+	nNum := (((aHzPitch / 8.17579891564371) log: 2) * 12) truncated.
+	oct:= (nNum / 12) truncated.
+	bNote := oct * 12.
+
+"	Transcript show: 'nearestNoteTo: ', aHzPitch printString; cr."
+	0 to: notes size do: 
+		[ :ind | | nt0 nt1 t0 t1 p0 p1 |
+		(ind = 0)
+			ifFalse: [nt0 := notes at: ind.						"get the note degrees"
+				t0 := bNote + nt0 semiToneCount.				"adjust to oct base"
+				p0 := 8.17579891564371 * (2.0 raisedTo: ((t0 asFloat) / 12.0))]		"lower/higher pitch of interval"
+			ifTrue:  [nt0 := notes last.					
+				t0 := bNote + nt0 semiToneCount.				
+				p0 := 8.17579891564371 * (2.0 raisedTo: ((t0 asFloat) / 12.0)) / self octaveScale].
+		(ind < notes size)
+			ifTrue: [nt1 := notes at: ind + 1.
+				t1 := bNote + nt1 semiToneCount.
+				p1 := 8.17579891564371 * (2.0 raisedTo: ((t1 asFloat) / 12.0))]
+			ifFalse: [nt1 := (notes at: 1).
+				t1 := bNote + nt1 semiToneCount.				
+				p1 := 8.17579891564371 * (2.0 raisedTo: ((t1 asFloat) / 12.0)) * self octaveScale].
+
+"		Transcript tab; show: 'Between: ', p0 printString, ' and: ', p1 printString; cr."
+		(p0 <= aHzPitch and: [p1 >= aHzPitch])			"loop over intervals looking for the one that includes the given freq"
+			ifTrue:  [ |  a b  | 
+				a := (aHzPitch - p0).
+				b := (p1 - aHzPitch).
+				^(a >= b)
+					ifTrue:  [p1]
+					ifFalse: [p0]]].
+
+	self error: 'Pitch class member not found'!
 
 reverseNotes
 	"first is root, others following descending order"
@@ -385,173 +422,13 @@ pitchClassFor: p
 
 !Siren.Scale methodsFor: 'transpose'!
 
+octaveScale
+	"Most scales repeate in octaves of 2.0"
+
+	^2.0!
+
 transposeOf: anInterval 
 	^self class root: (root transposeOf: anInterval)! !
-
-
-
-Smalltalk.Siren defineClass: #NeapolitanMinor
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.NeapolitanMinor class methodsFor: 'interval list'!
-
-intervalList
-	"tire de McLaughlin et le Mahavishnu Orchestra"
-
-	^#(#unison #minorSecond #minorThird #perfectFourth #perfectFifth #minorSixth #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.NeapolitanMinor comment:
-'<historical>'!
-
-
-
-Smalltalk.Siren defineClass: #ChromaticScale
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.ChromaticScale class methodsFor: 'interval list'!
-
-intervalList
-
-	^#(#unison #augmentedUnison #majorSecond #minorThird #majorThird #perfectFourth #augmentedFourth #perfectFifth #minorSixth #majorSixth #minorSeventh #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-
-
-Smalltalk.Siren defineClass: #NeapolitanMajor
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.NeapolitanMajor class methodsFor: 'interval list'!
-
-intervalList
-	"tire de McLaughlin et le Mahavishnu Orchestra"
-
-	^#(#unison #minorSecond #minorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-
-
-Smalltalk.Siren defineClass: #PseudoMinorScale
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.PseudoMinorScale class methodsFor: 'interval list'!
-
-intervalList
-	^#(#unison #second #minorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-
-
-Smalltalk.Siren defineClass: #MajorScale
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.MajorScale class methodsFor: 'interval list'!
-
-allIntervals
-	^#(#unison #augmentedUnison #second #augmentedSecond #majorThird #perfectFourth augmentedFourth #perfectFifth #augmentedFifth #majorSixth #minorSeventh #majorSeventh )!
-
-intervalList
-	^#(#unison #second #majorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.MajorScale methodsFor: 'Paleo'!
-
-costForPitch: n
-	(notes includes: n) ifTrue: [ ^ 0].
-	(self allNotes includes: n) ifTrue: [^ 1].
-	^ 2!
-
-enharmonicScale
-	root = N C sharp ifTrue: [^ N D flat majorScale].
-	root = N D sharp ifTrue: [^ N E flat majorScale].
-	root = N F sharp ifTrue: [^ N G flat majorScale].
-	root = N G sharp ifTrue: [^ N A flat majorScale].
-	root = N A sharp ifTrue: [^ N B flat majorScale].
-	root = N D flat ifTrue: [^ N C sharp majorScale].
-	root = N E flat ifTrue: [^ N D sharp majorScale].
-	root = N G flat ifTrue: [^ N F sharp majorScale].
-	root = N A flat ifTrue: [^ N G sharp majorScale].
-	root = N B flat ifTrue: [^ N A sharp majorScale].
-	^ nil! !
-
-
-
-Smalltalk.Siren defineClass: #DoubleHarmonic
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.DoubleHarmonic class methodsFor: 'interval list'!
-
-intervalList
-	"tire de McLaughlin et le Mahavishnu Orchestra"
-
-	^#(#unison #minorSecond #majorThird #perfectFourth #perfectFifth #minorSixth #majorSeventh )! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
 
 
 
@@ -602,6 +479,53 @@ enharmonicScale
 
 
 
+Smalltalk.Siren defineClass: #Oriental
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.Oriental class methodsFor: 'interval list'!
+
+intervalList
+	"tire de McLaughlin et le Mahavishnu Orchestra"
+
+	^#(#unison #minorSecond #minorThird #perfectFourth #diminishedFifth #majorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
+Smalltalk.Siren defineClass: #ChromaticScale
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.ChromaticScale class methodsFor: 'interval list'!
+
+intervalList
+
+	^#(#unison #augmentedUnison #majorSecond #minorThird #majorThird #perfectFourth #augmentedFourth #perfectFifth #minorSixth #majorSixth #minorSeventh #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
 Smalltalk.Siren defineClass: #MelodicMinorScale
 	superclass: #{Siren.Scale}
 	indexedType: #none
@@ -649,6 +573,263 @@ enharmonicScale
 
 
 
+Smalltalk.Siren defineClass: #PentatonicScale
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.PentatonicScale class methodsFor: 'interval list'!
+
+allIntervals
+	^#(#unison #second #perfectFourth #perfectFifth #majorSixth)!
+
+intervalList
+	^#(#unison #second #perfectFourth #perfectFifth #majorSixth)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
+Smalltalk.Siren defineClass: #DoubleHarmonic
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.DoubleHarmonic class methodsFor: 'interval list'!
+
+intervalList
+	"tire de McLaughlin et le Mahavishnu Orchestra"
+
+	^#(#unison #minorSecond #majorThird #perfectFourth #perfectFifth #minorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
+Smalltalk.Siren defineClass: #NeapolitanMinor
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.NeapolitanMinor class methodsFor: 'interval list'!
+
+intervalList
+	"tire de McLaughlin et le Mahavishnu Orchestra"
+
+	^#(#unison #minorSecond #minorThird #perfectFourth #perfectFifth #minorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.NeapolitanMinor comment:
+'<historical>'!
+
+
+
+Smalltalk.Siren defineClass: #NeapolitanMajor
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.NeapolitanMajor class methodsFor: 'interval list'!
+
+intervalList
+	"tire de McLaughlin et le Mahavishnu Orchestra"
+
+	^#(#unison #minorSecond #minorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
+Smalltalk.Siren defineClass: #BohlenPierceScale
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.BohlenPierceScale class methodsFor: 'instance creation'!
+
+root: aNote 
+	| g |
+	g := self new.
+	g root: aNote; computeNotes.
+	^g! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.BohlenPierceScale methodsFor: 'computing notes'!
+
+computeNotes
+	"Make the note list for the 13th root of 3."
+	"(BohlenPierceScale root: N mi) inspect"
+
+	| bas |
+	bas := 8.17579891564371 * (2.0 raisedTo: (((root semiToneCount + 60) asFloat) / 12.0)).
+	notes := (0 to: 12) collect:
+		[ :ind |
+		bas * (3.0 raisedTo: (ind / 13) asFloat)]!
+
+nearestNoteTo: aHzPitch
+	"Answer the frequency of the scale degree closest to the given pitch in Hz."
+	"(PentatonicScale root: N re) nearestNoteTo: 450"
+
+	| f0 fN oct |
+	oct := 0.0.
+	f0 := notes first.
+	fN := notes last.
+	[f0 > aHzPitch] whileTrue:
+		[oct := oct - 1.0.
+		f0 := f0 / 3.0. 
+		fN := fN / 3.0.].
+	[fN < aHzPitch] whileTrue: 
+		[oct := oct + 1.0.
+		f0 := f0 * 3.0.
+		fN := fN * 3.0].
+
+"	Transcript show: 'nearestNoteTo: ', aHzPitch printString; cr."
+	0 to: notes size do: 
+		[ :ind | | p0 p1 |
+		(ind = 0)
+			ifFalse: [p0 := (notes at: ind) * (3.0 raisedTo: oct)]		"get the note degrees"
+			ifTrue: [p0 := notes last * (3.0 raisedTo: oct - 1)].
+		(ind < notes size)
+			ifTrue: [p1 := (notes at: ind + 1)* (3.0 raisedTo: oct)]
+			ifFalse: [p1 := notes first * (3.0 raisedTo: oct + 1)].
+
+"		Transcript tab; show: 'Between: ', p0 printString, ' and: ', p1 printString; cr."
+		(p0 <= aHzPitch and: [p1 >= aHzPitch])			"loop over intervals looking for the one that includes the given freq"
+			ifTrue:  [ |  a b  | 
+				a := (aHzPitch - p0).
+				b := (p1 - aHzPitch).
+				^(a >= b)
+					ifTrue:  [p1]
+					ifFalse: [p0]]].
+
+	self error: 'Pitch class member not found'! !
+
+!Siren.BohlenPierceScale methodsFor: 'testing'!
+
+isMajor
+	^false!
+
+isMinor
+	^false! !
+
+!Siren.BohlenPierceScale methodsFor: 'transpose'!
+
+octaveScale
+	"Most scales repeate in octaves of 2.0, but not BP"
+
+	^3.0! !
+
+
+
+Smalltalk.Siren defineClass: #MajorScale
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.MajorScale class methodsFor: 'interval list'!
+
+allIntervals
+	^#(#unison #augmentedUnison #second #augmentedSecond #majorThird #perfectFourth augmentedFourth #perfectFifth #augmentedFifth #majorSixth #minorSeventh #majorSeventh )!
+
+intervalList
+	^#(#unison #second #majorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.MajorScale methodsFor: 'Paleo'!
+
+costForPitch: n
+	(notes includes: n) ifTrue: [ ^ 0].
+	(self allNotes includes: n) ifTrue: [^ 1].
+	^ 2!
+
+enharmonicScale
+	root = N C sharp ifTrue: [^ N D flat majorScale].
+	root = N D sharp ifTrue: [^ N E flat majorScale].
+	root = N F sharp ifTrue: [^ N G flat majorScale].
+	root = N G sharp ifTrue: [^ N A flat majorScale].
+	root = N A sharp ifTrue: [^ N B flat majorScale].
+	root = N D flat ifTrue: [^ N C sharp majorScale].
+	root = N E flat ifTrue: [^ N D sharp majorScale].
+	root = N G flat ifTrue: [^ N F sharp majorScale].
+	root = N A flat ifTrue: [^ N G sharp majorScale].
+	root = N B flat ifTrue: [^ N A sharp majorScale].
+	^ nil! !
+
+
+
+Smalltalk.Siren defineClass: #PseudoMinorScale
+	superclass: #{Siren.Scale}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchScales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.PseudoMinorScale class methodsFor: 'interval list'!
+
+intervalList
+	^#(#unison #second #minorThird #perfectFourth #perfectFifth #majorSixth #majorSeventh )! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+
+
 Smalltalk.Siren defineClass: #HungarianMinor
 	superclass: #{Siren.Scale}
 	indexedType: #none
@@ -681,30 +862,6 @@ exemple
 ListeDAnalyses ({I de Re HungarianMinor} {VII de Mib HungarianMinor} )
 
 "! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-
-
-Smalltalk.Siren defineClass: #Oriental
-	superclass: #{Siren.Scale}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchScales'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.Oriental class methodsFor: 'interval list'!
-
-intervalList
-	"tire de McLaughlin et le Mahavishnu Orchestra"
-
-	^#(#unison #minorSecond #minorThird #perfectFourth #diminishedFifth #majorSixth #majorSeventh )! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 

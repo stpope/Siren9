@@ -9,7 +9,13 @@ Smalltalk.Siren defineClass: #PitchClass
 	imports: ''
 	category: 'Music-PitchClasses'!
 
-Siren.PitchClass defineSharedVariable: #AllNotes
+Siren.PitchClass defineSharedVariable: #English
+	private: false
+	constant: false
+	category: 'As yet unclassified'
+	initializer: nil!
+
+Siren.PitchClass defineSharedVariable: #A
 	private: false
 	constant: false
 	category: 'As yet unclassified'
@@ -33,25 +39,7 @@ Siren.PitchClass defineSharedVariable: #D
 	category: 'As yet unclassified'
 	initializer: nil!
 
-Siren.PitchClass defineSharedVariable: #A
-	private: false
-	constant: false
-	category: 'As yet unclassified'
-	initializer: nil!
-
 Siren.PitchClass defineSharedVariable: #E
-	private: false
-	constant: false
-	category: 'As yet unclassified'
-	initializer: nil!
-
-Siren.PitchClass defineSharedVariable: #AllNatural
-	private: false
-	constant: false
-	category: 'As yet unclassified'
-	initializer: nil!
-
-Siren.PitchClass defineSharedVariable: #English
 	private: false
 	constant: false
 	category: 'As yet unclassified'
@@ -64,6 +52,18 @@ Siren.PitchClass defineSharedVariable: #F
 	initializer: nil!
 
 Siren.PitchClass defineSharedVariable: #G
+	private: false
+	constant: false
+	category: 'As yet unclassified'
+	initializer: nil!
+
+Siren.PitchClass defineSharedVariable: #AllNatural
+	private: false
+	constant: false
+	category: 'As yet unclassified'
+	initializer: nil!
+
+Siren.PitchClass defineSharedVariable: #AllNotes
 	private: false
 	constant: false
 	category: 'As yet unclassified'
@@ -590,15 +590,12 @@ sol
 
 Siren.PitchClass comment:
 'Instances of (subclasses of) this class represent pitch-classes.
-A pitch class is an octave-independent note.
-There are 35 (sub) instances of this class.
-Octave-dependent notes are represented by instances of class
-OctaveDependentNote.
-Ideally PitchClass should be a metaclass, so that its instances
-be classes, and octave-dependent notes could then be instances
-of pitchClasses !!!!
-Unfortunately this is not possible straightforwadly in Smaltalk, so we
-use aggregation instead to represent octave-dependent notes'!
+
+A pitch class is an octave-independent note. There are 35 (sub) instances of this class. Octave-dependent notes are represented by instances of class OctaveDependentNote.
+
+Ideally PitchClass should be a metaclass, so that its instances be classes, and octave-dependent notes could then be instances of pitchClasses
+
+Unfortunately this is not possible straight-forwadly in Smalltalk, so we use aggregation instead to represent octave-dependent notes'!
 
 !Siren.PitchClass methodsFor: 'public intervals'!
 
@@ -996,6 +993,74 @@ preceding
 
 isNatural
 	^false! !
+
+
+
+Smalltalk.Siren defineClass: #PitchClassDoubleFlat
+	superclass: #{Siren.PitchClassAltered}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+!Siren.PitchClassDoubleFlat methodsFor: 'testing'!
+
+isDoubleFlat
+	^true! !
+
+!Siren.PitchClassDoubleFlat methodsFor: 'printing'!
+
+printOn: s 
+	natural printOn: s.
+	s nextPutAll: 'bb'!
+
+storeOn: s 
+	"N C flat flat storeString"
+
+	s nextPutAll: 'N ' , self natural name, ' flat flat'! !
+
+!Siren.PitchClassDoubleFlat methodsFor: 'saving'!
+
+representBinaryOn: s
+	^MessageSend receiver: natural selector:  #doubleFlat! !
+
+!Siren.PitchClassDoubleFlat methodsFor: 'intervals'!
+
+alterate: note toReach: i 
+	| n |
+	n := natural alterate: note toReach: i.
+	^n flat flat!
+
+alterateBelow: note toReach: i 
+	| n |
+	n := natural alterateBelow: note toReach: i.
+	^n flat flat!
+
+closestEnharmonic
+
+	^self alterate: self preceding toReach: 0.!
+
+semiTonesToNatural
+	^2! !
+
+!Siren.PitchClassDoubleFlat methodsFor: 'access'!
+
+flat
+	"Sorry, I have to do that (Cf. Bluesette) otherwise I can't 
+	compute possibleTonalities properly ..."
+
+	^nil!
+
+semiToneCount
+	^natural semiToneCount - 2!
+
+sharp
+	"Methode flat is not defined. 
+	Exemple C flat diminishedSeventh.."
+
+	^natural flat! !
 
 
 
@@ -1527,6 +1592,314 @@ ascending
 
 descending
 	^MusicalDescendingInterval type: type semiTones: semiTones! !
+
+
+
+Smalltalk.Siren defineClass: #MusicalDescendingInterval
+	superclass: #{Siren.MusicalInterval}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.MusicalDescendingInterval class methodsFor: 'examples'!
+
+example
+
+"(N C octave: 3) intervalBetween: (N D octave: 2) descending Minor seventh
+(N B flat octave: 3) intervalBetween: (N B flat flat octave: 2) descending augmented octave"! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.MusicalDescendingInterval comment:
+'La theorie des intervalles "descendants" n''est pas tres claire:
+Que voudrait dire DescendingInterval topIfBottomIs: N C ?
+(quelle difference avec ascending ?).
+Introduit juste pour les besoins de la cause, mais un peu incoherent.
+Herite tout de MusicalInterval, et donc se comporte presque pareil.
+Utilisee uniquement en creation dans la methode intervalBetween: de OctaveDependentNote.
+Il faudrait d''ailleurs modifier aussi la methode similaire de PitchClass'!
+
+!Siren.MusicalDescendingInterval methodsFor: 'computing notes'!
+
+bottomIfTopIs: aNote 
+	"yields the note for which I am the interval self"
+self halt.
+	^super topIfBottomIs: aNote!
+
+topIfBottomIs: aNote 
+	"yields the note for which I am the interval self"
+
+	^super bottomIfTopIs: aNote! !
+
+!Siren.MusicalDescendingInterval methodsFor: 'testing'!
+
+isAscending
+	^false!
+
+isDescending
+	^true! !
+
+!Siren.MusicalDescendingInterval methodsFor: 'mutations'!
+
+ascending
+	^MusicalInterval type: type semiTones: semiTones!
+
+descending
+	^self! !
+
+
+
+Smalltalk.Siren defineClass: #Analysis
+	superclass: #{UI.Model}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'scale degree '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.Analysis class methodsFor: 'examples'!
+
+examples
+
+"	(FPChord newFromString: 'B min ') analyseIn: (N C majorScale) 
+		->  {VII de C MajorScale}
+
+	(FPChord newFromString: 'C min dim5') possibleTonalitiesInScaleClass:  MajorScale
+		-> AnalysisList ({VII of Db MajorScale} )
+
+	(FPChord newFromString: 'C') possibleTonalitiesInScaleClass:  MajorScale
+		-> AnalysisList ({I de C MajorScale} {IV de G MajorScale} {V de F MajorScale}
+"! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.Analysis methodsFor: 'automatic access'!
+
+degree
+
+   ^degree!
+
+degree: x 
+
+	degree := x!
+
+scale
+
+   ^scale!
+
+scale: x
+
+   scale := x! !
+
+!Siren.Analysis methodsFor: 'printing'!
+
+printOn: s
+
+	s nextPutAll: '{',self romanDegree,' of ',scale printString,'}'!
+
+romanDegree
+
+	^#(I II III IV V VI VII) at: degree! !
+
+
+
+Smalltalk.Siren defineClass: #PitchClassNatural
+	superclass: #{Siren.PitchClass}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'semiToneCount nom name following preceding sharp flat '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+!Siren.PitchClassNatural methodsFor: 'accessing'!
+
+flat
+	^flat!
+
+flat: value
+	flat := value!
+
+name
+	^name!
+
+name: x 
+	name := x!
+
+natural
+	^self!
+
+nom
+	^nom!
+
+nom: value
+	nom := value!
+
+sharp
+	^sharp!
+
+sharp: value
+	sharp := value! !
+
+!Siren.PitchClassNatural methodsFor: 'printing'!
+
+nameIs: aSymbol 
+	name = aSymbol ifTrue: [^true].
+	^nom = aSymbol!
+
+printOn: s 
+	s nextPutAll: (English
+			ifTrue: [name]
+			ifFalse: [nom])! !
+
+!Siren.PitchClassNatural methodsFor: 'saving'!
+
+representBinaryOn: s
+	^MessageSend receiver: self class selector:  name! !
+
+!Siren.PitchClassNatural methodsFor: 'intervals'!
+
+alterate: note toReach: i
+	"Join semitons to note in order to obtain the required number of semitones with self" 
+
+	| delta |
+	delta := (self  semiTonesWithNaturalNote: note) - i.
+	delta := ((delta + 6) \\ 12) -6.
+	delta = 0 ifTrue: [^note].
+	delta = 1 ifTrue: [^note flat].
+	delta = -1 ifTrue: [^note sharp].
+	delta = 2 ifTrue: [^note flat flat].
+	delta = -2 ifTrue: [^note sharp sharp].
+	delta = 3 ifTrue: [^note flat flat flat].	"to deal with cases like N B flat flat augmentedOctave"
+	delta = -3 ifTrue: [^note sharp sharp sharp].
+	^self error: 'illegal interval !!'!
+
+alterateBelow: note toReach: i
+	"Join semitons to note in order to obtain the required number of semitones with self" 
+
+	| delta |
+	delta := (self  semiTonesWithNaturalNoteBelow: note) - i.
+	delta := ((delta + 6) \\ 12) -6.
+	delta = 0 ifTrue: [^note].
+	delta = -1 ifTrue: [^note flat].
+	delta = 1 ifTrue: [^note sharp].
+	delta = -2 ifTrue: [^note flat flat].
+	delta = 2 ifTrue: [^note sharp sharp].
+	delta = -3 ifTrue: [^note flat flat flat].	"to deal with cases like N B flat flat augmentedOctave"
+	delta = 3 ifTrue: [^note sharp sharp sharp].
+	^self error: 'illegal interval !!'!
+
+closestEnharmonic
+	^self!
+
+semiTonesToNatural
+	^0!
+
+semiTonesWithNaturalNote: aNote 
+	"number of semitones between self and aNote"
+
+	| r |
+	r := aNote semiToneCount - semiToneCount.
+	"^r + 6 \\ 12 - 6"
+	^r \\ 12!
+
+semiTonesWithNaturalNoteBelow: aNote 
+	"number of semitones between aNote and self"
+
+	| r |
+	r :=  semiToneCount - aNote semiToneCount .
+	"^r + 6 \\ 12 - 6"
+	^r \\ 12! !
+
+!Siren.PitchClassNatural methodsFor: 'private-accessing'!
+
+following
+	^following!
+
+following: value
+	following := value!
+
+preceding
+	^preceding!
+
+preceding: value
+	preceding := value!
+
+semiToneCount
+	^semiToneCount!
+
+semiToneCount: s
+	semiToneCount := s! !
+
+
+
+Smalltalk.Siren defineClass: #DiatonicInterval
+	superclass: #{Siren.MusicalInterval}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'ascending '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.DiatonicInterval class methodsFor: 'creation'!
+
+ascending
+	^DiatonicInterval new ascending: true!
+
+descending
+	^DiatonicInterval new ascending: false!
+
+new
+	^super new initialize! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.DiatonicInterval methodsFor: 'computing notes'!
+
+bottomIfTopIs: aNote 
+	"yields the note making the interval self with aNote"
+
+	^ascending
+		ifTrue: [aNote preceding]
+		ifFalse: [aNote following]!
+
+topIfBottomIs: aNote 
+	"yields the note making the interval self with aNote"
+
+	^ascending ifFalse: [aNote preceding]
+		ifTrue: [aNote following]! !
+
+!Siren.DiatonicInterval methodsFor: 'initialize'!
+
+initialize
+	ascending := true! !
+
+!Siren.DiatonicInterval methodsFor: 'printing'!
+
+printOn: s 
+	s nextPutAll: 'Diatonic interval '! !
+
+!Siren.DiatonicInterval methodsFor: 'private'!
+
+ascending: t 
+	ascending := t! !
 
 
 
@@ -2372,6 +2745,30 @@ rootInTessitura: qt
 
 
 
+Smalltalk.Siren defineClass: #Triad
+	superclass: #{Siren.PitchClassChord}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'type '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+!Siren.Triad methodsFor: 'type'!
+
+type
+	^type!
+
+type: t 
+	type := t! !
+
+!Siren.Triad methodsFor: 'notes'!
+
+notes: x 
+	notes := x! !
+
+
+
 Smalltalk.Siren defineClass: #PitchClassDoubleSharp
 	superclass: #{Siren.PitchClassAltered}
 	indexedType: #none
@@ -2435,45 +2832,6 @@ sharp
 	compute possibleTonalities properly ..."
 
 	^nil! !
-
-
-
-Smalltalk.Siren defineClass: #ChromaticInterval
-	superclass: #{Siren.MusicalInterval}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.ChromaticInterval class methodsFor: 'creation'!
-
-semiTones: x 
-	"anInterval without type, only chromatic"
-
-	^self type: -1 semiTones: x! !
-
-!Siren.ChromaticInterval class methodsFor: 'examples'!
-
-examples
-"(N C octave: 3) transposeBySemiTones: 4  ->  E3"! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.ChromaticInterval comment:
-'ChromaticInterval commentStamp: ''<historical>'' prior: 0!!
-used to produce intervals with no names, measured only in terms
-of a number of semie tones (for non-tonal music)'!
-
-!Siren.ChromaticInterval methodsFor: 'printing'!
-
-printOn: s 
-	s nextPutAll: 'Chromatic ' , semiTones printString! !
 
 
 
@@ -2646,769 +3004,6 @@ sharps: s flats: f
 	sharps := s.
 	flats := f.
 	self reOrderSharpsAndFlats! !
-
-
-
-Smalltalk.Siren defineClass: #AnalysisList
-	superclass: #{UI.Model}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.AnalysisList class methodsFor: 'examples'!
-
-examples
-
-"	(FPChord newFromString: 'C  ') possibleTonalitiesInScaleClass:  MajorScale 
-
-	AnalysisList ({I de C MajorScale} {IV de G MajorScale} {V de F MajorScale} )
-"! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.AnalysisList methodsFor: 'testing'!
-
-tonalitesCommunesAvec: l 
-
-	| o |
-
-	o := Set new.
-	self do: [:a | l do: [:al | al scale = a scale ifTrue: [o add: a scale]]]. 
-
-	^o!
-
-tonalitesCommunesAvec: l1 et: l2 
-
-	| o |
-
-	o := Set new.
-	self do: [:a | (l1 detect: [:al1 | al1 scale = a scale]
-
-			ifNone: [nil]) notNil ifTrue: [(l2 detect: [:al2 | al2 scale = a scale]
-
-				ifNone: [nil]) notNil ifTrue: [o add: a scale]]].
-	^o! !
-
-
-
-Smalltalk.Siren defineClass: #MusicalDescendingInterval
-	superclass: #{Siren.MusicalInterval}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.MusicalDescendingInterval class methodsFor: 'examples'!
-
-example
-
-"(N C octave: 3) intervalBetween: (N D octave: 2) descending Minor seventh
-(N B flat octave: 3) intervalBetween: (N B flat flat octave: 2) descending augmented octave"! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.MusicalDescendingInterval comment:
-'La theorie des intervalles "descendants" n''est pas tres claire:
-Que voudrait dire DescendingInterval topIfBottomIs: N C ?
-(quelle difference avec ascending ?).
-Introduit juste pour les besoins de la cause, mais un peu incoherent.
-Herite tout de MusicalInterval, et donc se comporte presque pareil.
-Utilisee uniquement en creation dans la methode intervalBetween: de OctaveDependentNote.
-Il faudrait d''ailleurs modifier aussi la methode similaire de PitchClass'!
-
-!Siren.MusicalDescendingInterval methodsFor: 'computing notes'!
-
-bottomIfTopIs: aNote 
-	"yields the note for which I am the interval self"
-self halt.
-	^super topIfBottomIs: aNote!
-
-topIfBottomIs: aNote 
-	"yields the note for which I am the interval self"
-
-	^super bottomIfTopIs: aNote! !
-
-!Siren.MusicalDescendingInterval methodsFor: 'testing'!
-
-isAscending
-	^false!
-
-isDescending
-	^true! !
-
-!Siren.MusicalDescendingInterval methodsFor: 'mutations'!
-
-ascending
-	^MusicalInterval type: type semiTones: semiTones!
-
-descending
-	^self! !
-
-
-
-Smalltalk.Siren defineClass: #Analysis
-	superclass: #{UI.Model}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'scale degree '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.Analysis class methodsFor: 'examples'!
-
-examples
-
-"	(FPChord newFromString: 'B min ') analyseIn: (N C majorScale) 
-		->  {VII de C MajorScale}
-
-	(FPChord newFromString: 'C min dim5') possibleTonalitiesInScaleClass:  MajorScale
-		-> AnalysisList ({VII of Db MajorScale} )
-
-	(FPChord newFromString: 'C') possibleTonalitiesInScaleClass:  MajorScale
-		-> AnalysisList ({I de C MajorScale} {IV de G MajorScale} {V de F MajorScale}
-"! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.Analysis methodsFor: 'automatic access'!
-
-degree
-
-   ^degree!
-
-degree: x 
-
-	degree := x!
-
-scale
-
-   ^scale!
-
-scale: x
-
-   scale := x! !
-
-!Siren.Analysis methodsFor: 'printing'!
-
-printOn: s
-
-	s nextPutAll: '{',self romanDegree,' of ',scale printString,'}'!
-
-romanDegree
-
-	^#(I II III IV V VI VII) at: degree! !
-
-
-
-Smalltalk.Siren defineClass: #OctaveDependentChord
-	superclass: #{Siren.PitchClassChord}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'notesByInterval '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.OctaveDependentChord class methodsFor: 'examples'!
-
-example
-	^N C majorTriad fondamental!
-
-example1
-	"self example1"
-	^(PitchClassChord newFromString: 'A  maj7') octave: 3!
-
-example2
-	^N C majorTriad fondamental! !
-
-!Siren.OctaveDependentChord class methodsFor: 'cation'!
-
-newWithValues: anArray 
-	^self new newWithValues: anArray!
-
-readFromFile
-	| n |
-	n := Dialog request: 'name of the file' initialAnswer: 'cc.chord'.
-	n isEmpty ifTrue: [^nil].
-	^self readFromFile: n!
-
-readFromFile: fileName 
-	| bos x |
-	bos := BinaryObjectStorage onOld: (Filename named: fileName) readStream.
-	[x := bos next]
-		valueNowOrOnUnwindDo: [bos close].
-	^x!
-
-root: r notes: n 
-	^(self new) root: r; notes: n! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.OctaveDependentChord comment:
-'notesBytInterval provides a fast access to the chord notes
-by the names of their intervals with the root. The calculation 
-is done once forever.  On the contrary,  for FPChord the
-calculation is done all the times a note is required since 
-its rarely required.
-Note that for all request (e.g. theFifth) the copy of the note is 
-answer). it is necessary in order to avoid some confusions. For instance,
-the pitches (ODNotes) of  an simple arpeggio on a chord ch may be 
-obtained by: 
-	o := OredredCollection new.
-	o add: ch theTonic; add: ch theThird; ch theFifth; theTonic.
-the first and last must be different objects in the case we will assign 
-them todifferents PlayableNotes.'!
-
-!Siren.OctaveDependentChord methodsFor: 'mutations'!
-
-asMelody
-	^self asPlayableObject asMelody!
-
-asPlayableObject
-	^"PlayableChord new chord:" self!
-
-lapse: l
-	^self "(PlayableChord new chord: self) lapse: l"!
-
-startBeat: s duration: d
-	^self "(PlayableChord new chord: self) startBeat: s; duration: d"!
-
-startTime: s duration: d
-	^self "(PlayableChord new chord: self) startTime: s; duration: d"! !
-
-!Siren.OctaveDependentChord methodsFor: 'transposing'!
-
-beTransposedOneStepDown
-	root beTransposedOneStepDown.
-	self resetNotes!
-
-beTransposedOneStepUp
-	root beTransposedOneStepUp.
-	self resetNotes! !
-
-!Siren.OctaveDependentChord methodsFor: 'accessing'!
-
-addNote: c 
-	notes add: c!
-
-notes: value
-	notes := value!
-
-removeNote: c 
-	notes remove: c! !
-
-!Siren.OctaveDependentChord methodsFor: 'notes by  intervals'!
-
-computeNotesByInterval
-	"only for triad notes"
-	notesByInterval := Dictionary new.
-	notesByInterval at: #theTonic put: self reallyTheTonic.
-	notesByInterval at: #theThird put: self  reallyTheThird.
-	notesByInterval at: #theFifth put: self reallyTheFifth.
-	notesByInterval at: #theOctave put: self reallyTheOctave.
-	notesByInterval at: #theLowThird put: self reallyTheLowThird.
-	notesByInterval at: #theLowFifth put: self reallyTheLowFifth.
-	notesByInterval at: #theLowOctave put: self reallyTheLowOctave.!
-
-notesByInterval
-	notesByInterval isEmpty ifTrue: [self computeNotesByInterval].
-	^notesByInterval!
-
-reallyTheFifth
-	^super theFifth!
-
-reallyTheLowFifth
-	self  hasNoFifth
-		ifTrue: [^nil].
-	self hasADiminishedFifth
-		ifTrue: [^root transposeOf: MusicalDescendingInterval augmentedFourth].
-	self hasAnAugmentedFifth
-		ifTrue: [^root transposeOf: MusicalDescendingInterval diminishedFourth].
-	^root transposeOf: MusicalDescendingInterval fourth.!
-
-reallyTheLowOctave
-
-	^root transposeOf: MusicalDescendingInterval octave.!
-
-reallyTheLowThird
-	"attention: do not cofound with 'root downThird  interval"
-	self isSuspended
-		ifTrue: [^root transposeOf: MusicalDescendingInterval fifth]. 
-	self isMinor
-		ifTrue: [^root  transposeOf: MusicalDescendingInterval majorSixth].
-	^ root transposeOf: MusicalDescendingInterval minorSixth.!
-
-reallyTheOctave
-	^super theOctave!
-
-reallyTheThird
-	^super theThird!
-
-reallyTheTonic
-	^super theTonic!
-
-theFifth
-	^(self notesByInterval at: #theFifth) copy!
-
-theLowFifth
-	^(self notesByInterval at: #theLowFifth) copy!
-
-theLowOctave
-	^(self notesByInterval at: #theLowOctave) copy!
-
-theLowThird
-	^(self notesByInterval at: #theLowThird) copy!
-
-theOctave
-	^(self notesByInterval at: #theOctave) copy!
-
-theThird
-	^(self notesByInterval at: #theThird) copy!
-
-theTonic
-	^(self notesByInterval at: #theTonic) copy! !
-
-!Siren.OctaveDependentChord methodsFor: 'saving'!
-
-save
-	| bos fileName |
-	fileName := Dialog request: 'file name' initialAnswer: 'cc.chord'.
-	fileName isEmpty ifTrue: [^nil].
-	bos := BinaryObjectStorage onNew: (Filename named: fileName) writeStream.
-	[bos nextPut: self]
-		valueNowOrOnUnwindDo: [bos close]!
-
-storeOn: s
-	s nextPut: $(.
-	self quotedPrintOn: s.
-	s nextPutAll: ' asChordOct: '.
-	root oct printOn: s.
-	s nextPut: $).! !
-
-!Siren.OctaveDependentChord methodsFor: 'initialize'!
-
-initialize
-	super  initialize.
-	notesByInterval := Dictionary new.!
-
-resetNotes
-	"extend super class method for notesByIntevals"
-	super resetNotes.
-	(notesByInterval isEmpty or: [notesByInterval == nil])
-		ifFalse: [notesByInterval := Dictionary new]! !
-
-!Siren.OctaveDependentChord methodsFor: 'copy'!
-
-copy
-	| new |
-	new := self shallowCopy.
-	new root: root copy; structure: structure copy.
-	^new! !
-
-!Siren.OctaveDependentChord methodsFor: 'As yet unclassified'!
-
-theLowSeventh
-	"WARN: the calculatin of the seven is done in every request"
-
-	self  hasNoSeventh
-		ifTrue: [^nil].
-	self hasMajorSeventh
-		ifTrue: [^root - #minorSecond].
-	self hasADiminishedSeventh 
-		ifTrue: [^root - #minorThird].
-	^root - #majorSecond! !
-
-!Siren.OctaveDependentChord methodsFor: 'alteration'!
-
-octave: o
-	root oct: o.
-	self resetNotes!
-
-octaveFromNote: n 
-	"set octave from new root or chord note"
-	| int |
-	int :=  n pitchClass intervalBetween: root pitchClass.
-	int type = 1 	"n is the  root in a probably different octave"
-		ifTrue: [self octave: n oct].
-	"n is another chord note"
-	(self containsNote: n) 
-		ifFalse: [^self error: 'the given note is not note a chord note'].
-	self octave: (n - int) oct! !
-
-!Siren.OctaveDependentChord methodsFor: 'private-pact'!
-
-closestDownTriadNoteTo: n
-	"((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
-	| l best smallestInt testInt |
-	l := self downTriadNotes.
-	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
-	best == nil ifTrue: [^nil].
-	smallestInt := n intervalBetween: best.
-	1 to: l size do: 
-		[:i | 
-		testInt := n intervalBetween: (l at: i).
-		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
-			ifTrue:
-			 [best := l at: i.
-			  smallestInt := testInt]].
-	^best!
-
-closestTriadNoteTo: n
-	"((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
-	| l best smallestInt testInt |
-	l := self upAndDownTriadNotes.
-	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
-	best == nil ifTrue: [^nil].
-	smallestInt := n intervalBetween: best.
-	1 to: l size do: 
-		[:i | 
-		testInt := n intervalBetween: (l at: i).
-		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
-			ifTrue:
-			 [best := l at: i.
-			  smallestInt := testInt]].
-	^best!
-
-closestUpTriadNoteTo: n
-	"((PitchClassChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
-	| l best smallestInt testInt |
-	l := self upTriadNotes.
-	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
-	best == nil ifTrue: [^nil].
-	smallestInt := n intervalBetween: best.
-	1 to: l size do: 
-		[:i | 
-		testInt := n intervalBetween: (l at: i).
-		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
-			ifTrue:
-			 [best := l at: i.
-			  smallestInt := testInt]].
-	^best!
-
-containsLegalNote: n 
-	n respectsBassTessitura
-		ifFalse: [^false].
-	^(self upTriadNotes detect: [:each | each pitchClass = n pitchClass]
-					   ifNone: [nil]) notNil!
-
-downTriadNotes
-	"return all triad notes within 2 octaves in a particular order"
-
-	| o |
-	o := OrderedCollection new.
-	o add: self theLowOctave.
-	o add: self theLowFifth.
-	o  add: self theLowThird.
-	o add: self theTonic.
-	^o!
-
-triadDownNoteLeadingTo: n
-	"for the conflicting cases uses the priority given by  the ordering
-	of upAndDownTriadNotes "
-	^self downTriadNotes 
-		detect: [:each | 
-				(each isLeadingToneTo: n)
-				and: [each respectsBassTessitura]]
-		ifNone: [nil]!
-
-triadNoteLeadingTo: n
-	"for the conflicting cases uses two priority criteria: the proximity and 
-	the ordering given by triadNotesLeadingTo: "
-	"('A  maj7' asChordOct: 3) triadNoteLeadingTo: N D  @ 4"
-
-	| list |
-	list := self triadNotesLeadingTo: n.
-	list isEmpty ifTrue: [^nil].
-	list size = 1 ifTrue: [^list first].
-	(n isNearerTo: (list at: 2) than: list first)
-		ifTrue: [^(list at: 2)]
-		ifFalse: [^list first].!
-
-triadNotesLeadingTo: n
-	"answer the chord 'triad' notes  (extend to 7?) within an octave, 
-	 that are leading notes to the given note n"
-	"('A  maj7' asChordOct: 3) triadNotesLeadingTo: N D @ 4"
-	^self upAndDownTriadNotes select: 
-		[:each |
-		(each isLeadingToneTo: n) 
-			and: [each respectsBassTessitura]].!
-
-triadUpNoteLeadingTo: n
-	"for the conflicting cases uses the priority given by  the ordering
-	of upAndDownTriadNotes "
-	^self upTriadNotes 
-		detect: [:each | 
-				(each isLeadingToneTo: n)
-				and: [each respectsBassTessitura]]
-		ifNone: [nil]!
-
-upAndDownTriadNotes
-	"return all triad notes within 2 octaves in a particular order"
-	| o |
-	o := OrderedCollection new.
-	o add: self theOctave.
-	o  add: self theFifth.
-	o  add: self theThird.
-	o  add: self theTonic.
-	o add: self theLowOctave.
-	o add: self theLowFifth.
-	o  add: self theLowThird.
-	^o!
-
-upTriadNotes
-	"return all triad notes within 2 octaves in a particular order"
-	| o |
-	o := OrderedCollection new.
-	o add: self theOctave.
-	o  add: self theFifth.
-	o  add: self theThird.
-	o  add: self theTonic.
-	^o! !
-
-!Siren.OctaveDependentChord methodsFor: 'FP'!
-
-allPitchClasses
-	^notes collect: [:n | n pitchClass]! !
-
-
-
-Smalltalk.Siren defineClass: #PitchClassNatural
-	superclass: #{Siren.PitchClass}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'semiToneCount nom name following preceding sharp flat '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-!Siren.PitchClassNatural methodsFor: 'accessing'!
-
-flat
-	^flat!
-
-flat: value
-	flat := value!
-
-name
-	^name!
-
-name: x 
-	name := x!
-
-natural
-	^self!
-
-nom
-	^nom!
-
-nom: value
-	nom := value!
-
-sharp
-	^sharp!
-
-sharp: value
-	sharp := value! !
-
-!Siren.PitchClassNatural methodsFor: 'printing'!
-
-nameIs: aSymbol 
-	name = aSymbol ifTrue: [^true].
-	^nom = aSymbol!
-
-printOn: s 
-	s nextPutAll: (English
-			ifTrue: [name]
-			ifFalse: [nom])! !
-
-!Siren.PitchClassNatural methodsFor: 'saving'!
-
-representBinaryOn: s
-	^MessageSend receiver: self class selector:  name! !
-
-!Siren.PitchClassNatural methodsFor: 'intervals'!
-
-alterate: note toReach: i
-	"Join semitons to note in order to obtain the required number of semitones with self" 
-
-	| delta |
-	delta := (self  semiTonesWithNaturalNote: note) - i.
-	delta := ((delta + 6) \\ 12) -6.
-	delta = 0 ifTrue: [^note].
-	delta = 1 ifTrue: [^note flat].
-	delta = -1 ifTrue: [^note sharp].
-	delta = 2 ifTrue: [^note flat flat].
-	delta = -2 ifTrue: [^note sharp sharp].
-	delta = 3 ifTrue: [^note flat flat flat].	"to deal with cases like N B flat flat augmentedOctave"
-	delta = -3 ifTrue: [^note sharp sharp sharp].
-	^self error: 'illegal interval !!'!
-
-alterateBelow: note toReach: i
-	"Join semitons to note in order to obtain the required number of semitones with self" 
-
-	| delta |
-	delta := (self  semiTonesWithNaturalNoteBelow: note) - i.
-	delta := ((delta + 6) \\ 12) -6.
-	delta = 0 ifTrue: [^note].
-	delta = -1 ifTrue: [^note flat].
-	delta = 1 ifTrue: [^note sharp].
-	delta = -2 ifTrue: [^note flat flat].
-	delta = 2 ifTrue: [^note sharp sharp].
-	delta = -3 ifTrue: [^note flat flat flat].	"to deal with cases like N B flat flat augmentedOctave"
-	delta = 3 ifTrue: [^note sharp sharp sharp].
-	^self error: 'illegal interval !!'!
-
-closestEnharmonic
-	^self!
-
-semiTonesToNatural
-	^0!
-
-semiTonesWithNaturalNote: aNote 
-	"number of semitones between self and aNote"
-
-	| r |
-	r := aNote semiToneCount - semiToneCount.
-	"^r + 6 \\ 12 - 6"
-	^r \\ 12!
-
-semiTonesWithNaturalNoteBelow: aNote 
-	"number of semitones between aNote and self"
-
-	| r |
-	r :=  semiToneCount - aNote semiToneCount .
-	"^r + 6 \\ 12 - 6"
-	^r \\ 12! !
-
-!Siren.PitchClassNatural methodsFor: 'private-accessing'!
-
-following
-	^following!
-
-following: value
-	following := value!
-
-preceding
-	^preceding!
-
-preceding: value
-	preceding := value!
-
-semiToneCount
-	^semiToneCount!
-
-semiToneCount: s
-	semiToneCount := s! !
-
-
-
-Smalltalk.Siren defineClass: #PitchClassFlat
-	superclass: #{Siren.PitchClassAltered}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'flat '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-!Siren.PitchClassFlat methodsFor: 'accessing'!
-
-flat
-	^flat!
-
-flat: value
-	flat := value!
-
-semiToneCount
-	^natural semiToneCount - 1!
-
-sharp
-	^natural! !
-
-!Siren.PitchClassFlat methodsFor: 'testing'!
-
-isFlat
-	^true! !
-
-!Siren.PitchClassFlat methodsFor: 'printing'!
-
-printOn: s 
-	natural printOn: s.
-	s nextPut: $b!
-
-storeOn: s 
-	"N C flat storeString"
-
-	s nextPutAll: 'N ' , self natural name , ' flat'! !
-
-!Siren.PitchClassFlat methodsFor: 'saving'!
-
-representBinaryOn: s 
-	^MessageSend receiver: natural selector: #flat! !
-
-!Siren.PitchClassFlat methodsFor: 'intervals'!
-
-alterate: note toReach: i 
-	| n |
-	n := natural alterate: note toReach: i.
-	^n flat!
-
-alterateBelow: note toReach: i 
-	| n |
-	n := natural alterateBelow: note toReach: i.
-	^n flat!
-
-closestEnharmonic
-	^self alterate: self preceding toReach: 0.!
-
-semiTonesToNatural
-	^1! !
-
-
-
-Smalltalk.Siren defineClass: #Triad
-	superclass: #{Siren.PitchClassChord}
-	indexedType: #none
-	private: false
-	instanceVariableNames: 'type '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-PitchClasses'!
-
-!Siren.Triad methodsFor: 'type'!
-
-type
-	^type!
-
-type: t 
-	type := t! !
-
-!Siren.Triad methodsFor: 'notes'!
-
-notes: x 
-	notes := x! !
 
 
 
@@ -4151,8 +3746,8 @@ downAndUpOctaves: odNote
 
 
 
-Smalltalk.Siren defineClass: #PitchClassDoubleFlat
-	superclass: #{Siren.PitchClassAltered}
+Smalltalk.Siren defineClass: #ChromaticInterval
+	superclass: #{Siren.MusicalInterval}
 	indexedType: #none
 	private: false
 	instanceVariableNames: ''
@@ -4160,62 +3755,33 @@ Smalltalk.Siren defineClass: #PitchClassDoubleFlat
 	imports: ''
 	category: 'Music-PitchClasses'!
 
-!Siren.PitchClassDoubleFlat methodsFor: 'testing'!
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-isDoubleFlat
-	^true! !
 
-!Siren.PitchClassDoubleFlat methodsFor: 'printing'!
+!Siren.ChromaticInterval class methodsFor: 'creation'!
+
+semiTones: x 
+	"anInterval without type, only chromatic"
+
+	^self type: -1 semiTones: x! !
+
+!Siren.ChromaticInterval class methodsFor: 'examples'!
+
+examples
+"(N C octave: 3) transposeBySemiTones: 4  ->  E3"! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.ChromaticInterval comment:
+'ChromaticInterval commentStamp: ''<historical>'' prior: 0!!
+used to produce intervals with no names, measured only in terms
+of a number of semie tones (for non-tonal music)'!
+
+!Siren.ChromaticInterval methodsFor: 'printing'!
 
 printOn: s 
-	natural printOn: s.
-	s nextPutAll: 'bb'!
-
-storeOn: s 
-	"N C flat flat storeString"
-
-	s nextPutAll: 'N ' , self natural name, ' flat flat'! !
-
-!Siren.PitchClassDoubleFlat methodsFor: 'saving'!
-
-representBinaryOn: s
-	^MessageSend receiver: natural selector:  #doubleFlat! !
-
-!Siren.PitchClassDoubleFlat methodsFor: 'intervals'!
-
-alterate: note toReach: i 
-	| n |
-	n := natural alterate: note toReach: i.
-	^n flat flat!
-
-alterateBelow: note toReach: i 
-	| n |
-	n := natural alterateBelow: note toReach: i.
-	^n flat flat!
-
-closestEnharmonic
-
-	^self alterate: self preceding toReach: 0.!
-
-semiTonesToNatural
-	^2! !
-
-!Siren.PitchClassDoubleFlat methodsFor: 'access'!
-
-flat
-	"Sorry, I have to do that (Cf. Bluesette) otherwise I can't 
-	compute possibleTonalities properly ..."
-
-	^nil!
-
-semiToneCount
-	^natural semiToneCount - 2!
-
-sharp
-	"Methode flat is not defined. 
-	Exemple C flat diminishedSeventh.."
-
-	^natural flat! !
+	s nextPutAll: 'Chromatic ' , semiTones printString! !
 
 
 
@@ -4444,11 +4010,11 @@ Smalltalk.Siren defineClass: #Lapse
 
 
 
-Smalltalk.Siren defineClass: #DiatonicInterval
-	superclass: #{Siren.MusicalInterval}
+Smalltalk.Siren defineClass: #OctaveDependentChord
+	superclass: #{Siren.PitchClassChord}
 	indexedType: #none
 	private: false
-	instanceVariableNames: 'ascending '
+	instanceVariableNames: 'notesByInterval '
 	classInstanceVariableNames: ''
 	imports: ''
 	category: 'Music-PitchClasses'!
@@ -4456,49 +4022,480 @@ Smalltalk.Siren defineClass: #DiatonicInterval
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
-!Siren.DiatonicInterval class methodsFor: 'creation'!
+!Siren.OctaveDependentChord class methodsFor: 'examples'!
 
-ascending
-	^DiatonicInterval new ascending: true!
+example
+	^N C majorTriad fondamental!
 
-descending
-	^DiatonicInterval new ascending: false!
+example1
+	"self example1"
+	^(PitchClassChord newFromString: 'A  maj7') octave: 3!
 
-new
-	^super new initialize! !
+example2
+	^N C majorTriad fondamental! !
+
+!Siren.OctaveDependentChord class methodsFor: 'cation'!
+
+newWithValues: anArray 
+	^self new newWithValues: anArray!
+
+readFromFile
+	| n |
+	n := Dialog request: 'name of the file' initialAnswer: 'cc.chord'.
+	n isEmpty ifTrue: [^nil].
+	^self readFromFile: n!
+
+readFromFile: fileName 
+	| bos x |
+	bos := BinaryObjectStorage onOld: (Filename named: fileName) readStream.
+	[x := bos next]
+		valueNowOrOnUnwindDo: [bos close].
+	^x!
+
+root: r notes: n 
+	^(self new) root: r; notes: n! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 
-!Siren.DiatonicInterval methodsFor: 'computing notes'!
+Siren.OctaveDependentChord comment:
+'notesBytInterval provides a fast access to the chord notes
+by the names of their intervals with the root. The calculation 
+is done once forever.  On the contrary,  for FPChord the
+calculation is done all the times a note is required since 
+its rarely required.
+Note that for all request (e.g. theFifth) the copy of the note is 
+answer). it is necessary in order to avoid some confusions. For instance,
+the pitches (ODNotes) of  an simple arpeggio on a chord ch may be 
+obtained by: 
+	o := OredredCollection new.
+	o add: ch theTonic; add: ch theThird; ch theFifth; theTonic.
+the first and last must be different objects in the case we will assign 
+them todifferents PlayableNotes.'!
 
-bottomIfTopIs: aNote 
-	"yields the note making the interval self with aNote"
+!Siren.OctaveDependentChord methodsFor: 'mutations'!
 
-	^ascending
-		ifTrue: [aNote preceding]
-		ifFalse: [aNote following]!
+asMelody
+	^self asPlayableObject asMelody!
 
-topIfBottomIs: aNote 
-	"yields the note making the interval self with aNote"
+asPlayableObject
+	^"PlayableChord new chord:" self!
 
-	^ascending ifFalse: [aNote preceding]
-		ifTrue: [aNote following]! !
+lapse: l
+	^self "(PlayableChord new chord: self) lapse: l"!
 
-!Siren.DiatonicInterval methodsFor: 'initialize'!
+startBeat: s duration: d
+	^self "(PlayableChord new chord: self) startBeat: s; duration: d"!
+
+startTime: s duration: d
+	^self "(PlayableChord new chord: self) startTime: s; duration: d"! !
+
+!Siren.OctaveDependentChord methodsFor: 'transposing'!
+
+beTransposedOneStepDown
+	root beTransposedOneStepDown.
+	self resetNotes!
+
+beTransposedOneStepUp
+	root beTransposedOneStepUp.
+	self resetNotes! !
+
+!Siren.OctaveDependentChord methodsFor: 'accessing'!
+
+addNote: c 
+	notes add: c!
+
+notes: value
+	notes := value!
+
+removeNote: c 
+	notes remove: c! !
+
+!Siren.OctaveDependentChord methodsFor: 'notes by  intervals'!
+
+computeNotesByInterval
+	"only for triad notes"
+	notesByInterval := Dictionary new.
+	notesByInterval at: #theTonic put: self reallyTheTonic.
+	notesByInterval at: #theThird put: self  reallyTheThird.
+	notesByInterval at: #theFifth put: self reallyTheFifth.
+	notesByInterval at: #theOctave put: self reallyTheOctave.
+	notesByInterval at: #theLowThird put: self reallyTheLowThird.
+	notesByInterval at: #theLowFifth put: self reallyTheLowFifth.
+	notesByInterval at: #theLowOctave put: self reallyTheLowOctave.!
+
+notesByInterval
+	notesByInterval isEmpty ifTrue: [self computeNotesByInterval].
+	^notesByInterval!
+
+reallyTheFifth
+	^super theFifth!
+
+reallyTheLowFifth
+	self  hasNoFifth
+		ifTrue: [^nil].
+	self hasADiminishedFifth
+		ifTrue: [^root transposeOf: MusicalDescendingInterval augmentedFourth].
+	self hasAnAugmentedFifth
+		ifTrue: [^root transposeOf: MusicalDescendingInterval diminishedFourth].
+	^root transposeOf: MusicalDescendingInterval fourth.!
+
+reallyTheLowOctave
+
+	^root transposeOf: MusicalDescendingInterval octave.!
+
+reallyTheLowThird
+	"attention: do not cofound with 'root downThird  interval"
+	self isSuspended
+		ifTrue: [^root transposeOf: MusicalDescendingInterval fifth]. 
+	self isMinor
+		ifTrue: [^root  transposeOf: MusicalDescendingInterval majorSixth].
+	^ root transposeOf: MusicalDescendingInterval minorSixth.!
+
+reallyTheOctave
+	^super theOctave!
+
+reallyTheThird
+	^super theThird!
+
+reallyTheTonic
+	^super theTonic!
+
+theFifth
+	^(self notesByInterval at: #theFifth) copy!
+
+theLowFifth
+	^(self notesByInterval at: #theLowFifth) copy!
+
+theLowOctave
+	^(self notesByInterval at: #theLowOctave) copy!
+
+theLowThird
+	^(self notesByInterval at: #theLowThird) copy!
+
+theOctave
+	^(self notesByInterval at: #theOctave) copy!
+
+theThird
+	^(self notesByInterval at: #theThird) copy!
+
+theTonic
+	^(self notesByInterval at: #theTonic) copy! !
+
+!Siren.OctaveDependentChord methodsFor: 'saving'!
+
+save
+	| bos fileName |
+	fileName := Dialog request: 'file name' initialAnswer: 'cc.chord'.
+	fileName isEmpty ifTrue: [^nil].
+	bos := BinaryObjectStorage onNew: (Filename named: fileName) writeStream.
+	[bos nextPut: self]
+		valueNowOrOnUnwindDo: [bos close]!
+
+storeOn: s
+	s nextPut: $(.
+	self quotedPrintOn: s.
+	s nextPutAll: ' asChordOct: '.
+	root oct printOn: s.
+	s nextPut: $).! !
+
+!Siren.OctaveDependentChord methodsFor: 'initialize'!
 
 initialize
-	ascending := true! !
+	super  initialize.
+	notesByInterval := Dictionary new.!
 
-!Siren.DiatonicInterval methodsFor: 'printing'!
+resetNotes
+	"extend super class method for notesByIntevals"
+	super resetNotes.
+	(notesByInterval isEmpty or: [notesByInterval == nil])
+		ifFalse: [notesByInterval := Dictionary new]! !
+
+!Siren.OctaveDependentChord methodsFor: 'copy'!
+
+copy
+	| new |
+	new := self shallowCopy.
+	new root: root copy; structure: structure copy.
+	^new! !
+
+!Siren.OctaveDependentChord methodsFor: 'As yet unclassified'!
+
+theLowSeventh
+	"WARN: the calculatin of the seven is done in every request"
+
+	self  hasNoSeventh
+		ifTrue: [^nil].
+	self hasMajorSeventh
+		ifTrue: [^root - #minorSecond].
+	self hasADiminishedSeventh 
+		ifTrue: [^root - #minorThird].
+	^root - #majorSecond! !
+
+!Siren.OctaveDependentChord methodsFor: 'alteration'!
+
+octave: o
+	root oct: o.
+	self resetNotes!
+
+octaveFromNote: n 
+	"set octave from new root or chord note"
+	| int |
+	int :=  n pitchClass intervalBetween: root pitchClass.
+	int type = 1 	"n is the  root in a probably different octave"
+		ifTrue: [self octave: n oct].
+	"n is another chord note"
+	(self containsNote: n) 
+		ifFalse: [^self error: 'the given note is not note a chord note'].
+	self octave: (n - int) oct! !
+
+!Siren.OctaveDependentChord methodsFor: 'private-pact'!
+
+closestDownTriadNoteTo: n
+	"((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
+	| l best smallestInt testInt |
+	l := self downTriadNotes.
+	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
+	best == nil ifTrue: [^nil].
+	smallestInt := n intervalBetween: best.
+	1 to: l size do: 
+		[:i | 
+		testInt := n intervalBetween: (l at: i).
+		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
+			ifTrue:
+			 [best := l at: i.
+			  smallestInt := testInt]].
+	^best!
+
+closestTriadNoteTo: n
+	"((FPChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
+	| l best smallestInt testInt |
+	l := self upAndDownTriadNotes.
+	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
+	best == nil ifTrue: [^nil].
+	smallestInt := n intervalBetween: best.
+	1 to: l size do: 
+		[:i | 
+		testInt := n intervalBetween: (l at: i).
+		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
+			ifTrue:
+			 [best := l at: i.
+			  smallestInt := testInt]].
+	^best!
+
+closestUpTriadNoteTo: n
+	"((PitchClassChord newFromString: 'C  maj7') @ 3) closestTriadNoteTo: N B flat @ 2"
+	| l best smallestInt testInt |
+	l := self upTriadNotes.
+	best := l detect: [:nt | nt  respectsBassTessitura] ifNone: [nil].
+	best == nil ifTrue: [^nil].
+	smallestInt := n intervalBetween: best.
+	1 to: l size do: 
+		[:i | 
+		testInt := n intervalBetween: (l at: i).
+		(testInt < smallestInt and: [(l at: i) respectsBassTessitura])
+			ifTrue:
+			 [best := l at: i.
+			  smallestInt := testInt]].
+	^best!
+
+containsLegalNote: n 
+	n respectsBassTessitura
+		ifFalse: [^false].
+	^(self upTriadNotes detect: [:each | each pitchClass = n pitchClass]
+					   ifNone: [nil]) notNil!
+
+downTriadNotes
+	"return all triad notes within 2 octaves in a particular order"
+
+	| o |
+	o := OrderedCollection new.
+	o add: self theLowOctave.
+	o add: self theLowFifth.
+	o  add: self theLowThird.
+	o add: self theTonic.
+	^o!
+
+triadDownNoteLeadingTo: n
+	"for the conflicting cases uses the priority given by  the ordering
+	of upAndDownTriadNotes "
+	^self downTriadNotes 
+		detect: [:each | 
+				(each isLeadingToneTo: n)
+				and: [each respectsBassTessitura]]
+		ifNone: [nil]!
+
+triadNoteLeadingTo: n
+	"for the conflicting cases uses two priority criteria: the proximity and 
+	the ordering given by triadNotesLeadingTo: "
+	"('A  maj7' asChordOct: 3) triadNoteLeadingTo: N D  @ 4"
+
+	| list |
+	list := self triadNotesLeadingTo: n.
+	list isEmpty ifTrue: [^nil].
+	list size = 1 ifTrue: [^list first].
+	(n isNearerTo: (list at: 2) than: list first)
+		ifTrue: [^(list at: 2)]
+		ifFalse: [^list first].!
+
+triadNotesLeadingTo: n
+	"answer the chord 'triad' notes  (extend to 7?) within an octave, 
+	 that are leading notes to the given note n"
+	"('A  maj7' asChordOct: 3) triadNotesLeadingTo: N D @ 4"
+	^self upAndDownTriadNotes select: 
+		[:each |
+		(each isLeadingToneTo: n) 
+			and: [each respectsBassTessitura]].!
+
+triadUpNoteLeadingTo: n
+	"for the conflicting cases uses the priority given by  the ordering
+	of upAndDownTriadNotes "
+	^self upTriadNotes 
+		detect: [:each | 
+				(each isLeadingToneTo: n)
+				and: [each respectsBassTessitura]]
+		ifNone: [nil]!
+
+upAndDownTriadNotes
+	"return all triad notes within 2 octaves in a particular order"
+	| o |
+	o := OrderedCollection new.
+	o add: self theOctave.
+	o  add: self theFifth.
+	o  add: self theThird.
+	o  add: self theTonic.
+	o add: self theLowOctave.
+	o add: self theLowFifth.
+	o  add: self theLowThird.
+	^o!
+
+upTriadNotes
+	"return all triad notes within 2 octaves in a particular order"
+	| o |
+	o := OrderedCollection new.
+	o add: self theOctave.
+	o  add: self theFifth.
+	o  add: self theThird.
+	o  add: self theTonic.
+	^o! !
+
+!Siren.OctaveDependentChord methodsFor: 'FP'!
+
+allPitchClasses
+	^notes collect: [:n | n pitchClass]! !
+
+
+
+Smalltalk.Siren defineClass: #PitchClassFlat
+	superclass: #{Siren.PitchClassAltered}
+	indexedType: #none
+	private: false
+	instanceVariableNames: 'flat '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+!Siren.PitchClassFlat methodsFor: 'accessing'!
+
+flat
+	^flat!
+
+flat: value
+	flat := value!
+
+semiToneCount
+	^natural semiToneCount - 1!
+
+sharp
+	^natural! !
+
+!Siren.PitchClassFlat methodsFor: 'testing'!
+
+isFlat
+	^true! !
+
+!Siren.PitchClassFlat methodsFor: 'printing'!
 
 printOn: s 
-	s nextPutAll: 'Diatonic interval '! !
+	natural printOn: s.
+	s nextPut: $b!
 
-!Siren.DiatonicInterval methodsFor: 'private'!
+storeOn: s 
+	"N C flat storeString"
 
-ascending: t 
-	ascending := t! !
+	s nextPutAll: 'N ' , self natural name , ' flat'! !
+
+!Siren.PitchClassFlat methodsFor: 'saving'!
+
+representBinaryOn: s 
+	^MessageSend receiver: natural selector: #flat! !
+
+!Siren.PitchClassFlat methodsFor: 'intervals'!
+
+alterate: note toReach: i 
+	| n |
+	n := natural alterate: note toReach: i.
+	^n flat!
+
+alterateBelow: note toReach: i 
+	| n |
+	n := natural alterateBelow: note toReach: i.
+	^n flat!
+
+closestEnharmonic
+	^self alterate: self preceding toReach: 0.!
+
+semiTonesToNatural
+	^1! !
+
+
+
+Smalltalk.Siren defineClass: #AnalysisList
+	superclass: #{UI.Model}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-PitchClasses'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.AnalysisList class methodsFor: 'examples'!
+
+examples
+
+"	(FPChord newFromString: 'C  ') possibleTonalitiesInScaleClass:  MajorScale 
+
+	AnalysisList ({I de C MajorScale} {IV de G MajorScale} {V de F MajorScale} )
+"! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.AnalysisList methodsFor: 'testing'!
+
+tonalitesCommunesAvec: l 
+
+	| o |
+
+	o := Set new.
+	self do: [:a | l do: [:al | al scale = a scale ifTrue: [o add: a scale]]]. 
+
+	^o!
+
+tonalitesCommunesAvec: l1 et: l2 
+
+	| o |
+
+	o := Set new.
+	self do: [:a | (l1 detect: [:al1 | al1 scale = a scale]
+
+			ifNone: [nil]) notNil ifTrue: [(l2 detect: [:al2 | al2 scale = a scale]
+
+				ifNone: [nil]) notNil ifTrue: [o add: a scale]]].
+	^o! !
 
 
 

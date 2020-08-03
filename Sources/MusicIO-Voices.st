@@ -4,7 +4,7 @@ Smalltalk.Siren defineClass: #Voice
 	superclass: #{UI.Model}
 	indexedType: #none
 	private: false
-	instanceVariableNames: 'name instrument stream '
+	instanceVariableNames: 'name instrument stream loudness '
 	classInstanceVariableNames: ''
 	imports: ''
 	category: 'MusicIO-Voices'!
@@ -111,7 +111,7 @@ play: anEventOrList at: start
 		ifFalse: [^self playEvent: anEventOrList at: start].
 	anEventOrList events do:
 		[ :ass |
-		t := ass key asMsec.
+		t := ass key asUsec.
 		e := ass value.
 		e hasItems 
 			ifTrue: [self play: e at: t + start]
@@ -119,7 +119,7 @@ play: anEventOrList at: start
 
 playEvent: anEvent
 	"Play the argument now."
-
+self halt.
 	self playEvent: anEvent at: 0!
 
 playEvent: anEvent at: aTime
@@ -144,6 +144,16 @@ instrument: newValue
 
 	instrument := newValue!
 
+loudness
+	"Answer my loudness."
+
+	^loudness!
+
+loudness: aValue
+	"Set my loudness."
+
+	^loudness := aValue!
+
 name
 	"return my name."
 
@@ -153,6 +163,9 @@ name: newValue
 	"set my name."
 
 	name := newValue!
+
+species
+	^Voice!
 
 stream
 	"answer the stream of the receiver voice"
@@ -501,6 +514,84 @@ score = #[
 
 
 
+Smalltalk.Siren defineClass: #CsoundVoice
+	superclass: #{Siren.NotelistVoice}
+	indexedType: #none
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'MusicIO-Voices'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.CsoundVoice class methodsFor: 'examples'!
+
+randomExampleToFileAndEdit
+	"CsoundVoice randomExampleToFileAndEdit"
+
+	self randomExampleToFileNamed: 'rand.sco'.
+	^self!
+
+randomExampleToFileNamed: fnam 
+	"Create a random event list and store it on a file."
+	"CsoundVoice randomExampleToFileAndEdit"
+
+	| evt strm list rand vox |
+	strm := (Filename named: fnam) writeStream.
+	rand := Random new.
+"Create the event list and add a few additional properties"
+	(list := EventList randomExample: 64)
+		do: [ :ass | 
+			(evt := ass event) at: #pos put: rand next.
+			evt at: #prop1 put: (rand nextFrom: 320 to: 480).
+			evt at: #prop2 put: (rand nextIntFrom: 12000 to: 23000)].
+"Create a csounc voice and customize its parameter map."
+	(vox := CsoundVoice newNamed: '1' onStream: strm) addMap: #pos.
+	vox addMap: [ :item | ((item at: #prop1) / 1000) printString: 4].
+	vox addMap: #prop2.
+"Play the list on the voice."
+	vox play: list.
+	strm close.
+	(Filename named: fnam) edit.
+	^self! !
+
+!Siren.CsoundVoice class methodsFor: 'instance creation'!
+
+defaultPMap
+
+	| map |
+	(map := OrderedCollection new: 8) add: [:t2 | 'i' , (t2 voice == nil
+				ifTrue: [1]
+				ifFalse: [t2 voice]) printString].
+	map add: #start.
+	map add: [ :t3 | t3 duration asSec value asFloat printString: 4].
+	map add: [ :t4 | t4 loudness asDB positiveDB printString: 4].
+	^map! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.CsoundVoice comment:
+'A CsoundVoice can write an event list to a sco format file for use by Csound.'!
+
+!Siren.CsoundVoice methodsFor: 'events'!
+
+writeFooter
+
+	stream cr; nextPutAll: 'end'; cr; cr.
+	^self!
+
+writeHeader
+
+	stream nextPutAll: ';; csound score file created ', Date today printString; cr.
+	stream cr; nextPutAll: 'f1 0 1024 10 1'; cr.
+	stream cr.
+	^self! !
+
+
+
 Smalltalk.Siren defineClass: #SoundVoice
 	superclass: #{Siren.Voice}
 	indexedType: #none
@@ -626,84 +717,6 @@ writeHeader
 	stream cr; nextPutAll: '#include <carl/cmusic.h>'; cr.
 	stream nextPutAll: '#include "instruments.sc"'; cr.
 	stream cr; nextPutAll: 'SINE(f1);'; cr; cr.
-	^self! !
-
-
-
-Smalltalk.Siren defineClass: #CsoundVoice
-	superclass: #{Siren.NotelistVoice}
-	indexedType: #none
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'MusicIO-Voices'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.CsoundVoice class methodsFor: 'examples'!
-
-randomExampleToFileAndEdit
-	"CsoundVoice randomExampleToFileAndEdit"
-
-	self randomExampleToFileNamed: 'rand.sco'.
-	^self!
-
-randomExampleToFileNamed: fnam 
-	"Create a random event list and store it on a file."
-	"CsoundVoice randomExampleToFileAndEdit"
-
-	| evt strm list rand vox |
-	strm := (Filename named: fnam) writeStream.
-	rand := Random new.
-"Create the event list and add a few additional properties"
-	(list := EventList randomExample: 64)
-		do: [ :ass | 
-			(evt := ass event) at: #pos put: rand next.
-			evt at: #prop1 put: (rand nextFrom: 320 to: 480).
-			evt at: #prop2 put: (rand nextIntFrom: 12000 to: 23000)].
-"Create a csounc voice and customize its parameter map."
-	(vox := CsoundVoice newNamed: '1' onStream: strm) addMap: #pos.
-	vox addMap: [ :item | ((item at: #prop1) / 1000) printString: 4].
-	vox addMap: #prop2.
-"Play the list on the voice."
-	vox play: list.
-	strm close.
-	(Filename named: fnam) edit.
-	^self! !
-
-!Siren.CsoundVoice class methodsFor: 'instance creation'!
-
-defaultPMap
-
-	| map |
-	(map := OrderedCollection new: 8) add: [:t2 | 'i' , (t2 voice == nil
-				ifTrue: [1]
-				ifFalse: [t2 voice]) printString].
-	map add: #start.
-	map add: [ :t3 | t3 duration asSec value asFloat printString: 4].
-	map add: [ :t4 | t4 loudness asDB positiveDB printString: 4].
-	^map! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.CsoundVoice comment:
-'A CsoundVoice can write an event list to a sco format file for use by Csound.'!
-
-!Siren.CsoundVoice methodsFor: 'events'!
-
-writeFooter
-
-	stream cr; nextPutAll: 'end'; cr; cr.
-	^self!
-
-writeHeader
-
-	stream nextPutAll: ';; csound score file created ', Date today printString; cr.
-	stream cr; nextPutAll: 'f1 0 1024 10 1'; cr.
-	stream cr.
 	^self! !
 
 

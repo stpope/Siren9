@@ -135,6 +135,12 @@ Smalltalk.Siren defineClass: #SampledSound
 			'
 	category: 'Music-Sound'!
 
+Siren.SampledSound defineSharedVariable: #MagicNumbers
+	private: false
+	constant: false
+	category: 'class constants'
+	initializer: nil!
+
 Siren.SampledSound defineSharedVariable: #MinIntSample
 	private: false
 	constant: false
@@ -142,12 +148,6 @@ Siren.SampledSound defineSharedVariable: #MinIntSample
 	initializer: nil!
 
 Siren.SampledSound defineSharedVariable: #MaxIntSample
-	private: false
-	constant: false
-	category: 'class constants'
-	initializer: nil!
-
-Siren.SampledSound defineSharedVariable: #MagicNumbers
 	private: false
 	constant: false
 	category: 'class constants'
@@ -1538,88 +1538,6 @@ mergeChannel: cNumber from: aSound
 
 
 
-Smalltalk.Siren defineClass: #FloatSound
-	superclass: #{Siren.SampledSound}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: ''
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Sound'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.FloatSound class methodsFor: 'class constants'!
-
-formatSymbol
-	"Answer the symbolic code used for the format of the receiver's instances."
-
-	^#float32Bit!
-
-maxSample
-	"Answer the maximum value of the receiver class."
-
-	^1.0!
-
-minSample
-	"Answer the minimum value of the receiver class."
-
-	^-1.0! !
-
-!Siren.FloatSound class methodsFor: 'examples'!
-
-fileExample
-	"Answer a typical float sound read in from a file."
-	"SoundView openOn: FloatSound fileExample"
-
-	^FloatSound fromFile: 'snd/new/orchestra.f.snd'! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.FloatSound comment:
-'Instances of FloatSound are used for sounds with 32-bit floating-point numbers as samples.
-There are behaviors for mapping into other formats.'!
-
-!Siren.FloatSound methodsFor: 'sample accessing'!
-
-intSampleAt: index
-	"Answer the sample at the given index as a scaled 16-bit integer."
-
-	^((self sampleAt: index) * 32767.0) rounded!
-
-intSampleAt: index put: aValue
-	"Put the given integer sample at the given index after scaling."
-
-	self sampleAt: index put: (aValue asFloat / 32767.0)! !
-
-!Siren.FloatSound methodsFor: 'accessing'!
-
-format
-	"Return the receiver's format--a symbol constant."
-
-	^#float32Bit!
-
-sampleSize
-	"Answer the size in bytes of the receiver's samples (4)."
-
-	^4! !
-
-!Siren.FloatSound methodsFor: 'private'!
-
-privateSampleAt: index
-	"Answer the sample at the given index."
-
-	^data floatAt: (index -1 * 4 + 1)!
-
-privateSampleAt: index put: aValue
-	"Stuff the given sample into the data array at the given index (no checking)."
-
-	data floatAt: (index -1 * 4 + 1) put: aValue asFloat! !
-
-
-
 Smalltalk.Siren defineClass: #VirtualSound
 	superclass: #{Siren.SampledSound}
 	indexedType: #objects
@@ -1865,6 +1783,188 @@ rippleUpFrom: start adding: insert
 
 
 
+Smalltalk.Siren defineClass: #FloatSound
+	superclass: #{Siren.SampledSound}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: ''
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Sound'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.FloatSound class methodsFor: 'class constants'!
+
+formatSymbol
+	"Answer the symbolic code used for the format of the receiver's instances."
+
+	^#float32Bit!
+
+maxSample
+	"Answer the maximum value of the receiver class."
+
+	^1.0!
+
+minSample
+	"Answer the minimum value of the receiver class."
+
+	^-1.0! !
+
+!Siren.FloatSound class methodsFor: 'examples'!
+
+fileExample
+	"Answer a typical float sound read in from a file."
+	"SoundView openOn: FloatSound fileExample"
+
+	^FloatSound fromFile: 'snd/new/orchestra.f.snd'! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.FloatSound comment:
+'Instances of FloatSound are used for sounds with 32-bit floating-point numbers as samples.
+There are behaviors for mapping into other formats.'!
+
+!Siren.FloatSound methodsFor: 'sample accessing'!
+
+intSampleAt: index
+	"Answer the sample at the given index as a scaled 16-bit integer."
+
+	^((self sampleAt: index) * 32767.0) rounded!
+
+intSampleAt: index put: aValue
+	"Put the given integer sample at the given index after scaling."
+
+	self sampleAt: index put: (aValue asFloat / 32767.0)! !
+
+!Siren.FloatSound methodsFor: 'accessing'!
+
+format
+	"Return the receiver's format--a symbol constant."
+
+	^#float32Bit!
+
+sampleSize
+	"Answer the size in bytes of the receiver's samples (4)."
+
+	^4! !
+
+!Siren.FloatSound methodsFor: 'private'!
+
+privateSampleAt: index
+	"Answer the sample at the given index."
+
+	^data floatAt: (index -1 * 4 + 1)!
+
+privateSampleAt: index put: aValue
+	"Stuff the given sample into the data array at the given index (no checking)."
+
+	data floatAt: (index -1 * 4 + 1) put: aValue asFloat! !
+
+
+
+Smalltalk.Siren defineClass: #GapSound
+	superclass: #{Siren.VirtualSound}
+	indexedType: #objects
+	private: false
+	instanceVariableNames: 'cutList '
+	classInstanceVariableNames: ''
+	imports: ''
+	category: 'Music-Sound'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+!Siren.GapSound class methodsFor: 'instance creation'!
+
+on: source cutFrom: start to: stop
+	"Answer a CompositeSound derived from the argument missing the given range."
+	"GapSound exampleView"
+
+	| me |
+	me := self new initialize.
+	me source: source.
+	me samplesInMemory: source samplesInMemory.
+	me data: source data.
+	me cutFrom: start to: stop.
+	^me! !
+
+!Siren.GapSound class methodsFor: 'examples'!
+
+exampleView
+	"Open a sound view on a ramp with a chunk cut out of it."
+	"GapSound exampleView"
+
+	SoundView openOn: ((SampledSound rampDur: 1.0 rate: 16000 chans: 1) 
+			cutFrom: 1000 to: 10000)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+
+Siren.GapSound comment:
+'An instance of GapSound can be used to represent a sound with samples deleted from it (i.e., a gap).
+It uses its cut list instance variable to maintain sample ranges that have been deleted from the sound that comprises it (the source).
+It responds to sampleAt: and sampleAt:put: just like other sounds, but stores only its cut list on files unless explicitly told to store samples.
+
+Instance Variables:
+	cutList		<SortedCollection of Integers> the list of deleted sections by sample index i.e., pointers denoting sections that have been deleted. For example, having a cutList of (1000 2000) means that samples (1000, 2000] have been virtually cut.
+'!
+
+!Siren.GapSound methodsFor: 'accessing'!
+
+allocateData
+	"no-op"
+
+	^self!
+
+cutFrom: startSample to: stopSample
+	"Cut the designated section from the receiver."
+
+	| realStart realStop |
+	realStart := self mapSampleIndex: startSample.
+	realStop := self mapSampleIndex: stopSample.
+	cutList == nil
+		ifTrue: [cutList := SortedCollection new].
+	cutList add: realStart.
+	cutList add: realStop.
+	self size: (self size - (stopSample - startSample)).
+	^self!
+
+samples
+
+	^source samples! !
+
+!Siren.GapSound methodsFor: 'testing'!
+
+hasGaps
+	"Answer whether the receiver has any gaps."
+
+	^true! !
+
+!Siren.GapSound methodsFor: 'private'!
+
+mapSampleIndex: index
+	"Map the given sample index according to the cut list (i.e., deleted sections) of the receiver."
+
+	| mappedIndex |
+	((cutList == nil) or: [cutList size < 2])
+		ifTrue: [^index - firstIndex].
+	mappedIndex := index.
+	mappedIndex < cutList first
+		ifTrue: [^mappedIndex].
+	1 to: cutList size by: 2 do:
+		[ :cutIndex |
+		mappedIndex := mappedIndex - 
+				((cutList at: cutIndex) - (cutList at: cutIndex + 1)).
+		(((cutIndex + 1) = cutList size) or: 
+				[mappedIndex < (cutList at: cutIndex + 2)])
+			ifTrue: [^mappedIndex]].
+		^mappedIndex - firstIndex.! !
+
+
+
 Smalltalk.Siren defineClass: #ComponentSound
 	superclass: #{Siren.Sound}
 	indexedType: #objects
@@ -1972,103 +2072,3 @@ includes: anIndex
 	"Answer whether the argument is within the range of the receiver."
 
 	^(anIndex >= start) & (anIndex <= stop)! !
-
-
-
-Smalltalk.Siren defineClass: #GapSound
-	superclass: #{Siren.VirtualSound}
-	indexedType: #objects
-	private: false
-	instanceVariableNames: 'cutList '
-	classInstanceVariableNames: ''
-	imports: ''
-	category: 'Music-Sound'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-!Siren.GapSound class methodsFor: 'instance creation'!
-
-on: source cutFrom: start to: stop
-	"Answer a CompositeSound derived from the argument missing the given range."
-	"GapSound exampleView"
-
-	| me |
-	me := self new initialize.
-	me source: source.
-	me samplesInMemory: source samplesInMemory.
-	me data: source data.
-	me cutFrom: start to: stop.
-	^me! !
-
-!Siren.GapSound class methodsFor: 'examples'!
-
-exampleView
-	"Open a sound view on a ramp with a chunk cut out of it."
-	"GapSound exampleView"
-
-	SoundView openOn: ((SampledSound rampDur: 1.0 rate: 16000 chans: 1) 
-			cutFrom: 1000 to: 10000)! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-
-Siren.GapSound comment:
-'An instance of GapSound can be used to represent a sound with samples deleted from it (i.e., a gap).
-It uses its cut list instance variable to maintain sample ranges that have been deleted from the sound that comprises it (the source).
-It responds to sampleAt: and sampleAt:put: just like other sounds, but stores only its cut list on files unless explicitly told to store samples.
-
-Instance Variables:
-	cutList		<SortedCollection of Integers> the list of deleted sections by sample index i.e., pointers denoting sections that have been deleted. For example, having a cutList of (1000 2000) means that samples (1000, 2000] have been virtually cut.
-'!
-
-!Siren.GapSound methodsFor: 'accessing'!
-
-allocateData
-	"no-op"
-
-	^self!
-
-cutFrom: startSample to: stopSample
-	"Cut the designated section from the receiver."
-
-	| realStart realStop |
-	realStart := self mapSampleIndex: startSample.
-	realStop := self mapSampleIndex: stopSample.
-	cutList == nil
-		ifTrue: [cutList := SortedCollection new].
-	cutList add: realStart.
-	cutList add: realStop.
-	self size: (self size - (stopSample - startSample)).
-	^self!
-
-samples
-
-	^source samples! !
-
-!Siren.GapSound methodsFor: 'testing'!
-
-hasGaps
-	"Answer whether the receiver has any gaps."
-
-	^true! !
-
-!Siren.GapSound methodsFor: 'private'!
-
-mapSampleIndex: index
-	"Map the given sample index according to the cut list (i.e., deleted sections) of the receiver."
-
-	| mappedIndex |
-	((cutList == nil) or: [cutList size < 2])
-		ifTrue: [^index - firstIndex].
-	mappedIndex := index.
-	mappedIndex < cutList first
-		ifTrue: [^mappedIndex].
-	1 to: cutList size by: 2 do:
-		[ :cutIndex |
-		mappedIndex := mappedIndex - 
-				((cutList at: cutIndex) - (cutList at: cutIndex + 1)).
-		(((cutIndex + 1) = cutList size) or: 
-				[mappedIndex < (cutList at: cutIndex + 2)])
-			ifTrue: [^mappedIndex]].
-		^mappedIndex - firstIndex.! !
