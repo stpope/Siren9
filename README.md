@@ -104,6 +104,10 @@ The Smalltalk portion of Siren is 100% cross-platform, and the DLLCC external in
 
 The core of Siren is not dependent on the dialect of Smalltalk, and in fact, runs well in Squeak. The bulk of the interactive tools and GUIs are based on my own display list graphics framework, and are thus also portable. The actual integrated applications and GUIs in Siren 7.5 use VisualWorks-specific application model classes, though.
 
+## History
+
+1992 screen shot, CMJ 16(3) cover
+
 ![Siren 1992](https://github.com/stpope/Siren9/blob/master/CMJ_16.3_cover-MODE.gif)
 
 ----
