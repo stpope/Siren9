@@ -103,3 +103,7 @@ Siren-on-Squeak (1996-2002) was a simple re-implementation of the MODE in the Sq
 The Smalltalk portion of Siren is 100% cross-platform, and the DLLCC external interfaces to sound file, MIDI, and sound streaming I/O use cross-platform libraries. There are a few places (Sound play command and aubio interfaces) that assume UNIX shell commands can be run from within Smalltalk; I'm not certain how these port to Windows.
 
 The core of Siren is not dependent on the dialect of Smalltalk, and in fact, runs well in Squeak. The bulk of the interactive tools and GUIs are based on my own display list graphics framework, and are thus also portable. The actual integrated applications and GUIs in Siren 7.5 use VisualWorks-specific application model classes, though.
+
+![Siren 1992](https://github.com/stpope/Siren9/blob/master/CMJ_16.3_cover-MODE.gif)
+
+----
