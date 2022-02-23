@@ -106,7 +106,7 @@ The core of Siren is not dependent on the dialect of Smalltalk, and in fact, run
 
 ## History
 
-1992 screen shot, CMJ 16(3) cover
+1992 screen shot, CMJ 16(3) cover showing MODE (predecessor of Siren) running on a Sun workstation using the prototype Navigator GUI.
 
 ![Siren 1992](https://github.com/stpope/Siren9/blob/master/CMJ_16.3_cover-MODE.gif)
 
